@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C99797187BFF41E8EE839A3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 194FCB2486E562BFEE399460 /* libPods.a */; };
 		E5A4BE8B19DF118D000BFE8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8A19DF118D000BFE8E /* main.m */; };
 		E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */; };
 		E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE9019DF118D000BFE8E /* ViewController.m */; };
 		E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A4BE9519DF118D000BFE8E /* Images.xcassets */; };
 		E5A4BE9919DF118D000BFE8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A4BE9719DF118D000BFE8E /* LaunchScreen.xib */; };
 		E5A4BEA519DF118D000BFE8E /* _00___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BEA419DF118D000BFE8E /* _00___Tests.m */; };
+		E5BA34D419DF225E00CB8165 /* CHSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34D319DF225E00CB8165 /* CHSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		194FCB2486E562BFEE399460 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E5A4BE8519DF118D000BFE8E /* 300勇士盒.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "300勇士盒.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A4BE8919DF118D000BFE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5A4BE8A19DF118D000BFE8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,6 +42,9 @@
 		E5A4BE9E19DF118D000BFE8E /* 300勇士盒Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "300勇士盒Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A4BEA319DF118D000BFE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5A4BEA419DF118D000BFE8E /* _00___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_00___Tests.m"; sourceTree = "<group>"; };
+		E5BA34D219DF225E00CB8165 /* CHSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSlider.h; sourceTree = "<group>"; };
+		E5BA34D319DF225E00CB8165 /* CHSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSlider.m; sourceTree = "<group>"; };
+		F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C99797187BFF41E8EE839A3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +66,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052818CBE657038C5A83AED3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				194FCB2486E562BFEE399460 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		745BCA52AB8E30E1E6EB9DD1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */,
+				2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E5A4BE7C19DF118D000BFE8E = {
 			isa = PBXGroup;
 			children = (
 				E5A4BE8719DF118D000BFE8E /* 300勇士盒 */,
 				E5A4BEA119DF118D000BFE8E /* 300勇士盒Tests */,
 				E5A4BE8619DF118D000BFE8E /* Products */,
+				745BCA52AB8E30E1E6EB9DD1 /* Pods */,
+				052818CBE657038C5A83AED3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +106,7 @@
 		E5A4BE8719DF118D000BFE8E /* 300勇士盒 */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA34D519DF226300CB8165 /* CHSlider */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
 				E5A4BE8F19DF118D000BFE8E /* ViewController.h */,
@@ -116,6 +144,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E5BA34D519DF226300CB8165 /* CHSlider */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA34D219DF225E00CB8165 /* CHSlider.h */,
+				E5BA34D319DF225E00CB8165 /* CHSlider.m */,
+			);
+			name = CHSlider;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5A4BEA819DF118D000BFE8E /* Build configuration list for PBXNativeTarget "300勇士盒" */;
 			buildPhases = (
+				F7D01E327CCC7300C8FF8E0D /* Check Pods Manifest.lock */,
 				E5A4BE8119DF118D000BFE8E /* Sources */,
 				E5A4BE8219DF118D000BFE8E /* Frameworks */,
 				E5A4BE8319DF118D000BFE8E /* Resources */,
+				482912FAEBF4B6C549E91A2E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +249,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		482912FAEBF4B6C549E91A2E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7D01E327CCC7300C8FF8E0D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E5A4BE8119DF118D000BFE8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -218,6 +290,7 @@
 				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
 				E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */,
 				E5A4BE8B19DF118D000BFE8E /* main.m in Sources */,
+				E5BA34D419DF225E00CB8165 /* CHSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +402,7 @@
 		};
 		E5A4BEA919DF118D000BFE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
@@ -340,6 +414,7 @@
 		};
 		E5A4BEAA19DF118D000BFE8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
@@ -402,6 +477,7 @@
 				E5A4BEAA19DF118D000BFE8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5A4BEAB19DF118D000BFE8E /* Build configuration list for PBXNativeTarget "300勇士盒Tests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +486,7 @@
 				E5A4BEAD19DF118D000BFE8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

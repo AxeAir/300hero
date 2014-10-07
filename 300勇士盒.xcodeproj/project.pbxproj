@@ -15,6 +15,16 @@
 		E5A4BE9919DF118D000BFE8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A4BE9719DF118D000BFE8E /* LaunchScreen.xib */; };
 		E5A4BEA519DF118D000BFE8E /* _00___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BEA419DF118D000BFE8E /* _00___Tests.m */; };
 		E5BA34D419DF225E00CB8165 /* CHSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34D319DF225E00CB8165 /* CHSlider.m */; };
+		E5BA34D819E3B15E00CB8165 /* UIViewController+CHSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34D719E3B15E00CB8165 /* UIViewController+CHSlider.m */; };
+		E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34DA19E3B87B00CB8165 /* SideMenuTableView.m */; };
+		E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34E019E3C22600CB8165 /* sigleMenu.m */; };
+		E5BA34E919E3C3F400CB8165 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E219E3C3F400CB8165 /* icon1.png */; };
+		E5BA34EA19E3C3F400CB8165 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E319E3C3F400CB8165 /* icon2.png */; };
+		E5BA34EB19E3C3F400CB8165 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E419E3C3F400CB8165 /* icon3.png */; };
+		E5BA34EC19E3C3F400CB8165 /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E519E3C3F400CB8165 /* icon4.png */; };
+		E5BA34ED19E3C3F400CB8165 /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E619E3C3F400CB8165 /* icon5.png */; };
+		E5BA34EE19E3C3F400CB8165 /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E719E3C3F400CB8165 /* icon6.png */; };
+		E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E819E3C3F400CB8165 /* icon7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,19 @@
 		E5A4BEA419DF118D000BFE8E /* _00___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_00___Tests.m"; sourceTree = "<group>"; };
 		E5BA34D219DF225E00CB8165 /* CHSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSlider.h; sourceTree = "<group>"; };
 		E5BA34D319DF225E00CB8165 /* CHSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSlider.m; sourceTree = "<group>"; };
+		E5BA34D619E3B15E00CB8165 /* UIViewController+CHSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CHSlider.h"; sourceTree = "<group>"; };
+		E5BA34D719E3B15E00CB8165 /* UIViewController+CHSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CHSlider.m"; sourceTree = "<group>"; };
+		E5BA34D919E3B87B00CB8165 /* SideMenuTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuTableView.h; sourceTree = "<group>"; };
+		E5BA34DA19E3B87B00CB8165 /* SideMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuTableView.m; sourceTree = "<group>"; };
+		E5BA34DF19E3C22600CB8165 /* sigleMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigleMenu.h; sourceTree = "<group>"; };
+		E5BA34E019E3C22600CB8165 /* sigleMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sigleMenu.m; sourceTree = "<group>"; };
+		E5BA34E219E3C3F400CB8165 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		E5BA34E319E3C3F400CB8165 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		E5BA34E419E3C3F400CB8165 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		E5BA34E519E3C3F400CB8165 /* icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4.png; sourceTree = "<group>"; };
+		E5BA34E619E3C3F400CB8165 /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
+		E5BA34E719E3C3F400CB8165 /* icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon6.png; sourceTree = "<group>"; };
+		E5BA34E819E3C3F400CB8165 /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
 		F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,9 +129,20 @@
 		E5A4BE8719DF118D000BFE8E /* 300勇士盒 */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA34E219E3C3F400CB8165 /* icon1.png */,
+				E5BA34E319E3C3F400CB8165 /* icon2.png */,
+				E5BA34E419E3C3F400CB8165 /* icon3.png */,
+				E5BA34E519E3C3F400CB8165 /* icon4.png */,
+				E5BA34E619E3C3F400CB8165 /* icon5.png */,
+				E5BA34E719E3C3F400CB8165 /* icon6.png */,
+				E5BA34E819E3C3F400CB8165 /* icon7.png */,
 				E5BA34D519DF226300CB8165 /* CHSlider */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
+				E5BA34D919E3B87B00CB8165 /* SideMenuTableView.h */,
+				E5BA34DA19E3B87B00CB8165 /* SideMenuTableView.m */,
+				E5BA34DF19E3C22600CB8165 /* sigleMenu.h */,
+				E5BA34E019E3C22600CB8165 /* sigleMenu.m */,
 				E5A4BE8F19DF118D000BFE8E /* ViewController.h */,
 				E5A4BE9019DF118D000BFE8E /* ViewController.m */,
 				E5A4BE9519DF118D000BFE8E /* Images.xcassets */,
@@ -149,6 +183,8 @@
 			children = (
 				E5BA34D219DF225E00CB8165 /* CHSlider.h */,
 				E5BA34D319DF225E00CB8165 /* CHSlider.m */,
+				E5BA34D619E3B15E00CB8165 /* UIViewController+CHSlider.h */,
+				E5BA34D719E3B15E00CB8165 /* UIViewController+CHSlider.m */,
 			);
 			name = CHSlider;
 			sourceTree = "<group>";
@@ -237,6 +273,13 @@
 			files = (
 				E5A4BE9919DF118D000BFE8E /* LaunchScreen.xib in Resources */,
 				E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */,
+				E5BA34E919E3C3F400CB8165 /* icon1.png in Resources */,
+				E5BA34EE19E3C3F400CB8165 /* icon6.png in Resources */,
+				E5BA34ED19E3C3F400CB8165 /* icon5.png in Resources */,
+				E5BA34EA19E3C3F400CB8165 /* icon2.png in Resources */,
+				E5BA34EB19E3C3F400CB8165 /* icon3.png in Resources */,
+				E5BA34EC19E3C3F400CB8165 /* icon4.png in Resources */,
+				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +333,10 @@
 				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
 				E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */,
 				E5A4BE8B19DF118D000BFE8E /* main.m in Sources */,
+				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
 				E5BA34D419DF225E00CB8165 /* CHSlider.m in Sources */,
+				E5BA34D819E3B15E00CB8165 /* UIViewController+CHSlider.m in Sources */,
+				E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

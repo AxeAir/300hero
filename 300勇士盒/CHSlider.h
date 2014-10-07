@@ -10,4 +10,24 @@
 
 @interface CHSlider : UIViewController
 
+@property (nonatomic,readonly) UIViewController *contentController;
+@property (nonatomic,readonly) UIViewController *menuController;
+
+@property (nonatomic,assign) CGFloat menuWidth;
+@property (nonatomic,assign) BOOL tapGestureEnable;
+@property (nonatomic,assign) BOOL panGestureEnbale;
+
+- (id)initWithContentController:(UIViewController*)contentController
+                menuController:(UIViewController*)menuController;
+
+
+- (void)setContentController:(UIViewController *)contentController
+                    animted:(BOOL)animated;
+
+- (void)showMenuAnimated:(BOOL)animated;
+- (void)hideMenuAnimated:(BOOL)animated;
+- (BOOL)isMenuVisible;
+
+- (void)setBackgroundImage:(UIImage*)image;
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIViewController+CHSlider.h"
+#import "UIViewController+CHSideMenu.h"
 @interface ViewController ()
 
 @end
@@ -17,9 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(dd)];
+    self.navigationItem.leftBarButtonItem=left;
 
 }
 
+
+- (void)dd
+{
+    NSLog(@"fff");
+    [self.navigationController.sideMenuController toggleMenu:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "CHSideMenu.h"
 #import "SideMenuTableView.h"
+#import "MainNavgationController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,16 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-     NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
+     NSLog(@"%f",[[UIScreen mainScreen] bounds].origin.y);
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
     ViewController *contentController = [[ViewController alloc] init];
-    contentController.view.backgroundColor = [UIColor colorWithHue:0.5 saturation:1.0 brightness:1.0 alpha:1.0];
     
-    UIViewController *navController = [[UINavigationController alloc] initWithRootViewController:contentController];
+    MainNavgationController *navController = [[MainNavgationController alloc] initWithRootViewController:contentController];
     CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:navController
                                                           menuController:menuController];
-    //[sideMenu setBackgroundImage:[UIImage imageNamed:@"menuwallpaper"]];
     self.window.rootViewController = sideMenu;
     
     

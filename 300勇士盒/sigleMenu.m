@@ -11,18 +11,16 @@
 @implementation sigleMenu
 
 
--(id)initWithTitle:(NSString *)title image:(UIImage *)image onCompletion:(completion)completionBlock;
+-(id)initWithTitle:(NSString *)title image:(UIImage *)image;
 {
     self = [super init];
     if(self)
     {
         self.title = title;
         self.image = image;
-        self.block = completionBlock;
         self.imageView = [[UIImageView alloc]initWithImage:image];
         self.imageView.frame = CGRectMake(0, 0, 40, 40);
     }
-    
     return self;
 }
 @end

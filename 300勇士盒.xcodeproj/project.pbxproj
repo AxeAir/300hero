@@ -26,6 +26,16 @@
 		E5BA35F519E704AE00CB8165 /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA35F319E704AE00CB8165 /* burger@2x.png */; };
 		E5BA35FA19E70BDF00CB8165 /* CHSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35F719E70BDF00CB8165 /* CHSideMenu.m */; };
 		E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35F919E70BDF00CB8165 /* UIViewController+CHSideMenu.m */; };
+		E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35FD19E8190A00CB8165 /* SecondViewController.m */; };
+		E5BA360219E8417400CB8165 /* MainNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360119E8417400CB8165 /* MainNavgationController.m */; };
+		E5BA360619E8457E00CB8165 /* ToolNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360519E8457E00CB8165 /* ToolNavgationController.m */; };
+		E5BA360919E845BE00CB8165 /* ToolTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360819E845BE00CB8165 /* ToolTableViewController.m */; };
+		E5BA360D19E8510E00CB8165 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360C19E8510E00CB8165 /* SearchViewController.m */; };
+		E5BA360F19E85AA600CB8165 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA360E19E85AA600CB8165 /* background.png */; };
+		E5BA361119E8D90E00CB8165 /* background101020.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA361019E8D90E00CB8165 /* background101020.png */; };
+		E5BA361519E8DC4F00CB8165 /* RankNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361419E8DC4F00CB8165 /* RankNavController.m */; };
+		E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */; };
+		E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +79,24 @@
 		E5BA35F719E70BDF00CB8165 /* CHSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSideMenu.m; sourceTree = "<group>"; };
 		E5BA35F819E70BDF00CB8165 /* UIViewController+CHSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CHSideMenu.h"; sourceTree = "<group>"; };
 		E5BA35F919E70BDF00CB8165 /* UIViewController+CHSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CHSideMenu.m"; sourceTree = "<group>"; };
+		E5BA35FC19E8190A00CB8165 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		E5BA35FD19E8190A00CB8165 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		E5BA360019E8417400CB8165 /* MainNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavgationController.h; sourceTree = "<group>"; };
+		E5BA360119E8417400CB8165 /* MainNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavgationController.m; sourceTree = "<group>"; };
+		E5BA360419E8457E00CB8165 /* ToolNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolNavgationController.h; sourceTree = "<group>"; };
+		E5BA360519E8457E00CB8165 /* ToolNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolNavgationController.m; sourceTree = "<group>"; };
+		E5BA360719E845BE00CB8165 /* ToolTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolTableViewController.h; sourceTree = "<group>"; };
+		E5BA360819E845BE00CB8165 /* ToolTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolTableViewController.m; sourceTree = "<group>"; };
+		E5BA360B19E8510E00CB8165 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		E5BA360C19E8510E00CB8165 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		E5BA360E19E85AA600CB8165 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		E5BA361019E8D90E00CB8165 /* background101020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background101020.png; sourceTree = "<group>"; };
+		E5BA361319E8DC4F00CB8165 /* RankNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankNavController.h; sourceTree = "<group>"; };
+		E5BA361419E8DC4F00CB8165 /* RankNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankNavController.m; sourceTree = "<group>"; };
+		E5BA361619E8DC7800CB8165 /* RankTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankTypeTableViewController.h; sourceTree = "<group>"; };
+		E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTypeTableViewController.m; sourceTree = "<group>"; };
+		E5BA361A19E90D2E00CB8165 /* RankTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankTypeModel.h; sourceTree = "<group>"; };
+		E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTypeModel.m; sourceTree = "<group>"; };
 		F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,11 +159,18 @@
 		E5A4BE8719DF118D000BFE8E /* 300勇士盒 */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA361919E909D500CB8165 /* Model */,
 				E5BA34D519DF226300CB8165 /* CHSlider */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
+				E5BA35FF19E832D700CB8165 /* Main */,
+				E5BA360319E843E700CB8165 /* Tool */,
+				E5BA361219E8DBFF00CB8165 /* Rank */,
+				E5BA360A19E850E600CB8165 /* SearchView */,
 				E5A4BE8F19DF118D000BFE8E /* ViewController.h */,
 				E5A4BE9019DF118D000BFE8E /* ViewController.m */,
+				E5BA35FC19E8190A00CB8165 /* SecondViewController.h */,
+				E5BA35FD19E8190A00CB8165 /* SecondViewController.m */,
 				E5A4BE9519DF118D000BFE8E /* Images.xcassets */,
 				E5A4BE8819DF118D000BFE8E /* Supporting Files */,
 			);
@@ -171,6 +206,8 @@
 		E5BA34D519DF226300CB8165 /* CHSlider */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA361019E8D90E00CB8165 /* background101020.png */,
+				E5BA360E19E85AA600CB8165 /* background.png */,
 				E5BA35F219E704AD00CB8165 /* burger.png */,
 				E5BA35F319E704AE00CB8165 /* burger@2x.png */,
 				E5BA34E219E3C3F400CB8165 /* icon1.png */,
@@ -190,6 +227,56 @@
 				E5BA34E019E3C22600CB8165 /* sigleMenu.m */,
 			);
 			name = CHSlider;
+			sourceTree = "<group>";
+		};
+		E5BA35FF19E832D700CB8165 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA360019E8417400CB8165 /* MainNavgationController.h */,
+				E5BA360119E8417400CB8165 /* MainNavgationController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		E5BA360319E843E700CB8165 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA360419E8457E00CB8165 /* ToolNavgationController.h */,
+				E5BA360519E8457E00CB8165 /* ToolNavgationController.m */,
+				E5BA360719E845BE00CB8165 /* ToolTableViewController.h */,
+				E5BA360819E845BE00CB8165 /* ToolTableViewController.m */,
+			);
+			name = Tool;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E5BA360A19E850E600CB8165 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA360B19E8510E00CB8165 /* SearchViewController.h */,
+				E5BA360C19E8510E00CB8165 /* SearchViewController.m */,
+			);
+			name = SearchView;
+			sourceTree = "<group>";
+		};
+		E5BA361219E8DBFF00CB8165 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA361319E8DC4F00CB8165 /* RankNavController.h */,
+				E5BA361419E8DC4F00CB8165 /* RankNavController.m */,
+				E5BA361619E8DC7800CB8165 /* RankTypeTableViewController.h */,
+				E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */,
+			);
+			name = Rank;
+			sourceTree = "<group>";
+		};
+		E5BA361919E909D500CB8165 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA361A19E90D2E00CB8165 /* RankTypeModel.h */,
+				E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +370,9 @@
 				E5BA34EA19E3C3F400CB8165 /* icon2.png in Resources */,
 				E5BA34EB19E3C3F400CB8165 /* icon3.png in Resources */,
 				E5BA34EC19E3C3F400CB8165 /* icon4.png in Resources */,
+				E5BA360F19E85AA600CB8165 /* background.png in Resources */,
 				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
+				E5BA361119E8D90E00CB8165 /* background101020.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,12 +423,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BA361519E8DC4F00CB8165 /* RankNavController.m in Sources */,
+				E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */,
+				E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */,
 				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
 				E5BA35FA19E70BDF00CB8165 /* CHSideMenu.m in Sources */,
+				E5BA360919E845BE00CB8165 /* ToolTableViewController.m in Sources */,
+				E5BA360219E8417400CB8165 /* MainNavgationController.m in Sources */,
 				E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */,
 				E5A4BE8B19DF118D000BFE8E /* main.m in Sources */,
+				E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */,
 				E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */,
+				E5BA360619E8457E00CB8165 /* ToolNavgationController.m in Sources */,
 				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
+				E5BA360D19E8510E00CB8165 /* SearchViewController.m in Sources */,
 				E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

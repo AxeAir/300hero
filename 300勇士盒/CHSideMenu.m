@@ -53,6 +53,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     [self addChildViewController:self.contentController];
     [self.contentController didMoveToParentViewController:self];
     
+    [self.menuController.view setFrame:CGRectMake(-100, 110, 200,600)];
     // add subviews
     _containerView = [[UIView alloc] initWithFrame:self.view.bounds];
     _containerView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
@@ -126,7 +127,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     if (!self.tapGestureEnabled) return;
     
     if (![self isMenuVisible]) {
-        [self showMenuAnimated:YES];
+        //[self showMenuAnimated:YES];
     } else {
         [self hideMenuAnimated:YES];
     }
@@ -147,6 +148,10 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
         }
         case UIGestureRecognizerStateChanged: {
             [recognizer.view setTransform:CGAffineTransformMakeTranslation(MAX(0,translation.x), 0)];
+            
+            _menuController.view.frame=CGRectMake(translation.x-200, 0, 200, 600);
+            //NSLog(@"%f",translation.x);
+            //_containerView.alpha=1-translation.x/320.0;
             [self statusBarView].transform = recognizer.view.transform;
             break;
         }
@@ -157,6 +162,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
                 CGFloat duration = CHSideMenuDefaultOpenAnimationTime * 0.66;
                 [self showMenuAnimated:YES duration:duration initialVelocity:transformedVelocity];
             } else {
+                
                 [self hideMenuAnimated:YES];
             }
         }
@@ -170,6 +176,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     if (self.menuController.view.superview == nil) {
         CGRect menuFrame, restFrame;
         CGRectDivide(self.view.bounds, &menuFrame, &restFrame, self.menuWidth, CGRectMinXEdge);
+        menuFrame.origin.x=-200;
         self.menuController.view.frame = menuFrame;
         self.menuController.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         self.view.backgroundColor = self.menuController.view.backgroundColor;
@@ -195,6 +202,10 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     [UIView animateWithDuration:animated ? duration : 0.0 delay:0
          usingSpringWithDamping:CHSideMenuDefaultDamping initialSpringVelocity:velocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
              blockSelf.containerView.transform = CGAffineTransformMakeTranslation(self.menuWidth, 0);
+             blockSelf.menuController.view.frame=CGRectMake(0, 0, 200, 600);
+             //CGContextSetAlpha([NSGraphicsContext currentContext], <#CGFloat alpha#>)
+             //blockSelf.containerView.alpha
+             //[blockSelf.containerView addObserver:self forKeyPath:@"frame.origin.x" options:0 context:nil];
              [self statusBarView].transform = blockSelf.containerView.transform;
          } completion:nil];
 }
@@ -204,10 +215,16 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     __weak typeof(self) blockSelf = self;
     [UIView animateWithDuration:CHSideMenuDefaultCloseAnimationTime animations:^{
         blockSelf.containerView.transform = CGAffineTransformIdentity;
+        blockSelf.containerView.alpha=1;
         [self statusBarView].transform = blockSelf.containerView.transform;
     } completion:^(BOOL finished) {
         [blockSelf.menuController.view removeFromSuperview];
     }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"fff");
 }
 
 

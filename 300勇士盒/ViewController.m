@@ -17,16 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(dd)];
+    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
-
+   
+    self.view.backgroundColor=[UIColor whiteColor];
+}
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
-
-- (void)dd
+- (void)toogleMenu
 {
-    NSLog(@"fff");
     [self.navigationController.sideMenuController toggleMenu:YES];
 }
 

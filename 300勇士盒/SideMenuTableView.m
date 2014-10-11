@@ -8,8 +8,11 @@
 
 #import "SideMenuTableView.h"
 #import "sigleMenu.h"
+#import "UIViewController+CHSideMenu.h"
+#import "SecondViewController.h"
 
-@interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
      NSArray *itemsArray;
 }
@@ -21,41 +24,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"One"
-                                                               image:[UIImage imageNamed:@"icon1.png"]
-                                                        onCompletion:^(BOOL success, sigleMenu *item) {
-                                                            
-                                                            NSLog(@"I am Item 1");
-                                                        }];
-    
-    sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"Two"
-                                                               image:[UIImage imageNamed:@"icon2.png"]
-                                                        onCompletion:^(BOOL success, sigleMenu *item) {
-                                                            
-                                                            NSLog(@"I am Item 2");
-                                                        }];
-    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"Two"
-                                                 image:[UIImage imageNamed:@"icon2.png"]
-                                          onCompletion:^(BOOL success, sigleMenu *item) {
-                                              
-                                              NSLog(@"I am Item 2");
-                                          }];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"Two"
-                                                 image:[UIImage imageNamed:@"icon2.png"]
-                                          onCompletion:^(BOOL success, sigleMenu *item) {
-                                              
-                                              NSLog(@"I am Item 2");
-                                          }];
+    sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"icon1.png"]];
+    sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
     
     NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4, nil];
     itemsArray=arr;
     
     
-    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 260, 600)];
+    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 200, 600)];
     _table.delegate=self;
     _table.dataSource=self;
-    _table.backgroundColor=[UIColor colorWithWhite:0.7 alpha:0.7];
-    
+    _table.backgroundColor=[UIColor whiteColor];
+    _table.scrollEnabled=NO;
     [self.view addSubview:_table];
 
 }
@@ -100,7 +82,7 @@
     
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor whiteColor];
         
         circleView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 55, 55)];
         circleView.tag = MAIN_VIEW_TAG;
@@ -134,7 +116,58 @@
     imageView.image = item.imageView.image;
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            
+            break;
+        case 1:
+            _rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            _rankNav=[[RankNavController alloc] initWithRootViewController:_rankTable];
+            [self.sideMenuController setContentController:_rankNav animted:YES];
+            
+            break;
+        case 2:
+            _toolTable=[[ToolTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            _toolNav=[[ToolNavgationController alloc] initWithRootViewController:_toolTable];
+            [self.sideMenuController setContentController:_toolNav animted:YES];
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  if(section==0)
+  {
+      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+      view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
+      
+      UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
+      searchbar.delegate=self;
+      searchbar.backgroundImage=[UIImage imageNamed:@"background.png"];
+      [view addSubview:searchbar];
+      
+      return view;
+  }
+    return nil;
+}
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    _search=[[SearchViewController alloc] init];
+    [self presentViewController:_search animated:YES completion:nil];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
 }

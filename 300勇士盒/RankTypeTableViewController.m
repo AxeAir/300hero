@@ -28,6 +28,11 @@
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     [self getData];
 }
 

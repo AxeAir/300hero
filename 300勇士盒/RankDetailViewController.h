@@ -11,5 +11,6 @@
 @interface RankDetailViewController : UIViewController
 
 @property (nonatomic,assign) NSInteger ID;
+@property (nonatomic,strong) UITableView *table;
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface HeroViewController : UIViewController
+
+@property (nonatomic,strong)  UITableView *table;
 
 @end

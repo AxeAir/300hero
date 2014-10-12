@@ -21,12 +21,6 @@
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
-    
-    _table=[[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStyleGrouped];
-    _table.delegate=self;
-    _table.dataSource=self;
-    [self.view addSubview:_table];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -69,14 +63,17 @@
 }
 
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  
     static NSString *Identifier=@"ToolcellIdentifier";
-    UITableViewCell *cell = [_table dequeueReusableCellWithIdentifier:Identifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if(cell==nil)
     {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
+    
     // Configure the cell...
     switch (indexPath.section) {
         case 0:
@@ -110,6 +107,9 @@
             {
                 cell.textLabel.text=@"反馈";
             }
+            break;
+        case 2:
+            cell.textLabel.text=@"f";
             
             break;
             
@@ -122,8 +122,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"ddd");
+    switch (indexPath.section) {
+        case 0:
+            if(indexPath.row==0)
+            {
+                _hero=[[HeroViewController alloc] init];
+                //UIViewController*view= self.navigationController;
+                [self.navigationController pushViewController:_hero animated:YES];
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

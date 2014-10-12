@@ -121,6 +121,9 @@
 {
     switch (indexPath.row) {
         case 0:
+            _main=[[MainViewController alloc] init];
+            _mainNav=[[MainNavgationController alloc] initWithRootViewController:_main];
+            [self.sideMenuController setContentController:_mainNav animted:YES];
             
             break;
         case 1:

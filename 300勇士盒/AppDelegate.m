@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "CHSideMenu.h"
 #import "SideMenuTableView.h"
 #import "MainNavgationController.h"
@@ -24,7 +24,7 @@
      NSLog(@"%f",[[UIScreen mainScreen] bounds].origin.y);
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
-    ViewController *contentController = [[ViewController alloc] init];
+    MainViewController *contentController = [[MainViewController alloc] init];
     
     MainNavgationController *navController = [[MainNavgationController alloc] initWithRootViewController:contentController];
     CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:navController

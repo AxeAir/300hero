@@ -17,7 +17,7 @@ const CGFloat CHSideMenuDefaultDamping = 0.5;
 const CGFloat CHSideMenuDefaultOpenAnimationTime = 1.2;
 const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
 
-@interface CHSideMenu ()
+@interface CHSideMenu ()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
@@ -37,6 +37,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
         _menuWidth = CHSideMenuDefaultMenuWidth;
         _tapGestureEnabled = YES;
         _panGestureEnabled = YES;
+        
     }
     return self;
 }
@@ -53,6 +54,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     [self addChildViewController:self.contentController];
     [self.contentController didMoveToParentViewController:self];
     
+    
     [self.menuController.view setFrame:CGRectMake(-100, 110, 200,600)];
     // add subviews
     _containerView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -65,8 +67,15 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     // setup gesture recognizers
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
+    self.panRecognizer.delegate=self;
+    self.tapRecognizer.delegate=self;
     [self.containerView addGestureRecognizer:self.tapRecognizer];
     [self.containerView addGestureRecognizer:self.panRecognizer];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setBackgroundImage:(UIImage*)image;
@@ -171,6 +180,26 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     }
 }
 
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    // 输出点击的view的类名
+    NSLog(@"%@", NSStringFromClass([touch.view class]));
+    
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
+        return NO;
+    }
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UINavigationBar"]) {
+        return NO;
+    }
+    
+    
+    return  YES;
+}
+
+
+
 - (void)addMenuControllerView;
 {
     if (self.menuController.view.superview == nil) {
@@ -200,7 +229,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     // animate
     __weak typeof(self) blockSelf = self;
     [UIView animateWithDuration:animated ? duration : 0.0 delay:0
-         usingSpringWithDamping:CHSideMenuDefaultDamping initialSpringVelocity:velocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
+         usingSpringWithDamping:1 initialSpringVelocity:velocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
              blockSelf.containerView.transform = CGAffineTransformMakeTranslation(self.menuWidth, 0);
              blockSelf.menuController.view.frame=CGRectMake(0, 0, 200, 600);
              //CGContextSetAlpha([NSGraphicsContext currentContext], <#CGFloat alpha#>)

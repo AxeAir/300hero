@@ -10,4 +10,8 @@
 
 @interface HeroModel : NSObject
 
+@property (nonatomic,assign) NSInteger HeroID;
+@property (nonatomic,strong) NSString *ImgURL;
+@property (nonatomic,strong) NSString *HeroName;
+
 @end

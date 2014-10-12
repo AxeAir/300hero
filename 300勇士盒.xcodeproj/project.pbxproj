@@ -36,6 +36,18 @@
 		E5BA361519E8DC4F00CB8165 /* RankNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361419E8DC4F00CB8165 /* RankNavController.m */; };
 		E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */; };
 		E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */; };
+		E5BA361F19E9339900CB8165 /* HeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA361E19E9339900CB8165 /* HeroViewController.m */; };
+		E5BA362219E98C8200CB8165 /* HeroModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA362119E98C8200CB8165 /* HeroModel.m */; };
+		E5BA362D19E98EE200CB8165 /* JHGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA362519E98EE200CB8165 /* JHGridTableView.m */; };
+		E5BA362E19E98EE200CB8165 /* JHGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA362719E98EE200CB8165 /* JHGridTableViewCell.m */; };
+		E5BA362F19E98EE200CB8165 /* JHGridTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA362919E98EE200CB8165 /* JHGridTableViewController.m */; };
+		E5BA363019E98EE200CB8165 /* JHGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA362C19E98EE200CB8165 /* JHGridView.m */; };
+		E5BA363319E997DB00CB8165 /* HeroTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA363219E997DB00CB8165 /* HeroTableViewCell.m */; };
+		E5BA363619E9A33400CB8165 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA363519E9A33400CB8165 /* MainViewController.m */; };
+		E5BA363919E9A64800CB8165 /* RankTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA363819E9A64800CB8165 /* RankTypeTableViewCell.m */; };
+		E5BA363C19E9A77A00CB8165 /* RankDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA363B19E9A77A00CB8165 /* RankDetailViewController.m */; };
+		E5BA364019E9B03600CB8165 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA363F19E9B03600CB8165 /* logo.png */; };
+		E5BA364219E9B08200CB8165 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA364119E9B08200CB8165 /* logo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +109,29 @@
 		E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTypeTableViewController.m; sourceTree = "<group>"; };
 		E5BA361A19E90D2E00CB8165 /* RankTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankTypeModel.h; sourceTree = "<group>"; };
 		E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTypeModel.m; sourceTree = "<group>"; };
+		E5BA361D19E9339900CB8165 /* HeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroViewController.h; sourceTree = "<group>"; };
+		E5BA361E19E9339900CB8165 /* HeroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroViewController.m; sourceTree = "<group>"; };
+		E5BA362019E98C8200CB8165 /* HeroModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroModel.h; sourceTree = "<group>"; };
+		E5BA362119E98C8200CB8165 /* HeroModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroModel.m; sourceTree = "<group>"; };
+		E5BA362419E98EE200CB8165 /* JHGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGridTableView.h; sourceTree = "<group>"; };
+		E5BA362519E98EE200CB8165 /* JHGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHGridTableView.m; sourceTree = "<group>"; };
+		E5BA362619E98EE200CB8165 /* JHGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGridTableViewCell.h; sourceTree = "<group>"; };
+		E5BA362719E98EE200CB8165 /* JHGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHGridTableViewCell.m; sourceTree = "<group>"; };
+		E5BA362819E98EE200CB8165 /* JHGridTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGridTableViewController.h; sourceTree = "<group>"; };
+		E5BA362919E98EE200CB8165 /* JHGridTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHGridTableViewController.m; sourceTree = "<group>"; };
+		E5BA362A19E98EE200CB8165 /* JHGridTableViewControllerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGridTableViewControllerConstants.h; sourceTree = "<group>"; };
+		E5BA362B19E98EE200CB8165 /* JHGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHGridView.h; sourceTree = "<group>"; };
+		E5BA362C19E98EE200CB8165 /* JHGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHGridView.m; sourceTree = "<group>"; };
+		E5BA363119E997DB00CB8165 /* HeroTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroTableViewCell.h; sourceTree = "<group>"; };
+		E5BA363219E997DB00CB8165 /* HeroTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroTableViewCell.m; sourceTree = "<group>"; };
+		E5BA363419E9A33400CB8165 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		E5BA363519E9A33400CB8165 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E5BA363719E9A64800CB8165 /* RankTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankTypeTableViewCell.h; sourceTree = "<group>"; };
+		E5BA363819E9A64800CB8165 /* RankTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTypeTableViewCell.m; sourceTree = "<group>"; };
+		E5BA363A19E9A77A00CB8165 /* RankDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankDetailViewController.h; sourceTree = "<group>"; };
+		E5BA363B19E9A77A00CB8165 /* RankDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankDetailViewController.m; sourceTree = "<group>"; };
+		E5BA363F19E9B03600CB8165 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		E5BA364119E9B08200CB8165 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E5BA361919E909D500CB8165 /* Model */,
+				E5BA362319E98EE200CB8165 /* JHGridTableView */,
 				E5BA34D519DF226300CB8165 /* CHSlider */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
@@ -206,6 +242,8 @@
 		E5BA34D519DF226300CB8165 /* CHSlider */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA364119E9B08200CB8165 /* logo@2x.png */,
+				E5BA363F19E9B03600CB8165 /* logo.png */,
 				E5BA361019E8D90E00CB8165 /* background101020.png */,
 				E5BA360E19E85AA600CB8165 /* background.png */,
 				E5BA35F219E704AD00CB8165 /* burger.png */,
@@ -234,6 +272,8 @@
 			children = (
 				E5BA360019E8417400CB8165 /* MainNavgationController.h */,
 				E5BA360119E8417400CB8165 /* MainNavgationController.m */,
+				E5BA363419E9A33400CB8165 /* MainViewController.h */,
+				E5BA363519E9A33400CB8165 /* MainViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -245,6 +285,10 @@
 				E5BA360519E8457E00CB8165 /* ToolNavgationController.m */,
 				E5BA360719E845BE00CB8165 /* ToolTableViewController.h */,
 				E5BA360819E845BE00CB8165 /* ToolTableViewController.m */,
+				E5BA361D19E9339900CB8165 /* HeroViewController.h */,
+				E5BA361E19E9339900CB8165 /* HeroViewController.m */,
+				E5BA363119E997DB00CB8165 /* HeroTableViewCell.h */,
+				E5BA363219E997DB00CB8165 /* HeroTableViewCell.m */,
 			);
 			name = Tool;
 			path = ..;
@@ -266,6 +310,10 @@
 				E5BA361419E8DC4F00CB8165 /* RankNavController.m */,
 				E5BA361619E8DC7800CB8165 /* RankTypeTableViewController.h */,
 				E5BA361719E8DC7800CB8165 /* RankTypeTableViewController.m */,
+				E5BA363719E9A64800CB8165 /* RankTypeTableViewCell.h */,
+				E5BA363819E9A64800CB8165 /* RankTypeTableViewCell.m */,
+				E5BA363A19E9A77A00CB8165 /* RankDetailViewController.h */,
+				E5BA363B19E9A77A00CB8165 /* RankDetailViewController.m */,
 			);
 			name = Rank;
 			sourceTree = "<group>";
@@ -275,8 +323,26 @@
 			children = (
 				E5BA361A19E90D2E00CB8165 /* RankTypeModel.h */,
 				E5BA361B19E90D2E00CB8165 /* RankTypeModel.m */,
+				E5BA362019E98C8200CB8165 /* HeroModel.h */,
+				E5BA362119E98C8200CB8165 /* HeroModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E5BA362319E98EE200CB8165 /* JHGridTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA362419E98EE200CB8165 /* JHGridTableView.h */,
+				E5BA362519E98EE200CB8165 /* JHGridTableView.m */,
+				E5BA362619E98EE200CB8165 /* JHGridTableViewCell.h */,
+				E5BA362719E98EE200CB8165 /* JHGridTableViewCell.m */,
+				E5BA362819E98EE200CB8165 /* JHGridTableViewController.h */,
+				E5BA362919E98EE200CB8165 /* JHGridTableViewController.m */,
+				E5BA362A19E98EE200CB8165 /* JHGridTableViewControllerConstants.h */,
+				E5BA362B19E98EE200CB8165 /* JHGridView.h */,
+				E5BA362C19E98EE200CB8165 /* JHGridView.m */,
+			);
+			path = JHGridTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +396,7 @@
 				TargetAttributes = {
 					E5A4BE8419DF118D000BFE8E = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = F86ABKXNGB;
 					};
 					E5A4BE9D19DF118D000BFE8E = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -361,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BA364019E9B03600CB8165 /* logo.png in Resources */,
 				E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */,
 				E5BA35F519E704AE00CB8165 /* burger@2x.png in Resources */,
 				E5BA34E919E3C3F400CB8165 /* icon1.png in Resources */,
@@ -371,6 +439,7 @@
 				E5BA34EB19E3C3F400CB8165 /* icon3.png in Resources */,
 				E5BA34EC19E3C3F400CB8165 /* icon4.png in Resources */,
 				E5BA360F19E85AA600CB8165 /* background.png in Resources */,
+				E5BA364219E9B08200CB8165 /* logo@2x.png in Resources */,
 				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
 				E5BA361119E8D90E00CB8165 /* background101020.png in Resources */,
 			);
@@ -424,6 +493,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5BA361519E8DC4F00CB8165 /* RankNavController.m in Sources */,
+				E5BA362F19E98EE200CB8165 /* JHGridTableViewController.m in Sources */,
+				E5BA363019E98EE200CB8165 /* JHGridView.m in Sources */,
+				E5BA363319E997DB00CB8165 /* HeroTableViewCell.m in Sources */,
 				E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */,
 				E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */,
 				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
@@ -431,10 +503,17 @@
 				E5BA360919E845BE00CB8165 /* ToolTableViewController.m in Sources */,
 				E5BA360219E8417400CB8165 /* MainNavgationController.m in Sources */,
 				E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */,
+				E5BA363919E9A64800CB8165 /* RankTypeTableViewCell.m in Sources */,
+				E5BA363619E9A33400CB8165 /* MainViewController.m in Sources */,
+				E5BA362219E98C8200CB8165 /* HeroModel.m in Sources */,
+				E5BA362D19E98EE200CB8165 /* JHGridTableView.m in Sources */,
 				E5A4BE8B19DF118D000BFE8E /* main.m in Sources */,
+				E5BA363C19E9A77A00CB8165 /* RankDetailViewController.m in Sources */,
 				E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */,
 				E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */,
 				E5BA360619E8457E00CB8165 /* ToolNavgationController.m in Sources */,
+				E5BA361F19E9339900CB8165 /* HeroViewController.m in Sources */,
+				E5BA362E19E98EE200CB8165 /* JHGridTableViewCell.m in Sources */,
 				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
 				E5BA360D19E8510E00CB8165 /* SearchViewController.m in Sources */,
 				E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */,
@@ -541,6 +620,7 @@
 			baseConfigurationReference = F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -553,6 +633,7 @@
 			baseConfigurationReference = 2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -16,4 +16,6 @@
 @property (nonatomic,strong) NSString  *Value;          // 值
 @property (nonatomic,assign) NSInteger RankChange;       // 名次改变
 
+
+-(NSInteger) getRankType;
 @end

@@ -9,6 +9,8 @@
 #import "RankTypeTableViewController.h"
 #import "UIViewController+CHSideMenu.h"
 #import "RankTypeModel.h"
+#import "RankTypeTableViewCell.h"
+#import "RankDetailViewController.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 @interface RankTypeTableViewController ()
 {
@@ -81,12 +83,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *Identifier=@"RankIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    RankTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if(cell==nil)
     {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+        cell=[[RankTypeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
     RankTypeModel *model=dataArray[indexPath.row];
+    cell.RankID=model.getRankType;
     // Configure the cell...
     cell.textLabel.text=model.Name;
     
@@ -96,6 +99,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"fff");
+    RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"%d",cell.RankID);
+    RankDetailViewController *rank=[[RankDetailViewController alloc] init];
+    rank.ID=cell.RankID;
+    [self.navigationController pushViewController:rank animated:YES];
 }
 @end

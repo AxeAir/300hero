@@ -12,13 +12,17 @@
 #import "RankNavController.h"
 #import "RankTypeTableViewController.h"
 
+#import "MainNavgationController.h"
+#import "MainViewController.h"
+
 #import "SearchViewController.h"
 @interface SideMenuTableView : UIViewController
 
 @property (nonatomic,strong) UITableView *table;
 @property (nonatomic,strong) SearchViewController *search;
 
-
+@property (nonatomic,strong) MainNavgationController *mainNav;
+@property (nonatomic,strong) MainViewController *main;
 
 @property (nonatomic,strong) ToolNavgationController *toolNav;
 @property (nonatomic,strong) ToolTableViewController *toolTable;

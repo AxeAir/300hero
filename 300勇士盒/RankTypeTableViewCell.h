@@ -10,4 +10,6 @@
 
 @interface RankTypeTableViewCell : UITableViewCell
 
+@property (nonatomic,assign) NSInteger RankID;
+
 @end

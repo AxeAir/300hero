@@ -10,4 +10,10 @@
 
 @implementation RankTypeModel
 
+
+-(NSInteger)getRankType
+{
+    NSArray  * array= [_Url componentsSeparatedByString:@"="];
+    return [array[1] integerValue];
+}
 @end

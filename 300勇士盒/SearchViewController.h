@@ -10,4 +10,8 @@
 
 @interface SearchViewController : UIViewController
 
+@property (nonatomic,strong) UISearchBar *bar;
+@property (nonatomic,strong) UITableView *table;
+@property (nonatomic,strong) UIActivityIndicatorView *LodingActivityIndicator;
+
 @end

@@ -15,4 +15,6 @@
 
 @property (nonatomic,strong) UITextField *searchName;
 
+@property (nonatomic,strong) UITableView *recentMatch;
+
 @end

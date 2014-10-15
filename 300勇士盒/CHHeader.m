@@ -86,11 +86,10 @@
 
 -(void)dealloc
 {
-    if(_scrollView)
-    {
+    
         [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
         _scrollView=nil;
-    }
+    
     _headerView=nil;
 }
 @end

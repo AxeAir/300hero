@@ -109,7 +109,7 @@
             }
             break;
         case 2:
-            cell.textLabel.text=@"f";
+            cell.textLabel.text=@"";
             
             break;
             
@@ -127,8 +127,16 @@
             if(indexPath.row==0)
             {
                 _hero=[[HeroViewController alloc] init];
-                //UIViewController*view= self.navigationController;
                 [self.navigationController pushViewController:_hero animated:YES];
+                //_setting=[[SettingTableViewController alloc] init];
+                //[self.navigationController pushViewController:_setting animated:YES];
+            }
+            break;
+        case 1:
+            if(indexPath.row==0)
+            {
+                _setting=[[SettingTableViewController alloc] init];
+                [self.navigationController pushViewController:_setting animated:YES];
             }
             break;
             

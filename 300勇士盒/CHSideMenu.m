@@ -111,7 +111,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     
     // animate in
     __weak typeof(self) blockSelf = self;
-    CGFloat offset = CHSideMenuDefaultMenuWidth + (self.view.frame.size.width-CHSideMenuDefaultMenuWidth)/2.0;
+    CGFloat offset = CHSideMenuDefaultMenuWidth;
     [UIView animateWithDuration:CHSideMenuDefaultCloseAnimationTime/2.0 animations:^{
         blockSelf.containerView.transform = CGAffineTransformMakeTranslation(offset, 0);
         [blockSelf statusBarView].transform = blockSelf.containerView.transform;
@@ -148,7 +148,6 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     
     CGPoint translation = [recognizer translationInView:recognizer.view];
     CGPoint velocity = [recognizer velocityInView:recognizer.view];
-    
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan: {
             [self addMenuControllerView];
@@ -166,7 +165,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
         }
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled: {
-            if (velocity.x > 5.0 || (velocity.x >= -1.0 && translation.x > CHSideMenuMinimumRelativePanDistanceToOpen*self.menuWidth)) {
+            if (velocity.x > 15.0 || (velocity.x >= -1.0 && translation.x > CHSideMenuMinimumRelativePanDistanceToOpen*self.menuWidth)) {
                 CGFloat transformedVelocity = velocity.x/ABS(self.menuWidth - translation.x);
                 CGFloat duration = CHSideMenuDefaultOpenAnimationTime * 0.66;
                 [self showMenuAnimated:YES duration:duration initialVelocity:transformedVelocity];

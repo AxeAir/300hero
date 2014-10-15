@@ -25,7 +25,6 @@
     // Do any additional setup after loading the view.
     self.title=@"英雄";
     self.view.backgroundColor=[UIColor whiteColor];
-    
     _table=[[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     _table.delegate=self;
     _table.dataSource=self;

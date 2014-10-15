@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HeroViewController.h"
+#import "SettingTableViewController.h"
 @interface ToolTableViewController : UITableViewController
 
 @property (nonatomic,strong) HeroViewController *hero;
-
+@property (nonatomic,strong) SettingTableViewController *setting;
 @end

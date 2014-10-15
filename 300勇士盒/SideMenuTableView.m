@@ -12,7 +12,7 @@
 #import "SecondViewController.h"
 
 
-@interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+@interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
 {
      NSArray *itemsArray;
 }
@@ -27,7 +27,7 @@
     sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"icon1.png"]];
     sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"icon2.png"]];
     sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"福利" image:[UIImage imageNamed:@"icon2.png"]];
     
     NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4, nil];
     itemsArray=arr;
@@ -158,7 +158,6 @@
       searchbar.delegate=self;
       searchbar.backgroundImage=[UIImage imageNamed:@"background.png"];
       [view addSubview:searchbar];
-      
       return view;
   }
     return nil;

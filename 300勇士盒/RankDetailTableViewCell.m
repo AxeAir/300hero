@@ -22,11 +22,30 @@
 
 -(void)configCell:(RankDetailModel *)model
 {
-    UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
-    NOlabel.text=[NSString stringWithFormat:@"%d",model.Index];
-    NOlabel.textAlignment=NSTextAlignmentCenter;
-    [self addSubview:NOlabel];
-    
+    if(model.Index==1)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"one"]];
+        [one setFrame:CGRectMake(5, 2, 35, 40)];
+        [self addSubview:one];
+    }
+    else if(model.Index==2)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"two"]];
+        [one setFrame:CGRectMake(5, 2, 35, 40)];
+        [self addSubview:one];
+    }
+    else if(model.Index==3)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"three"]];
+        [one setFrame:CGRectMake(5, 2, 35, 40)];
+        [self addSubview:one];
+    }
+    else{
+        UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+        NOlabel.text=[NSString stringWithFormat:@"%d",model.Index];
+        NOlabel.textAlignment=NSTextAlignmentCenter;
+        [self addSubview:NOlabel];
+    }
     UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(50, 10, 110, 30)];
     labelName.text=model.Name;
     [self addSubview:labelName];

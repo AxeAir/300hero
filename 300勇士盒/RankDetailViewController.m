@@ -121,7 +121,7 @@
     
     UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(260, 10, 40, 30)];
     change.textAlignment=NSTextAlignmentRight;
-    
+    change.text=@"变动";
     
     [view addSubview:change];
     [view setBackgroundColor:[UIColor grayColor]];

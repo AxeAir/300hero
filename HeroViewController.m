@@ -92,7 +92,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d",[HeroList[0] count]);
+    NSLog(@"%lu",(unsigned long)[HeroList[0] count]);
     
     return [HeroList count];
 }

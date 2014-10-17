@@ -68,6 +68,16 @@
 		E5BA368519ECEB4300CB8165 /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA368319ECEB4300CB8165 /* vs.png */; };
 		E5BA368619ECEB4300CB8165 /* vs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA368419ECEB4300CB8165 /* vs@2x.png */; };
 		E5BA369C19EE33C200CB8165 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA369B19EE33C200CB8165 /* Role.m */; };
+		E5BA36AE19EE42EB00CB8165 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5BA369E19EE42EB00CB8165 /* MJRefresh.bundle */; };
+		E5BA36AF19EE42EB00CB8165 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36A119EE42EB00CB8165 /* MJRefreshBaseView.m */; };
+		E5BA36B019EE42EB00CB8165 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36A319EE42EB00CB8165 /* MJRefreshConst.m */; };
+		E5BA36B119EE42EB00CB8165 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36A519EE42EB00CB8165 /* MJRefreshFooterView.m */; };
+		E5BA36B219EE42EB00CB8165 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36A719EE42EB00CB8165 /* MJRefreshHeaderView.m */; };
+		E5BA36B319EE42EB00CB8165 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36A919EE42EB00CB8165 /* UIScrollView+MJExtension.m */; };
+		E5BA36B419EE42EB00CB8165 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36AB19EE42EB00CB8165 /* UIScrollView+MJRefresh.m */; };
+		E5BA36B519EE42EB00CB8165 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36AD19EE42EB00CB8165 /* UIView+MJExtension.m */; };
+		E5BA36B819EE50D700CB8165 /* RecentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36B719EE50D700CB8165 /* RecentModel.m */; };
+		E5BA36BC19F0159000CB8165 /* AksStraightPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA36BB19F0159000CB8165 /* AksStraightPieChart.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +190,27 @@
 		E5BA368419ECEB4300CB8165 /* vs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vs@2x.png"; sourceTree = "<group>"; };
 		E5BA369A19EE33C200CB8165 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
 		E5BA369B19EE33C200CB8165 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
+		E5BA369E19EE42EB00CB8165 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		E5BA369F19EE42EB00CB8165 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		E5BA36A019EE42EB00CB8165 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		E5BA36A119EE42EB00CB8165 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		E5BA36A219EE42EB00CB8165 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		E5BA36A319EE42EB00CB8165 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		E5BA36A419EE42EB00CB8165 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		E5BA36A519EE42EB00CB8165 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		E5BA36A619EE42EB00CB8165 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		E5BA36A719EE42EB00CB8165 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		E5BA36A819EE42EB00CB8165 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		E5BA36A919EE42EB00CB8165 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		E5BA36AA19EE42EB00CB8165 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		E5BA36AB19EE42EB00CB8165 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		E5BA36AC19EE42EB00CB8165 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		E5BA36AD19EE42EB00CB8165 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		E5BA36B619EE50D700CB8165 /* RecentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentModel.h; sourceTree = "<group>"; };
+		E5BA36B719EE50D700CB8165 /* RecentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentModel.m; sourceTree = "<group>"; };
+		E5BA36BA19F0159000CB8165 /* AksStraightPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AksStraightPieChart.h; sourceTree = "<group>"; };
+		E5BA36BB19F0159000CB8165 /* AksStraightPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AksStraightPieChart.m; sourceTree = "<group>"; };
+		E5BA36BD19F01AEF00CB8165 /* UConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UConstants.h; sourceTree = "<group>"; };
 		F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,8 +274,11 @@
 			isa = PBXGroup;
 			children = (
 				E5BA361919E909D500CB8165 /* Model */,
+				E5BA36B919F0159000CB8165 /* AksStraightPieChart */,
+				E5BA369D19EE42EB00CB8165 /* MJRefresh */,
 				E5BA364319EA4A6600CB8165 /* CHHeader */,
 				E5BA34D519DF226300CB8165 /* CHSlider */,
+				E5BA36BD19F01AEF00CB8165 /* UConstants.h */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
 				E5BA35FF19E832D700CB8165 /* Main */,
@@ -405,6 +439,8 @@
 				E5BA367819EC03AE00CB8165 /* EquipModel.m */,
 				E5BA369A19EE33C200CB8165 /* Role.h */,
 				E5BA369B19EE33C200CB8165 /* Role.m */,
+				E5BA36B619EE50D700CB8165 /* RecentModel.h */,
+				E5BA36B719EE50D700CB8165 /* RecentModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -428,6 +464,39 @@
 			);
 			name = Setting;
 			path = "300勇士盒";
+			sourceTree = "<group>";
+		};
+		E5BA369D19EE42EB00CB8165 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA369E19EE42EB00CB8165 /* MJRefresh.bundle */,
+				E5BA369F19EE42EB00CB8165 /* MJRefresh.h */,
+				E5BA36A019EE42EB00CB8165 /* MJRefreshBaseView.h */,
+				E5BA36A119EE42EB00CB8165 /* MJRefreshBaseView.m */,
+				E5BA36A219EE42EB00CB8165 /* MJRefreshConst.h */,
+				E5BA36A319EE42EB00CB8165 /* MJRefreshConst.m */,
+				E5BA36A419EE42EB00CB8165 /* MJRefreshFooterView.h */,
+				E5BA36A519EE42EB00CB8165 /* MJRefreshFooterView.m */,
+				E5BA36A619EE42EB00CB8165 /* MJRefreshHeaderView.h */,
+				E5BA36A719EE42EB00CB8165 /* MJRefreshHeaderView.m */,
+				E5BA36A819EE42EB00CB8165 /* UIScrollView+MJExtension.h */,
+				E5BA36A919EE42EB00CB8165 /* UIScrollView+MJExtension.m */,
+				E5BA36AA19EE42EB00CB8165 /* UIScrollView+MJRefresh.h */,
+				E5BA36AB19EE42EB00CB8165 /* UIScrollView+MJRefresh.m */,
+				E5BA36AC19EE42EB00CB8165 /* UIView+MJExtension.h */,
+				E5BA36AD19EE42EB00CB8165 /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		E5BA36B919F0159000CB8165 /* AksStraightPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA36BA19F0159000CB8165 /* AksStraightPieChart.h */,
+				E5BA36BB19F0159000CB8165 /* AksStraightPieChart.m */,
+			);
+			name = AksStraightPieChart;
+			path = MJRefresh/AksStraightPieChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +602,7 @@
 				E5BA34EC19E3C3F400CB8165 /* icon4.png in Resources */,
 				E5BA360F19E85AA600CB8165 /* background.png in Resources */,
 				E5BA368619ECEB4300CB8165 /* vs@2x.png in Resources */,
+				E5BA36AE19EE42EB00CB8165 /* MJRefresh.bundle in Resources */,
 				E5BA364219E9B08200CB8165 /* logo@2x.png in Resources */,
 				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
 				E5BA361119E8D90E00CB8165 /* background101020.png in Resources */,
@@ -588,9 +658,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BA36B219EE42EB00CB8165 /* MJRefreshHeaderView.m in Sources */,
 				E5BA361519E8DC4F00CB8165 /* RankNavController.m in Sources */,
 				E5BA367019EC01D000CB8165 /* MatchDetailModel.m in Sources */,
 				E5BA367919EC03AE00CB8165 /* EquipModel.m in Sources */,
+				E5BA36AF19EE42EB00CB8165 /* MJRefreshBaseView.m in Sources */,
 				E5BA363319E997DB00CB8165 /* HeroTableViewCell.m in Sources */,
 				E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */,
 				E5BA367619EC039E00CB8165 /* SkillModel.m in Sources */,
@@ -598,9 +670,12 @@
 				E5BA366719EBBA0A00CB8165 /* MatchModel.m in Sources */,
 				E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */,
 				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
+				E5BA36B519EE42EB00CB8165 /* UIView+MJExtension.m in Sources */,
+				E5BA36B119EE42EB00CB8165 /* MJRefreshFooterView.m in Sources */,
 				E5BA364619EA4A8A00CB8165 /* CHHeader.m in Sources */,
 				E5BA35FA19E70BDF00CB8165 /* CHSideMenu.m in Sources */,
 				E5BA360919E845BE00CB8165 /* ToolTableViewController.m in Sources */,
+				E5BA36BC19F0159000CB8165 /* AksStraightPieChart.m in Sources */,
 				E5BA369C19EE33C200CB8165 /* Role.m in Sources */,
 				E5BA360219E8417400CB8165 /* MainNavgationController.m in Sources */,
 				E5BA367C19EC782000CB8165 /* MatchDetailView.m in Sources */,
@@ -612,13 +687,17 @@
 				E5BA363C19E9A77A00CB8165 /* RankDetailViewController.m in Sources */,
 				E5BA365119EA938000CB8165 /* RankDetailModel.m in Sources */,
 				E5BA366D19EBD31900CB8165 /* MatchDetailViewController.m in Sources */,
+				E5BA36B319EE42EB00CB8165 /* UIScrollView+MJExtension.m in Sources */,
+				E5BA36B419EE42EB00CB8165 /* UIScrollView+MJRefresh.m in Sources */,
 				E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */,
 				E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */,
 				E5BA360619E8457E00CB8165 /* ToolNavgationController.m in Sources */,
 				E5BA361F19E9339900CB8165 /* HeroViewController.m in Sources */,
+				E5BA36B819EE50D700CB8165 /* RecentModel.m in Sources */,
 				E5BA367319EC028800CB8165 /* RoleModel.m in Sources */,
 				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
 				E5BA365819EAABB300CB8165 /* SettingTableViewController.m in Sources */,
+				E5BA36B019EE42EB00CB8165 /* MJRefreshConst.m in Sources */,
 				E5BA360D19E8510E00CB8165 /* SearchViewController.m in Sources */,
 				E5BA365419EA957C00CB8165 /* RankDetailTableViewCell.m in Sources */,
 				E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */,
@@ -727,7 +806,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -740,7 +819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

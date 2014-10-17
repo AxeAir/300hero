@@ -10,6 +10,8 @@
 #import "RankDetailModel.h"
 #import "RankDetailTableViewCell.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
+#define HEADERBGCOLOR          [UIColor colorWithRed:24/255.0f green:40/255.0f blue:58/255.0f alpha:1]
+#define HEADERTEXTCOLOR        [UIColor colorWithRed:107/255.0f green:145/255.0f blue:173/255.0f alpha:1]
 
 @interface RankDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -24,9 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%f",[UIScreen mainScreen].bounds.size.height);
     _table=[[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     _table.delegate=self;
     _table.dataSource=self;
+    _table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _table.separatorColor = [UIColor blackColor];
+    _table.separatorInset=UIEdgeInsetsZero;
+    
     [self.view addSubview:_table];
     [self getDetail];
 }
@@ -36,8 +43,8 @@
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-    NSLog(@"%d",_ID);
-    [manager POST:[NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%d",_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"%ld",(long)_ID);
+    [manager POST:[NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%ld",(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"%@",responseObject);
         
@@ -103,31 +110,40 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 40, 30)];
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 40, 30)];
     NOlabel.text=@"名次";
+    NOlabel.textColor=HEADERTEXTCOLOR;
     NOlabel.textAlignment=NSTextAlignmentCenter;
     [view addSubview:NOlabel];
     
-    UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(50, 10, 110, 30)];
+    UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(50, 5, 110, 30)];
     labelName.text=@"召唤师";
+    labelName.textColor=HEADERTEXTCOLOR;
     labelName.textAlignment=NSTextAlignmentCenter;
     [view addSubview:labelName];
     
     
-    UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(180, 10, 60, 30)];
+    UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(180, 5, 60, 30)];
     value.text=valueNamel;
+    value.textColor=HEADERTEXTCOLOR;
     [view addSubview:value];
     
-    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(260, 10, 40, 30)];
+    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(260, 5, 40, 30)];
     change.textAlignment=NSTextAlignmentRight;
+    change.textColor=HEADERTEXTCOLOR;
     change.text=@"变动";
     
     [view addSubview:change];
-    [view setBackgroundColor:[UIColor grayColor]];
+    [view setBackgroundColor:HEADERBGCOLOR];
     return view;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"dd");
+}
 
 
 - (void)didReceiveMemoryWarning {

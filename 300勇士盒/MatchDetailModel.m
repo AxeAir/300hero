@@ -43,6 +43,6 @@
 
 -(NSString*)getUseTime
 {
-    return [NSString stringWithFormat:@"游戏耗时:%d分%d秒",_UsedTime/60,_UsedTime%60];
+    return [NSString stringWithFormat:@"游戏耗时:%u分%u秒",_UsedTime/60,_UsedTime%60];
 }
 @end

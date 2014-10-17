@@ -17,4 +17,10 @@
 
 @property (nonatomic,strong) UITableView *recentMatch;
 
+@property (nonatomic,strong) UILabel *KDALabelTitle;
+@property (nonatomic,strong) UILabel *KDALabel;
+@property (nonatomic,strong) UILabel *KDADetail;
+
+@property (nonatomic,strong) UILabel *wincount;
+@property (nonatomic,strong) UILabel *losecount;
 @end

@@ -105,7 +105,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"%d",cell.RankID);
+    NSLog(@"%ld",(long)cell.RankID);
     RankDetailViewController *rank=[[RankDetailViewController alloc] init];
     rank.ID=cell.RankID;
     [self.navigationController pushViewController:rank animated:YES];

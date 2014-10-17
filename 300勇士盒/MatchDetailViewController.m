@@ -10,6 +10,7 @@
 #import <AFHTTPRequestOperationManager.h>
 #import "MatchDetailModel.h"
 #import "MatchDetailView.h"
+#import "UConstants.h"
 @interface MatchDetailViewController ()
 {
     MatchDetailModel *matchData;
@@ -27,6 +28,7 @@
     _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [_scrollView setBackgroundColor:[UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1]];
     [_scrollView setContentSize:CGSizeMake(320, 1700)];
+    [_scrollView setBackgroundColor:BACKGROUND_COLOR];
     [self.view addSubview:_scrollView];
     [self getDetailMatch];
 }

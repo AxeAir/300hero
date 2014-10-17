@@ -17,11 +17,13 @@
     UIImageView *header=[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"http://300report.jumpw.com/static/images/%@",model.HeroIconFile]];
     [header sd_setImageWithURL:url];
+    [self setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     [self addSubview:header];
     
     if(_type==nil)
     {
         _type=[[UILabel alloc] initWithFrame:CGRectMake(60, 15, 60, 20)];
+        [_type setTextColor:[UIColor colorWithRed:107/255.0 green:145/255.0 blue:143/255.0 alpha:1]];
     }
     if(model.MatchType==1)
     {
@@ -41,11 +43,11 @@
     if(model.Result==1)
     {
         _result.text=@"胜利";
-        _result.textColor=[UIColor greenColor];
+        _result.textColor=[UIColor colorWithRed:92/255.0 green:192/255.0 blue:11/255.0 alpha:1];
     }else
     {
         _result.text=@"失败";
-        _result.textColor=[UIColor redColor];
+        _result.textColor=[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1];
         
     }
     [self addSubview:_result];

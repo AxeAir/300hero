@@ -11,7 +11,7 @@
 #import "MatchDetailModel.h"
 #import "MatchDetailView.h"
 #import "UConstants.h"
-@interface MatchDetailViewController ()
+@interface MatchDetailViewController ()<MatchDeailViewDelegate>
 {
     MatchDetailModel *matchData;
 }
@@ -29,6 +29,7 @@
     [_scrollView setBackgroundColor:[UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1]];
     [_scrollView setContentSize:CGSizeMake(320, 1700)];
     [_scrollView setBackgroundColor:BACKGROUND_COLOR];
+    [_scrollView setUserInteractionEnabled:YES];
     [self.view addSubview:_scrollView];
     [self getDetailMatch];
 }
@@ -72,13 +73,15 @@
     losecount.textColor=[UIColor redColor];
     [_scrollView addSubview:losecount];
     
-    UILabel *datetime=[[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+    UILabel *datetime=[[UILabel alloc] initWithFrame:CGRectMake(5, 0, 300, 30)];
     datetime.font=[UIFont systemFontOfSize:16];
-    datetime.text=match.MatchDate;
+    datetime.textColor=RGBCOLOR(136, 187, 225);
+    datetime.text=[NSString stringWithFormat:@"游戏日期:%@",match.MatchDate];
     [_scrollView addSubview:datetime];
     
-    UILabel *time=[[UILabel alloc] initWithFrame:CGRectMake(50, 25, 200, 30)];
+    UILabel *time=[[UILabel alloc] initWithFrame:CGRectMake(5, 25, 200, 30)];
     time.font=[UIFont systemFontOfSize:16];
+    time.textColor=RGBCOLOR(136, 187, 225);
     time.text=match.getUseTime;
     [_scrollView addSubview:time];
     
@@ -97,7 +100,8 @@
     int i=0;
     for (RoleModel *model in match.winSide) {
         MatchDetailView *view=[[MatchDetailView alloc] initWithFrame:CGRectMake(0, 120+100*i, 320, 100)];
-        
+        [view setUserInteractionEnabled:YES];
+        view.delegate=self;
         [view configView:model];
         [_scrollView addSubview:view];
         i++;
@@ -118,6 +122,14 @@
     }
     
   
+}
+
+-(void)didClickHeaderView:(NSString *)name
+{
+    _other=[[OtherViewController alloc] initWithName:name];
+    
+    [self.navigationController pushViewController:_other animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

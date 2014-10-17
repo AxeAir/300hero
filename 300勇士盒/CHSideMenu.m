@@ -197,6 +197,11 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     if ([NSStringFromClass([touch.view class]) isEqualToString:@"UINavigationBar"]) {
         return NO;
     }
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"MatchDetailView"]) {
+        return NO;
+    }
+    
+    
     return  YES;
 }
 

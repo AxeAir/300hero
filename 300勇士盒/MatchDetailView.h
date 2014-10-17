@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "RoleModel.h"
-@interface MatchDetailView : UIView
+@protocol MatchDeailViewDelegate
 
+-(void)didClickHeaderView:(NSString*)name;
 
--(void)configView:(RoleModel*)role;
 @end
+
+@interface MatchDetailView : UIView
+-(void)configView:(RoleModel*)role;
+
+@property (nonatomic,weak) id<MatchDeailViewDelegate> delegate;
+@end
+
+

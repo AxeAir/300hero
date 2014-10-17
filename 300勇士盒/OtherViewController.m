@@ -1,12 +1,12 @@
 //
-//  MainViewController.m
+//  OtherViewController.m
 //  300勇士盒
 //
-//  Created by ChenHao on 10/12/14.
+//  Created by ChenHao on 10/17/14.
 //  Copyright (c) 2014 xxTeam. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "OtherViewController.h"
 #import "UIViewController+CHSideMenu.h"
 #import "CHHeader.h"
 #import "MatchModel.h"
@@ -18,48 +18,39 @@
 #import "AksStraightPieChart.h"
 #import "PercentageChart.h"
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
-@interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface OtherViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    CHHeader *_header;
+
     NSArray *MatchData;
     RecentModel *recentModel;
     PercentageChart *percent;
-
+    NSString *role;
+    
 }
 
 @property (nonatomic,strong) NSUserDefaults *userdefault;
 @property (nonatomic,strong) AksStraightPieChart * straightPieChart;
+
 @end
 
-@implementation MainViewController
+@implementation OtherViewController
+
+-(id)initWithName:(NSString *)roleName
+{
+    self=[super init];
+    if (self) {
+        role=roleName;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
-    //self.title=@"战绩";
+    self.title=@"战绩";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-    self.navigationItem.leftBarButtonItem=left;
-    UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
-    self.navigationItem.rightBarButtonItem=right;
-    
-    self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
-    
-    self.userdefault=[NSUserDefaults standardUserDefaults];
-    
-    NSString *rolename=[self.userdefault objectForKey:@"DefaultRole"];
-    if(rolename==nil)
-    {
-        //[self notHaveRoleName];
-        [self havaRoleName:@"枫血"];
-    }
-    else
-    {
-        [self havaRoleName:rolename];
-    }
-
+    [self loadTheData:role];
 }
 
 -(void)refresh
@@ -82,7 +73,7 @@
     //_header.delegate=self;
     [_scrollView addSubview:imageView];
     [self.view addSubview:_scrollView];
-    __block MainViewController *blockSelf = self;
+    __block OtherViewController *blockSelf = self;
     [_scrollView addHeaderWithCallback:^{
         [blockSelf refresh];
     }];
@@ -198,8 +189,6 @@
     [percent setPercentage:20.0];
     [_scrollView addSubview:ALL];
     [_scrollView addSubview:KDA];
-    
-    [self loadTheData:rolename];
 }
 
 -(void)wenhao
@@ -209,6 +198,7 @@
 
 -(void)loadTheData:(NSString*)rolename
 {
+    [self havaRoleName:rolename];
     [self getRecentMatch:rolename];
     [self getRoleData:rolename];
     [self getRole:rolename];
@@ -217,29 +207,29 @@
 
 - (void)getRole:(NSString*)rolename
 {
-   
-        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
-        NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-        [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@",responseObject);
-            NSString *Result=[responseObject objectForKey:@"Result"];
-            if([Result isEqualToString:@"OK"])
-            {
-                NSDictionary *Role=[responseObject objectForKey:@"Role"];
-                float win=[[Role objectForKey:@"WinCount"] floatValue];
-                float total=[[Role objectForKey:@"MatchCount"] floatValue];
-                [percent setPercentage:win/total*100];
-                _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%d",[[Role objectForKey:@"WinCount"] integerValue]];
-                _ALLcount.text=[NSString stringWithFormat:@"总场数:%d",[[Role objectForKey:@"MatchCount"] integerValue]];
-            }
-            else
-            {
-                NSLog(@"no");
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        }];
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
+    [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *Result=[responseObject objectForKey:@"Result"];
+        if([Result isEqualToString:@"OK"])
+        {
+            NSDictionary *Role=[responseObject objectForKey:@"Role"];
+            float win=[[Role objectForKey:@"WinCount"] floatValue];
+            float total=[[Role objectForKey:@"MatchCount"] floatValue];
+            [percent setPercentage:win/total*100];
+            _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%d",[[Role objectForKey:@"WinCount"] integerValue]];
+            _ALLcount.text=[NSString stringWithFormat:@"总场数:%d",[[Role objectForKey:@"MatchCount"] integerValue]];
+        }
+        else
+        {
+            NSLog(@"no");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 
@@ -299,28 +289,6 @@
 }
 
 
-- (void)notHaveRoleName
-{
-    UILabel *laber=[[UILabel alloc] initWithFrame:CGRectMake(30, 30, 260, 30)];
-    laber.text=@"尚未添加默认角色,请添加";
-    laber.textAlignment=NSTextAlignmentCenter;
-    [self.view addSubview:laber];
-    
-    _searchName=[[UITextField alloc] initWithFrame:CGRectMake(10, 70, 300, 40)];
-    _searchName.layer.borderColor = [UIColor grayColor].CGColor;
-    
-    _searchName.layer.borderWidth =1.0;
-    _searchName.layer.cornerRadius =5.0;
-    _searchName.delegate=self;
-    [self.view addSubview:_searchName];
-    
-    UIButton *searchButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [searchButton setFrame:CGRectMake(10, 120, 300, 40)];
-    searchButton.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
-    [searchButton setTitle:@"添加" forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(addDefault) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchButton];
-}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"fff");
@@ -442,58 +410,58 @@
     else{
         static NSString *identifer=@"rankhCell";
         UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-     
+        
         UILabel *total=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 150, 20)];
         total.font=[UIFont systemFontOfSize:14];
         UILabel *pj=[[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 20)];
         pj.font=[UIFont systemFontOfSize:14];
         RecentModel *model=recentModel;
         if(model!=nil){
-        switch (indexPath.row) {
-            case 0:
-                total.text=[NSString stringWithFormat:@"总杀人数:%lu",(unsigned long)model.kills];
-                pj.text=[NSString stringWithFormat:@"平均每场杀人:%.2f",(CGFloat)model.kills/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 1:
-                total.text=[NSString stringWithFormat:@"总死亡数:%lu",(unsigned long)model.dead];
-                pj.text=[NSString stringWithFormat:@"平均每场死亡:%.2f",(CGFloat)model.dead/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 2:
-                total.text=[NSString stringWithFormat:@"总助攻数:%lu",(unsigned long)model.assist];
-                pj.text=[NSString stringWithFormat:@"平均每场助攻:%.2f",(CGFloat)model.assist/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 3:
-                total.text=[NSString stringWithFormat:@"总推塔数:%lu",(unsigned long)model.destory];
-                pj.text=[NSString stringWithFormat:@"平均每场推塔:%.2f",(CGFloat)model.destory/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 4:
-                total.text=[NSString stringWithFormat:@"总金钱数:%lu",(unsigned long)model.money];
-                pj.text=[NSString stringWithFormat:@"平均每场金钱:%.2f",(CGFloat)model.money/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 5:
-                total.text=[NSString stringWithFormat:@"最高连胜:%lu",(unsigned long)recentModel.seriesWin];
-                [cell addSubview:total];
-                
-                break;
-            case 6:
-                total.text=[NSString stringWithFormat:@"最高连败:%lu",(unsigned long)recentModel.seriesLose];
-                [cell addSubview:total];
-                
-                break;
-                
-            default:
-                break;
-        }
+            switch (indexPath.row) {
+                case 0:
+                    total.text=[NSString stringWithFormat:@"总杀人数:%lu",(unsigned long)model.kills];
+                    pj.text=[NSString stringWithFormat:@"平均每场杀人:%.2f",(CGFloat)model.kills/(CGFloat)[model getSum]];
+                    [cell addSubview:total];
+                    [cell addSubview:pj];
+                    break;
+                case 1:
+                    total.text=[NSString stringWithFormat:@"总死亡数:%lu",(unsigned long)model.dead];
+                    pj.text=[NSString stringWithFormat:@"平均每场死亡:%.2f",(CGFloat)model.dead/(CGFloat)[model getSum]];
+                    [cell addSubview:total];
+                    [cell addSubview:pj];
+                    break;
+                case 2:
+                    total.text=[NSString stringWithFormat:@"总助攻数:%lu",(unsigned long)model.assist];
+                    pj.text=[NSString stringWithFormat:@"平均每场助攻:%.2f",(CGFloat)model.assist/(CGFloat)[model getSum]];
+                    [cell addSubview:total];
+                    [cell addSubview:pj];
+                    break;
+                case 3:
+                    total.text=[NSString stringWithFormat:@"总推塔数:%lu",(unsigned long)model.destory];
+                    pj.text=[NSString stringWithFormat:@"平均每场推塔:%.2f",(CGFloat)model.destory/(CGFloat)[model getSum]];
+                    [cell addSubview:total];
+                    [cell addSubview:pj];
+                    break;
+                case 4:
+                    total.text=[NSString stringWithFormat:@"总金钱数:%lu",(unsigned long)model.money];
+                    pj.text=[NSString stringWithFormat:@"平均每场金钱:%.2f",(CGFloat)model.money/(CGFloat)[model getSum]];
+                    [cell addSubview:total];
+                    [cell addSubview:pj];
+                    break;
+                case 5:
+                    total.text=[NSString stringWithFormat:@"最高连胜:%lu",(unsigned long)recentModel.seriesWin];
+                    [cell addSubview:total];
+                    
+                    break;
+                case 6:
+                    total.text=[NSString stringWithFormat:@"最高连败:%lu",(unsigned long)recentModel.seriesLose];
+                    [cell addSubview:total];
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         
@@ -514,15 +482,8 @@
     }
 }
 
--(void)dealloc
-{
-    if(_scrollView)
-    {
-        //[_scrollView removeObserver:[CHHeader new] forKeyPath:@"contentOffset"];
-        //_scrollView=nil;
-    }
-    //_headerView=nil;
-}
+
+
 
 
 @end

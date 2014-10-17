@@ -10,6 +10,6 @@
 #import "RankDetailModel.h"
 @interface RankDetailTableViewCell : UITableViewCell
 
-
+@property (nonatomic,strong) NSString *rolename;
 -(void)configCell:(RankDetailModel*)model;
 @end

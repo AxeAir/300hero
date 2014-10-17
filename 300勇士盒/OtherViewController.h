@@ -1,16 +1,16 @@
-
 //
-//  MainViewController.h
+//  OtherViewController.h
 //  300勇士盒
 //
-//  Created by ChenHao on 10/12/14.
+//  Created by ChenHao on 10/17/14.
 //  Copyright (c) 2014 xxTeam. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+@interface OtherViewController : UIViewController
 
-@interface MainViewController : UIViewController
+-(id)initWithName:(NSString*)roleName;
 
 @property (nonatomic,strong) UIScrollView *scrollView;
 
@@ -29,7 +29,5 @@
 @property (nonatomic,strong) UILabel *ALLcount;
 @property (nonatomic,strong) UILabel *ALLwincount;
 @property (nonatomic,strong) UILabel *ALLlosecount;
-
-
 
 @end

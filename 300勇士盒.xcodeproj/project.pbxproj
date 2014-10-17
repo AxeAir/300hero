@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5C99797187BFF41E8EE839A3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 194FCB2486E562BFEE399460 /* libPods.a */; };
+		E52B520B19F0E44F005FEE2E /* wenhao.png in Resources */ = {isa = PBXBuildFile; fileRef = E52B520919F0E44F005FEE2E /* wenhao.png */; };
+		E52B520C19F0E44F005FEE2E /* wenhao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52B520A19F0E44F005FEE2E /* wenhao@2x.png */; };
+		E52B521219F0ED3E005FEE2E /* PercentageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B520F19F0ED3E005FEE2E /* PercentageChart.m */; };
+		E52B521319F0ED3E005FEE2E /* PercentageChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B521119F0ED3E005FEE2E /* PercentageChartLayer.m */; };
+		E52B521619F0F600005FEE2E /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B521519F0F600005FEE2E /* OtherViewController.m */; };
+		E58FE70419F0F86F00646321 /* HeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E58FE70319F0F86F00646321 /* HeaderButton.m */; };
 		E5A4BE8B19DF118D000BFE8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8A19DF118D000BFE8E /* main.m */; };
 		E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */; };
 		E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE9019DF118D000BFE8E /* ViewController.m */; };
@@ -64,7 +70,6 @@
 		E5BA367619EC039E00CB8165 /* SkillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA367519EC039E00CB8165 /* SkillModel.m */; };
 		E5BA367919EC03AE00CB8165 /* EquipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA367819EC03AE00CB8165 /* EquipModel.m */; };
 		E5BA367C19EC782000CB8165 /* MatchDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA367B19EC782000CB8165 /* MatchDetailView.m */; };
-		E5BA367E19ECDBA000CB8165 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5BA367D19ECDBA000CB8165 /* View.xib */; };
 		E5BA368519ECEB4300CB8165 /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA368319ECEB4300CB8165 /* vs.png */; };
 		E5BA368619ECEB4300CB8165 /* vs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA368419ECEB4300CB8165 /* vs@2x.png */; };
 		E5BA369C19EE33C200CB8165 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA369B19EE33C200CB8165 /* Role.m */; };
@@ -93,6 +98,16 @@
 /* Begin PBXFileReference section */
 		194FCB2486E562BFEE399460 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E52B520919F0E44F005FEE2E /* wenhao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenhao.png; sourceTree = "<group>"; };
+		E52B520A19F0E44F005FEE2E /* wenhao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wenhao@2x.png"; sourceTree = "<group>"; };
+		E52B520E19F0ED3E005FEE2E /* PercentageChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChart.h; sourceTree = "<group>"; };
+		E52B520F19F0ED3E005FEE2E /* PercentageChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChart.m; sourceTree = "<group>"; };
+		E52B521019F0ED3E005FEE2E /* PercentageChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChartLayer.h; sourceTree = "<group>"; };
+		E52B521119F0ED3E005FEE2E /* PercentageChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChartLayer.m; sourceTree = "<group>"; };
+		E52B521419F0F5FF005FEE2E /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
+		E52B521519F0F600005FEE2E /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
+		E58FE70219F0F86F00646321 /* HeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderButton.h; sourceTree = "<group>"; };
+		E58FE70319F0F86F00646321 /* HeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderButton.m; sourceTree = "<group>"; };
 		E5A4BE8519DF118D000BFE8E /* 300勇士盒.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "300勇士盒.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A4BE8919DF118D000BFE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5A4BE8A19DF118D000BFE8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -185,7 +200,6 @@
 		E5BA367819EC03AE00CB8165 /* EquipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquipModel.m; sourceTree = "<group>"; };
 		E5BA367A19EC782000CB8165 /* MatchDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchDetailView.h; sourceTree = "<group>"; };
 		E5BA367B19EC782000CB8165 /* MatchDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchDetailView.m; sourceTree = "<group>"; };
-		E5BA367D19ECDBA000CB8165 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		E5BA368319ECEB4300CB8165 /* vs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vs.png; sourceTree = "<group>"; };
 		E5BA368419ECEB4300CB8165 /* vs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vs@2x.png"; sourceTree = "<group>"; };
 		E5BA369A19EE33C200CB8165 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
@@ -250,6 +264,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E52B520D19F0ED31005FEE2E /* PercentageChart */ = {
+			isa = PBXGroup;
+			children = (
+				E52B520E19F0ED3E005FEE2E /* PercentageChart.h */,
+				E52B520F19F0ED3E005FEE2E /* PercentageChart.m */,
+				E52B521019F0ED3E005FEE2E /* PercentageChartLayer.h */,
+				E52B521119F0ED3E005FEE2E /* PercentageChartLayer.m */,
+			);
+			name = PercentageChart;
+			sourceTree = "<group>";
+		};
 		E5A4BE7C19DF118D000BFE8E = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +298,7 @@
 		E5A4BE8719DF118D000BFE8E /* 300勇士盒 */ = {
 			isa = PBXGroup;
 			children = (
+				E52B520D19F0ED31005FEE2E /* PercentageChart */,
 				E5BA361919E909D500CB8165 /* Model */,
 				E5BA36B919F0159000CB8165 /* AksStraightPieChart */,
 				E5BA369D19EE42EB00CB8165 /* MJRefresh */,
@@ -324,6 +350,8 @@
 		E5BA34D519DF226300CB8165 /* CHSlider */ = {
 			isa = PBXGroup;
 			children = (
+				E52B520919F0E44F005FEE2E /* wenhao.png */,
+				E52B520A19F0E44F005FEE2E /* wenhao@2x.png */,
 				E5BA368319ECEB4300CB8165 /* vs.png */,
 				E5BA368419ECEB4300CB8165 /* vs@2x.png */,
 				E5BA365D19EAB6B000CB8165 /* three.png */,
@@ -370,7 +398,10 @@
 				E5BA366C19EBD31900CB8165 /* MatchDetailViewController.m */,
 				E5BA367A19EC782000CB8165 /* MatchDetailView.h */,
 				E5BA367B19EC782000CB8165 /* MatchDetailView.m */,
-				E5BA367D19ECDBA000CB8165 /* View.xib */,
+				E58FE70219F0F86F00646321 /* HeaderButton.h */,
+				E58FE70319F0F86F00646321 /* HeaderButton.m */,
+				E52B521419F0F5FF005FEE2E /* OtherViewController.h */,
+				E52B521519F0F600005FEE2E /* OtherViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -588,8 +619,8 @@
 				E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */,
 				E5BA365B19EAB5EC00CB8165 /* one.png in Resources */,
 				E5BA366119EAB6B000CB8165 /* three.png in Resources */,
+				E52B520B19F0E44F005FEE2E /* wenhao.png in Resources */,
 				E5BA35F519E704AE00CB8165 /* burger@2x.png in Resources */,
-				E5BA367E19ECDBA000CB8165 /* View.xib in Resources */,
 				E5BA366219EAB6B000CB8165 /* three@2x.png in Resources */,
 				E5BA34E919E3C3F400CB8165 /* icon1.png in Resources */,
 				E5BA368519ECEB4300CB8165 /* vs.png in Resources */,
@@ -605,6 +636,7 @@
 				E5BA36AE19EE42EB00CB8165 /* MJRefresh.bundle in Resources */,
 				E5BA364219E9B08200CB8165 /* logo@2x.png in Resources */,
 				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
+				E52B520C19F0E44F005FEE2E /* wenhao@2x.png in Resources */,
 				E5BA361119E8D90E00CB8165 /* background101020.png in Resources */,
 				E5BA364819EA4B8300CB8165 /* image.png in Resources */,
 				E5BA364A19EA4F9F00CB8165 /* indexbg.png in Resources */,
@@ -663,6 +695,7 @@
 				E5BA367019EC01D000CB8165 /* MatchDetailModel.m in Sources */,
 				E5BA367919EC03AE00CB8165 /* EquipModel.m in Sources */,
 				E5BA36AF19EE42EB00CB8165 /* MJRefreshBaseView.m in Sources */,
+				E52B521619F0F600005FEE2E /* OtherViewController.m in Sources */,
 				E5BA363319E997DB00CB8165 /* HeroTableViewCell.m in Sources */,
 				E5BA361819E8DC7800CB8165 /* RankTypeTableViewController.m in Sources */,
 				E5BA367619EC039E00CB8165 /* SkillModel.m in Sources */,
@@ -698,8 +731,11 @@
 				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
 				E5BA365819EAABB300CB8165 /* SettingTableViewController.m in Sources */,
 				E5BA36B019EE42EB00CB8165 /* MJRefreshConst.m in Sources */,
+				E52B521219F0ED3E005FEE2E /* PercentageChart.m in Sources */,
+				E52B521319F0ED3E005FEE2E /* PercentageChartLayer.m in Sources */,
 				E5BA360D19E8510E00CB8165 /* SearchViewController.m in Sources */,
 				E5BA365419EA957C00CB8165 /* RankDetailTableViewCell.m in Sources */,
+				E58FE70419F0F86F00646321 /* HeaderButton.m in Sources */,
 				E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

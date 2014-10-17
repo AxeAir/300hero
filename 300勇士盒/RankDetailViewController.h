@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OtherViewController.h"
 
 @interface RankDetailViewController : UIViewController
 
 @property (nonatomic,assign) NSInteger ID;
 @property (nonatomic,strong) UITableView *table;
+@property (nonatomic,strong) OtherViewController *other;
 
 @end

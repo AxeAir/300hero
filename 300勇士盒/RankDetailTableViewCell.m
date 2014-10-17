@@ -52,6 +52,7 @@
     }
     UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(50, 10, 110, 30)];
     labelName.text=model.Name;
+    _rolename=model.Name;
     [labelName setTextColor:CELLNAMECOLOR];
     [labelName setFont:[UIFont systemFontOfSize:14]];
     [self addSubview:labelName];

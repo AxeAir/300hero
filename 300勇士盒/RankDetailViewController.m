@@ -142,7 +142,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"dd");
+    RankDetailTableViewCell *cell=(RankDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    _other=[[OtherViewController alloc] initWithName:cell.rolename];
+    [self.navigationController pushViewController:_other animated:YES];
 }
 
 

@@ -79,7 +79,7 @@
 #define kFrameX             (0.0)
 #define kFrameY             (0.0)
 
-#define kPhoneFrameWidth                 (320.0)
+
 #define kPhoneWithStatusNoPhone5Height   (480.0)
 #define kPhoneNoWithStatusNoPhone5Height (460.0)
 #define kPhoneWithStatusPhone5Height     (568.0)
@@ -129,6 +129,9 @@
 //是否iPhone5
 #define ISIPHONE                  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
 #define ISIPHONE5                 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define ISIPHONE6                 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define ISIPHONE6P                 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
 //是否是iPad
 #define isPad                      (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 

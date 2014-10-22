@@ -129,6 +129,12 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     }];
 }
 
+-(UIViewController*)getContent
+{
+    return _contentController;
+}
+
+
 #pragma mark Animation
 
 - (void)tapRecognized:(UITapGestureRecognizer*)recognizer

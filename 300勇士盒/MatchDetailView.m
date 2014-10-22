@@ -27,9 +27,15 @@
     [self addSubview:header];
     
     UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(70, 0, 180, 40)];
-    name.text=role.RoleName;
+    name.text=[NSString stringWithFormat:@"%@ (LV.%d)",role.RoleName,role.RoleLevel];
     name.textColor=RGBCOLOR(226, 191, 20);
     [self addSubview:name];
+    
+    
+    UILabel *KDA=[[UILabel alloc] initWithFrame:CGRectMake(250, 5, 70, 30)];
+    KDA.text=[NSString stringWithFormat:@"%d/%d/%d",role.KillCount,role.DeathCount,role.AssistCount];
+    KDA.textColor=[UIColor redColor];
+    [self addSubview:KDA];
     
     int i=0;
     for (EquipModel *equip in role.Equip) {
@@ -39,6 +45,18 @@
         [header sd_setImageWithURL:url];
         [self addSubview:header];
         i++;
+    }
+    
+    i=0;
+    {
+        for(SkillModel *skill in role.Skill)
+        {
+            UIImageView *header=[[UIImageView alloc] initWithFrame:CGRectMake(260+30*i, 35, 25, 25)];
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"http://300report.jumpw.com/static/images/%@",skill.IconFile]];
+            [header sd_setImageWithURL:url];
+            [self addSubview:header];
+            i++;
+        }
     }
     
     UILabel *TotalMoney=[[UILabel alloc] initWithFrame:CGRectMake(10, 60, 100, 30)];
@@ -58,6 +76,12 @@
     TowerDestroy.font=[UIFont systemFontOfSize:12];
     TowerDestroy.textColor=RGBCOLOR(136, 187, 225);
     [self addSubview:TowerDestroy];
+    
+    UILabel *bx=[[UILabel alloc] initWithFrame:CGRectMake(100, 80, 150, 30)];
+    bx.text=[NSString stringWithFormat:@"本场表现分:%d",role.KDA];
+    bx.font=[UIFont systemFontOfSize:12];
+    bx.textColor=RGBCOLOR(136, 187, 225);
+    [self addSubview:bx];
     
  
 }

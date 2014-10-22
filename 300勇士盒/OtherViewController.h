@@ -30,4 +30,5 @@
 @property (nonatomic,strong) UILabel *ALLwincount;
 @property (nonatomic,strong) UILabel *ALLlosecount;
 
+@property (nonatomic,strong) UILabel *combat;
 @end

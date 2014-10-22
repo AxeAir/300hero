@@ -13,6 +13,7 @@
 
 -(void)config:(MatchModel *)model
 {
+    self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     _MatchID=model.MatchID;
     UIImageView *header=[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"http://300report.jumpw.com/static/images/%@",model.HeroIconFile]];
@@ -50,6 +51,13 @@
         _result.textColor=[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1];
         
     }
+    
+    
+    _data=[[UILabel alloc] initWithFrame:CGRectMake(200, 15, 60, 20)];
+    _data.text=[model getData];
+    _data.textColor=[UIColor colorWithRed:107/255.0 green:145/255.0 blue:143/255.0 alpha:1];
+    [self addSubview:_data];
+    
     [self addSubview:_result];
     
 }

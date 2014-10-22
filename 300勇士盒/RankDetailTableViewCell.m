@@ -63,8 +63,8 @@
     [value setTextColor:CELLVALUECOLOR];
     [self addSubview:value];
     
-    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(260, 10, 40, 30)];
-    change.textAlignment=NSTextAlignmentRight;
+    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(250, 10, 70, 30)];
+    change.textAlignment=NSTextAlignmentCenter;
     if(model.RankChange>0)
     {
         change.text=[NSString stringWithFormat:@"↑%ld",(long)model.RankChange];

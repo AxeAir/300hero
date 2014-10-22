@@ -23,5 +23,5 @@
 
 -(id)initWithDictionary:(NSDictionary *)dic;
 
-
+-(NSString *)getData;
 @end

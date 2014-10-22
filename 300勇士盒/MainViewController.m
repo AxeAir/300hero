@@ -17,6 +17,7 @@
 #import "RecentModel.h"
 #import "AksStraightPieChart.h"
 #import "PercentageChart.h"
+#import "UConstants.h"
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -24,7 +25,7 @@
     NSArray *MatchData;
     RecentModel *recentModel;
     PercentageChart *percent;
-
+    
 }
 
 @property (nonatomic,strong) NSUserDefaults *userdefault;
@@ -36,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor whiteColor];
+    //self.view.backgroundColor=[UIColor whiteColor];
     //self.title=@"战绩";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
@@ -52,14 +53,14 @@
     NSString *rolename=[self.userdefault objectForKey:@"DefaultRole"];
     if(rolename==nil)
     {
-        //[self notHaveRoleName];
-        [self havaRoleName:@"枫血"];
+        [self notHaveRoleName];
+        //[self havaRoleName:@"枫血"];
     }
     else
     {
         [self havaRoleName:rolename];
     }
-
+    
 }
 
 -(void)refresh
@@ -73,13 +74,9 @@
     if(_scrollView==nil){
         _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     }
-    [_scrollView setContentSize:CGSizeMake(320, 1000)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 950)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width*180.0/320.0)];
     [imageView setImage:[UIImage imageNamed:@"indexbg"]];
-    //[_scrollView setContentSize:CGSizeMake(0, 600)];
-    
-    //_header = [CHHeader initWithView:_scrollView headerView:imageView];
-    //_header.delegate=self;
     [_scrollView addSubview:imageView];
     [self.view addSubview:_scrollView];
     __block MainViewController *blockSelf = self;
@@ -87,30 +84,42 @@
         [blockSelf refresh];
     }];
     
-    UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(30, 100, 300, 100)];
+    UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(130, MaxY(imageView)-50, 190, 30)];
     name.text=rolename;
+    name.textAlignment=NSTextAlignmentCenter;
     name.textColor=NAME_COLOR;
     name.font=[UIFont boldSystemFontOfSize:26];
     
-    [_scrollView addSubview:name];
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, 375, 310, 1000) style:UITableViewStylePlain];
-    _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _recentMatch.separatorColor = [UIColor blackColor];
-    [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
-    _recentMatch.separatorInset=UIEdgeInsetsZero;
-    _recentMatch.delegate=self;
-    _recentMatch.dataSource=self;
-    [_scrollView setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
-    [_scrollView addSubview:_recentMatch];
-    [_recentMatch setScrollEnabled:NO];
     
-    UIView *KDA=[[UIView alloc] initWithFrame:CGRectMake(5, 185, 155, 180)];
+    
+    UIImageView *combat=[[UIImageView alloc] initWithFrame:CGRectMake(20, MaxY(imageView)-70, 100, 50)];
+    combat.image=[UIImage imageNamed:@"combat"];
+    
+    [_scrollView addSubview:combat];
+    
+    _combat=[[UILabel alloc] initWithFrame:CGRectMake(20, MaxY(imageView)-50, 100, 30)];
+    _combat.textAlignment=NSTextAlignmentCenter;
+    _combat.font=[UIFont systemFontOfSize:20];
+    _combat.text=@"????";
+    [_scrollView addSubview:_combat];
+    
+    [_scrollView addSubview:name];
+    
+    
+    
+    
+    
+    
+    
+    ///KDA
+    
+    UIView *KDA=[[UIView alloc] initWithFrame:CGRectMake(5, MaxY(imageView)+5 , (Main_Screen_Width-15)/2, 180)];
     [KDA setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
-    UIView *KDAHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 155, 30)];
+    UIView *KDAHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0,WIDTH(KDA) , 30)];
     KDAHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
     
-    _KDALabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 40, 155, 30)];
+    _KDALabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 40, WIDTH(KDA), 30)];
     _KDALabel.textAlignment=NSTextAlignmentCenter;
     _KDALabel.font=[UIFont systemFontOfSize:30];
     _KDALabel.text=@"10.0";
@@ -160,26 +169,29 @@
     [KDA addSubview:KDAHeader];
     
     
-    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(165, 185, 150, 180)];
+    //ALL
+    
+    
+    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(MaxX(KDA)+5, MaxY(imageView)+5, (Main_Screen_Width-15)/2, 180)];
     [ALL setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
-    UIView *ALLHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+    UIView *ALLHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(ALL), 30)];
     ALLHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
     [ALL addSubview:ALLHeader];
     
-    _ALLLabelTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 155, 30)];
+    _ALLLabelTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(ALL), 30)];
     _ALLLabelTitle.font=[UIFont systemFontOfSize:14];
     _ALLLabelTitle.text=@"所有比赛统计";
     _ALLLabelTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     
     [ALLHeader addSubview:_ALLLabelTitle];
     
-    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(5, 35, 155, 20)];
+    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(5, 35, WIDTH(ALL), 20)];
     _ALLcount.font=[UIFont systemFontOfSize:14];
     _ALLcount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLcount];
     
-    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(5, 55, 155, 20)];
+    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(5, 55, WIDTH(ALL), 20)];
     _ALLwincount.font=[UIFont systemFontOfSize:14];
     _ALLwincount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLwincount];
@@ -199,6 +211,18 @@
     [_scrollView addSubview:ALL];
     [_scrollView addSubview:KDA];
     
+    
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(KDA)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _recentMatch.separatorColor = [UIColor blackColor];
+    [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
+    _recentMatch.separatorInset=UIEdgeInsetsZero;
+    _recentMatch.delegate=self;
+    _recentMatch.dataSource=self;
+    [_scrollView setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
+    [_scrollView addSubview:_recentMatch];
+    [_recentMatch setScrollEnabled:NO];
+    
     [self loadTheData:rolename];
 }
 
@@ -217,29 +241,29 @@
 
 - (void)getRole:(NSString*)rolename
 {
-   
-        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
-        NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-        [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@",responseObject);
-            NSString *Result=[responseObject objectForKey:@"Result"];
-            if([Result isEqualToString:@"OK"])
-            {
-                NSDictionary *Role=[responseObject objectForKey:@"Role"];
-                float win=[[Role objectForKey:@"WinCount"] floatValue];
-                float total=[[Role objectForKey:@"MatchCount"] floatValue];
-                [percent setPercentage:win/total*100];
-                _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%d",[[Role objectForKey:@"WinCount"] integerValue]];
-                _ALLcount.text=[NSString stringWithFormat:@"总场数:%d",[[Role objectForKey:@"MatchCount"] integerValue]];
-            }
-            else
-            {
-                NSLog(@"no");
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        }];
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
+    [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *Result=[responseObject objectForKey:@"Result"];
+        if([Result isEqualToString:@"OK"])
+        {
+            NSDictionary *Role=[responseObject objectForKey:@"Role"];
+            float win=[[Role objectForKey:@"WinCount"] floatValue];
+            float total=[[Role objectForKey:@"MatchCount"] floatValue];
+            [percent setPercentage:win/total*100];
+            _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%d",[[Role objectForKey:@"WinCount"] integerValue]];
+            _ALLcount.text=[NSString stringWithFormat:@"总场数:%d",[[Role objectForKey:@"MatchCount"] integerValue]];
+        }
+        else
+        {
+            NSLog(@"no");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 
@@ -288,8 +312,10 @@
             _wincount.text=[NSString stringWithFormat:@"%lu 胜/",(unsigned long)model.winCount];
             _losecount.text=[NSString stringWithFormat:@"%lu 负",(unsigned long)model.loseCount];
             [_straightPieChart clearChart];
-            [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor colorWithRed:92/255.0 green:192/255.0 blue:11/255.0 alpha:1]];
+            [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor greenColor]];
             [_straightPieChart addDataToRepresent:(int)model.loseCount WithColor:[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1]];
+            
+            _combat.text=[NSString stringWithFormat:@"%d",model.combat];
             
         }
         
@@ -301,6 +327,7 @@
 
 - (void)notHaveRoleName
 {
+    self.view.backgroundColor=[UIColor whiteColor];
     UILabel *laber=[[UILabel alloc] initWithFrame:CGRectMake(30, 30, 260, 30)];
     laber.text=@"尚未添加默认角色,请添加";
     laber.textAlignment=NSTextAlignmentCenter;
@@ -347,6 +374,7 @@
                 NSDictionary *Role=[responseObject objectForKey:@"Role"];
                 NSString *RoleName=[Role objectForKey:@"RoleName"];
                 [self.userdefault setObject:RoleName forKey:@"DefaultRole"];
+                [self viewDidLoad];
             }
             else
             {
@@ -365,28 +393,18 @@
 
 -(void)search
 {
+    if(_searchView==nil)
+    {
+        _searchView=[[SearchViewController alloc] init];
+    }
+    [self presentViewController:_searchView animated:YES completion:nil];
     
 }
-
-
-
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
-
--(void)DidStartScaleHeader
-{
-    
-}
-
--(void)DidEndScaleHeader
-{
-    
-}
-
 
 - (void)toogleMenu
 {
@@ -427,79 +445,16 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section==0){
-        static NSString *identifer=@"MatchCell";
-        MatchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
-        if(cell==nil)
-        {
-            cell=[[MatchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-        }
-        MatchModel *model=MatchData[indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        [cell config:model];
-        return cell;
+    static NSString *identifer=@"MatchCell";
+    MatchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    if(cell==nil)
+    {
+        cell=[[MatchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-    else{
-        static NSString *identifer=@"rankhCell";
-        UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-     
-        UILabel *total=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 150, 20)];
-        total.font=[UIFont systemFontOfSize:14];
-        UILabel *pj=[[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 20)];
-        pj.font=[UIFont systemFontOfSize:14];
-        RecentModel *model=recentModel;
-        if(model!=nil){
-        switch (indexPath.row) {
-            case 0:
-                total.text=[NSString stringWithFormat:@"总杀人数:%lu",(unsigned long)model.kills];
-                pj.text=[NSString stringWithFormat:@"平均每场杀人:%.2f",(CGFloat)model.kills/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 1:
-                total.text=[NSString stringWithFormat:@"总死亡数:%lu",(unsigned long)model.dead];
-                pj.text=[NSString stringWithFormat:@"平均每场死亡:%.2f",(CGFloat)model.dead/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 2:
-                total.text=[NSString stringWithFormat:@"总助攻数:%lu",(unsigned long)model.assist];
-                pj.text=[NSString stringWithFormat:@"平均每场助攻:%.2f",(CGFloat)model.assist/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 3:
-                total.text=[NSString stringWithFormat:@"总推塔数:%lu",(unsigned long)model.destory];
-                pj.text=[NSString stringWithFormat:@"平均每场推塔:%.2f",(CGFloat)model.destory/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 4:
-                total.text=[NSString stringWithFormat:@"总金钱数:%lu",(unsigned long)model.money];
-                pj.text=[NSString stringWithFormat:@"平均每场金钱:%.2f",(CGFloat)model.money/(CGFloat)[model getSum]];
-                [cell addSubview:total];
-                [cell addSubview:pj];
-                break;
-            case 5:
-                total.text=[NSString stringWithFormat:@"最高连胜:%lu",(unsigned long)recentModel.seriesWin];
-                [cell addSubview:total];
-                
-                break;
-            case 6:
-                total.text=[NSString stringWithFormat:@"最高连败:%lu",(unsigned long)recentModel.seriesLose];
-                [cell addSubview:total];
-                
-                break;
-                
-            default:
-                break;
-        }
-        }
-        
-        
-        return cell;
-        
-    }
+    MatchModel *model=MatchData[indexPath.row];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    [cell config:model];
+    return cell;
     
 }
 
@@ -514,15 +469,7 @@
     }
 }
 
--(void)dealloc
-{
-    if(_scrollView)
-    {
-        //[_scrollView removeObserver:[CHHeader new] forKeyPath:@"contentOffset"];
-        //_scrollView=nil;
-    }
-    //_headerView=nil;
-}
+
 
 
 @end

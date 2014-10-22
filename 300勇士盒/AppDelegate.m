@@ -21,15 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-     NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
-    if(ISIPHONE)
-    {
-        NSLog(@"5");
-    }
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
     MainViewController *contentController = [[MainViewController alloc] init];

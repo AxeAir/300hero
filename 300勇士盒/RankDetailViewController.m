@@ -10,8 +10,10 @@
 #import "RankDetailModel.h"
 #import "RankDetailTableViewCell.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import "UConstants.h"
 #define HEADERBGCOLOR          [UIColor colorWithRed:24/255.0f green:40/255.0f blue:58/255.0f alpha:1]
 #define HEADERTEXTCOLOR        [UIColor colorWithRed:107/255.0f green:145/255.0f blue:173/255.0f alpha:1]
+#define CELLBG                 [UIColor colorWithRed:22/255.0f green:29/255.0f blue:38/255.0f alpha:1]
 
 @interface RankDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -27,13 +29,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"%f",[UIScreen mainScreen].bounds.size.height);
-    _table=[[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height-64) style:UITableViewStylePlain];
     _table.delegate=self;
     _table.dataSource=self;
     _table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _table.separatorColor = [UIColor blackColor];
     _table.separatorInset=UIEdgeInsetsZero;
-    
+    [_table setBackgroundColor:CELLBG];
     [self.view addSubview:_table];
     [self getDetail];
 }
@@ -96,8 +98,6 @@
 {
     static NSString *Identifier=@"RankDetailCell";
     RankDetailTableViewCell *cell=[[RankDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-   
-    
     [cell configCell:rankList[indexPath.row]];
     return cell;
     

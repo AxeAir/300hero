@@ -8,7 +8,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SearchViewController.h"
 
 @interface MainViewController : UIViewController
 
@@ -30,6 +30,8 @@
 @property (nonatomic,strong) UILabel *ALLwincount;
 @property (nonatomic,strong) UILabel *ALLlosecount;
 
+@property (nonatomic,strong) UILabel *combat;
 
+@property (nonatomic,strong) SearchViewController *searchView;
 
 @end

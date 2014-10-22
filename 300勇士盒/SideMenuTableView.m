@@ -10,7 +10,7 @@
 #import "sigleMenu.h"
 #import "UIViewController+CHSideMenu.h"
 #import "SecondViewController.h"
-
+#import "UConstants.h"
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
 {
@@ -26,14 +26,16 @@
     
     sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"icon1.png"]];
     sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"福利" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"icon2.png"]];
+    //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
+    //sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"icon2.png"]];
     
     NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4, nil];
     itemsArray=arr;
     
     
-    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 200, 600)];
+    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 200, Main_Screen_Height) style:UITableViewStyleGrouped];
     _table.delegate=self;
     _table.dataSource=self;
     _table.backgroundColor=[UIColor whiteColor];
@@ -69,49 +71,33 @@
 #define IMAGE_VIEW_TAG 3
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UIView *circleView;
+
     UILabel *titleLabel;
     UIImageView *imageView;
     static NSString *cellid=@"Cell";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellid];
-    
-    
+   
+
     sigleMenu *item = [itemsArray objectAtIndex:indexPath.row];
-    //NSLog(@"%@",item);
-    
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
         cell.backgroundColor = [UIColor whiteColor];
         
-        circleView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 55, 55)];
-        circleView.tag = MAIN_VIEW_TAG;
-        circleView.backgroundColor = [UIColor clearColor];
-        circleView.layer.borderWidth = 0.5;
-        circleView.layer.borderColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
-        circleView.layer.cornerRadius = circleView.bounds.size.height/2;
-        circleView.clipsToBounds = YES;
-        
-        [cell.contentView addSubview:circleView];
-        
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(85, 10.0, 120, 60)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 15, 80, 20)];
         titleLabel.tag = TITLE_LABLE_TAG;
-        titleLabel.textColor = [UIColor colorWithWhite:0.2 alpha:1];
-        titleLabel.font = [UIFont fontWithName:@"Avenir Next" size:16];
+        titleLabel.textColor = [UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];;
+        titleLabel.font = [UIFont boldSystemFontOfSize:18];
         
         [cell.contentView addSubview:titleLabel];
         
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 30, 30)];
         imageView.tag = IMAGE_VIEW_TAG;
-        imageView.center = circleView.center;
         [cell.contentView addSubview:imageView];
     }else {
-        
-        circleView = (UIView *)[cell.contentView viewWithTag:MAIN_VIEW_TAG];
         titleLabel = (UILabel *)[cell.contentView viewWithTag:TITLE_LABLE_TAG];
         imageView = (UIImageView *)[cell.contentView viewWithTag:IMAGE_VIEW_TAG];
     }
-    
+    //[ce setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
     titleLabel.text = item.title;
     imageView.image = item.imageView.image;
     return cell;
@@ -121,23 +107,71 @@
 {
     switch (indexPath.row) {
         case 0:
-            _main=[[MainViewController alloc] init];
-            _mainNav=[[MainNavgationController alloc] initWithRootViewController:_main];
-            [self.sideMenuController setContentController:_mainNav animted:YES];
+            if([[self.sideMenuController getContent] isKindOfClass:[MainNavgationController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _main=[[MainViewController alloc] init];
+                _mainNav=[[MainNavgationController alloc] initWithRootViewController:_main];
+                [self.sideMenuController setContentController:_mainNav animted:YES];
+            }
+           
             
             break;
         case 1:
-            _rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
-            _rankNav=[[RankNavController alloc] initWithRootViewController:_rankTable];
-            [self.sideMenuController setContentController:_rankNav animted:YES];
+            if([[self.sideMenuController getContent] isKindOfClass:[RankNavController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
             
+                _rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
+                _rankNav=[[RankNavController alloc] initWithRootViewController:_rankTable];
+                [self.sideMenuController setContentController:_rankNav animted:YES];
+            }
             break;
         case 2:
-            _toolTable=[[ToolTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            _toolNav=[[ToolNavgationController alloc] initWithRootViewController:_toolTable];
-            [self.sideMenuController setContentController:_toolNav animted:YES];
-            
+            if([[self.sideMenuController getContent] isKindOfClass:[LXNavViewController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _lxTable=[[LXTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                _lxNav=[[LXNavViewController alloc] initWithRootViewController:_lxTable];
+                [self.sideMenuController setContentController:_lxNav animted:YES];
+            }
             break;
+            
+        /*case 4:
+            if([[self.sideMenuController getContent] isKindOfClass:[SettingNavViewController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _setting=[[SettingViewController alloc] init];
+                _settingNav=[[SettingNavViewController alloc] initWithRootViewController:_setting];
+                [self.sideMenuController setContentController:_settingNav animted:YES];
+            }
+            break;
+         */
+        case 3:
+            if([[self.sideMenuController getContent] isKindOfClass:[AboutNavViewController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _about=[[AbountViewController alloc] init];
+                _aboutNav=[[AboutNavViewController alloc] initWithRootViewController:_about];
+                [self.sideMenuController setContentController:_aboutNav animted:YES];
+            }
+            break;
+        
             
         default:
             break;
@@ -163,15 +197,35 @@
     return nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(handleColorChange:)
+               name:@"do"
+             object:nil];
+    
+}
+-(void)handleColorChange:(NSNotification*)sender{
+    NSLog(@"%@",sender);
+    NSDictionary *dic=(NSDictionary*)sender.userInfo;
+    NSLog(@"%@",dic);
+    _other=[[OtherViewController alloc] initWithName:[dic objectForKey:@"name"]];
+    _mainNav=[[MainNavgationController alloc] initWithRootViewController:_other];
+    [self.sideMenuController setContentController:_mainNav animted:YES];
+}
+
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     _search=[[SearchViewController alloc] init];
-    [self presentViewController:_search animated:YES completion:nil];
+    [self presentViewController:_search animated:YES completion:^{
+        //NSLog(@"ffff");
+    }];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 50;
 }
 
 

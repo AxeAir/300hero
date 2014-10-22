@@ -29,6 +29,12 @@
     return self;
 }
 
-
+-(NSString*)getData
+{
+    NSArray  * array= [_MatchDate componentsSeparatedByString:@" "];
+    
+    NSArray *data=[array[0] componentsSeparatedByString:@"-"];
+    return [NSString stringWithFormat:@"%@-%@",data[1],data[2]];
+}
 
 @end

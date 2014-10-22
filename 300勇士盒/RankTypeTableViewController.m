@@ -32,7 +32,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [UIColor blackColor];
     self.tableView.separatorInset=UIEdgeInsetsZero;
-    
+    [self.view  setBackgroundColor:BACKGROUND_COLOR];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -102,6 +102,7 @@
     cell.RankID=model.getRankType;
     // Configure the cell...
     cell.textLabel.text=model.Name;
+    cell.textLabel.textColor=RGBCOLOR(135, 186, 225);
     
     return cell;
 }

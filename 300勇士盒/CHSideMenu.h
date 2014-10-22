@@ -34,4 +34,6 @@
 // background
 - (void)setBackgroundImage:(UIImage*)image;
 
+-(UIViewController*)getContent;
+
 @end

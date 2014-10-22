@@ -13,6 +13,6 @@
 
 @property (nonatomic,strong) UILabel *type;
 @property (nonatomic,strong) UILabel *result;
-
+@property (nonatomic,strong) UILabel *data;
 -(void)config:(MatchModel*)model;
 @end

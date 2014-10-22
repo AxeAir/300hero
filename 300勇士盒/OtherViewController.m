@@ -17,6 +17,7 @@
 #import "RecentModel.h"
 #import "AksStraightPieChart.h"
 #import "PercentageChart.h"
+#import "UConstants.h"
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface OtherViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -49,6 +50,15 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"战绩";
+    
+    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
+    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
+    self.navigationItem.leftBarButtonItem=left;
+    UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
+    self.navigationItem.rightBarButtonItem=right;
+    
+    
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     [self loadTheData:role];
 }
@@ -62,46 +72,56 @@
 - (void)havaRoleName:(NSString*)rolename
 {
     if(_scrollView==nil){
-        _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     }
-    [_scrollView setContentSize:CGSizeMake(320, 1000)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 950)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width*180.0/320.0)];
     [imageView setImage:[UIImage imageNamed:@"indexbg"]];
-    //[_scrollView setContentSize:CGSizeMake(0, 600)];
-    
-    //_header = [CHHeader initWithView:_scrollView headerView:imageView];
-    //_header.delegate=self;
     [_scrollView addSubview:imageView];
     [self.view addSubview:_scrollView];
+    
+    
     __block OtherViewController *blockSelf = self;
     [_scrollView addHeaderWithCallback:^{
         [blockSelf refresh];
     }];
     
-    UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(30, 100, 300, 100)];
+    UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(130, MaxY(imageView)-50, 190, 30)];
     name.text=rolename;
+    name.textAlignment=NSTextAlignmentCenter;
     name.textColor=NAME_COLOR;
     name.font=[UIFont boldSystemFontOfSize:26];
     
-    [_scrollView addSubview:name];
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, 375, 310, 1000) style:UITableViewStylePlain];
-    _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _recentMatch.separatorColor = [UIColor blackColor];
-    [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
-    _recentMatch.separatorInset=UIEdgeInsetsZero;
-    _recentMatch.delegate=self;
-    _recentMatch.dataSource=self;
-    [_scrollView setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
-    [_scrollView addSubview:_recentMatch];
-    [_recentMatch setScrollEnabled:NO];
     
-    UIView *KDA=[[UIView alloc] initWithFrame:CGRectMake(5, 185, 155, 180)];
+    
+    UIImageView *combat=[[UIImageView alloc] initWithFrame:CGRectMake(20, MaxY(imageView)-70, 100, 50)];
+    combat.image=[UIImage imageNamed:@"combat"];
+    
+    [_scrollView addSubview:combat];
+    
+    _combat=[[UILabel alloc] initWithFrame:CGRectMake(20, MaxY(imageView)-50, 100, 30)];
+    _combat.textAlignment=NSTextAlignmentCenter;
+    _combat.font=[UIFont systemFontOfSize:20];
+    _combat.text=@"????";
+    [_scrollView addSubview:_combat];
+    
+    [_scrollView addSubview:name];
+    
+    
+    
+    
+    
+    
+    
+    ///KDA
+    
+    UIView *KDA=[[UIView alloc] initWithFrame:CGRectMake(5, MaxY(imageView)+5 , (Main_Screen_Width-15)/2, 180)];
     [KDA setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
-    UIView *KDAHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 155, 30)];
+    UIView *KDAHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0,WIDTH(KDA) , 30)];
     KDAHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
     
-    _KDALabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 40, 155, 30)];
+    _KDALabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 40, WIDTH(KDA), 30)];
     _KDALabel.textAlignment=NSTextAlignmentCenter;
     _KDALabel.font=[UIFont systemFontOfSize:30];
     _KDALabel.text=@"10.0";
@@ -151,26 +171,29 @@
     [KDA addSubview:KDAHeader];
     
     
-    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(165, 185, 150, 180)];
+    //ALL
+    
+    
+    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(MaxX(KDA)+5, MaxY(imageView)+5, (Main_Screen_Width-15)/2, 180)];
     [ALL setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
-    UIView *ALLHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+    UIView *ALLHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(ALL), 30)];
     ALLHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
     [ALL addSubview:ALLHeader];
     
-    _ALLLabelTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 155, 30)];
+    _ALLLabelTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(ALL), 30)];
     _ALLLabelTitle.font=[UIFont systemFontOfSize:14];
     _ALLLabelTitle.text=@"所有比赛统计";
     _ALLLabelTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     
     [ALLHeader addSubview:_ALLLabelTitle];
     
-    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(5, 35, 155, 20)];
+    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(5, 35, WIDTH(ALL), 20)];
     _ALLcount.font=[UIFont systemFontOfSize:14];
     _ALLcount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLcount];
     
-    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(5, 55, 155, 20)];
+    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(5, 55, WIDTH(ALL), 20)];
     _ALLwincount.font=[UIFont systemFontOfSize:14];
     _ALLwincount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLwincount];
@@ -189,7 +212,22 @@
     [percent setPercentage:20.0];
     [_scrollView addSubview:ALL];
     [_scrollView addSubview:KDA];
+    
+    
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(KDA)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _recentMatch.separatorColor = [UIColor blackColor];
+    [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
+    _recentMatch.separatorInset=UIEdgeInsetsZero;
+    _recentMatch.delegate=self;
+    _recentMatch.dataSource=self;
+    [_scrollView setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
+    [_scrollView addSubview:_recentMatch];
+    [_recentMatch setScrollEnabled:NO];
+    
+    //[self loadTheData:rolename];
 }
+
 
 -(void)wenhao
 {
@@ -281,6 +319,7 @@
             [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor colorWithRed:92/255.0 green:192/255.0 blue:11/255.0 alpha:1]];
             [_straightPieChart addDataToRepresent:(int)model.loseCount WithColor:[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1]];
             
+             _combat.text=[NSString stringWithFormat:@"%d",model.combat];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

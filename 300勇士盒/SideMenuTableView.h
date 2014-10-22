@@ -15,6 +15,16 @@
 #import "MainNavgationController.h"
 #import "MainViewController.h"
 
+#import "SettingNavViewController.h"
+#import "SettingViewController.h"
+
+#import "AboutNavViewController.h"
+#import "AbountViewController.h"
+
+#import "LXNavViewController.h"
+#import "LXTableViewController.h"
+
+#import "OtherViewController.h"
 #import "SearchViewController.h"
 @interface SideMenuTableView : UIViewController
 
@@ -27,6 +37,16 @@
 @property (nonatomic,strong) ToolNavgationController *toolNav;
 @property (nonatomic,strong) ToolTableViewController *toolTable;
 
+@property (nonatomic,strong) SettingNavViewController *settingNav;
+@property (nonatomic,strong) SettingViewController *setting;
+
+@property (nonatomic,strong) AboutNavViewController *aboutNav;
+@property (nonatomic,strong) AbountViewController *about;
+
+@property (nonatomic,strong) LXNavViewController *lxNav;
+@property (nonatomic,strong) LXTableViewController *lxTable;
+
 @property (nonatomic,strong) RankNavController *rankNav;
 @property (nonatomic,strong) RankTypeTableViewController *rankTable;
+@property (nonatomic,strong) OtherViewController *other;
 @end

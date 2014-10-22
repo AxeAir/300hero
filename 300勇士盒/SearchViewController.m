@@ -9,6 +9,8 @@
 #import "SearchViewController.h"
 #import "Role.h"
 #import <AFHTTPRequestOperationManager.h>
+#import "UIViewController+CHSideMenu.h"
+#import "UConstants.h"
 @interface SearchViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *data;
@@ -22,9 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
-    _bar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    _bar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width*110/320)];
     _bar.backgroundImage=[UIImage imageNamed:@"background101020.png"];
-    _bar.backgroundColor=[UIColor redColor];
     _bar.delegate=self;
     _bar.showsCancelButton=YES;
     _bar.showsScopeBar=YES;
@@ -32,7 +33,7 @@
     [self.view addSubview:_bar];
     [_bar becomeFirstResponder];
     
-    _table=[[UITableView alloc] initWithFrame:CGRectMake(0, 100, 320, 600) style:UITableViewStylePlain];
+    _table=[[UITableView alloc] initWithFrame:CGRectMake(0,110, Main_Screen_Width, 600) style:UITableViewStylePlain];
     _table.delegate=self;
     _table.dataSource=self;
     _table.hidden=YES;
@@ -103,8 +104,26 @@
     
     
     return cell;
+    
+}
+-(BOOL)prefersStatusBarHiddenChange{
+    return NO;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
+    [_bar resignFirstResponder];
+    //NSLog(@"%@",[self.presentingViewController class]);
+    NSDictionary *Dic=[NSDictionary dictionaryWithObject:cell.textLabel.text forKey:@"name"];
+    [self dismissViewControllerAnimated:YES completion:^{
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"do" object:self userInfo:Dic];
+        //NSLog(@"%@",Dic);
+    }];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -65,7 +65,7 @@
             [tempArray addObject:model];
         }
         dataArray=tempArray;
-        NSLog(@"%@",tempArray);
+        //NSLog(@"%@",tempArray);
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);

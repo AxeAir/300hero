@@ -3,7 +3,7 @@
 //  Medical_Wisdom
 //
 //  Created by Mac on 14-2-28.
-//  Copyright (c) 2014年 NanJingXianLang. All rights reserved.
+//  Copyright (c) 2014年 Mr.Chen. All rights reserved.
 //
 
 

@@ -24,7 +24,7 @@
 @property (nonatomic,strong) UILabel *wincount;
 @property (nonatomic,strong) UILabel *losecount;
 
-
+@property (nonatomic,strong) UIView *KDA;
 @property (nonatomic,strong) UILabel *ALLLabelTitle;
 @property (nonatomic,strong) UILabel *ALLcount;
 @property (nonatomic,strong) UILabel *ALLwincount;
@@ -33,5 +33,11 @@
 @property (nonatomic,strong) UILabel *combat;
 
 @property (nonatomic,strong) SearchViewController *searchView;
+@property (nonatomic,strong) UIActivityIndicatorView *LodingActivityIndicator;
+
+@property (nonatomic,strong) UIView *buttonGroup;
+
+@property (nonatomic,strong) UIView *mask;
+
 
 @end

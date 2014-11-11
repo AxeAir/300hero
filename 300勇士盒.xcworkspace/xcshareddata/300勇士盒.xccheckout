@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AB5DCFC5-9E59-4F2F-8C55-9542BAAF932C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>300勇士盒</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AC756DAE3DD13BD9B7F98A26661B359CD0515A5D</key>
+		<string>https://coding.net/xxteam/Hero300.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>300勇士盒.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AC756DAE3DD13BD9B7F98A26661B359CD0515A5D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://coding.net/xxteam/Hero300.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AC756DAE3DD13BD9B7F98A26661B359CD0515A5D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AC756DAE3DD13BD9B7F98A26661B359CD0515A5D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>300%E5%8B%87%E5%A3%AB%E7%9B%92</string>
+		</dict>
+	</array>
+</dict>
+</plist>

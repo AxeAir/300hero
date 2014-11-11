@@ -48,7 +48,7 @@
     NSLog(@"%ld",(long)_ID);
     [manager POST:[NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%ld",(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])

@@ -11,7 +11,7 @@
 @implementation sigleMenu
 
 
--(id)initWithTitle:(NSString *)title image:(UIImage *)image;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 {
     self = [super init];
     if(self)
@@ -22,5 +22,10 @@
         self.imageView.frame = CGRectMake(0, 0, 40, 40);
     }
     return self;
+    
 }
+
+
+
+
 @end

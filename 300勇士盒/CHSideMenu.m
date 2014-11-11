@@ -7,6 +7,7 @@
 //
 
 #import "CHSideMenu.h"
+#import "UConstants.h"
 
 // constants
 const CGFloat CHSideMenuMinimumRelativePanDistanceToOpen = 0.33;
@@ -243,9 +244,20 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
     __weak typeof(self) blockSelf = self;
     [UIView animateWithDuration:animated ? duration : 0.0 delay:0
          usingSpringWithDamping:1 initialSpringVelocity:velocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
+             
+             UIView *view=[blockSelf.containerView viewWithTag:100096];
+             if(view==NULL){
+                 view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, Main_Screen_Height)];
+                 view.tag=100096;
+                 view.backgroundColor=[UIColor blackColor];
+                 view.alpha=0;
+             }
+             [blockSelf.containerView addSubview:view];
+             
              blockSelf.containerView.transform = CGAffineTransformMakeTranslation(self.menuWidth, 0);
              blockSelf.menuController.view.frame=CGRectMake(0, 0, 200, 600);
-             //CGContextSetAlpha([NSGraphicsContext currentContext], <#CGFloat alpha#>)
+             view.alpha=0.8;
+            
              //blockSelf.containerView.alpha
              //[blockSelf.containerView addObserver:self forKeyPath:@"frame.origin.x" options:0 context:nil];
              [self statusBarView].transform = blockSelf.containerView.transform;
@@ -259,6 +271,10 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
         blockSelf.containerView.transform = CGAffineTransformIdentity;
         blockSelf.containerView.alpha=1;
         [self statusBarView].transform = blockSelf.containerView.transform;
+        
+        [[blockSelf.containerView viewWithTag:100096] removeFromSuperview];
+       
+        
     } completion:^(BOOL finished) {
         [blockSelf.menuController.view removeFromSuperview];
     }];

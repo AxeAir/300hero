@@ -31,7 +31,7 @@
 @property (nonatomic,assign) NSUInteger WinCount;         // 胜场数
 @property (nonatomic,assign) NSUInteger MatchCount;       // 总场数
 @property (nonatomic,assign) NSUInteger ELO;              // 团队(胜负)实力
-@property (nonatomic,assign) NSUInteger KDA;              // 本场表现评分
+@property (nonatomic,assign) NSInteger  KDA;              // 本场表现评分
 // 英雄信息
 
 @property (nonatomic,assign) NSUInteger ID;            // ID

@@ -10,7 +10,7 @@
 
 @interface HeaderScrollView()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSTimer *timer;
+
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) UIScrollView *scrollview;
 
@@ -63,7 +63,7 @@
         //设置frame
         imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
         //设置图片
-        NSString *name = [NSString stringWithFormat:@"img1"];
+        NSString *name = [NSString stringWithFormat:@"img1.jpg"];
         imageView.image = [UIImage imageNamed:name];
         //隐藏指示条
         _scrollview.showsHorizontalScrollIndicator = NO;
@@ -137,6 +137,8 @@
 {
     [_timer invalidate];
 }
+
+
 
 
 /*

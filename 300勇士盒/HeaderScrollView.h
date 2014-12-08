@@ -10,6 +10,6 @@
 
 @interface HeaderScrollView : UIView
 
-
+@property (nonatomic, strong) NSTimer *timer;
 
 @end

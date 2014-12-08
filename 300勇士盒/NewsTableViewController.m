@@ -10,10 +10,14 @@
 #import "NewsTableViewCell.h"
 #import "HeaderScrollView.h"
 #import "UConstants.h"
+#import "MJRefresh.h"
+
 
 
 
 @interface NewsTableViewController ()
+@property (nonatomic,strong) HeaderScrollView *header;
+@property (nonatomic, assign) NSInteger count;
 
 @end
 
@@ -22,6 +26,17 @@
 
 
 - (instancetype)initWithHeader:(NSInteger)NewsType
+{
+    self=[super initWithStyle:UITableViewStylePlain];
+    if (self) {
+        _header=[[HeaderScrollView alloc] initWithFrame:CGRectMake(0,0, Main_Screen_Width, 150)];
+        self.tableView.tableHeaderView=_header;
+        
+    }
+    return self;
+}
+
+- (instancetype)initWithHeaderWithoutHeader:(NSInteger)NewsType
 {
     self=[super initWithStyle:UITableViewStylePlain];
     if (self) {
@@ -34,9 +49,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _count=10;
+    [self steup];
+    
+    
   
 }
 
+- (void)steup
+{
+
+    //[self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+     __weak NewsTableViewController *weakSelf = self;
+     [self.tableView addHeaderWithCallback:^{
+         [weakSelf headerRereshing];
+     }];
+    //[self.tableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.tableView addFooterWithCallback:^{
+        [weakSelf footerRereshing];
+    }];
+    
+//    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+//    self.tableView.headerPullToRefreshText = @"下拉可以刷新了";
+//    self.tableView.headerReleaseToRefreshText = @"松开马上刷新了";
+//    self.tableView.headerRefreshingText = @"MJ哥正在帮你刷新中,不客气";
+//    
+//    self.tableView.footerPullToRefreshText = @"上拉可以加载更多数据了";
+//    self.tableView.footerReleaseToRefreshText = @"松开马上加载更多数据了";
+//    self.tableView.footerRefreshingText = @"MJ哥正在帮你加载中,不客气";
+}
+
+#pragma mark Refreshing
+- (void)headerRereshing
+{
+    [self.tableView headerEndRefreshing];
+}
+
+- (void)footerRereshing
+{
+    _count+=10;
+    [self.tableView reloadData];
+    [self.tableView footerEndRefreshing];
+    
+}
 
 
 #pragma mark - Table view data source
@@ -48,7 +105,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 10;
+    return _count;
 }
 
 
@@ -60,6 +117,8 @@
     {
         cell=[[NewsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    //cell.textLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row];
     
     return cell;
 }
@@ -71,14 +130,9 @@
     return 80;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+-(void)viewDidDisappear:(BOOL)animated
 {
-    return 150;
-}
-
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return [[HeaderScrollView alloc] initWithFrame:CGRectMake(0,0, Main_Screen_Width, 150)];
+    [_header.timer invalidate];
 }
 
 

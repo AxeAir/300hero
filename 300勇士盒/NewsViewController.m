@@ -11,11 +11,17 @@
 #import "UConstants.h"
 #import "HYSegmentedControl.h"
 #import "NewsTableViewController.h"
+#import "HeaderScrollView.h"
+#import "NewsTableViewCell.h"
 
-@interface NewsViewController ()
+@interface NewsViewController ()<HYSegmentedControlDelegate>
 
 @property (nonatomic, strong) HYSegmentedControl *segment;
 @property (nonatomic, strong) NewsTableViewController *news;
+
+@property (nonatomic, strong) HeaderScrollView *header;
+
+@property (nonatomic, assign) NSInteger cuuentSegment;
 
 @end
 
@@ -36,25 +42,81 @@
 
 -(void)layout
 {
+    _cuuentSegment = 0;
     _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁", @"靓照", @"囧途", @"壁纸"] delegate:self];
     [self.view addSubview:_segment];
     
-//    _news=[[UITableView alloc] initWithFrame:CGRectMake(50, 0, Main_Screen_Width, 100) style:UITableViewStylePlain];
-//    _news.dataSource=self;
-//    _news.delegate=self;
-//    [self.view addSubview:_news];
     _news=[[NewsTableViewController alloc] initWithHeader:NewsTypeHeader];
+    [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40)];
     
-    [_news.tableView setFrame:CGRectMake(0, 30, Main_Screen_Width, Main_Screen_Height-30)];
     [self.view addSubview:_news.tableView];
     
 }
+
+
+
+
+
+
+-(void)hySegmentedControlSelectAtIndex:(NSInteger)index
+{
+    NSLog(@"%d",index);
+    
+    if (index==_cuuentSegment) {
+    
+    }
+    else
+    {
+        [_news.tableView removeFromSuperview];
+        switch (index) {
+            case 0:
+            {
+                _news=[[NewsTableViewController alloc] initWithHeader:NewsTypeHeader];
+                
+                
+            }
+                break;
+            case 1:
+            {
+                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
+                
+            }
+                break;
+                
+            case 2:
+            {
+                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
+                
+            }
+                break;
+                
+            case 3:
+            {
+                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+        _cuuentSegment=index;
+        [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40)];
+        
+        [self.view addSubview:_news.tableView];
+        
+    }
+}
+
 
 
 - (void)toogleMenu
 {
     [self.navigationController.sideMenuController toggleMenu:YES];
 }
+
+
+
 
 
 

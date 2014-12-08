@@ -14,6 +14,6 @@
 
 
 - (instancetype)initWithHeader:(NSInteger)NewsType;
-
+- (instancetype)initWithHeaderWithoutHeader:(NSInteger)NewsType;
 
 @end

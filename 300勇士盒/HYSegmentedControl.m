@@ -8,9 +8,9 @@
 
 #import "HYSegmentedControl.h"
 
-#define HYSegmentedControl_Height 30.0
+#define HYSegmentedControl_Height 40.0
 #define HYSegmentedControl_Width ([UIScreen mainScreen].bounds.size.width)
-#define Min_Width_4_Button 60.0
+#define Min_Width_4_Button 50.0
 
 #define Define_Tag_add 1000
 
@@ -69,7 +69,7 @@
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame = CGRectMake(i*width4btn, .0f, width4btn, HYSegmentedControl_Height);
             [btn setTitleColor:UIColorFromRGBValue(0x999999) forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:14];
+            btn.titleLabel.font = [UIFont systemFontOfSize:16];
             [btn setTitleColor:UIColorFromRGBValue(0x454545) forState:UIControlStateSelected];
             [btn setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventTouchUpInside];

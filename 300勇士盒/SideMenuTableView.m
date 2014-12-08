@@ -24,14 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"myzj"]];
     sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"rank"]];
     sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
+    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
     //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
     //sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
+    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
     
-    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4, nil];
+    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5, nil];
     itemsArray=arr;
     
     
@@ -146,20 +148,19 @@
             }
             break;
             
-        /*case 4:
+        case 3:
             if([[self.sideMenuController getContent] isKindOfClass:[SettingNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];
             }
             else
             {
-                _setting=[[SettingViewController alloc] init];
-                _settingNav=[[SettingNavViewController alloc] initWithRootViewController:_setting];
-                [self.sideMenuController setContentController:_settingNav animted:YES];
+                _news=[[NewsViewController alloc] init];
+                _newsnav=[[NewsNavViewController alloc] initWithRootViewController:_news];
+                [self.sideMenuController setContentController:_newsnav animted:YES];
             }
             break;
-         */
-        case 3:
+        case 4:
             if([[self.sideMenuController getContent] isKindOfClass:[AboutNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];
@@ -207,9 +208,9 @@
     
 }
 -(void)handleColorChange:(NSNotification*)sender{
-    NSLog(@"%@",sender);
+    
     NSDictionary *dic=(NSDictionary*)sender.userInfo;
-    NSLog(@"%@",dic);
+    
     _other=[[OtherViewController alloc] initWithName:[dic objectForKey:@"name"]];
     _mainNav=[[MainNavgationController alloc] initWithRootViewController:_other];
     [self.sideMenuController setContentController:_mainNav animted:YES];
@@ -220,7 +221,7 @@
 {
     _search=[[SearchViewController alloc] init];
     [self presentViewController:_search animated:YES completion:^{
-        //NSLog(@"ffff");
+        
     }];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

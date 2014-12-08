@@ -24,6 +24,9 @@
 #import "LXNavViewController.h"
 #import "LXTableViewController.h"
 
+#import "NewsNavViewController.h"
+#import "NewsViewController.h"
+
 #import "OtherViewController.h"
 #import "SearchViewController.h"
 @interface SideMenuTableView : UIViewController
@@ -45,6 +48,10 @@
 
 @property (nonatomic,strong) LXNavViewController *lxNav;
 @property (nonatomic,strong) LXTableViewController *lxTable;
+
+@property (nonatomic, strong) NewsNavViewController *newsnav;
+@property (nonatomic, strong) NewsViewController *news;
+
 
 @property (nonatomic,strong) RankNavController *rankNav;
 @property (nonatomic,strong) RankTypeTableViewController *rankTable;

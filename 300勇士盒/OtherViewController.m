@@ -23,11 +23,12 @@
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface OtherViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-
+    
     NSArray *MatchData;
     RecentModel *recentModel;
     PercentageChart *percent;
     NSString *role;
+    AFHTTPRequestOperationManager *manager;
     
 }
 
@@ -56,7 +57,16 @@
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    manager=[AFHTTPRequestOperationManager manager];
     [self loadTheData:role];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    //[self cancelAllHTTPOperationsWithMethod:@"POST" path:@"product/like"];
+    //[[httpClient operationQueue] cancelAllOperations];
+    [manager.operationQueue cancelAllOperations];
 }
 
 -(void)refresh
@@ -82,7 +92,7 @@
 {
     
     if(_scrollView==nil){
-    _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     }
     [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 950)];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width*180.0/320.0)];
@@ -166,7 +176,7 @@
     _wincount.font=[UIFont systemFontOfSize:16];
     _wincount.text=@"10.0/";
     _wincount.textColor=[UIColor colorWithRed:68/255.0 green:192/255.0 blue:16/255.0 alpha:1];
-       [_KDA addSubview:_wincount];
+    [_KDA addSubview:_wincount];
     
     _losecount=[[UILabel alloc] initWithFrame:CGRectMake(80, 100, 80, 30)];
     _losecount.textAlignment=NSTextAlignmentLeft;
@@ -252,7 +262,7 @@
 {
     [self havaRoleName:rolename];
     [self getRecentMatch:rolename];
-    [self getRoleData:rolename];
+    //[self getRoleData:rolename];
     [self getRole:rolename];
     
 }
@@ -263,7 +273,7 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:HERO300_URL(@"getrole") parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"%@",responseObject);
         NSString *Result=[responseObject objectForKey:@"Result"];
         if([Result isEqualToString:@"OK"])
@@ -272,10 +282,12 @@
             float win=[[Role objectForKey:@"WinCount"] floatValue];
             float total=[[Role objectForKey:@"MatchCount"] floatValue];
             [percent setPercentage:win/total*100];
-            _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%d",[[Role objectForKey:@"WinCount"] integerValue]];
-            _ALLcount.text=[NSString stringWithFormat:@"总场数:%d",[[Role objectForKey:@"MatchCount"] integerValue]];
+            _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
+            _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
             
-            _combat.text=[Combat getCombat:[[Role objectForKey:@"WinCount"] integerValue] all:[[Role objectForKey:@"MatchCount"] integerValue]];
+            
+            [self updateCount:(int)total rolename:rolename wincout:(int)win];
+            [self getRoleData:rolename];
         }
         else
         {
@@ -286,6 +298,26 @@
     }];
 }
 
+-(void)updateCount:(NSInteger)recentcount  rolename:(NSString*)rolename wincout:(NSInteger)wincount
+{
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];    [manager GET:@"http://218.244.143.212:8520/update/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *Result=[responseObject objectForKey:@"Result"];
+        if([Result isEqualToString:@"OK"])
+        {
+            NSLog(@"拉取更新成功");
+        }
+        else
+        {
+            NSLog(@"no");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
 
 -(void)getRecentMatch:(NSString*)rolename
 {
@@ -315,32 +347,37 @@
 
 -(void)getRoleData:(NSString*)rolename
 {
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
+    //AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    [manager GET:@"http://218.244.143.212:2015/getPlayerData" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%@",responseObject);
+    //NSLog(@"%@",[NSString stringWithFormat:@"http://192.168.1.104:8000/getPlayerData/%@",rolename]);
+    
+    [manager GET:@"http://218.244.143.212:8520/getPlayerData/" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_LodingActivityIndicator stopAnimating];
         NSString *result=[responseObject objectForKey:@"Result"];
+        
+        NSLog(@"%@",responseObject);
         if([result isEqualToString:@"OK"])
         {
-            RecentModel *model=[[RecentModel alloc] initWithObject:[responseObject objectForKey:@"PlayerDataList"]];
+            RecentModel *model=[[RecentModel alloc] initWithObject:[responseObject objectForKey:@"List"]];
             recentModel=model;
             _KDALabelTitle.text=[NSString stringWithFormat:@"近%lu场平均KDA",(unsigned long)model.statisticCount];
             
             _KDADetail.text=[NSString stringWithFormat:@"%.1f/%.1f/%.1f",(float)model.kills/model.statisticCount,(float)model.dead/model.statisticCount,(float)model.assist /model.statisticCount];
-            _KDALabel.text=[NSString stringWithFormat:@"%.1f",((float)model.kills/model.statisticCount+(float)model.assist /model.statisticCount)/((float)model.dead/model.statisticCount)*3];
+            
+            NSString *kda=[NSString stringWithFormat:@"%.1f",((float)model.kills/model.statisticCount+(float)model.assist/model.statisticCount)/((float)model.dead/model.statisticCount)*3];
+            if([kda isEqualToString:@"inf"])
+            {
+                kda=@"0";
+            }
+            _KDALabel.text=kda;
+            _combat.text=[NSString stringWithFormat:@"%lu",(unsigned long)model.combat];
+            
             _wincount.text=[NSString stringWithFormat:@"%lu 胜/",(unsigned long)model.winCount];
             _losecount.text=[NSString stringWithFormat:@"%lu 负",(unsigned long)model.loseCount];
-            
-            
             [_straightPieChart clearChart];
-            [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor colorWithRed:92/255.0 green:192/255.0 blue:11/255.0 alpha:1]];
+            [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor greenColor]];
             [_straightPieChart addDataToRepresent:(int)model.loseCount WithColor:[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1]];
-            
-            
-            
-             //_combat.text=[NSString stringWithFormat:@"%d",model.combat];
             
             
             _KDALabel.hidden=NO;
@@ -353,7 +390,6 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [_LodingActivityIndicator stopAnimating];
-        NSLog(@"%@",error);
     }];
 }
 

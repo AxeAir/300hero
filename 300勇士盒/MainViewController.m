@@ -19,6 +19,8 @@
 #import "PercentageChart.h"
 #import "UConstants.h"
 #import "Combat.h"
+#import <ShareSDK/ShareSDK.h>
+
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 {
@@ -120,11 +122,6 @@
     [_scrollView addSubview:name];
     
     
-    
-    
-    
-    
-    
     ///KDA
     
     _KDA=[[UIView alloc] initWithFrame:CGRectMake(5, MaxY(imageView)+5 , (Main_Screen_Width-15)/2, 180)];
@@ -182,8 +179,6 @@
     [_KDA addSubview:_straightPieChart];
     [_KDA addSubview:KDAHeader];
     
-    
-    
     _KDALabel.hidden=YES;
     _losecount.hidden=YES;
     _wincount.hidden=YES;
@@ -192,8 +187,6 @@
     _straightPieChart.hidden=YES;
     
     //ALL
-    
-    
     UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(MaxX(_KDA)+5, MaxY(imageView)+5, (Main_Screen_Width-15)/2, 180)];
     [ALL setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
@@ -257,9 +250,8 @@
 
 -(void)loadTheData:(NSString*)rolename
 {
-    [self getRoleData:rolename];
+    //[self getRoleData:rolename];
     [self getRecentMatch:rolename];
-    
     [self getRole:rolename];
     
 }
@@ -270,7 +262,7 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:HERO300_URL(@"getrole") parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"%@",responseObject);
         NSString *Result=[responseObject objectForKey:@"Result"];
         if([Result isEqualToString:@"OK"])
@@ -282,7 +274,11 @@
             _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
             _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
             
-            _combat.text=[Combat getCombat:[[Role objectForKey:@"WinCount"] integerValue] all:[[Role objectForKey:@"MatchCount"] integerValue]];
+            //_combat.text=[Combat getCombat:[[Role objectForKey:@"WinCount"] integerValue] all:[[Role objectForKey:@"MatchCount"] integerValue]];
+            
+            
+             [self updateCount:(int)total rolename:rolename wincout:(int)win];
+            [self getRoleData:rolename];
         }
         else
         {
@@ -294,12 +290,34 @@
 }
 
 
+-(void)updateCount:(NSInteger)recentcount  rolename:(NSString*)rolename wincout:(NSInteger)wincount
+{
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];
+    [manager GET:@"http://218.244.143.212:8520/update/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *Result=[responseObject objectForKey:@"Result"];
+        if([Result isEqualToString:@"OK"])
+        {
+            NSLog(@"拉取更新成功");
+        }
+        else
+        {
+            NSLog(@"no");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
 -(void)getRecentMatch:(NSString*)rolename
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    [manager GET:@"http://300report.jumpw.com/api/getlist" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:HERO300_URL(@"getlist") parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"%@",responseObject);
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])
@@ -320,23 +338,36 @@
 }
 
 
+
+//拉取KDA
 -(void)getRoleData:(NSString*)rolename
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    [manager GET:@"http://218.244.143.212:2015/getPlayerData" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //NSLog(@"%@",[NSString stringWithFormat:@"http://192.168.1.104:8000/getPlayerData/%@",rolename]);
+    
+    [manager GET:@"http://218.244.143.212:8520/getPlayerData/" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_LodingActivityIndicator stopAnimating];
         NSString *result=[responseObject objectForKey:@"Result"];
+        
+        NSLog(@"%@",responseObject);
         if([result isEqualToString:@"OK"])
         {
-            
-            RecentModel *model=[[RecentModel alloc] initWithObject:[responseObject objectForKey:@"PlayerDataList"]];
+            RecentModel *model=[[RecentModel alloc] initWithObject:[responseObject objectForKey:@"List"]];
             recentModel=model;
             _KDALabelTitle.text=[NSString stringWithFormat:@"近%lu场平均KDA",(unsigned long)model.statisticCount];
             
             _KDADetail.text=[NSString stringWithFormat:@"%.1f/%.1f/%.1f",(float)model.kills/model.statisticCount,(float)model.dead/model.statisticCount,(float)model.assist /model.statisticCount];
-            _KDALabel.text=[NSString stringWithFormat:@"%.1f",((float)model.kills/model.statisticCount+(float)model.assist /model.statisticCount)/((float)model.dead/model.statisticCount)*3];
+            
+            NSString *kda=[NSString stringWithFormat:@"%.1f",((float)model.kills/model.statisticCount+(float)model.assist/model.statisticCount)/((float)model.dead/model.statisticCount)*3];
+            if([kda isEqualToString:@"inf"])
+            {
+                kda=@"0";
+            }
+            _KDALabel.text=kda;
+            _combat.text=[NSString stringWithFormat:@"%lu",(unsigned long)model.combat];
+            
             _wincount.text=[NSString stringWithFormat:@"%lu 胜/",(unsigned long)model.winCount];
             _losecount.text=[NSString stringWithFormat:@"%lu 负",(unsigned long)model.loseCount];
             [_straightPieChart clearChart];
@@ -350,12 +381,9 @@
             _KDADetail.hidden=NO;
             _KDALabel.hidden=NO;
             _straightPieChart.hidden=NO;
-            //_combat.text=[NSString stringWithFormat:@"%lu",(unsigned long)model.combat];
-            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"%@",error);
         [_LodingActivityIndicator stopAnimating];
     }];
 }
@@ -405,10 +433,11 @@
         NSLog(@"%@",_searchName.text);
     }
     else{
+        
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
         NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:_searchName.text,@"name", nil];
-        [manager POST:@"http://300report.jumpw.com/api/getrole" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:HERO300_URL(@"getrole") parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             NSString *Result=[responseObject objectForKey:@"Result"];
             if([Result isEqualToString:@"OK"])
@@ -433,10 +462,7 @@
         
         
     }
-    
-    
 }
-
 
 -(void)initButton
 {
@@ -456,23 +482,70 @@
     _buttonGroup=[[UIView alloc] initWithFrame:CGRectMake(0, -64, Main_Screen_Width, 80)];
     
     _buttonGroup.backgroundColor=BACKGROUND_COLOR;
-    
     UIButton *button1=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width/4, 80)];
-    //button1.backgroundColor=[UIColor redColor];
     [button1 setBackgroundImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
-    [button1 addTarget:self action:@selector(button1) forControlEvents:UIControlEventTouchUpInside];
+    [button1 addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     [_buttonGroup addSubview:button1];
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
     UIButton *button2=[[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width/4*1, 0, Main_Screen_Width/4, 80)];
-    button2.backgroundColor=[UIColor redColor];
+    UILabel *label2=[[UILabel alloc] initWithFrame:CGRectMake(0, 55, Main_Screen_Width/4, 20)];
+    [button2 addTarget:self action:@selector(pingjia) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *pingjia=[UIImage imageNamed:@"pingjia"];
+    UIImageView *pingjiaView=[[UIImageView alloc] initWithFrame:CGRectMake(25, 10, 30, 30)];
+    pingjiaView.image=pingjia;
+    [button2 addSubview:pingjiaView];
+    
+    label2.text=@"评价我们";
+    label2.font=[UIFont systemFontOfSize:12];
+    label2.textAlignment=NSTextAlignmentCenter;
+    label2.textColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    [button2 addSubview:label2];
     [_buttonGroup addSubview:button2];
     
     UIButton *button3=[[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width/4*2, 0, Main_Screen_Width/4, 80)];
-    button3.backgroundColor=[UIColor redColor];
+    UILabel *label3=[[UILabel alloc] initWithFrame:CGRectMake(0, 55, Main_Screen_Width/4, 20)];
+    label3.text=@"保存到相册";
+    label3.font=[UIFont systemFontOfSize:12];
+    label3.textAlignment=NSTextAlignmentCenter;
+    label3.textColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    
+    UIImage *saveto=[UIImage imageNamed:@"savetophoto"];
+    UIImageView *savetoView=[[UIImageView alloc] initWithFrame:CGRectMake(25, 10, 30, 30)];
+    savetoView.image=saveto;
+    
+    [button3 addSubview:savetoView];
+    [button3 addSubview:label3];
+    [button3 addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+
     [_buttonGroup addSubview:button3];
     
+    
     UIButton *button4=[[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width/4*3, 0, Main_Screen_Width/4, 80)];
-    button4.backgroundColor=[UIColor redColor];
+    
+    UILabel *label4=[[UILabel alloc] initWithFrame:CGRectMake(0, 55, Main_Screen_Width/4, 20)];
+    label4.text=@"更换默认角色";
+    label4.font=[UIFont systemFontOfSize:12];
+    label4.textAlignment=NSTextAlignmentCenter;
+    label4.textColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    
+    UIImage *def=[UIImage imageNamed:@"default"];
+    UIImageView *defView=[[UIImageView alloc] initWithFrame:CGRectMake(25, 10, 30, 30)];
+    defView.image=def;
+    [button4 addSubview:defView];
+    [button4 addSubview:label4];
+    [button4 addTarget:self action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
+    
     [_buttonGroup addSubview:button4];
     
     _buttonGroup.hidden=YES;
@@ -481,7 +554,7 @@
     
 }
 
--(void)button1
+-(void)clear
 {
     [self.userdefault setObject:nil forKey:@"DefaultRole"];
     [self search];
@@ -491,6 +564,90 @@
     }
     [self notHaveRoleName];
 }
+
+-(void)pingjia
+{
+    [self search];
+    NSString * appstoreUrlString = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?mt=8&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software&id=924796566";
+    
+    NSURL * url = [NSURL URLWithString:appstoreUrlString];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else
+    {
+        NSLog(@"can not open");
+    }
+    
+    NSLog(@"评价");
+}
+
+
+
+-(void)share
+{
+//    [self search];
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
+//    
+//    //构造分享内容
+//    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+//                                       defaultContent:@"默认分享内容，没内容时显示"
+//                                                image:[ShareSDK imageWithPath:imagePath]
+//                                                title:@"ShareSDK"
+//                                                  url:@"http://www.sharesdk.cn"
+//                                          description:@"这是一条测试信息"
+//                                            mediaType:SSPublishContentMediaTypeNews];
+//    
+//    [ShareSDK showShareActionSheet:nil
+//                         shareList:nil
+//                           content:publishContent
+//                     statusBarTips:YES
+//                       authOptions:nil
+//                      shareOptions: nil
+//                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+//                                if (state == SSResponseStateSuccess)
+//                                {
+//                                    NSLog(@"分享成功");
+//                                }
+//                                else if (state == SSResponseStateFail)
+//                                {
+//                                    NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+//                                }
+//                            }];
+    
+    
+}
+
+
+-(void)save
+{
+    UIGraphicsBeginImageContext(CGSizeMake(Main_Screen_Width, MaxY(_KDA)));     //currentView 当前的view
+    [self.scrollView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(viewImage, self, @selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:), nil);
+}
+
+
+#pragma mark - savePhotoAlbumDelegate
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo {
+    NSString *message;
+    NSString *title;
+    
+    //[_activityIndicatorView stopAnimating];
+    if (!error) {
+        title = @"恭喜";
+        message = @"成功保存到相册";
+    } else {
+        title = @"失败";
+        message = [error description];
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
+
 
 -(void)search
 {

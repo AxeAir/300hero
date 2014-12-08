@@ -91,6 +91,57 @@
 }
 
 
+
+-(void)configLXCell:(RankDetailModel *)model
+{
+    if(model.Index==1)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"one"]];
+        [one setFrame:CGRectMake(10, 5, 25, 30)];
+        [self addSubview:one];
+    }
+    else if(model.Index==2)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"two"]];
+        [one setFrame:CGRectMake(10, 5, 25, 30)];
+        [self addSubview:one];
+    }
+    else if(model.Index==3)
+    {
+        UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"three"]];
+        [one setFrame:CGRectMake(10, 5, 25, 30)];
+        [self addSubview:one];
+    }
+    else{
+        UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+        NOlabel.text=[NSString stringWithFormat:@"%ld",(long)model.Index];
+        NOlabel.textAlignment=NSTextAlignmentCenter;
+        NOlabel.textColor=CELLVALUECOLOR;
+        [self addSubview:NOlabel];
+    }
+    UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(100, 10, 110, 30)];
+    labelName.text=model.Name;
+    _rolename=model.Name;
+    [labelName setTextColor:CELLNAMECOLOR];
+    [labelName setFont:[UIFont systemFontOfSize:14]];
+    [self addSubview:labelName];
+    
+    
+    UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(230, 10, 60, 30)];
+    value.text=[NSString stringWithFormat:@"%ld",(long)model.Value];
+    [value setTextColor:CELLVALUECOLOR];
+    [self addSubview:value];
+    
+    
+    UIView *bgview=[[UIView alloc] initWithFrame:self.bounds];
+    bgview.backgroundColor=CELLSELECTEDCOLOR;
+    [self setSelectedBackgroundView:bgview];
+    [self setBackgroundColor:CELLBG];
+    
+    
+}
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -39,6 +39,7 @@
     
     if(_result==nil)
     {
+        
         _result=[[UILabel alloc] initWithFrame:CGRectMake(130, 15, 40, 20)];
     }
     if(model.Result==1)

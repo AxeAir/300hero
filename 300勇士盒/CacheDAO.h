@@ -7,16 +7,12 @@
 //
 
 #import "CoreDataDAO.h"
+#import "CacheModel.h"
 
-@class PicObject;
-@interface PicDAO : CoreDataDAO
+@interface CacheDAO : CoreDataDAO
 
--(BOOL)create:(PicObject*)model;
+- (BOOL)create:(CacheModel*)cache;
 
--(NSMutableArray*)findPlanBySportID:(NSString *)sportID;
 
--(BOOL)isExistImage:(NSString*)sportID;
-
--(NSArray *)getDirtyPic;
-
+- (NSDictionary *)getjsonByRemote:(NSString*)url;
 @end

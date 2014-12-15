@@ -10,4 +10,10 @@
 
 @interface CacheEntence : NSObject
 
+
+- (NSDictionary *)RequestRemoteURL:(NSString *)url;
+
+
+- (void)RequestRemoteURL:(NSString *)url paramters:(NSDictionary *) paramters Cache:(BOOL)cache success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
 @end

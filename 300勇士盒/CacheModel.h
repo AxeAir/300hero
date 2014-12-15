@@ -10,4 +10,8 @@
 
 @interface CacheModel : NSObject
 
+@property (nonatomic, strong) NSString * remoteURL;
+@property (nonatomic, strong) NSNumber * expiryDate;
+@property (nonatomic, strong) NSDictionary * returnJson;
+
 @end

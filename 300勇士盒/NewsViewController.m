@@ -13,8 +13,9 @@
 #import "NewsTableViewController.h"
 #import "HeaderScrollView.h"
 #import "NewsTableViewCell.h"
+#import "NewsWebViewController.h"
 
-@interface NewsViewController ()<HYSegmentedControlDelegate>
+@interface NewsViewController ()<HYSegmentedControlDelegate,NewsTableViewControllerDelegate>
 
 @property (nonatomic, strong) HYSegmentedControl *segment;
 @property (nonatomic, strong) NewsTableViewController *news;
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) HeaderScrollView *header;
 
 @property (nonatomic, assign) NSInteger cuuentSegment;
+@property (nonatomic, strong) NewsWebViewController *webView;
 
 @end
 
@@ -29,6 +31,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self initnavgation];
+    [self layout];
+}
+
+
+- (void)initnavgation
+{
     self.title=@"最新资讯";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
@@ -36,32 +46,31 @@
     self.navigationItem.leftBarButtonItem=left;
     [self.view  setBackgroundColor:BACKGROUND_COLOR];
     
-    [self layout];
 }
-
 
 -(void)layout
 {
     _cuuentSegment = 0;
-    _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁", @"靓照", @"囧途", @"壁纸"] delegate:self];
+    //_segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁", @"靓照", @"囧途", @"壁纸"] delegate:self];
+    _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁"] delegate:self];
     [self.view addSubview:_segment];
     
     _news=[[NewsTableViewController alloc] initWithHeader:NewsTypeHeader];
     [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40)];
-    
+    _news.delegate=self;
     [self.view addSubview:_news.tableView];
     
 }
 
-
-
-
+- (void)clickcell2web:(NSInteger)pageID
+{
+    _webView=[[NewsWebViewController alloc] initWithPageID:pageID];
+    [self.navigationController pushViewController:_webView animated:YES];
+}
 
 
 -(void)hySegmentedControlSelectAtIndex:(NSInteger)index
 {
-    NSLog(@"%d",index);
-    
     if (index==_cuuentSegment) {
     
     }
@@ -78,21 +87,14 @@
                 break;
             case 1:
             {
-                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
+                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeVIDEO];
                 
             }
                 break;
                 
             case 2:
             {
-                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
-                
-            }
-                break;
-                
-            case 3:
-            {
-                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeHeader];
+                _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeBD];
                 
             }
                 break;

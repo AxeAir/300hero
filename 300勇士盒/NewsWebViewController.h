@@ -10,4 +10,8 @@
 
 @interface NewsWebViewController : UIViewController
 
+
+- (instancetype)initWithPageID:(NSInteger)pageID;
+
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "NewsTableViewCell.h"
+#import <UIImageView+WebCache.h>
+#import "UConstants.h"
 @interface NewsTableViewCell()
 
 @property (nonatomic, strong) UIImageView *image;
@@ -23,47 +25,46 @@
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self layout];
+        
     }
     return self;
 }
 
--(void)layout
+-(void)layout:(NewsModel *)news
 {
-    _image=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img1.jpg"]];
-    [_image setFrame:CGRectMake(10, 10, 80, 60)];
-    [self addSubview:_image];
+    _image=[[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 80, 60)];
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,news.img]];
+    [_image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+    [self.contentView addSubview:_image];
     
     _headerone=[[UILabel alloc] initWithFrame:CGRectMake(100, 12, 200, 20)];
-    [_headerone setText:@"梁逸峰自杀身亡"];
+    [_headerone setText:news.title];
     [_headerone setFont:[UIFont boldSystemFontOfSize:16]];
-    [self addSubview:_headerone];
+    [self.contentView addSubview:_headerone];
     
     _headertwo=[[UILabel alloc] initWithFrame:CGRectMake(100, 35, 200, 20)];
-    [_headertwo setText:@"梁逸峰连输1000把自杀身亡"];
+    [_headertwo setText:news.subTitle];
     [_headertwo setFont:[UIFont boldSystemFontOfSize:12]];
     [_headertwo setTextColor:[UIColor grayColor]];
-    [self addSubview:_headertwo];
+    [self.contentView addSubview:_headertwo];
     
     _readcount=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-110, 60, 100, 20)];
     [_readcount setTextAlignment:NSTextAlignmentRight];
     [_readcount setTextColor:[UIColor grayColor]];
-    [_readcount setText:@"阅读量13亿"];
+    [_readcount setText:[NSString stringWithFormat:@"阅读量%ld",news.pageViews]];
     [_readcount setFont:[UIFont boldSystemFontOfSize:12]];
-    [self addSubview:_readcount];
-    
+    [self.contentView addSubview:_readcount];
 }
 
 
 
 - (void)awakeFromNib {
-    // Initialization code
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

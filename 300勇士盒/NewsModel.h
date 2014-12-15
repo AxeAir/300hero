@@ -10,4 +10,20 @@
 
 @interface NewsModel : NSObject
 
+
+@property (nonatomic, strong) NSString  *author;
+@property (nonatomic, strong) NSString  *content;
+@property (nonatomic, strong) NSString  *editDate;
+@property (nonatomic, assign) NSInteger newsid;
+@property (nonatomic, strong) NSString  *img;
+@property (nonatomic, assign) NSInteger like;
+@property (nonatomic, assign) NSInteger pageViews;
+@property (nonatomic, strong) NSString  *subTitle;
+@property (nonatomic, strong) NSString  *title;
+@property (nonatomic, assign) NSInteger type;
+
+
+
++ (NSArray*)getlatestNews:(NSDictionary *)dic;
+
 @end

@@ -11,13 +11,22 @@
 #import "HeaderScrollView.h"
 #import "UConstants.h"
 #import "MJRefresh.h"
-
-
+#import <AFHTTPRequestOperationManager.h>
+#import "NewsModel.h"
+#import "NewsWebViewController.h"
+#import "CacheDAO.h"
+#import "CacheEntence.h"
 
 
 @interface NewsTableViewController ()
 @property (nonatomic,strong) HeaderScrollView *header;
 @property (nonatomic, assign) NSInteger count;
+
+@property (nonatomic, strong) NSArray *newsData;
+@property (nonatomic, assign) NSInteger newsType;
+
+
+
 
 @end
 
@@ -31,7 +40,8 @@
     if (self) {
         _header=[[HeaderScrollView alloc] initWithFrame:CGRectMake(0,0, Main_Screen_Width, 150)];
         self.tableView.tableHeaderView=_header;
-        
+        _newsType=NewsType;
+        [self getDate:NewsType endRefresh:NO cache:YES];
     }
     return self;
 }
@@ -40,20 +50,79 @@
 {
     self=[super initWithStyle:UITableViewStylePlain];
     if (self) {
-        
+        _newsType=NewsType;
+        [self getDate:NewsType endRefresh:NO cache:YES];
     }
     return self;
 }
 
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _count=10;
     [self steup];
+
+}
+
+
+- (void)getDate:(NSInteger)NewsType endRefresh:(BOOL)endRefresh cache:(BOOL)cache
+{
+    NSString *url=[NSString stringWithFormat:@"%@/getPageList/?newsType=%ld",DEBUG_URL,(long)NewsType];
+    
+    CacheEntence *enter=[[CacheEntence alloc] init];
+    [enter RequestRemoteURL:url paramters:nil Cache:cache success:^(id responseObject) {
+        _newsData=[NewsModel getlatestNews:[responseObject objectForKey:@"Result"]];
+        [_header setHeaderImage:_newsData];
+        if (endRefresh) {
+            [self.tableView headerEndRefreshing];
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        if (endRefresh) {
+            [self.tableView headerEndRefreshing];
+        }
+    }];
     
     
-  
+}
+
+
+- (void)pullUp
+{
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NewsModel *news=[_newsData lastObject];
+    
+    NSString *url=[NSString stringWithFormat:@"%@/getPageList/?newsType=%ld&&index=%ld",DEBUG_URL,(long)_newsType,(long)news.newsid];
+
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        NSString *status=[responseObject objectForKey:@"Status"];
+        if ([status isEqualToString:@"OK"]) {
+        
+            NSArray *temp10=[NewsModel getlatestNews:[responseObject objectForKey:@"Result"]];
+            NSMutableArray *current=[[NSMutableArray alloc] initWithArray:_newsData];
+            [current addObjectsFromArray:temp10];
+            _newsData=current;
+            
+            CacheDAO *dao=[CacheDAO new];
+            CacheModel *model=[[CacheModel alloc] init];
+            model.remoteURL=url;
+            model.returnJson=(NSDictionary*)responseObject;
+            [dao create:model];
+            [self.tableView reloadData];
+            [self.tableView footerEndRefreshing];
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.tableView footerEndRefreshing];
+    }];
+    
 }
 
 - (void)steup
@@ -84,14 +153,12 @@
 #pragma mark Refreshing
 - (void)headerRereshing
 {
-    [self.tableView headerEndRefreshing];
+    [self getDate:_newsType endRefresh:YES cache:NO];
 }
 
 - (void)footerRereshing
 {
-    _count+=10;
-    [self.tableView reloadData];
-    [self.tableView footerEndRefreshing];
+    [self pullUp];
     
 }
 
@@ -105,7 +172,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return _count;
+    return [_newsData count];
 }
 
 
@@ -117,12 +184,23 @@
     {
         cell=[[NewsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
+    else
+    {
+        for (UIView *v in cell.contentView.subviews) {
+            [v removeFromSuperview];
+        }
+    }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    //cell.textLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row];
     
+    [cell layout:[_newsData objectAtIndex:indexPath.row]];
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewsModel *news = [_newsData objectAtIndex:indexPath.row];
+    [_delegate clickcell2web:news.newsid];
+}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

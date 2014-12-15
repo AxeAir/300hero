@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-#define NewsTypeHeader 1
+#define NewsTypeHeader 0
+#define NewsTypeHELP 1
+#define NewsTypeBD 2
+#define NewsTypeVIDEO 3
+@protocol NewsTableViewControllerDelegate;
+
 
 @interface NewsTableViewController : UITableViewController
 
 
 - (instancetype)initWithHeader:(NSInteger)NewsType;
 - (instancetype)initWithHeaderWithoutHeader:(NSInteger)NewsType;
+
+@property (nonatomic, weak) id<NewsTableViewControllerDelegate> delegate;
+@end
+
+
+@protocol NewsTableViewControllerDelegate
+
+- (void)clickcell2web:(NSInteger)pageID;
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsModel.h"
 
 @interface NewsTableViewCell : UITableViewCell
 
+- (void)layout:(NewsModel *)news;
 @end

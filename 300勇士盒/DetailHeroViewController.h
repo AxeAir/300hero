@@ -10,4 +10,5 @@
 
 @interface DetailHeroViewController : UIViewController
 
+- (instancetype) initWithHeroID:(NSInteger)heroID;
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailHero.h"
 
 @interface DetailHeader : UIView
+
+- (instancetype)initWithHero:(DetailHero *)hero;
 
 @end

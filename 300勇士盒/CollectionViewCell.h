@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HeroListModel.h"
 @interface CollectionViewCell : UICollectionViewCell
 
+- (void)layout:(HeroListModel *)hero;
 @end

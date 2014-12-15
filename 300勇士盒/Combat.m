@@ -45,7 +45,6 @@
 {
     NSInteger winScore=2*pow((double)win, 0.9);
    
-    NSLog(@"%d",winScore);
     
     
     double winRatio=(double)win/all;
@@ -65,8 +64,7 @@
     
     //750+100*(winRatio-50)^0.7；如果胜率低于50%，胜率加成分公式：750 -(100*(50-$winRatio)^0.7)。胜率加成分下面用winRatioScore代替.
     
-    NSLog(@"%d",rateScore);
-    return [NSString stringWithFormat:@"%d",winScore+rateScore];
+    return [NSString stringWithFormat:@"%ld",(long)winScore+rateScore];
     
 }
 

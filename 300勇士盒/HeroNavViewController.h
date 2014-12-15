@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HeroViewController : UINavigationController
+@interface HeroNavViewController : UINavigationController
 
 @end

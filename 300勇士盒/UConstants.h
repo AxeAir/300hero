@@ -140,9 +140,9 @@
 #define YELLO_APP [UIColor colorWithRed:255/255 green:148.0/255 blue:28.0/255 alpha:1]
 
 
-#define DEBUG_URL
+#define DEBUG_URL @"http://218.244.143.212:8520/"
 #define HERO300_URL(v) [NSString stringWithFormat:@"http://300report.jumpw.com/api/%@",(v)]
-;
+
 
 // UIView - viewWithTag 通过tag值获得子视图
 #define VIEWWITHTAG(_OBJECT,_TAG)   [_OBJECT viewWithTag : _TAG]

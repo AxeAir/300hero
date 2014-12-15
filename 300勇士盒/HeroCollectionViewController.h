@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HeroCollectionViewController : UICollectionViewController
+@interface HeroCollectionViewController : UIViewController
 
 @end

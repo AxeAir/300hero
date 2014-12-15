@@ -54,8 +54,6 @@
     self.manager=[AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     [self.manager GET:@"http://218.244.143.212:8520/getRank/?id=-1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"fff");
-        
         NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
         NSArray *List=[Rank objectForKey:@"List"];
         

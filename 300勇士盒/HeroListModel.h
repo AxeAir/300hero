@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HeroList : NSObject
+@interface HeroListModel : NSObject
+
+@property (nonatomic, assign) NSInteger heroid;
+@property (nonatomic, strong) NSString  *img;
+@property (nonatomic, strong) NSString  *name;
+@property (nonatomic, strong) NSString  *type;
+@property (nonatomic, strong) NSString  *atk_type;
+
++ (NSArray*)getHerolist:(NSDictionary *)dic;
 
 @end

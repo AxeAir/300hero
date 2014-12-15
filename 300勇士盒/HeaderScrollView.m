@@ -7,7 +7,9 @@
 //
 
 #import "HeaderScrollView.h"
-
+#import <UIImageView+WebCache.h>
+#import "UConstants.h"
+#import "NewsModel.h"
 @interface HeaderScrollView()<UIScrollViewDelegate>
 
 
@@ -35,6 +37,47 @@
         [self createScroll];
     }
     return self;
+}
+
+- (void)setHeaderImage:(NSArray *)array
+{
+    //图片的宽
+    CGFloat imageW = self.frame.size.width;
+    //CGFloat imageW = 300;
+    //    图片高
+    CGFloat imageH = self.frame.size.height;
+    //    图片的Y
+    CGFloat imageY = 0;
+    //    图片中数
+    NSInteger totalCount;
+    if ([array count]>=5) {
+        totalCount=5;
+    }
+    else
+    {
+        totalCount=[array count];
+    }
+    
+    //   1.添加5张图片
+    for (int i = 0; i < totalCount; i++) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        //图片X
+        CGFloat imageX = i * imageW;
+        //设置frame
+        imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
+        //设置图片
+        NewsModel *model=array[i];
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,model.img]];
+        [imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+        //隐藏指示条
+        _scrollview.showsHorizontalScrollIndicator = NO;
+        [_scrollview addSubview:imageView];
+    }
+    
+    //    2.设置scrollview的滚动范围
+    CGFloat contentW = totalCount *imageW;
+    //不允许在垂直方向上进行滚动
+    _scrollview.contentSize = CGSizeMake(contentW, 0);
 }
 
 -(void)createScroll

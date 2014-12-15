@@ -10,4 +10,20 @@
 
 @implementation DetailSkill
 
+- (instancetype)initWithDictionary:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        _cooling = [dic objectForKey:@"cooling"];
+        _desc = [dic objectForKey:@"desc"];
+        _hero = [dic objectForKey:@"hero"];
+        _cost = [dic objectForKey:@"cost"];
+        _img = [dic objectForKey:@"img"];
+        _name = [dic objectForKey:@"name"];
+        _shortcut = [dic objectForKey:@"shortcut"];
+        
+    }
+    return self;
+}
+
 @end

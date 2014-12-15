@@ -10,4 +10,14 @@
 
 @interface DetailSkill : NSObject
 
+@property (nonatomic, strong) NSString *cooling;
+@property (nonatomic, strong) NSString *desc;
+@property (nonatomic, strong) NSString *hero;
+@property (nonatomic, strong) NSString *cost;
+@property (nonatomic, strong) NSString *img;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *shortcut;
+
+
+- (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
+- (void)setHeaderImage:(NSArray *)array;
+
 @end

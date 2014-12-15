@@ -30,10 +30,10 @@
     sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
     sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
     //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    //sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
+    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item6 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
     
-    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5, nil];
+    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5,item6, nil];
     itemsArray=arr;
     
     
@@ -161,6 +161,21 @@
             }
             break;
         case 4:
+        {
+            if([[self.sideMenuController getContent] isKindOfClass:[HeroViewController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _hero=[[HeroCollectionViewController alloc] init];
+                _heroNav=[[HeroNavViewController alloc] initWithRootViewController:_hero];
+                [self.sideMenuController setContentController:_heroNav animted:YES];
+            }
+            
+        }
+            break;
+        case 5:
             if([[self.sideMenuController getContent] isKindOfClass:[AboutNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];

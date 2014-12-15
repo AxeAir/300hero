@@ -29,6 +29,10 @@
 
 #import "OtherViewController.h"
 #import "SearchViewController.h"
+
+#import "HeroCollectionViewController.h"
+#import "HeroNavViewController.h"
+
 @interface SideMenuTableView : UIViewController
 
 @property (nonatomic,strong) UITableView *table;
@@ -51,6 +55,9 @@
 
 @property (nonatomic, strong) NewsNavViewController *newsnav;
 @property (nonatomic, strong) NewsViewController *news;
+
+@property (nonatomic, strong) HeroNavViewController *heroNav;
+@property (nonatomic, strong) HeroCollectionViewController *hero;
 
 
 @property (nonatomic,strong) RankNavController *rankNav;

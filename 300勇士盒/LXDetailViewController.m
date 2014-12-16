@@ -46,8 +46,7 @@
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-    NSLog(@"%d",_ID);
-    [manager GET:[NSString stringWithFormat:@"http://218.244.143.212:8520/getRank/?id=%ld",(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"%@getRank/?id=%ld",DEBUG_URL,(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"%@",responseObject);
         

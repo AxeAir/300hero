@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UILabel *skillDesc;
 @property (nonatomic, strong) UILabel *skillcost;
 @property (nonatomic, strong) UILabel *skillcooling;
+
+@property (nonatomic, strong) UILabel *heroDes;
 @end
 
 @implementation DetailDescription
@@ -42,12 +44,23 @@
         if (type==1) {
             
         }
+        if (type==2) {
+            [self heroDesc];
+        }
+        
         
     }
     return self;
 }
 
 
+
+#pragma private method desc
+- (void)heroDesc
+{
+    _heroDes=[self getLabel:CGPointMake(10, MaxY(_skillcooling)+5) text:_hero.desc offset:20];
+    [self addSubview:_heroDes];
+}
 
 
 
@@ -106,7 +119,7 @@
     [desc setTextColor:RGBCOLOR(153, 153, 153)];
     [self addSubview:desc];
     
-    _skillDesc=[self getLabel:CGPointMake(50, MaxY(_skillName)+5) text:sk.desc];
+    _skillDesc=[self getLabel:CGPointMake(50, MaxY(_skillName)+5) text:sk.desc offset:60];
     [self addSubview:_skillDesc];
     
     UILabel *cd=[[UILabel alloc] initWithFrame:CGRectMake(10, MaxY(_skillDesc)+4, 40, 20)];
@@ -115,7 +128,7 @@
     [cd setTextColor:RGBCOLOR(153, 153, 153)];
     [self addSubview:cd];
     
-    _skillcooling=[self getLabel:CGPointMake(50, MaxY(_skillDesc)+5) text:sk.cooling];
+    _skillcooling=[self getLabel:CGPointMake(50, MaxY(_skillDesc)+5) text:sk.cooling offset:60];
     [self addSubview:_skillcooling];
     
     UILabel *xh=[[UILabel alloc] initWithFrame:CGRectMake(10, MaxY(_skillcooling)+4, 40, 20)];
@@ -124,7 +137,7 @@
     [xh setTextColor:RGBCOLOR(153, 153, 153)];
     [self addSubview:xh];
     
-    _skillcost=[self getLabel:CGPointMake(50, MaxY(_skillcooling)+5) text:sk.cost];
+    _skillcost=[self getLabel:CGPointMake(50, MaxY(_skillcooling)+5) text:sk.cost offset:60];
     [self addSubview:_skillcost];
     
     
@@ -133,7 +146,7 @@
     
 }
 
-- (UILabel *)getLabel:(CGPoint)point text:(NSString *)text
+- (UILabel *)getLabel:(CGPoint)point text:(NSString *)text offset:(NSInteger)offset
 {
     //初始化label
     
@@ -148,7 +161,7 @@
     label.font = [UIFont systemFontOfSize:14];
     
     // 根据获取到的字符串以及字体计算label需要的size
-    CGSize size = [self boundingRectWithSize:CGSizeMake(Main_Screen_Width-60, 0) font:label.font text:text];
+    CGSize size = [self boundingRectWithSize:CGSizeMake(Main_Screen_Width-offset, 0) font:label.font text:text];
     
     // 设置无限换行
     label.numberOfLines = 0;
@@ -157,6 +170,7 @@
     label.frame = CGRectMake(point.x, point.y, size.width, size.height);
     return label;
 }
+
 
 - (CGSize)boundingRectWithSize:(CGSize)size font:(UIFont*)font text:(NSString *)text
 {

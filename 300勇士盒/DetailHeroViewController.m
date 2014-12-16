@@ -13,6 +13,7 @@
 #import "UConstants.h"
 #import "DetailDescription.h"
 #import "HYSegmentedControl.h"
+#import "JGProgressHUD.h"
 
 @interface DetailHeroViewController ()<HYSegmentedControlDelegate>
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) DetailHero *hero;
 @property (nonatomic, strong) DetailDescription *content;
 @property (nonatomic, strong) DetailHeader *header;
+@property (nonatomic, strong) JGProgressHUD *HUD;
 
 @end
 
@@ -44,19 +46,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getData];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)getData
 {
+//    _HUD=[[JGProgressHUD alloc] init];
+//    _HUD.textLabel.text=@"载入中";
+//    [_HUD showInView:self.view];
     NSString *URL=[NSString stringWithFormat:@"http://219.153.64.13:8520/getHeroDetail/?heroID=%ld",(long)_heroID];
     [_entence RequestRemoteURL:URL paramters:nil Cache:YES success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        
+//        _HUD.indicatorView = nil;
+//        _HUD.textLabel.text = @"Done";
+//        _HUD.position = JGProgressHUDPositionCenter;
         _hero = [[DetailHero alloc] initWithDictionary:[responseObject objectForKey:@"Result"]];
-        NSLog(@"%@",_hero);
         [self layout];
+//        [_HUD dismissAfterDelay:1.0];
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
+//        [_HUD dismissAfterDelay:1.0];
     }];
 }
 

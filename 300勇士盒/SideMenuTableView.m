@@ -30,7 +30,7 @@
     sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
     sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
     //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"fire"]];
     sigleMenu *item6 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
     
     NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5,item6, nil];

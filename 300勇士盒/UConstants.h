@@ -140,7 +140,7 @@
 #define YELLO_APP [UIColor colorWithRed:255/255 green:148.0/255 blue:28.0/255 alpha:1]
 
 
-#define DEBUG_URL @"http://218.244.143.212:8520/"
+#define DEBUG_URL @"http://219.153.64.13:8520/"
 #define HERO300_URL(v) [NSString stringWithFormat:@"http://300report.jumpw.com/api/%@",(v)]
 
 

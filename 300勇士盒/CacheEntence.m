@@ -54,7 +54,12 @@
     {
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"不使用缓存");
+            CacheDAO *dao=[CacheDAO new];
+            CacheModel *model=[[CacheModel alloc] init];
+            model.remoteURL=url;
+            model.returnJson=(NSDictionary*)responseObject;
+            [dao create:model];
+            NSLog(@"不存在缓存,存入缓存");
             success(responseObject);
             
             

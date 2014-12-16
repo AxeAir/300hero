@@ -81,6 +81,7 @@
             case 0:
             {
                 _news=[[NewsTableViewController alloc] initWithHeader:NewsTypeHeader];
+                _news.delegate=self;
                 
                 
             }
@@ -88,14 +89,14 @@
             case 1:
             {
                 _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeVIDEO];
-                
+                _news.delegate=self;
             }
                 break;
                 
             case 2:
             {
                 _news=[[NewsTableViewController alloc] initWithHeaderWithoutHeader:NewsTypeBD];
-                
+                _news.delegate=self;
             }
                 break;
                 

@@ -53,7 +53,8 @@
 {
     self.manager=[AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
-    [self.manager GET:@"http://218.244.143.212:8520/getRank/?id=-1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [self.manager GET:[NSString stringWithFormat:@"%@getRank/?id=-1",DEBUG_URL]parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
         NSArray *List=[Rank objectForKey:@"List"];
         
@@ -114,19 +115,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-
+    
     
     RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"%ld",(long)cell.RankID);
     
-        _detail=[[LXDetailViewController alloc] init];
+    _detail=[[LXDetailViewController alloc] init];
     
-        _detail.ID=indexPath.row;
-        [self.navigationController pushViewController:_detail animated:YES];
+    _detail.ID=indexPath.row;
+    [self.navigationController pushViewController:_detail animated:YES];
     
-//    RankDetailViewController *rank=[[RankDetailViewController alloc] init];
-//    rank.ID=cell.RankID;
-//    [self.navigationController pushViewController:rank animated:YES];
+    //    RankDetailViewController *rank=[[RankDetailViewController alloc] init];
+    //    rank.ID=cell.RankID;
+    //    [self.navigationController pushViewController:rank animated:YES];
     
 }
 

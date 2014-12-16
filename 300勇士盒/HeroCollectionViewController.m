@@ -11,7 +11,7 @@
 #import "CollectionViewCell.h"
 #import "UConstants.h"
 #import "HYSegmentedControl.h"
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import <AFHTTPRequestOperationManager.h>
 #import "UConstants.h"
 #import "HeroListModel.h"
 #import "DetailHeroViewController.h"

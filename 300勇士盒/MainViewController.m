@@ -19,7 +19,6 @@
 #import "PercentageChart.h"
 #import "UConstants.h"
 #import "Combat.h"
-#import <ShareSDK/ShareSDK.h>
 
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>

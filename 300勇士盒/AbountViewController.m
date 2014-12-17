@@ -61,12 +61,11 @@
     version.layer.borderWidth=1;
     version.layer.borderColor=[UIColor grayColor].CGColor;
     [version setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [version setTitle:@"当前版本V1.0 检查更新" forState:UIControlStateNormal];
+    [version setTitle:@"当前版本V1.1 检查更新" forState:UIControlStateNormal];
     
     [self.view addSubview:version];
-    
- 
-    
+
+
     
 }
 

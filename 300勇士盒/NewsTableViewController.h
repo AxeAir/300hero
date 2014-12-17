@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #define NewsTypeHeader 0
-#define NewsTypeHELP 1
 #define NewsTypeBD 2
-#define NewsTypeVIDEO 3
+#define NewsTypeVIDEO 1
+#define NewsTypeHELP 3
+
+
 @protocol NewsTableViewControllerDelegate;
 
 

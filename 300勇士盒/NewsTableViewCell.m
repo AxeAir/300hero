@@ -53,7 +53,7 @@
     [_readcount setTextColor:[UIColor grayColor]];
     [_readcount setText:[NSString stringWithFormat:@"阅读量%ld",news.pageViews]];
     [_readcount setFont:[UIFont boldSystemFontOfSize:12]];
-    [self.contentView addSubview:_readcount];
+    //[self.contentView addSubview:_readcount];
 }
 
 

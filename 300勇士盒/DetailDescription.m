@@ -42,10 +42,10 @@
             _currentskill = 0;
         }
         if (type==1) {
-            
+            [self heroDesc];
         }
         if (type==2) {
-            [self heroDesc];
+            
         }
         
         

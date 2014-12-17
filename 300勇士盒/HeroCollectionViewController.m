@@ -43,7 +43,8 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     flowLayout.sectionInset = UIEdgeInsetsMake(5, 10.0, 5, 10.0);
     
-    _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"免费英雄", @"全部英雄", @"英雄收藏"] delegate:self];
+    _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"免费英雄", @"全部英雄"] delegate:self];
+//    _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"免费英雄", @"全部英雄", @"英雄收藏"] delegate:self];
     [self.view addSubview:_segment];
 
     

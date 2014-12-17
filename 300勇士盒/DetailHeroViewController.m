@@ -79,7 +79,8 @@
     [self.view addSubview:_header];
     
     
-    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"出装", @"介绍"] delegate:self];
+    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"介绍"] delegate:self];
+//    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"出装", @"介绍"] delegate:self];
     _segment.delegate=self;
     [self.view addSubview:_segment];
     

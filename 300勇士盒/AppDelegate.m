@@ -37,7 +37,6 @@
     //统计应用启动情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];

@@ -73,7 +73,7 @@
     [_scrollView addSubview:time];
     
     
-    UILabel *wincount=[[UILabel alloc] initWithFrame:CGRectMake(50, MaxY(time), 40, 60)];
+    UILabel *wincount=[[UILabel alloc] initWithFrame:CGRectMake(50, MaxY(time), 60, 60)];
     wincount.text=[NSString stringWithFormat:@"%lu",(unsigned long)match.WinSideKill];
     wincount.font=[UIFont systemFontOfSize:30];
     wincount.textColor=[UIColor greenColor];

@@ -24,7 +24,7 @@
     
     if (dictionary!=nil) {
         NSLog(@"正在更新缓存");
-        [archiver encodeObject:dictionary forKey:@"json"];
+        [archiver encodeObject:cache.returnJson forKey:@"json"];
         [archiver finishEncoding];
     }
     else

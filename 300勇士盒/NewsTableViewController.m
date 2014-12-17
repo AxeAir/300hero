@@ -71,11 +71,17 @@
 - (void)getDate:(NSInteger)NewsType endRefresh:(BOOL)endRefresh cache:(BOOL)cache
 {
     NSString *url=[NSString stringWithFormat:@"%@/getPageList/?newsType=%ld",DEBUG_URL,(long)NewsType];
-    
+    NSLog(@"%@",url);
     CacheEntence *enter=[[CacheEntence alloc] init];
     [enter RequestRemoteURL:url paramters:nil Cache:cache success:^(id responseObject) {
+        
+        NSLog(@"%@",responseObject);
         _newsData=[NewsModel getlatestNews:[responseObject objectForKey:@"Result"]];
-        [_header setHeaderImage:_newsData];
+        
+        if (NewsType==0) {
+            [_header setHeaderImage:_newsData];
+        }
+        
         if (endRefresh) {
             [self.tableView headerEndRefreshing];
         }

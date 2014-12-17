@@ -15,6 +15,7 @@
 #import "UConstants.h"
 #import "HeroListModel.h"
 #import "DetailHeroViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 
 @interface HeroCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HYSegmentedControlDelegate>
@@ -77,6 +78,15 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [AVAnalytics beginLogPageView:@"英雄页面"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [AVAnalytics endLogPageView:@"英雄页面"];
+}
 
 - (void)collectionconfig
 {

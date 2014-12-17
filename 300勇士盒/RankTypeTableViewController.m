@@ -13,6 +13,7 @@
 #import "RankDetailViewController.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "UConstants.h"
+#import <AVOSCloud/AVOSCloud.h>
 @interface RankTypeTableViewController ()
 {
     NSArray *dataArray;
@@ -40,9 +41,18 @@
     [self getData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [AVAnalytics beginLogPageView:@"排名页面"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [AVAnalytics endLogPageView:@"排名页面"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

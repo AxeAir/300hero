@@ -54,7 +54,6 @@
 		E5A3922819F51773001330B3 /* AboutNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A3922719F51773001330B3 /* AboutNavViewController.m */; };
 		E5A4BE8B19DF118D000BFE8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8A19DF118D000BFE8E /* main.m */; };
 		E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */; };
-		E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE9019DF118D000BFE8E /* ViewController.m */; };
 		E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A4BE9519DF118D000BFE8E /* Images.xcassets */; };
 		E5A4BEA519DF118D000BFE8E /* _00___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BEA419DF118D000BFE8E /* _00___Tests.m */; };
 		E5BA34DB19E3B87B00CB8165 /* SideMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34DA19E3B87B00CB8165 /* SideMenuTableView.m */; };
@@ -70,7 +69,6 @@
 		E5BA35F519E704AE00CB8165 /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA35F319E704AE00CB8165 /* burger@2x.png */; };
 		E5BA35FA19E70BDF00CB8165 /* CHSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35F719E70BDF00CB8165 /* CHSideMenu.m */; };
 		E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35F919E70BDF00CB8165 /* UIViewController+CHSideMenu.m */; };
-		E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA35FD19E8190A00CB8165 /* SecondViewController.m */; };
 		E5BA360219E8417400CB8165 /* MainNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360119E8417400CB8165 /* MainNavgationController.m */; };
 		E5BA360619E8457E00CB8165 /* ToolNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360519E8457E00CB8165 /* ToolNavgationController.m */; };
 		E5BA360919E845BE00CB8165 /* ToolTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA360819E845BE00CB8165 /* ToolTableViewController.m */; };
@@ -290,8 +288,6 @@
 		E5A4BE8A19DF118D000BFE8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E5A4BE8F19DF118D000BFE8E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E5A4BE9019DF118D000BFE8E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E5A4BE9519DF118D000BFE8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E5A4BE9E19DF118D000BFE8E /* 300勇士盒Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "300勇士盒Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A4BEA319DF118D000BFE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -313,8 +309,6 @@
 		E5BA35F719E70BDF00CB8165 /* CHSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSideMenu.m; sourceTree = "<group>"; };
 		E5BA35F819E70BDF00CB8165 /* UIViewController+CHSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CHSideMenu.h"; sourceTree = "<group>"; };
 		E5BA35F919E70BDF00CB8165 /* UIViewController+CHSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CHSideMenu.m"; sourceTree = "<group>"; };
-		E5BA35FC19E8190A00CB8165 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		E5BA35FD19E8190A00CB8165 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		E5BA360019E8417400CB8165 /* MainNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavgationController.h; sourceTree = "<group>"; };
 		E5BA360119E8417400CB8165 /* MainNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavgationController.m; sourceTree = "<group>"; };
 		E5BA360419E8457E00CB8165 /* ToolNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolNavgationController.h; sourceTree = "<group>"; };
@@ -809,10 +803,6 @@
 				E5C9BF451A37657900A9B9D5 /* Hero */,
 				E5A3921E19F4F9B4001330B3 /* Setting */,
 				E5BA360A19E850E600CB8165 /* SearchView */,
-				E5A4BE8F19DF118D000BFE8E /* ViewController.h */,
-				E5A4BE9019DF118D000BFE8E /* ViewController.m */,
-				E5BA35FC19E8190A00CB8165 /* SecondViewController.h */,
-				E5BA35FD19E8190A00CB8165 /* SecondViewController.m */,
 				E5A4BE9519DF118D000BFE8E /* Images.xcassets */,
 				E5A4BE8819DF118D000BFE8E /* Supporting Files */,
 			);
@@ -1335,7 +1325,6 @@
 				E5C9BF481A37658F00A9B9D5 /* HeroCollectionViewController.m in Sources */,
 				E5BA366719EBBA0A00CB8165 /* MatchModel.m in Sources */,
 				E5BA361C19E90D2E00CB8165 /* RankTypeModel.m in Sources */,
-				E5A4BE9119DF118D000BFE8E /* ViewController.m in Sources */,
 				E52FFE331A398DB500046D5F /* CacheEntence.m in Sources */,
 				E5BA36B519EE42EB00CB8165 /* UIView+MJExtension.m in Sources */,
 				E5C9BEF11A35DB9700A9B9D5 /* NewsViewController.m in Sources */,
@@ -1371,7 +1360,6 @@
 				E5F7FA151A3F4CF300D80349 /* JGProgressHUD.m in Sources */,
 				E5BA36B319EE42EB00CB8165 /* UIScrollView+MJExtension.m in Sources */,
 				E5BA36B419EE42EB00CB8165 /* UIScrollView+MJRefresh.m in Sources */,
-				E5BA35FE19E8190A00CB8165 /* SecondViewController.m in Sources */,
 				E5BA35FB19E70BDF00CB8165 /* UIViewController+CHSideMenu.m in Sources */,
 				E5C9BEEE1A35DB7A00A9B9D5 /* NewsNavViewController.m in Sources */,
 				E52FFE291A39320700046D5F /* CacheDAO.m in Sources */,

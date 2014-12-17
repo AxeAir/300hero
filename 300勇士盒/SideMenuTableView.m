@@ -9,7 +9,6 @@
 #import "SideMenuTableView.h"
 #import "sigleMenu.h"
 #import "UIViewController+CHSideMenu.h"
-#import "SecondViewController.h"
 #import "UConstants.h"
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>

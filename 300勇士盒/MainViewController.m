@@ -19,6 +19,7 @@
 #import "PercentageChart.h"
 #import "UConstants.h"
 #import "Combat.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
@@ -242,9 +243,19 @@
     [self loadTheData:rolename];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [AVAnalytics beginLogPageView:@"main页面"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [AVAnalytics endLogPageView:@"main页面"];
+}
+
 -(void)wenhao
 {
-    NSLog(@"fff");
+    
 }
 
 -(void)loadTheData:(NSString*)rolename
@@ -294,7 +305,8 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];
-    [manager GET:@"http://218.244.143.212:8520/update/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager GET:[NSString stringWithFormat:@"%@/update/",DEBUG_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSString *Result=[responseObject objectForKey:@"Result"];
         if([Result isEqualToString:@"OK"])
@@ -346,7 +358,7 @@
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
     //NSLog(@"%@",[NSString stringWithFormat:@"http://192.168.1.104:8000/getPlayerData/%@",rolename]);
     
-    [manager GET:@"http://218.244.143.212:8520/getPlayerData/" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"%@/getPlayerData/",DEBUG_URL] parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_LodingActivityIndicator stopAnimating];
         NSString *result=[responseObject objectForKey:@"Result"];
         

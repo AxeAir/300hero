@@ -14,6 +14,7 @@
 #import "HeaderScrollView.h"
 #import "NewsTableViewCell.h"
 #import "NewsWebViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface NewsViewController ()<HYSegmentedControlDelegate,NewsTableViewControllerDelegate>
 
@@ -60,6 +61,16 @@
     _news.delegate=self;
     [self.view addSubview:_news.tableView];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [AVAnalytics beginLogPageView:@"新闻页面"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [AVAnalytics endLogPageView:@"新闻页面"];
 }
 
 - (void)clickcell2web:(NSInteger)pageID

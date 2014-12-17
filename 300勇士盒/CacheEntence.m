@@ -59,7 +59,7 @@
             model.remoteURL=url;
             model.returnJson=(NSDictionary*)responseObject;
             [dao create:model];
-            NSLog(@"不存在缓存,存入缓存");
+            NSLog(@"更新缓存,存入缓存");
             success(responseObject);
             
             

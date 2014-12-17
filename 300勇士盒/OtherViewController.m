@@ -302,7 +302,8 @@
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];    [manager GET:@"http://218.244.143.212:8520/update/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];
+    [manager GET:[NSString stringWithFormat:@"%@/update/",DEBUG_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSString *Result=[responseObject objectForKey:@"Result"];
         if([Result isEqualToString:@"OK"])
@@ -352,7 +353,7 @@
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
     //NSLog(@"%@",[NSString stringWithFormat:@"http://192.168.1.104:8000/getPlayerData/%@",rolename]);
     
-    [manager GET:@"http://218.244.143.212:8520/getPlayerData/" parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"%@/getPlayerData/",DEBUG_URL] parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_LodingActivityIndicator stopAnimating];
         NSString *result=[responseObject objectForKey:@"Result"];
         

@@ -15,7 +15,6 @@
 #import "NewsViewController.h"
 #import "NewsNavViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
-#warning 请替换成自己的id和key 这样可以控制台中看到数据变化 https://cn.avoscloud.com/applist.html
 #define AVOSCloudAppID  @"tiyml8544dd5u6ieukgdvdncay59ay2xqyx200wjvpmpe7a5"
 #define AVOSCloudAppKey @"q7jph42jjonnvkizxnsan97ovsi72spz2p6ol4nxfej8xyxg"
 @interface AppDelegate ()
@@ -48,10 +47,6 @@
     CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:navController
                                                           menuController:menuController];
     self.window.rootViewController = sideMenu;
-    
-    
-    
-    
     return YES;
 }
 

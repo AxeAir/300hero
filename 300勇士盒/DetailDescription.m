@@ -140,7 +140,9 @@
     _skillcost=[self getLabel:CGPointMake(50, MaxY(_skillcooling)+5) text:sk.cost offset:60];
     [self addSubview:_skillcost];
     
+    NSLog(@"%f",MaxY(_skillcost));
     
+    [self setContentSize:CGSizeMake(Main_Screen_Width, MaxY(_skillcost)+200)];
     
     
     

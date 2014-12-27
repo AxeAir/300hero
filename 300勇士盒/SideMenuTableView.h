@@ -33,6 +33,8 @@
 #import "HeroCollectionViewController.h"
 #import "HeroNavViewController.h"
 
+#import "RegisterLoginNavViewController.h"
+#import "RegisterViewController.h"
 @interface SideMenuTableView : UIViewController
 
 @property (nonatomic,strong) UITableView *table;
@@ -59,8 +61,12 @@
 @property (nonatomic, strong) HeroNavViewController *heroNav;
 @property (nonatomic, strong) HeroCollectionViewController *hero;
 
+@property (nonatomic, strong) RegisterLoginNavViewController *registerNav;
+@property (nonatomic, strong) RegisterViewController *registerCV;
 
 @property (nonatomic,strong) RankNavController *rankNav;
 @property (nonatomic,strong) RankTypeTableViewController *rankTable;
 @property (nonatomic,strong) OtherViewController *other;
+
+
 @end

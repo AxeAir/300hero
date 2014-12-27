@@ -115,7 +115,7 @@
                 break;
         }
         _cuuentSegment=index;
-        [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40)];
+        [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-104)];
         
         [self.view addSubview:_news.tableView];
         

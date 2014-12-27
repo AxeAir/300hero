@@ -10,12 +10,13 @@
 #import "sigleMenu.h"
 #import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
+#import <AVUser.h>
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
 {
      NSArray *itemsArray;
 }
-
+@property (nonatomic, strong) UIImageView *headerView;
 @end
 
 @implementation SideMenuTableView
@@ -54,7 +55,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 64;
+    return 180;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -200,16 +201,45 @@
 {
   if(section==0)
   {
-      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 180)];
       view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
       
       UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
       searchbar.delegate=self;
       searchbar.backgroundImage=[UIImage imageNamed:@"background.png"];
       [view addSubview:searchbar];
+      
+      
+      _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"heater"]];
+      [_headerView setFrame:CGRectMake(60, MaxY(searchbar)+10, 80, 80)];
+      [[_headerView layer] setCornerRadius:40.0];
+      [[_headerView layer] setMasksToBounds:YES];
+      [[_headerView layer] setBorderColor:[UIColor whiteColor].CGColor];
+      [[_headerView layer] setBorderWidth:1.0];
+      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeader)];
+      [_headerView setUserInteractionEnabled:YES];
+      [_headerView addGestureRecognizer:tap];
+      [view addSubview:_headerView];
+      
       return view;
   }
     return nil;
+}
+
+
+- (void)clickHeader
+{
+    AVUser * currentUser = [AVUser currentUser];
+    if (currentUser != nil) {
+        // 允许用户使用应用
+    } else {
+        //缓存用户对象为空时， 可打开用户注册界面…
+        [self.sideMenuController hideMenuAnimated:YES];
+        _registerCV = [[RegisterViewController alloc] init];
+        //_registerNav = [[RegisterLoginNavViewController alloc] initWithRootViewController:_registerCV];
+        [self presentViewController:_registerCV animated:YES completion:nil];
+        //[self.sideMenuController setContentController:_registerNav animted:YES];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -221,6 +251,7 @@
              object:nil];
     
 }
+
 -(void)handleColorChange:(NSNotification*)sender{
     
     NSDictionary *dic=(NSDictionary*)sender.userInfo;
@@ -238,10 +269,14 @@
         
     }];
 }
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }
+
+
 
 
 

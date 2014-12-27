@@ -15,6 +15,9 @@
 #import "NewsViewController.h"
 #import "NewsNavViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudSNS.h>
+#import <AVOSCloud/AVInstallation.h>
+#import <AVUser+SNS.h>
 #define AVOSCloudAppID  @"tiyml8544dd5u6ieukgdvdncay59ay2xqyx200wjvpmpe7a5"
 #define AVOSCloudAppKey @"q7jph42jjonnvkizxnsan97ovsi72spz2p6ol4nxfej8xyxg"
 @interface AppDelegate ()
@@ -37,6 +40,32 @@
     //统计应用启动情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+//    AVUser * user = [AVUser user];
+//    user.username = @"steve";
+//    user.password =  @"f32@ds*@&dsa";
+//    user.email = @"steve@company.com";
+//    [user setObject:@"213-253-0000" forKey:@"phone"];
+//    
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            NSLog(@"注册成功");
+//            
+//        } else {
+//            
+//        }
+//    }];
+//    
+//    [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
+//        //you code here
+//        
+//        [object saveInBackground];
+//        [AVUser loginWithAuthData:object block:^(AVUser *user, NSError *error) {
+//            //返回AVUser
+//            
+//        }];
+//        
+//    }];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
@@ -46,8 +75,49 @@
     CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:navController
                                                           menuController:menuController];
     self.window.rootViewController = sideMenu;
+    
+    //ios7
+    
+    
+    
+    
+    if (FSystenVersion>=8.0) {
+        //IOS8
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
+                                                | UIUserNotificationTypeBadge
+                                                | UIUserNotificationTypeSound
+                                                                                 categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }
+    else
+    {
+        [application registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeBadge |
+         UIRemoteNotificationTypeAlert |
+         UIRemoteNotificationTypeSound];
+    }
+  
+    
+    
     return YES;
 }
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [AVOSCloudSNS handleOpenURL:url];
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+-  (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"%@",error);
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

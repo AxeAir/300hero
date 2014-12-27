@@ -24,6 +24,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AVOSCloud
+
+© Copyright 2013 AVOS Systems, Inc. See https://cn.avoscloud.com/terms.html
+
+## AVOSCloudSNS
+
+© Copyright 2013 AVOS Systems, Inc. See https://cn.avoscloud.com/terms.html
+
 ## SDWebImage
 
 Copyright (c) 2009 Olivier Poitrey <rs@dailymotion.com>

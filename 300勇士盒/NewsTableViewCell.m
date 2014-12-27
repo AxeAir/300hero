@@ -51,9 +51,9 @@
     _readcount=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-110, 60, 100, 20)];
     [_readcount setTextAlignment:NSTextAlignmentRight];
     [_readcount setTextColor:[UIColor grayColor]];
-    [_readcount setText:[NSString stringWithFormat:@"阅读量%ld",news.pageViews]];
+    [_readcount setText:[NSString stringWithFormat:@"阅读量%ld",(long)news.pageViews]];
     [_readcount setFont:[UIFont boldSystemFontOfSize:12]];
-    //[self.contentView addSubview:_readcount];
+    [self.contentView addSubview:_readcount];
 }
 
 

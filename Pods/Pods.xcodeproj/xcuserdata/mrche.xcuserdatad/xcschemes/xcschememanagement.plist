@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AVOSCloud.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-AVOSCloudSNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2EC36B0CC04D127A396B0D5C</key>
+		<key>39F2550D732E2CB998691E30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67D81E9918229CA2EF1C6C20</key>
+		<key>50C569D4CCF542E91BFE9118</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B84030DBAE9173DE37DB83A9</key>
+		<key>522B0B92C8E41F301B2B02EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91B02675CFC860B7ED0E322B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BECCA9956FBC3D4702423080</key>
 		<dict>
 			<key>primary</key>
 			<true/>

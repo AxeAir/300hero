@@ -15,6 +15,7 @@
 #import "NewsTableViewCell.h"
 #import "NewsWebViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface NewsViewController ()<HYSegmentedControlDelegate,NewsTableViewControllerDelegate>
 
@@ -77,6 +78,18 @@
 {
     _webView=[[NewsWebViewController alloc] initWithPageID:pageID];
     [self.navigationController pushViewController:_webView animated:YES];
+}
+- (void)openVideo:(NSURL *)url
+{
+    MPMoviePlayerViewController*playViewController=[[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    MPMoviePlayerController*player=[playViewController moviePlayer];
+    player.controlStyle=MPMovieControlStyleFullscreen;
+    player.scalingMode = MPMovieScalingModeAspectFill;
+    CGAffineTransform landscapeTransform = CGAffineTransformMakeRotation(M_PI / 2);
+    player.view.transform = landscapeTransform;
+    [player play];
+    [self.navigationController presentViewController:playViewController animated:YES completion:nil];
+  
 }
 
 

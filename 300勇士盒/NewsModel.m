@@ -25,7 +25,7 @@
         news.subTitle =[d objectForKey:@"subTitle"];
         news.title =[d objectForKey:@"title"];
         news.type =[[d objectForKey:@"type"] integerValue];
-        
+        news.url =[d objectForKey:@"url"];
         [temp addObject:news];
     }
     return temp;

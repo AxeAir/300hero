@@ -21,7 +21,6 @@
         hero.name =[d objectForKey:@"name"];
         hero.type =[d objectForKey:@"type"];
         hero.atk_type =[d objectForKey:@"atk_type"];
-        
         [temp addObject:hero];
     }
     return temp;

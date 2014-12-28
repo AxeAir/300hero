@@ -31,4 +31,6 @@
 
 - (void)clickcell2web:(NSInteger)pageID;
 
+-(void)openVideo:(NSURL*)url;
+
 @end

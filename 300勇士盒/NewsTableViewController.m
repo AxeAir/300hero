@@ -17,6 +17,8 @@
 #import "CacheDAO.h"
 #import "CacheEntence.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface NewsTableViewController ()
 @property (nonatomic,strong) HeaderScrollView *header;
@@ -204,8 +206,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsModel *news = [_newsData objectAtIndex:indexPath.row];
-    [_delegate clickcell2web:news.newsid];
+    if (_newsType==NewsTypeVIDEO) {
+
+        NewsModel *news = [_newsData objectAtIndex:indexPath.row];
+        NSLog(@"%@",news.url);
+        NSURL *url=[NSURL URLWithString:news.url];
+        [_delegate openVideo:url];
+    }
+    else{
+        NewsModel *news = [_newsData objectAtIndex:indexPath.row];
+        [_delegate clickcell2web:news.newsid];
+    }
+    
+    
 }
 
 

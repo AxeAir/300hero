@@ -103,6 +103,8 @@
     return YES;
 }
 
+
+
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     return [AVOSCloudSNS handleOpenURL:url];
 }
@@ -111,6 +113,8 @@
     AVInstallation *currentInstallation = [AVInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+    NSString* dt = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSLog(@"deviceToken:%@", dt);
 }
 
 -  (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

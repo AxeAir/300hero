@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString  *subTitle;
 @property (nonatomic, strong) NSString  *title;
 @property (nonatomic, assign) NSInteger type;
+@property (nonatomic, strong) NSString  *url;
 
 
 

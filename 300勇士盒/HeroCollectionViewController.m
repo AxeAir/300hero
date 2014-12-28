@@ -18,12 +18,13 @@
 #import <AVOSCloud/AVOSCloud.h>
 
 
-@interface HeroCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HYSegmentedControlDelegate>
+@interface HeroCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HYSegmentedControlDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) UICollectionView *collection;
 @property (nonatomic, strong) HYSegmentedControl *segment;
-
+@property (nonatomic ,strong) UITextField *searchField;
 @property (nonatomic, strong) NSArray *heroList;
+@property (nonatomic, strong) NSArray *heroListchoose;
 @end
 
 @implementation HeroCollectionViewController
@@ -56,6 +57,13 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     [_collection registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self.view addSubview:_collection];
     
+    _searchField = [[UITextField alloc] initWithFrame:CGRectMake(10, 40, Main_Screen_Width-20, 40)];
+    [_searchField setPlaceholder:@"英雄名称"];
+    [_searchField setHidden:YES];
+    [_searchField setDelegate:self];
+    [_searchField addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventAllEditingEvents];
+    [self.view addSubview:_searchField];
+    
     [self collectionconfig];
     [self getRemoteList:0];
 }
@@ -66,10 +74,10 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     NSString *url=[NSString stringWithFormat:@"%@getHeroList/?freeType=%ld",DEBUG_URL,(long)freetype];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
         NSString *status=[responseObject objectForKey:@"Status"];
         if ([status isEqualToString:@"OK"]) {
             _heroList=[HeroListModel getHerolist:[responseObject objectForKey:@"Result"]];
+            _heroListchoose= _heroList;
             [_collection reloadData];
         }
         
@@ -124,7 +132,7 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return [_heroList count];
+    return [_heroListchoose count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,7 +148,7 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
         }
     }
 
-    HeroListModel *model=_heroList[indexPath.row];
+    HeroListModel *model=_heroListchoose[indexPath.row];
     [cell layout:model];
 
     return cell;
@@ -174,12 +182,12 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 */
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
 
-    NSLog(@"dd");
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HeroListModel *hero=[_heroList objectAtIndex:indexPath.row];
+    [_searchField resignFirstResponder];
+    HeroListModel *hero=[_heroListchoose objectAtIndex:indexPath.row];
     DetailHeroViewController *detail=[[DetailHeroViewController alloc] initWithHeroID:hero.heroid];
     [self.navigationController pushViewController:detail animated:YES];
 }
@@ -189,13 +197,25 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 
 - (void)hySegmentedControlSelectAtIndex:(NSInteger)index
 {
+    [_searchField resignFirstResponder];
     switch (index) {
-        case 0:
+        case 0:{
             [self getRemoteList:0];
+            [UIView animateWithDuration:0.5 animations:^{
+                [_collection setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40-64)];
+                [_searchField setHidden:YES];
+            }];
+        }
             
             break;
         case 1:
+            {
             [self getRemoteList:-1];
+            [UIView animateWithDuration:0.5 animations:^{
+                [_collection setFrame:CGRectMake(0, 80, Main_Screen_Width, Main_Screen_Height-80-64)];
+                [_searchField setHidden:NO];
+            }];
+        }
             break;
         case 2:
             
@@ -204,6 +224,21 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
         default:
             break;
     }
+}
+
+- (void)valueChange
+{
+    if(_searchField.text.length==0)
+    {
+        _heroListchoose=_heroList;
+    }
+    else
+    {
+        //使用OR和SELF（数据成员本身）
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS %@",_searchField.text];
+        _heroListchoose=[_heroList filteredArrayUsingPredicate:predicate];
+    }
+    [self.collection reloadData];
 }
 
 @end

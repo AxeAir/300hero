@@ -11,8 +11,8 @@
 @interface RankDetailModel : NSObject
 
 @property (nonatomic,assign) NSInteger Index;
-@property (nonatomic,strong) NSString *Url;
-@property (nonatomic,strong) NSString *Name;
+@property (nonatomic,strong) NSString  *Url;
+@property (nonatomic,strong) NSString  *Name;
 @property (nonatomic,assign) NSInteger Value;
 @property (nonatomic,assign) NSInteger RankChange;
 

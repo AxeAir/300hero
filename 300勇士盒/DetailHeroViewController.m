@@ -55,7 +55,7 @@
 //    _HUD.textLabel.text=@"载入中";
 //    [_HUD showInView:self.view];
     NSString *URL=[NSString stringWithFormat:@"http://219.153.64.13:8520/getHeroDetail/?heroID=%ld",(long)_heroID];
-    [_entence RequestRemoteURL:URL paramters:nil Cache:YES success:^(id responseObject) {
+    [CacheEntence RequestRemoteURL:URL paramters:nil Cache:YES success:^(id responseObject) {
         
 //        _HUD.indicatorView = nil;
 //        _HUD.textLabel.text = @"Done";

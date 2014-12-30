@@ -27,7 +27,6 @@
 #import "NewsNavViewController.h"
 #import "NewsViewController.h"
 
-#import "OtherViewController.h"
 #import "SearchViewController.h"
 
 #import "HeroCollectionViewController.h"
@@ -66,7 +65,7 @@
 
 @property (nonatomic,strong) RankNavController *rankNav;
 @property (nonatomic,strong) RankTypeTableViewController *rankTable;
-@property (nonatomic,strong) OtherViewController *other;
+@property (nonatomic,strong) MainViewController *other;
 
 
 @end

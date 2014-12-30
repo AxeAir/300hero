@@ -29,6 +29,7 @@
 @property (nonatomic,strong) UILabel *ALLcount;
 @property (nonatomic,strong) UILabel *ALLwincount;
 @property (nonatomic,strong) UILabel *ALLlosecount;
+@property (nonatomic,strong) UILabel *name;
 
 @property (nonatomic,strong) UILabel *combat;
 
@@ -39,5 +40,7 @@
 
 @property (nonatomic,strong) UIView *mask;
 
+
+- (instancetype)initWithOtherHero:(NSString *)name;
 
 @end

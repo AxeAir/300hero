@@ -14,13 +14,11 @@
 		E52B520C19F0E44F005FEE2E /* wenhao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52B520A19F0E44F005FEE2E /* wenhao@2x.png */; };
 		E52B521219F0ED3E005FEE2E /* PercentageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B520F19F0ED3E005FEE2E /* PercentageChart.m */; };
 		E52B521319F0ED3E005FEE2E /* PercentageChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B521119F0ED3E005FEE2E /* PercentageChartLayer.m */; };
-		E52B521619F0F600005FEE2E /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52B521519F0F600005FEE2E /* OtherViewController.m */; };
 		E52E2C3319F6B01B00DF03D4 /* LXTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52E2C3219F6B01B00DF03D4 /* LXTableViewController.m */; };
 		E52E2C3619F6B03100DF03D4 /* LXNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52E2C3519F6B03100DF03D4 /* LXNavViewController.m */; };
 		E52E2C3919F6B72300DF03D4 /* combat.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E2C3719F6B72300DF03D4 /* combat.png */; };
 		E52E2C3A19F6B72300DF03D4 /* combat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E2C3819F6B72300DF03D4 /* combat@2x.png */; };
 		E52E2C3D19F71A7900DF03D4 /* LXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52E2C3C19F71A7900DF03D4 /* LXDetailViewController.m */; };
-		E52E2C4019F73D1500DF03D4 /* LXDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52E2C3F19F73D1500DF03D4 /* LXDetailTableViewCell.m */; };
 		E52E2C4219F748B500DF03D4 /* LaunchImage-800-Portrait-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E2C4119F748B500DF03D4 /* LaunchImage-800-Portrait-736h@3x.png */; };
 		E52E2C4419F74A2900DF03D4 /* LaunchImage-800-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E2C4319F74A2900DF03D4 /* LaunchImage-800-667h@2x.png */; };
 		E52E2C4619F74AD400DF03D4 /* LaunchImage-800-Landscape-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E52E2C4519F74AD400DF03D4 /* LaunchImage-800-Landscape-736h@3x.png */; };
@@ -193,8 +191,6 @@
 		E52B520F19F0ED3E005FEE2E /* PercentageChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChart.m; sourceTree = "<group>"; };
 		E52B521019F0ED3E005FEE2E /* PercentageChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChartLayer.h; sourceTree = "<group>"; };
 		E52B521119F0ED3E005FEE2E /* PercentageChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChartLayer.m; sourceTree = "<group>"; };
-		E52B521419F0F5FF005FEE2E /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
-		E52B521519F0F600005FEE2E /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
 		E52E2C3119F6B01B00DF03D4 /* LXTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXTableViewController.h; sourceTree = "<group>"; };
 		E52E2C3219F6B01B00DF03D4 /* LXTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXTableViewController.m; sourceTree = "<group>"; };
 		E52E2C3419F6B03100DF03D4 /* LXNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXNavViewController.h; sourceTree = "<group>"; };
@@ -203,8 +199,6 @@
 		E52E2C3819F6B72300DF03D4 /* combat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "combat@2x.png"; sourceTree = "<group>"; };
 		E52E2C3B19F71A7900DF03D4 /* LXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDetailViewController.h; sourceTree = "<group>"; };
 		E52E2C3C19F71A7900DF03D4 /* LXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDetailViewController.m; sourceTree = "<group>"; };
-		E52E2C3E19F73D1500DF03D4 /* LXDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDetailTableViewCell.h; sourceTree = "<group>"; };
-		E52E2C3F19F73D1500DF03D4 /* LXDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDetailTableViewCell.m; sourceTree = "<group>"; };
 		E52E2C4119F748B500DF03D4 /* LaunchImage-800-Portrait-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Portrait-736h@3x.png"; sourceTree = "<group>"; };
 		E52E2C4319F74A2900DF03D4 /* LaunchImage-800-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-667h@2x.png"; sourceTree = "<group>"; };
 		E52E2C4519F74AD400DF03D4 /* LaunchImage-800-Landscape-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Landscape-736h@3x.png"; sourceTree = "<group>"; };
@@ -610,8 +604,6 @@
 				E52E2C3219F6B01B00DF03D4 /* LXTableViewController.m */,
 				E52E2C3B19F71A7900DF03D4 /* LXDetailViewController.h */,
 				E52E2C3C19F71A7900DF03D4 /* LXDetailViewController.m */,
-				E52E2C3E19F73D1500DF03D4 /* LXDetailTableViewCell.h */,
-				E52E2C3F19F73D1500DF03D4 /* LXDetailTableViewCell.m */,
 			);
 			name = lx;
 			sourceTree = "<group>";
@@ -882,8 +874,6 @@
 				E5BA367B19EC782000CB8165 /* MatchDetailView.m */,
 				E58FE70219F0F86F00646321 /* HeaderButton.h */,
 				E58FE70319F0F86F00646321 /* HeaderButton.m */,
-				E52B521419F0F5FF005FEE2E /* OtherViewController.h */,
-				E52B521519F0F600005FEE2E /* OtherViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -1338,7 +1328,6 @@
 				E5BA367019EC01D000CB8165 /* MatchDetailModel.m in Sources */,
 				E5BA367919EC03AE00CB8165 /* EquipModel.m in Sources */,
 				E5BA36AF19EE42EB00CB8165 /* MJRefreshBaseView.m in Sources */,
-				E52B521619F0F600005FEE2E /* OtherViewController.m in Sources */,
 				E5BA363319E997DB00CB8165 /* HeroTableViewCell.m in Sources */,
 				E5F7FA171A3F4CF300D80349 /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				E5F7FA1C1A3F4CF300D80349 /* JGProgressHUDPieIndicatorView.m in Sources */,
@@ -1384,7 +1373,6 @@
 				E52FFE391A3B150D00046D5F /* DetailHeroViewController.m in Sources */,
 				E5F7FA161A3F4CF300D80349 /* JGProgressHUDAnimation.m in Sources */,
 				E59BBC3519FEB1DA006F13E6 /* Combat.m in Sources */,
-				E52E2C4019F73D1500DF03D4 /* LXDetailTableViewCell.m in Sources */,
 				E5BA366D19EBD31900CB8165 /* MatchDetailViewController.m in Sources */,
 				E5E5637B1A4C0BBD0033AFC8 /* RegisterViewController.m in Sources */,
 				E5F7FA151A3F4CF300D80349 /* JGProgressHUD.m in Sources */,

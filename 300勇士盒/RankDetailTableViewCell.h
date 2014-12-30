@@ -12,5 +12,5 @@
 
 @property (nonatomic,strong) NSString *rolename;
 -(void)configCell:(RankDetailModel*)model;
--(void)configLXCell:(RankDetailModel *)model;
+-(void)configLXCell:(RankDetailModel *)model type:(NSString *)type;
 @end

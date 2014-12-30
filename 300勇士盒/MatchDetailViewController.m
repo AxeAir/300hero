@@ -11,6 +11,7 @@
 #import "MatchDetailModel.h"
 #import "MatchDetailView.h"
 #import "UConstants.h"
+
 @interface MatchDetailViewController ()<MatchDeailViewDelegate>
 {
     MatchDetailModel *matchData;
@@ -79,7 +80,7 @@
     wincount.textColor=[UIColor greenColor];
     [_scrollView addSubview:wincount];
     
-    UILabel *losecount=[[UILabel alloc] initWithFrame:CGRectMake(230, MaxY(time), 40, 60)];
+    UILabel *losecount=[[UILabel alloc] initWithFrame:CGRectMake(230, MaxY(time), 60, 60)];
     losecount.text=[NSString stringWithFormat:@"%lu",(unsigned long)match.LoseSideKill];
     losecount.font=[UIFont systemFontOfSize:30];
     losecount.textColor=[UIColor redColor];
@@ -129,9 +130,10 @@
 
 -(void)didClickHeaderView:(NSString *)name
 {
-    _other=[[OtherViewController alloc] initWithName:name];
+
+    _main=[[MainViewController alloc] initWithOtherHero:name];
     
-    [self.navigationController pushViewController:_other animated:YES];
+    [self.navigationController pushViewController:_main animated:YES];
     
 }
 

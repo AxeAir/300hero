@@ -75,7 +75,7 @@
     NSString *url=[NSString stringWithFormat:@"%@/getPageList/?newsType=%ld",DEBUG_URL,(long)NewsType];
     NSLog(@"%@",url);
     CacheEntence *enter=[[CacheEntence alloc] init];
-    [enter RequestRemoteURL:url paramters:nil Cache:cache success:^(id responseObject) {
+    [CacheEntence RequestRemoteURL:url paramters:nil Cache:cache success:^(id responseObject) {
         
         NSLog(@"%@",responseObject);
         _newsData=[NewsModel getlatestNews:[responseObject objectForKey:@"Result"]];

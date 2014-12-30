@@ -19,6 +19,7 @@
 #import "PercentageChart.h"
 #import "UConstants.h"
 #import "Combat.h"
+#import "CacheEntence.h"
 #import <AVOSCloud/AVOSCloud.h>
 
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
@@ -34,36 +35,56 @@
 
 @property (nonatomic,strong) NSUserDefaults *userdefault;
 @property (nonatomic,strong) AksStraightPieChart * straightPieChart;
+
+
+
+@property (nonatomic, assign) BOOL isOTHER;
 @end
 
 @implementation MainViewController
+
+
+- (instancetype)initWithOtherHero:(NSString *)name
+{
+    self = [super init];
+    if (self) {
+        [self havaRoleName:name];
+        _isOTHER=YES;
+        self.navigationItem.leftBarButtonItem=nil;
+        self.navigationItem.rightBarButtonItem=nil;
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-    self.navigationItem.leftBarButtonItem=left;
-    right=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon_bulb"] style:UIBarButtonItemStyleDone target:self action:@selector(search)];
+        self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     
-    UIBarButtonItem *rightButton=right;
-    self.navigationItem.rightBarButtonItem=rightButton;
     
-    self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
-    
-    self.userdefault=[NSUserDefaults standardUserDefaults];
-    
-    NSString *rolename=[self.userdefault objectForKey:@"DefaultRole"];
-    if(rolename==nil)
-    {
-        [self notHaveRoleName];
+    if (_isOTHER==NO) {
+        UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
+        self.navigationItem.leftBarButtonItem=left;
+        right=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon_bulb"] style:UIBarButtonItemStyleDone target:self action:@selector(search)];
         
+        UIBarButtonItem *rightButton=right;
+        self.navigationItem.rightBarButtonItem=rightButton;
+        self.userdefault=[NSUserDefaults standardUserDefaults];
+        
+        NSString *rolename=[self.userdefault objectForKey:@"DefaultRole"];
+        if(rolename==nil)
+        {
+            [self notHaveRoleName];
+            
+        }
+        else
+        {
+            [self havaRoleName:rolename];
+        }
     }
-    else
-    {
-        [self havaRoleName:rolename];
-    }
-    
+ 
 }
 
 -(void)refresh
@@ -100,11 +121,14 @@
         [blockSelf refresh];
     }];
     
-    UILabel *name=[[UILabel alloc] initWithFrame:CGRectMake(130, MaxY(imageView)-50, 190, 30)];
-    name.text=rolename;
-    name.textAlignment=NSTextAlignmentCenter;
-    name.textColor=NAME_COLOR;
-    name.font=[UIFont boldSystemFontOfSize:26];
+    if (_name==nil) {
+        _name=[[UILabel alloc] initWithFrame:CGRectMake(130, MaxY(imageView)-50, 190, 30)];
+    }
+    
+    _name.text=rolename;
+    _name.textAlignment=NSTextAlignmentCenter;
+    _name.textColor=NAME_COLOR;
+    _name.font=[UIFont boldSystemFontOfSize:26];
     
     
     
@@ -119,7 +143,7 @@
     _combat.text=@"????";
     [_scrollView addSubview:_combat];
     
-    [_scrollView addSubview:name];
+    [_scrollView addSubview:_name];
     
     
     ///KDA
@@ -227,7 +251,10 @@
     [_scrollView addSubview:_KDA];
     
     
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    
+    
+    
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+50, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
     _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _recentMatch.separatorColor = [UIColor blackColor];
     [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
@@ -260,7 +287,6 @@
 
 -(void)loadTheData:(NSString*)rolename
 {
-    //[self getRoleData:rolename];
     [self getRecentMatch:rolename];
     [self getRole:rolename];
     
@@ -268,12 +294,10 @@
 
 - (void)getRole:(NSString*)rolename
 {
-    
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
     [manager POST:HERO300_URL(@"getrole") parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%@",responseObject);
         NSString *Result=[responseObject objectForKey:@"Result"];
         if([Result isEqualToString:@"OK"])
         {
@@ -283,12 +307,8 @@
             [percent setPercentage:win/total*100];
             _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
             _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
-            
-            //_combat.text=[Combat getCombat:[[Role objectForKey:@"WinCount"] integerValue] all:[[Role objectForKey:@"MatchCount"] integerValue]];
-            
-            
-             [self updateCount:(int)total rolename:rolename wincout:(int)win];
-            [self getRoleData:rolename];
+
+            [self getRoleData:rolename totalcout:(int)total];
         }
         else
         {
@@ -300,36 +320,13 @@
 }
 
 
--(void)updateCount:(NSInteger)recentcount  rolename:(NSString*)rolename wincout:(NSInteger)wincount
-{
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)recentcount],@"matchCount",[NSString stringWithFormat:@"%ld",(long)wincount],@"winCount", nil];
-    
-    [manager GET:[NSString stringWithFormat:@"%@/update/",DEBUG_URL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
-        NSString *Result=[responseObject objectForKey:@"Result"];
-        if([Result isEqualToString:@"OK"])
-        {
-            NSLog(@"拉取更新成功");
-        }
-        else
-        {
-            NSLog(@"no");
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
-}
-
+//拉取最近比赛 ,从300服务器
 -(void)getRecentMatch:(NSString*)rolename
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
     [manager GET:HERO300_URL(@"getlist") parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%@",responseObject);
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])
         {
@@ -351,21 +348,20 @@
 
 
 //拉取KDA
--(void)getRoleData:(NSString*)rolename
+-(void)getRoleData:(NSString*)rolename totalcout:(NSInteger)totalcount
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
-    NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
-    //NSLog(@"%@",[NSString stringWithFormat:@"http://192.168.1.104:8000/getPlayerData/%@",rolename]);
-    
-    [manager GET:[NSString stringWithFormat:@"%@/getPlayerData/",DEBUG_URL] parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", nil];
+    NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)totalcount],@"matchCount", nil];
+    [manager GET:[NSString stringWithFormat:@"%@getPlayerNewData/",DEBUG_URL] parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_LodingActivityIndicator stopAnimating];
-        NSString *result=[responseObject objectForKey:@"Result"];
+        NSString *statue=[responseObject objectForKey:@"Status"];
         
-        NSLog(@"%@",responseObject);
-        if([result isEqualToString:@"OK"])
+        if([statue isEqualToString:@"OK"])
         {
-            RecentModel *model=[[RecentModel alloc] initWithObject:[responseObject objectForKey:@"List"]];
+            NSDictionary *result=[responseObject objectForKey:@"Result"];
+            NSLog(@"%@",result);
+            RecentModel *model=[[RecentModel alloc] initWithObject:result];
             recentModel=model;
             _KDALabelTitle.text=[NSString stringWithFormat:@"近%lu场平均KDA",(unsigned long)model.statisticCount];
             
@@ -392,11 +388,42 @@
             _KDADetail.hidden=NO;
             _KDALabel.hidden=NO;
             _straightPieChart.hidden=NO;
+            
+            NSLog(@"%@",result);
+            NSDictionary *commonHero=[result objectForKey:@"commonHero"];
+            
+             NSLog(@"%@",commonHero);
+            
+            [self createCommenHero:commonHero];
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
         [_LodingActivityIndicator stopAnimating];
     }];
+}
+
+- (void)createCommenHero:(NSDictionary *)dic
+{
+    [CacheEntence RequestRemoteURL:@"http://219.153.64.13:8520/getHeroPic/" paramters:nil Cache:YES success:^(id responseObject) {
+        
+        NSDictionary *data = [responseObject objectForKey:@"Result"];
+        
+        NSMutableDictionary *hero=[[NSMutableDictionary alloc] initWithDictionary:dic];
+        
+        for (NSMutableDictionary *h in hero) {
+            
+            NSLog(@"%@",h);
+            
+            
+        }
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 
 
@@ -498,16 +525,7 @@
     [button1 addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     [_buttonGroup addSubview:button1];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
+
     UIButton *button2=[[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width/4*1, 0, Main_Screen_Width/4, 80)];
     UILabel *label2=[[UILabel alloc] initWithFrame:CGRectMake(0, 55, Main_Screen_Width/4, 20)];
     [button2 addTarget:self action:@selector(pingjia) forControlEvents:UIControlEventTouchUpInside];

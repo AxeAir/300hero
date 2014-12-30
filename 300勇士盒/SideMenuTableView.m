@@ -256,7 +256,7 @@
     
     NSDictionary *dic=(NSDictionary*)sender.userInfo;
     
-    _other=[[OtherViewController alloc] initWithName:[dic objectForKey:@"name"]];
+    _other=[[MainViewController alloc] initWithOtherHero:[dic objectForKey:@"name"]];
     _mainNav=[[MainNavgationController alloc] initWithRootViewController:_other];
     [self.sideMenuController setContentController:_mainNav animted:YES];
 }

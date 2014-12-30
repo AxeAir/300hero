@@ -27,6 +27,7 @@
 {
     if(model.Index==1)
     {
+        
         UIImageView *one=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"one"]];
         [one setFrame:CGRectMake(10, 5, 25, 30)];
         [self addSubview:one];
@@ -92,7 +93,7 @@
 
 
 
--(void)configLXCell:(RankDetailModel *)model
+-(void)configLXCell:(RankDetailModel *)model type:(NSString *)type
 {
     if(model.Index==1)
     {
@@ -128,7 +129,13 @@
     
     
     UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(230, 10, 60, 30)];
-    value.text=[NSString stringWithFormat:@"%ld",(long)model.Value];
+    if([type isEqualToString:@"人生局"])
+    {
+        value=[[UILabel alloc] initWithFrame:CGRectMake(200, 10, 100, 30)];
+        value.text=[NSString stringWithFormat:@"%ld分%ld秒",(long)model.Value/60,(long)model%60];
+    }
+    else
+        value.text=[NSString stringWithFormat:@"%ld",(long)model.Value];
     [value setTextColor:CELLVALUECOLOR];
     [self addSubview:value];
     

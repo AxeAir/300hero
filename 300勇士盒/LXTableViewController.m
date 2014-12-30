@@ -69,7 +69,6 @@
             [tempArray addObject:model];
         }
         self.dataArray=tempArray;
-        //NSLog(@"%@",tempArray);
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -83,12 +82,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return [self.dataArray count];
 }
 
@@ -103,31 +100,17 @@
     [cell setBackgroundColor:BACKGROUND_COLOR];
     RankTypeModel *model=self.dataArray[indexPath.row];
     cell.RankID=model.getRankType;
-    // Configure the cell...
     cell.textLabel.text=model.Name;
     cell.textLabel.textColor=RGBCOLOR(135, 186, 225);
-    
-    // Configure the cell...
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"%ld",(long)cell.RankID);
-    
+    //RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     _detail=[[LXDetailViewController alloc] init];
-    
     _detail.ID=indexPath.row;
     [self.navigationController pushViewController:_detail animated:YES];
-    
-    //    RankDetailViewController *rank=[[RankDetailViewController alloc] init];
-    //    rank.ID=cell.RankID;
-    //    [self.navigationController pushViewController:rank animated:YES];
     
 }
 

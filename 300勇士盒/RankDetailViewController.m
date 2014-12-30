@@ -143,7 +143,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankDetailTableViewCell *cell=(RankDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    _other=[[OtherViewController alloc] initWithName:cell.rolename];
+    _other=[[MainViewController alloc] initWithOtherHero:cell.rolename];
     [self.navigationController pushViewController:_other animated:YES];
 }
 

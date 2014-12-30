@@ -7,10 +7,11 @@
 //
 
 #import "LXDetailViewController.h"
-#import "LXDetailTableViewCell.h"
 #import <AFHTTPRequestOperationManager.h>
 #import "RankDetailModel.h"
 #import "UConstants.h"
+#import "MatchTableViewCell.h"
+#import "MatchDetailViewController.h"
 
 #import "RankDetailTableViewCell.h"
 #define HEADERBGCOLOR          [UIColor colorWithRed:24/255.0f green:40/255.0f blue:58/255.0f alpha:1]
@@ -23,6 +24,7 @@
     NSString *valueNamel;
     UILabel *labelName;
     NSString *indexName;
+    NSInteger RankType;
 }
 @end
 
@@ -47,16 +49,17 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
     [manager GET:[NSString stringWithFormat:@"%@getRank/?id=%ld",DEBUG_URL,(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"%@",responseObject);
-        
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])
         {
+            
             NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
+            NSLog(@"%@",Rank);
             self.title=[Rank objectForKey:@"Title"];
             valueNamel=[Rank objectForKey:@"ValueName"];
             indexName=[Rank objectForKey:@"IndexName"];
+            RankType=[[Rank objectForKey:@"Type"] integerValue];
+            
             NSArray *List=[Rank objectForKey:@"List"];
             
             NSMutableArray *tempArray=[[NSMutableArray alloc] init];
@@ -94,7 +97,7 @@
 {
     static NSString *Identifier=@"RankDetailCell";
     RankDetailTableViewCell *cell=[[RankDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-    [cell configLXCell:rankList[indexPath.row]];
+    [cell configLXCell:rankList[indexPath.row] type:self.title];
     return cell;
     
 }
@@ -136,6 +139,20 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    //如果是英雄则跳转到角色界面
+    if (RankType==1) {
+        //RankDetailTableViewCell *cell=(RankDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        RankDetailModel *model=[rankList objectAtIndex:indexPath.row];
+        _other=[[MainViewController alloc] initWithOtherHero:model.Name];
+        [self.navigationController pushViewController:_other animated:YES];
+    }
+    else if(RankType==2)
+    {
+        RankDetailModel *model=[rankList objectAtIndex:indexPath.row];
+        MatchDetailViewController *match=[[MatchDetailViewController alloc] init];
+        match.MatchID=[model.Name integerValue];
+        [self.navigationController pushViewController:match animated:YES];
+    }
 }
 
 
@@ -145,7 +162,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

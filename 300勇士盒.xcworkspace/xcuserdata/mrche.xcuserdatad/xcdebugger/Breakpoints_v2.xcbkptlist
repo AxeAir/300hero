@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "-RequestRemoteURL:paramters:Cache:success:failure:"
+            landmarkName = "+RequestRemoteURL:paramters:Cache:success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "300&#x52c7;&#x58eb;&#x76d2;/NewsTableViewController.m"
-            timestampString = "441445865.313826"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-pullUp"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-getRole:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "300&#x52c7;&#x58eb;&#x76d2;/NewsTableViewController.m"
-            timestampString = "441445865.313826"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/LXDetailViewController.m"
+            timestampString = "441527100.787996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-pullUp"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "300&#x52c7;&#x58eb;&#x76d2;/NewsTableViewController.m"
-            timestampString = "441445865.313826"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/LXDetailViewController.m"
+            timestampString = "441527100.787996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-pullUp"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-getDetail"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,155 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "300&#x52c7;&#x58eb;&#x76d2;/NewsTableViewController.m"
-            timestampString = "441445865.313826"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/LXDetailViewController.m"
+            timestampString = "441527021.17604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-pullUp"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-getDetail"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LXDetailViewController getDetail]"
+                  moduleName = "300&#x52c7;&#x58eb;&#x76d2;"
+                  urlString = "file:///Users/mrche/Documents/ios/300%E5%8B%87%E5%A3%AB%E7%9B%92/300%E5%8B%87%E5%A3%AB%E7%9B%92/LXDetailViewController.m"
+                  timestampString = "441527101.156002"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "205">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[LXDetailViewController getDetail]_block_invoke"
+                  moduleName = "300&#x52c7;&#x58eb;&#x76d2;"
+                  urlString = "file:///Users/mrche/Documents/ios/300%E5%8B%87%E5%A3%AB%E7%9B%92/300%E5%8B%87%E5%A3%AB%E7%9B%92/LXDetailViewController.m"
+                  timestampString = "441527101.156173"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "109">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/LXDetailViewController.m"
+            timestampString = "441527108.622426"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-getDetail"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "-createCommenHero:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "-createCommenHero:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
+            landmarkName = "-getRoleData:totalcout:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "-getRoleData:totalcout:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441942556.166692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "-getRoleData:totalcout:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/MainViewController.m"
+            timestampString = "441943665.470243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "898"
+            endingLineNumber = "898"
+            landmarkName = "-loadMore"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

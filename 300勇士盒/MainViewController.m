@@ -21,16 +21,17 @@
 #import "Combat.h"
 #import "CacheEntence.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <UIImageView+WebCache.h>
 
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 {
     CHHeader *_header;
-    NSArray *MatchData;
+    NSMutableArray *MatchData;
     RecentModel *recentModel;
     PercentageChart *percent;
     UIBarButtonItem *right;
-    
+    NSString *Rolename;
 }
 
 @property (nonatomic,strong) NSUserDefaults *userdefault;
@@ -50,6 +51,7 @@
     if (self) {
         [self havaRoleName:name];
         _isOTHER=YES;
+        Rolename=name;
         self.navigationItem.leftBarButtonItem=nil;
         self.navigationItem.rightBarButtonItem=nil;
     }
@@ -63,7 +65,7 @@
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
         self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     
-    
+    //判断来源，是查看他人页面还是自己的战绩，区别为导航栏的不同
     if (_isOTHER==NO) {
         UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
         self.navigationItem.leftBarButtonItem=left;
@@ -81,6 +83,7 @@
         }
         else
         {
+            Rolename=rolename;
             [self havaRoleName:rolename];
         }
     }
@@ -111,7 +114,7 @@
     if(_scrollView==nil){
         _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     }
-    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 950)];
+    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 1200)];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width*180.0/320.0)];
     [imageView setImage:[UIImage imageNamed:@"indexbg"]];
     [_scrollView addSubview:imageView];
@@ -251,10 +254,11 @@
     [_scrollView addSubview:_KDA];
     
     
+    _recentHero = [[UIView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 115)];
+     [_recentHero setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
+    [_scrollView addSubview:_recentHero];
     
-    
-    
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+50, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+130, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
     _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _recentMatch.separatorColor = [UIColor blackColor];
     [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
@@ -404,25 +408,87 @@
     }];
 }
 
+
+
+
 - (void)createCommenHero:(NSDictionary *)dic
 {
-    [CacheEntence RequestRemoteURL:@"http://219.153.64.13:8520/getHeroPic/" paramters:nil Cache:YES success:^(id responseObject) {
+    [CacheEntence RequestRemoteURL:@"http://219.153.64.13:8520/getHeroPic/" paramters:nil Cache:NO success:^(id responseObject) {
         
-        NSDictionary *data = [responseObject objectForKey:@"Result"];
+        NSDictionary *image=[responseObject objectForKey:@"Result"];
         
-        NSMutableDictionary *hero=[[NSMutableDictionary alloc] initWithDictionary:dic];
+        //NSMutableDictionary *hero=[[NSMutableDictionary alloc] initWithDictionary:dic];
+        NSMutableArray *heros=[[NSMutableArray alloc] init];
+    
         
-        for (NSMutableDictionary *h in hero) {
+
+        for (NSDictionary *h in dic) {
+            NSLog(@"%@",[h objectForKey:@"heroName"]);
+            for (NSDictionary *i in image) {
             
-            NSLog(@"%@",h);
-            
-            
+                if ([[h objectForKey:@"heroName"] isEqualToString:[i objectForKey:@"name"]])
+                {
+                    NSMutableDictionary *he=[[NSMutableDictionary alloc] init];
+                    
+                    [he setObject:[h objectForKey:@"heroName"] forKey:@"heroName"];
+                    [he setObject:[i objectForKey:@"img"] forKey:@"img"];
+                    [he setObject:[h objectForKey:@"heroNum"] forKey:@"heroNum"];
+                    [heros addObject:he];
+                }
+            }
         }
+
+        NSLog(@"%ld",[heros count]);
+        [self createHeroView:heros];
         
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
+    
+}
+
+/**
+ *  绘制常用英雄的界面
+ *
+ *  @param heros 常用英雄数组，最多五个
+ */
+- (void)createHeroView:(NSArray *)heros
+{
+    
+    for (UIView *v in _recentHero.subviews  ) {
+        [v removeFromSuperview];
+    }
+    
+    UILabel *HeroTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(_recentHero), 30)];
+    HeroTitle.font=[UIFont systemFontOfSize:14];
+    HeroTitle.text=@"常用英雄";
+    HeroTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
+    
+    UIView *HeroHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(_recentHero), 30)];
+    HeroHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
+    [_recentHero addSubview:HeroHeader];
+    [HeroHeader addSubview:HeroTitle];
+    
+    int width = WIDTH(_recentHero);
+    int singleWidth= (width-5*6)/5;
+    
+    [_recentHero setFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 30+singleWidth+20+10)];
+    [_recentMatch setFrame:CGRectMake(5, MaxY(_recentHero)+5, Main_Screen_Width-10, 1000)];
+    int i=0;
+    for (NSDictionary *hero in heros) {
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, 5+30, singleWidth, singleWidth)];
+        [view sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,[hero objectForKey:@"img"]]]];
+        [_recentHero addSubview:view];
+        
+        UILabel *heroNum = [[UILabel alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, MaxY(view)+5, singleWidth, 20)];
+        heroNum.text = [NSString stringWithFormat:@"%@场",[hero objectForKey:@"heroNum"]];
+        [heroNum setFont:[UIFont systemFontOfSize:12]];
+        heroNum.textColor= [UIColor whiteColor];
+        [heroNum setTextAlignment:NSTextAlignmentCenter];
+        [_recentHero addSubview:heroNum];
+        i++;
+    }
     
 }
 
@@ -680,7 +746,6 @@
 
 -(void)search
 {
-    NSLog(@"dd");
     if(_buttonGroup.hidden==YES)
     {
         _buttonGroup.hidden=NO;
@@ -763,17 +828,14 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section==0)
-    {
-        return [MatchData count];
-    }
-    else
-        return 0;
+
+    return [MatchData count];
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -807,6 +869,58 @@
         match.MatchID=cell.MatchID;
         [self.navigationController pushViewController:match animated:YES];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+  
+    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, Main_Screen_Width, 30)];
+    [view setBackgroundColor:BACKGROUND_COLOR];
+    [view addTarget:self action:@selector(loadMore) forControlEvents:UIControlEventTouchUpInside];
+    [view setTitle:@"点击加载更多比赛" forState:UIControlStateNormal];
+    [[view titleLabel] setFont:[UIFont systemFontOfSize:14]];
+    return view;
+
+   
+}
+
+- (void)loadMore
+{
+    //获取当前表格的场数
+    NSUInteger nowCount=[MatchData count];
+    
+    NSString *url=[NSString stringWithFormat:@"http://300report.jumpw.com/api/getlist"];
+    NSDictionary *parameters= [NSDictionary dictionaryWithObjectsAndKeys:Rolename,@"name",[NSString stringWithFormat:@"%ld",nowCount],@"index", nil];
+    [CacheEntence RequestRemoteURL:url paramters:parameters Cache:NO customHeader:@"text/plain" success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *result=[responseObject objectForKey:@"Result"];
+        if([result isEqualToString:@"OK"])
+        {
+            NSArray *List=[responseObject objectForKey:@"List"];
+            NSMutableArray *dataTemp=[[NSMutableArray alloc] init];
+            for (NSDictionary *match in List) {
+                MatchModel *model=[[MatchModel alloc] initWithDictionary:match];
+                [dataTemp addObject:model];
+            }
+            [MatchData addObjectsFromArray:dataTemp];
+            [_recentMatch reloadData];
+            CGSize contentSize = _scrollView.contentSize;
+            contentSize.height=contentSize.height + 50*[dataTemp count];
+            _scrollView.contentSize=contentSize;
+            CGRect tableFrame = _recentMatch.frame;
+            tableFrame.size.height = [MatchData count]*50+30;
+            _recentMatch.frame=tableFrame;
+            
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error%@",error);
+    }];
+    
 }
 
 

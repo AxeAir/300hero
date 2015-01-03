@@ -16,4 +16,8 @@
 
 + (void)RequestRemoteURL:(NSString *)url paramters:(NSDictionary *) paramters Cache:(BOOL)cache success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
++ (void)POSTRequestRemoteURL:(NSString *)url paramters:(NSDictionary *) paramters Cache:(BOOL)cache success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
++ (void)RequestRemoteURL:(NSString *)url paramters:(NSDictionary *) paramters Cache:(BOOL)cache customHeader:(NSString *)content_type success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
 @end

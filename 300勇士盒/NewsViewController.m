@@ -19,13 +19,11 @@
 
 @interface NewsViewController ()<HYSegmentedControlDelegate,NewsTableViewControllerDelegate>
 
-@property (nonatomic, strong) HYSegmentedControl *segment;
+@property (nonatomic, strong) HYSegmentedControl      *segment;
 @property (nonatomic, strong) NewsTableViewController *news;
-
-@property (nonatomic, strong) HeaderScrollView *header;
-
-@property (nonatomic, assign) NSInteger cuuentSegment;
-@property (nonatomic, strong) NewsWebViewController *webView;
+@property (nonatomic, strong) HeaderScrollView        *header;
+@property (nonatomic, assign) NSInteger               cuuentSegment;
+@property (nonatomic, strong) NewsWebViewController   *webView;
 
 @end
 
@@ -56,10 +54,9 @@
     //_segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁", @"靓照", @"囧途", @"壁纸"] delegate:self];
     _segment=[[HYSegmentedControl alloc] initWithOriginY:0 Titles:@[@"头条", @"视频", @"补丁"] delegate:self];
     [self.view addSubview:_segment];
-    
     _news=[[NewsTableViewController alloc] initWithHeader:NewsTypeHeader];
     [_news.tableView setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40)];
-    _news.delegate=self;
+    _news.delegate = self;
     [self.view addSubview:_news.tableView];
     
 }

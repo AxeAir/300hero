@@ -23,6 +23,7 @@ PODS:
   - AVOSCloud (2.6.9.1)
   - AVOSCloudSNS (2.6.9.1):
     - AVOSCloud
+  - JSONKit-NoWarning (1.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
@@ -31,12 +32,14 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AVOSCloud
   - AVOSCloudSNS
+  - JSONKit-NoWarning
   - SDWebImage (~> 3.7.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   AVOSCloud: a87a4653b2632f02ec9bc7bc24d0c61cdb43edbe
   AVOSCloudSNS: 43e25c06fd7a561844ffc9c16e7b934bb2a63cde
+  JSONKit-NoWarning: fc8d6dd8ec65e303867d1bd274632fc60a4a8ab9
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
 
 COCOAPODS: 0.34.1

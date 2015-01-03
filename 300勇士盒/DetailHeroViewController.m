@@ -14,18 +14,19 @@
 #import "DetailDescription.h"
 #import "HYSegmentedControl.h"
 #import "JGProgressHUD.h"
+#import "NewEquipViewController.h"
 
 @interface DetailHeroViewController ()<HYSegmentedControlDelegate>
 
-@property (nonatomic, assign) NSInteger heroID;
-@property (nonatomic, assign) NSInteger cuuentSegment;
+@property (nonatomic, assign) NSInteger          heroID;
+@property (nonatomic, assign) NSInteger          cuuentSegment;
 
-@property (nonatomic, strong) CacheEntence *entence;
+@property (nonatomic, strong) CacheEntence       *entence;
 @property (nonatomic, strong) HYSegmentedControl *segment;
-@property (nonatomic, strong) DetailHero *hero;
-@property (nonatomic, strong) DetailDescription *content;
-@property (nonatomic, strong) DetailHeader *header;
-@property (nonatomic, strong) JGProgressHUD *HUD;
+@property (nonatomic, strong) DetailHero         *hero;
+@property (nonatomic, strong) DetailDescription  *content;
+@property (nonatomic, strong) DetailHeader       *header;
+@property (nonatomic, strong) JGProgressHUD      *HUD;
 
 @end
 
@@ -79,8 +80,8 @@
     [self.view addSubview:_header];
     
     
-    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"介绍"] delegate:self];
-//    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"出装", @"介绍"] delegate:self];
+//    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"介绍"] delegate:self];
+    _segment=[[HYSegmentedControl alloc] initWithOriginY:80 Titles:@[@"技能", @"介绍", @"出装"] delegate:self];
     _segment.delegate=self;
     [self.view addSubview:_segment];
     
@@ -100,6 +101,7 @@
     else
     {
         _cuuentSegment=index;
+        [self setNavgationBar:index];
     }
     
     [_content removeFromSuperview];
@@ -108,9 +110,25 @@
     [self.view addSubview:_content];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)setNavgationBar:(NSInteger)index
+{
+    if (index==2) {
+        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"发表" style:UIBarButtonItemStyleDone target:self action:@selector(newEquip)];
+        [self.navigationItem setRightBarButtonItem:right];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
+
+- (void)newEquip
+{
+    NewEquipViewController *newEquip = [[NewEquipViewController alloc] init];
+    newEquip.heroID=_heroID;
+    [self.navigationController pushViewController:newEquip animated:YES];
+}
+
 
 
 

@@ -164,11 +164,11 @@
     
     // 根据获取到的字符串以及字体计算label需要的size
     CGSize size = [self boundingRectWithSize:CGSizeMake(Main_Screen_Width-offset, 0) font:label.font text:text];
-    
     // 设置无限换行
-    label.numberOfLines = 0;
     
+    label.numberOfLines = 0;
     // 设置label的frame
+    
     label.frame = CGRectMake(point.x, point.y, size.width, size.height);
     return label;
 }
@@ -190,13 +190,5 @@
 }
 
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

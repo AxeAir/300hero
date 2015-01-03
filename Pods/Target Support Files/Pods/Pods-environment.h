@@ -62,6 +62,12 @@
 // Please contact the author.
 // Version: 2.6.9.1.
 
+// JSONKit-NoWarning
+#define COCOAPODS_POD_AVAILABLE_JSONKit_NoWarning
+#define COCOAPODS_VERSION_MAJOR_JSONKit_NoWarning 1
+#define COCOAPODS_VERSION_MINOR_JSONKit_NoWarning 2
+#define COCOAPODS_VERSION_PATCH_JSONKit_NoWarning 0
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3

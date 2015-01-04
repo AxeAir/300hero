@@ -9,9 +9,12 @@
 #import "ReviewTableViewController.h"
 #import "UConstants.h"
 #import "WriteReviewViewController.h"
+#import "CacheEntence.h"
+#import "ReviewTableViewCell.h"
 @interface ReviewTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -19,14 +22,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getData];
     [self addTable];
     [self addReviewButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self getData];
+}
+
+
+- (void)getData
+{
+    NSDictionary *paramters=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",_pageID],@"pageID", nil];
+    [CacheEntence RequestRemoteURL:[NSString stringWithFormat:@"%@getComment/",DEBUG_URL] paramters:paramters Cache:NO success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSString *status=[responseObject objectForKey:@"Status"];
+        NSDictionary *commons=[responseObject objectForKey:@"Result"];
+        if ([commons count]!=0&&[status isEqualToString:@"OK"]) {
+            
+            NSMutableArray *tempAttay=[[NSMutableArray alloc] init];
+            for (NSDictionary *dic in commons) {
+                [tempAttay addObject:dic];
+            }
+            _dataSource=tempAttay;
+            [_tableView reloadData];
+            
+        }
+        else
+        {
+            
+        }
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 -(void)addTable
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-64)];
-    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-64-40)];
+    _tableView.tableFooterView = [[UIView alloc] init];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
     [self.view addSubview:_tableView];
 }
 
@@ -50,65 +90,39 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [_dataSource count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifer=@"reviewcell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    ReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    if (cell==nil) {
+        cell = [[ReviewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+    }
+    else
+    {
+        for (UIView *v in cell.contentView.subviews) {
+            [v removeFromSuperview];
+        }
+    }
     
-    
+    NSDictionary *dic = [_dataSource objectAtIndex:indexPath.row];
+    [cell config:dic];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ReviewTableViewCell *cell = (ReviewTableViewCell*) [self tableView:_tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

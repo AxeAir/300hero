@@ -28,6 +28,8 @@
 
 
 @property (nonatomic, strong) UIView *typeView;
+@property (nonatomic, strong) UIView *searchView;
+
 @property (nonatomic, strong) UIButton *Lbutton;
 @property (nonatomic, strong) UIButton *Cbutton;
 @property (nonatomic, strong) UIButton *ATKbutton;
@@ -66,17 +68,20 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     [_collection registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self.view addSubview:_collection];
     
-    _searchField = [[UITextField alloc] initWithFrame:CGRectMake(10, 55, Main_Screen_Width-20, 45)];
+    
+    _searchView = [[UIView alloc] initWithFrame:CGRectMake(10, -35, Main_Screen_Width-20, 80)];
+    [_searchView setHidden:YES];
+    _searchField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-20, 45)];
     [_searchField setPlaceholder:@"请输入你想要查找的英雄名称"];
-    [_searchField setHidden:YES];
     [_searchField setDelegate:self];
     [[_searchField layer] setBorderWidth:1.0];
     [[_searchField layer] setCornerRadius:4.0];
     [_searchField addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventAllEditingEvents];
-    [self.view addSubview:_searchField];
+    [_searchView addSubview:_searchField];
     
+   
     
-    _typeView = [[UIView alloc] initWithFrame:CGRectMake(10, MaxY(_searchField)+5, Main_Screen_Width, 20)];
+    _typeView = [[UIView alloc] initWithFrame:CGRectMake(0, MaxY(_searchField)+5, Main_Screen_Width, 20)];
     
     _Lbutton = [[UIButton alloc] init];
     [_Lbutton setTitle:@"远程" forState:UIControlStateNormal];
@@ -158,9 +163,10 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     
     [_typeView addSubview:_Cbutton];
     [_typeView addSubview:_Lbutton];
-    [_typeView setHidden:YES];
-    [self.view addSubview:_typeView];
+    [_typeView setBackgroundColor:[UIColor whiteColor]];
+    [_searchView addSubview:_typeView];
     
+    [self.view insertSubview:_searchView belowSubview:_segment];
     [self collectionconfig];
     [self getRemoteList:0];
 }
@@ -209,15 +215,6 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -253,30 +250,6 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-*/
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
 
 }
@@ -300,10 +273,11 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
             [self getRemoteList:0];
             [UIView animateWithDuration:0.5 animations:^{
                 [_collection setFrame:CGRectMake(0, 40, Main_Screen_Width, Main_Screen_Height-40-64)];
-                [_searchField setHidden:YES];
-                [_typeView setHidden:YES];
-                [_typeView setAlpha:0.0];
+                [_searchView setFrame:CGRectMake(10, -30, Main_Screen_Width-20, 80)];
+            } completion:^(BOOL finished) {
+                [_searchView setHidden:YES];;
             }];
+            
         }
             
             break;
@@ -312,9 +286,8 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
             [self getRemoteList:-1];
             [UIView animateWithDuration:0.5 animations:^{
                 [_collection setFrame:CGRectMake(0, 130, Main_Screen_Width, Main_Screen_Height-130-64)];
-                [_searchField setHidden:NO];
-                [_typeView setAlpha:1.0];
-                [_typeView setHidden:NO];
+                [_searchView setFrame:CGRectMake(10, 50, Main_Screen_Width-20, 80)];
+                [_searchView setHidden:NO];
             }];
         }
             break;

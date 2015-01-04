@@ -10,33 +10,43 @@
 #import "DetailSkill.h"
 #import "UConstants.h"
 #import <UIImageView+WebCache.h>
+#import "CacheEntence.h"
+#import "SingleEquipTableViewCell.h"
+#import "EquipTableViewController.h"
+#import "DetailHeroViewController.h"
+
+@interface DetailDescription()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic, strong) DetailHero  *hero;
+
+@property (nonatomic, assign) NSInteger   heroID;
+
+@property (nonatomic, assign) NSInteger   currentskill;
 
 
-@interface DetailDescription()
-@property (nonatomic, strong) DetailHero *hero;
+
+@property (nonatomic, strong) UILabel     *skillName;
+@property (nonatomic, strong) UILabel     *skillDesc;
+@property (nonatomic, strong) UILabel     *skillcost;
+@property (nonatomic, strong) UILabel     *skillcooling;
+
+@property (nonatomic, strong) UILabel     *heroDes;
 
 
 
-@property (nonatomic, assign) NSInteger currentskill;
+@property (nonatomic, strong) UITableView *equipTable;
 
-
-
-@property (nonatomic, strong) UILabel *skillName;
-@property (nonatomic, strong) UILabel *skillDesc;
-@property (nonatomic, strong) UILabel *skillcost;
-@property (nonatomic, strong) UILabel *skillcooling;
-
-@property (nonatomic, strong) UILabel *heroDes;
+@property (nonatomic, strong) NSArray     *equipData;
 @end
 
 @implementation DetailDescription
 
 
-- (instancetype)initWithHero:(DetailHero *)hero type:(NSInteger)type
+- (instancetype)initWithHero:(DetailHero *)hero type:(NSInteger)type heroID:(NSInteger)heroID
 {
     self = [super init];
     if (self) {
         _hero = hero;
+        _heroID= heroID;
         if (type==0) {
             [self layoutSkill];
             _currentskill = 0;
@@ -45,7 +55,7 @@
             [self heroDesc];
         }
         if (type==2) {
-            
+            [self layoutEquip];
         }
         
         
@@ -188,6 +198,105 @@
     
     return retSize;
 }
+
+
+
+- (void)layoutEquip
+{
+    NSDictionary *paramters=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)_heroID],@"heroID", nil];
+    [CacheEntence RequestRemoteURL:[NSString stringWithFormat:@"%@getHeroEquip/",DEBUG_URL] paramters:paramters Cache:NO success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        NSString *status = [responseObject objectForKey:@"Status"];
+        if ([status isEqualToString:@"OK"]) {
+            NSDictionary *equips=[responseObject objectForKey:@"Result"];
+            if ([equips count]!=0) {
+                
+                NSMutableArray *temp = [[NSMutableArray alloc] init];
+                for ( NSDictionary *resultEach in equips) {
+                    NSLog(@"%@",resultEach);
+                    [temp addObject:resultEach];
+                }
+                _equipData=temp;
+                NSLog(@"%@",_equipData);
+                [_equipTable reloadData];
+                
+            }
+            else
+            {
+                
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    _equipTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+    _equipTable.delegate=self;
+    _equipTable.dataSource=self;
+    _equipTable.tableFooterView = [[UIView alloc] init];
+    
+    [self addSubview:_equipTable];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_equipData count];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifer= @"equipID";
+    SingleEquipTableViewCell *cell= [_equipTable dequeueReusableCellWithIdentifier:identifer];
+    if (cell==nil) {
+        cell=[[SingleEquipTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+    }
+    else
+    {
+        for (UIView *v in cell.contentView.subviews) {
+            [v removeFromSuperview];
+        }
+    }
+    
+    NSDictionary *dic =[_equipData objectAtIndex:indexPath.row];
+    NSLog(@"%@",dic);
+    [cell config:dic];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dic =[_equipData objectAtIndex:indexPath.row];
+    EquipTableViewController *eqVC=[[EquipTableViewController alloc] iniWithDictionary:dic];
+    DetailHeroViewController *vc=(DetailHeroViewController*)[self viewController];
+    [vc.navigationController pushViewController:eqVC animated:YES];
+    
+    NSLog(@"%@",[[self viewController] class]);
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+
+//得到此view 所在的viewController
+- (UIViewController*)viewController {
+    for (UIView* next = [self superview];next; next =next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
 
 
 

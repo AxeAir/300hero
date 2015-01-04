@@ -15,6 +15,7 @@
 #import "HYSegmentedControl.h"
 #import "JGProgressHUD.h"
 #import "NewEquipViewController.h"
+#import "EquipTableViewController.h"
 
 @interface DetailHeroViewController ()<HYSegmentedControlDelegate>
 
@@ -86,7 +87,7 @@
     [self.view addSubview:_segment];
     
     
-    _content=[[DetailDescription alloc] initWithHero:_hero type:_cuuentSegment];
+    _content=[[DetailDescription alloc] initWithHero:_hero type:_cuuentSegment heroID:_heroID];
     [_content setFrame:CGRectMake(0, MaxY(_segment), Main_Screen_Width, Main_Screen_Height-HEIGHT(_header))];
     [self.view addSubview:_content];
     
@@ -105,7 +106,7 @@
     }
     
     [_content removeFromSuperview];
-    _content=[[DetailDescription alloc] initWithHero:_hero type:_cuuentSegment];
+    _content=[[DetailDescription alloc] initWithHero:_hero type:_cuuentSegment heroID:_heroID];
     [_content setFrame:CGRectMake(0, MaxY(_segment), Main_Screen_Width, Main_Screen_Height-HEIGHT(_header))];
     [self.view addSubview:_content];
 }
@@ -113,7 +114,7 @@
 - (void)setNavgationBar:(NSInteger)index
 {
     if (index==2) {
-        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"发表" style:UIBarButtonItemStyleDone target:self action:@selector(newEquip)];
+        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"我得出装" style:UIBarButtonItemStyleDone target:self action:@selector(newEquip)];
         [self.navigationItem setRightBarButtonItem:right];
     }
     else
@@ -128,7 +129,6 @@
     newEquip.heroID=_heroID;
     [self.navigationController pushViewController:newEquip animated:YES];
 }
-
 
 
 

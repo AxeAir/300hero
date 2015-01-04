@@ -11,9 +11,11 @@
 #import "CacheEntence.h"
 #import <JSONKit-NoWarning/JSONKit.h>
 
-@interface NewEquipViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface NewEquipViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) UICollectionView *collection;
+@property (nonatomic, strong) UIView           *emptyView;
+
 @property (nonatomic, assign) NSInteger        currentTAG;
 @property (nonatomic, strong) UIView           *view1;
 @property (nonatomic, strong) UIView           *view2;
@@ -49,14 +51,17 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    _emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+    [self.view addSubview:_emptyView];
+    
     _view1=[self AddEquipView:CGRectMake(15, 20, Main_Screen_Width-30, 200) discription:@"前期" TAGstart:10000];
-    [self.view addSubview:_view1];
+    [_emptyView addSubview:_view1];
     
     _view2=[self AddEquipView:CGRectMake(15, MaxY(_view1), Main_Screen_Width-30, 200) discription:@"中期" TAGstart:20000];
-    [self.view addSubview:_view2];
+    [_emptyView addSubview:_view2];
     
     _view3=[self AddEquipView:CGRectMake(15, MaxY(_view2), Main_Screen_Width-30, 200) discription:@"后期" TAGstart:30000];
-    [self.view addSubview:_view3];
+    [_emptyView addSubview:_view3];
     
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize=CGSizeMake((Main_Screen_Width-60)/6,(Main_Screen_Width-60)/6);
@@ -98,6 +103,7 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     }
     
     UITextField *text=[[UITextField alloc] initWithFrame:CGRectMake(0, 25+width, WIDTH(view), 50)];
+    text.delegate=self;
     [[text layer] setBorderWidth:0.5];
     [text setPlaceholder:@"简单介绍"];
     text.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
@@ -139,16 +145,20 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     }
     
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:_array1,@"equip",common1,@"common", nil];
-    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:_array2,@"equip",common1,@"common", nil];
-    NSDictionary *dic3=[NSDictionary dictionaryWithObjectsAndKeys:_array3,@"equip",common1,@"common", nil];
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:_array2,@"equip",common2,@"common", nil];
+    NSDictionary *dic3=[NSDictionary dictionaryWithObjectsAndKeys:_array3,@"equip",common3,@"common", nil];
     
-    NSArray *equipList=[NSArray arrayWithObjects:dic1,dic2,dic3, nil];
+    NSDictionary *equipList=[NSDictionary dictionaryWithObjectsAndKeys:dic1,@"qian",dic2,@"zhong",dic3,@"hou", nil];
     
-    NSDictionary *dic = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"yeti",[equipList JSONString],[NSString stringWithFormat:@"%ld",_heroID], nil] forKeys:[NSArray arrayWithObjects:@"userID",@"equipList",@"heroID", nil]];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"1",[equipList JSONString],[NSString stringWithFormat:@"%ld",_heroID], nil] forKeys:[NSArray arrayWithObjects:@"userID",@"equipList",@"heroID", nil]];
     
     NSLog(@"%@",dic);
     [CacheEntence POSTRequestRemoteURL:@"http://219.153.64.13:8520/addHeroEquip/" paramters:dic Cache:NO success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        NSString *status=[responseObject objectForKey:@"Status"];
+        if ([status isEqualToString:@"OK"]) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -161,18 +171,29 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     _currentTAG = tag;
     
     [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = _collection.frame;
+        CGRect frame = _emptyView.frame;
+        CGRect cframe = _collection.frame;
         if (tag/10000==1) {
-            frame.origin.y = MaxY(_view1);
+            _collection.alpha=1.0;
+            //frame.origin.y = MaxY(_view1);
+            //frame.size.height = Main_Screen_Height-MaxY(_view1)-64;
         }
         else if (tag/10000==2) {
-            frame.origin.y = MaxY(_view2);
+            _collection.alpha=1.0;
+            frame.origin.y = -30;
+            
+            //frame.size.height = Main_Screen_Height-MaxY(_view2)-64;
         }
         else if (tag/10000==3) {
-            frame.origin.y = MaxY(_view3);
+            _collection.alpha=1.0;
+            //frame.origin.y = MaxY(_view3);
+            //frame.size.height = Main_Screen_Height-MaxY(_view3)-64;
+            frame.origin.y = -230;
+        
         }
         
-        _collection.frame=frame;
+        _emptyView.frame=frame;
+        _collection.frame=cframe;
         [_collection setHidden:NO];
     }];
     
@@ -225,23 +246,69 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_currentTAG/10000==1) {
-        [_array1 replaceObjectAtIndex:_currentTAG-10000 withObject:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        [_array1 replaceObjectAtIndex:_currentTAG-10000 withObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row+1]];
         
     }
     else if (_currentTAG/10000==2) {
-        [_array2 replaceObjectAtIndex:_currentTAG-20000 withObject:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        [_array2 replaceObjectAtIndex:_currentTAG-20000 withObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row+1]];
     }
     else if (_currentTAG/10000==3) {
-        [_array3 replaceObjectAtIndex:_currentTAG-30000 withObject:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        [_array3 replaceObjectAtIndex:_currentTAG-30000 withObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row+1]];
     }
     
     UIImageView *view =(UIImageView *)[self.view viewWithTag:_currentTAG];
-    [view setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg",indexPath.row+1]]];
+    [view setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg",(long)indexPath.row+1]]];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_collection setHidden:YES];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = _emptyView.frame;
+        frame.origin.y=0;
+        _emptyView.frame=frame;
+        _collection.alpha=0.0;
+        [_collection setHidden:YES];
+    } completion:^(BOOL finished) {
+        
+    }];
+   
+    
+    for (UIView *v in _view1.subviews) {
+        if ([v isKindOfClass:[UITextField class]]) {
+            UITextField *textField = (UITextField*)v;
+            [textField resignFirstResponder];
+        }
+    }
+    
+    for (UIView *v in _view2.subviews) {
+        if ([v isKindOfClass:[UITextField class]]) {
+            UITextField *textField = (UITextField*)v;
+            [textField resignFirstResponder];
+        }
+    }
+    
+    for (UIView *v in _view3.subviews) {
+        if ([v isKindOfClass:[UITextField class]]) {
+            UITextField *textField = (UITextField*)v;
+            [textField resignFirstResponder];
+        }
+    }
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    if(textField.frame.origin.y+textField.frame.size.height+216>Main_Screen_Height)
+    {
+        NSLog(@"start");
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSLog(@"end");
 }
 
 

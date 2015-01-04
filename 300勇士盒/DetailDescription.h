@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DetailHero.h"
 
+
 @interface DetailDescription : UIScrollView
 
-- (instancetype)initWithHero:(DetailHero *)hero type:(NSInteger)type;
+- (instancetype)initWithHero:(DetailHero *)hero type:(NSInteger)type heroID:(NSInteger)heroID;
 
 @end

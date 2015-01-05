@@ -11,6 +11,7 @@
 #import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
 #import <AVUser.h>
+#import "Login.h"
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
 {
@@ -235,10 +236,9 @@
     } else {
         //缓存用户对象为空时， 可打开用户注册界面…
         [self.sideMenuController hideMenuAnimated:YES];
-        _registerCV = [[RegisterViewController alloc] init];
+         Login *login = [[Login alloc] init];
         //_registerNav = [[RegisterLoginNavViewController alloc] initWithRootViewController:_registerCV];
-        [self presentViewController:_registerCV animated:YES completion:nil];
-        //[self.sideMenuController setContentController:_registerNav animted:YES];
+        [self presentViewController:login animated:YES completion:nil];
     }
 }
 

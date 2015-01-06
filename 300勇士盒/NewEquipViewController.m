@@ -10,7 +10,8 @@
 #import "UConstants.h"
 #import "CacheEntence.h"
 #import <JSONKit-NoWarning/JSONKit.h>
-
+#import <AVUser.h>
+#import "Login.h"
 @interface NewEquipViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) UICollectionView *collection;
@@ -119,6 +120,15 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
  */
 - (void)submit
 {
+    AVUser * currentUser = [AVUser currentUser];
+    if (currentUser == nil) {
+        // 允许用户使用应用
+        Login *login =[[Login alloc] init];
+        [self presentViewController:login animated:YES completion:nil];
+        return;
+    } else {
+        
+    }
     
     NSString *common1;
     NSString *common2;
@@ -150,7 +160,7 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     
     NSDictionary *equipList=[NSDictionary dictionaryWithObjectsAndKeys:dic1,@"qian",dic2,@"zhong",dic3,@"hou", nil];
     
-    NSDictionary *dic = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"1",[equipList JSONString],[NSString stringWithFormat:@"%ld",_heroID], nil] forKeys:[NSArray arrayWithObjects:@"userID",@"equipList",@"heroID", nil]];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[currentUser objectId],[equipList JSONString],[NSString stringWithFormat:@"%ld",_heroID], nil] forKeys:[NSArray arrayWithObjects:@"userID",@"equipList",@"heroID", nil]];
     
     NSLog(@"%@",dic);
     [CacheEntence POSTRequestRemoteURL:@"http://219.153.64.13:8520/addHeroEquip/" paramters:dic Cache:NO success:^(id responseObject) {

@@ -13,6 +13,8 @@
 #import "JGProgressHUDIndicatorView.h"
 #import "JGProgressHUDIndeterminateIndicatorView.h"
 #import "JGProgressHUDErrorIndicatorView.h"
+#import <AVUser.h>
+#import "Login.h"
 @interface WriteReviewViewController ()<UITextViewDelegate>
 @property (nonatomic, strong) UITextView                *ReviewText;
 @property (nonatomic, strong) UILabel                   *label;
@@ -38,12 +40,22 @@
 - (void)review
 {
     
+    AVUser * currentUser = [AVUser currentUser];
+    if (currentUser == nil) {
+        // 允许用户使用应用
+        Login *login =[[Login alloc] init];
+        [self presentViewController:login animated:YES completion:nil];
+        return;
+    } else {
+        
+    }
+    
 //    新闻ID                      pageID
 //    评论ID                      commentID
 //    评论内容                   content
 //    用户ID                      userID
     
-    NSDictionary *paramters= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)_pageID],@"pageID",_ReviewText.text,@"content",@"0",@"commentID",@"yeti",@"userID", nil];
+    NSDictionary *paramters= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)_pageID],@"pageID",_ReviewText.text,@"content",@"0",@"commentID",[currentUser objectId],@"userID", nil];
     [CacheEntence RequestRemoteURL:[NSString stringWithFormat:@"%@addComment/",DEBUG_URL] paramters:paramters Cache:NO success:^(id responseObject) {
         NSString *status= [responseObject objectForKey:@"Status"];
         if ([status isEqualToString:@"OK"]) {

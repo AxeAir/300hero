@@ -9,14 +9,15 @@
 #import "SideMenuTableView.h"
 #import "sigleMenu.h"
 #import "UIViewController+CHSideMenu.h"
-#import "SecondViewController.h"
 #import "UConstants.h"
+#import <AVUser.h>
+#import "Login.h"
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
 {
      NSArray *itemsArray;
 }
-
+@property (nonatomic, strong) UIImageView *headerView;
 @end
 
 @implementation SideMenuTableView
@@ -24,14 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"icon1.png"]];
-    sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"icon2.png"]];
-    //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    //sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"设置" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"icon2.png"]];
     
-    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4, nil];
+    sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"myzj"]];
+    sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"rank"]];
+    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
+    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
+    //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
+    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"fire"]];
+    sigleMenu *item6 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
+    
+    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5,item6, nil];
     itemsArray=arr;
     
     
@@ -53,7 +56,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 64;
+    return 180;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -146,20 +149,34 @@
             }
             break;
             
-        /*case 4:
+        case 3:
             if([[self.sideMenuController getContent] isKindOfClass:[SettingNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];
             }
             else
             {
-                _setting=[[SettingViewController alloc] init];
-                _settingNav=[[SettingNavViewController alloc] initWithRootViewController:_setting];
-                [self.sideMenuController setContentController:_settingNav animted:YES];
+                _news=[[NewsViewController alloc] init];
+                _newsnav=[[NewsNavViewController alloc] initWithRootViewController:_news];
+                [self.sideMenuController setContentController:_newsnav animted:YES];
             }
             break;
-         */
-        case 3:
+        case 4:
+        {
+            if([[self.sideMenuController getContent] isKindOfClass:[HeroViewController class]])
+            {
+                [self.sideMenuController toggleMenu:YES];
+            }
+            else
+            {
+                _hero=[[HeroCollectionViewController alloc] init];
+                _heroNav=[[HeroNavViewController alloc] initWithRootViewController:_hero];
+                [self.sideMenuController setContentController:_heroNav animted:YES];
+            }
+            
+        }
+            break;
+        case 5:
             if([[self.sideMenuController getContent] isKindOfClass:[AboutNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];
@@ -185,16 +202,44 @@
 {
   if(section==0)
   {
-      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 180)];
       view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
       
       UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
       searchbar.delegate=self;
       searchbar.backgroundImage=[UIImage imageNamed:@"background.png"];
       [view addSubview:searchbar];
+      
+      
+      _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"heater"]];
+      [_headerView setFrame:CGRectMake(60, MaxY(searchbar)+10, 80, 80)];
+      [[_headerView layer] setCornerRadius:40.0];
+      [[_headerView layer] setMasksToBounds:YES];
+      [[_headerView layer] setBorderColor:[UIColor whiteColor].CGColor];
+      [[_headerView layer] setBorderWidth:1.0];
+      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeader)];
+      [_headerView setUserInteractionEnabled:YES];
+      [_headerView addGestureRecognizer:tap];
+      [view addSubview:_headerView];
+      
       return view;
   }
     return nil;
+}
+
+
+- (void)clickHeader
+{
+    AVUser * currentUser = [AVUser currentUser];
+    if (currentUser != nil) {
+        // 允许用户使用应用
+    } else {
+        //缓存用户对象为空时， 可打开用户注册界面…
+        [self.sideMenuController hideMenuAnimated:YES];
+         Login *login = [[Login alloc] init];
+        //_registerNav = [[RegisterLoginNavViewController alloc] initWithRootViewController:_registerCV];
+        [self presentViewController:login animated:YES completion:nil];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -206,11 +251,12 @@
              object:nil];
     
 }
+
 -(void)handleColorChange:(NSNotification*)sender{
-    NSLog(@"%@",sender);
+    
     NSDictionary *dic=(NSDictionary*)sender.userInfo;
-    NSLog(@"%@",dic);
-    _other=[[OtherViewController alloc] initWithName:[dic objectForKey:@"name"]];
+    
+    _other=[[MainViewController alloc] initWithOtherHero:[dic objectForKey:@"name"]];
     _mainNav=[[MainNavgationController alloc] initWithRootViewController:_other];
     [self.sideMenuController setContentController:_mainNav animted:YES];
 }
@@ -220,13 +266,17 @@
 {
     _search=[[SearchViewController alloc] init];
     [self presentViewController:_search animated:YES completion:^{
-        //NSLog(@"ffff");
+        
     }];
 }
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }
+
+
 
 
 

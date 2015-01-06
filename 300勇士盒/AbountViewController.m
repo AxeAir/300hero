@@ -9,6 +9,7 @@
 #import "AbountViewController.h"
 #import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
+#import <AVOSCloud/AVUserFeedbackAgent.h>
 @interface AbountViewController ()<MFMailComposeViewControllerDelegate>
 
 @end
@@ -34,13 +35,58 @@
 
 -(void)steup
 {
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(20, 0, Main_Screen_Width-40, 400)];
+    [self.view setBackgroundColor:BACKGROUND_COLOR];
     
-    label.text=@"本软件的数据均来自于300英雄官方网站，如有建议或发现BUG欢迎点右上角的联系我们";
+    UIView *about=[[UIView alloc] initWithFrame:CGRectMake(10, 10, Main_Screen_Width-20, 140)];
+    about.layer.borderWidth=1;
+    about.layer.borderColor=[UIColor grayColor].CGColor;
+    UIImageView *logo=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1024.png"]];
+    [logo setFrame:CGRectMake(5, 5, 130, 130)];
+    
+    [about addSubview:logo];
+    
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(150, 10, 140, 80)];
+    
+    label.text=@"我们对300英雄和二次元的热爱造就了300英雄榜";
+    label.font=[UIFont systemFontOfSize:14];
     label.numberOfLines=0;
     label.lineBreakMode = NSLineBreakByCharWrapping;
+    label.textColor=[UIColor whiteColor];
     
-    [self.view addSubview:label];
+    [about addSubview:label];
+    [self.view addSubview:about];
+    
+    
+    UIButton *version=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [version setFrame:CGRectMake(10, MaxY(about)+10, Main_Screen_Width-20, 50)];
+    version.layer.borderWidth=1;
+    version.layer.borderColor=[UIColor grayColor].CGColor;
+    [version setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [version setTitle:@"当前版本V1.1 检查更新" forState:UIControlStateNormal];
+    
+    [self.view addSubview:version];
+    
+    
+    UIButton *feedback=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [feedback setFrame:CGRectMake(10, MaxY(version)+10, Main_Screen_Width-20, 50)];
+    feedback.layer.borderWidth=1;
+    feedback.layer.borderColor=[UIColor grayColor].CGColor;
+    [feedback setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [feedback setTitle:@"意见反馈" forState:UIControlStateNormal];
+    [feedback addTarget:self action:@selector(AVfeedback) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:feedback];
+    
+    
+
+
+    
+}
+
+
+- (void)AVfeedback
+{
+    AVUserFeedbackAgent *agent = [AVUserFeedbackAgent sharedInstance];
+    [agent showConversations:self title:@"feedback" contact:@"info@mrchenhao.com"];
 }
 
 - (void)sendMailInApp

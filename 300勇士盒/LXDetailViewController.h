@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OtherViewController.h"
+#import "MainViewController.h"
 @interface LXDetailViewController : UIViewController
 
-@property (nonatomic,assign) NSUInteger type;
-
+@property (nonatomic,assign) NSInteger ID;
 
 @property (nonatomic,strong) UITableView *table;
-@property (nonatomic,strong) OtherViewController *other;
+@property (nonatomic,strong) MainViewController *other;
+
+
+
+
 @end

@@ -23,8 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIView *top=[[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 20)];
+    
+    [top setBackgroundColor:RGBCOLOR(10, 10, 20)];
+    
+    [self.view addSubview:top];
+    
     self.view.backgroundColor=[UIColor whiteColor];
-    _bar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width*110/320)];
+    _bar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, Main_Screen_Width, 90)];
     _bar.backgroundImage=[UIImage imageNamed:@"background101020.png"];
     _bar.delegate=self;
     _bar.showsCancelButton=YES;

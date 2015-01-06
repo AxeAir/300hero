@@ -9,7 +9,14 @@
 #import "LXTableViewController.h"
 #import "UConstants.h"
 #import "UIViewController+CHSideMenu.h"
+#import <AFHTTPRequestOperationManager.h>
+#import "RankTypeModel.h"
+#import "RankTypeTableViewCell.h"
+#import "RankTypeTableViewController.h"
 @interface LXTableViewController ()
+
+@property (nonatomic,strong) AFHTTPRequestOperationManager *manager;
+@property (nonatomic,strong) NSArray *dataArray;
 
 @end
 
@@ -27,6 +34,8 @@
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
+    
+    [self getList];
 }
 
 - (void)toogleMenu
@@ -39,50 +48,75 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)getList
+{
+    self.manager=[AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    
+    [self.manager GET:[NSString stringWithFormat:@"%@getRank/?id=-1",DEBUG_URL]parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
+        NSArray *List=[Rank objectForKey:@"List"];
+        
+        NSMutableArray *tempArray=[[NSMutableArray alloc] init];
+        for (NSDictionary *temp in List) {
+            RankTypeModel *model=[[RankTypeModel alloc] init];
+            model.Index=[[temp objectForKey:@"Index"] integerValue];
+            model.Name=[temp objectForKey:@"Name"];
+            model.RankChange=[[temp objectForKey:@"RankChange"] integerValue];
+            model.Url=[temp objectForKey:@"Url"];
+            model.Value=[temp objectForKey:@"Value"];
+            [tempArray addObject:model];
+        }
+        self.dataArray=tempArray;
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 2;
+    return [self.dataArray count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier=@"shitCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    static NSString *Identifier=@"RankIdentifier";
+    RankTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if(cell==nil)
     {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell=[[RankTypeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-    cell.backgroundColor=BACKGROUND_COLOR;
+    [cell setBackgroundColor:BACKGROUND_COLOR];
+    RankTypeModel *model=self.dataArray[indexPath.row];
+    cell.RankID=model.getRankType;
+    cell.textLabel.text=model.Name;
     cell.textLabel.textColor=RGBCOLOR(135, 186, 225);
-    if(indexPath.row==0)
-    {
-        cell.textLabel.text=@"连胜榜";
-    }
-    if(indexPath.row==1)
-    {
-        cell.textLabel.text=@"连败榜";
-    }
-    
-    // Configure the cell...
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     _detail=[[LXDetailViewController alloc] init];
-    
-    _detail.type=indexPath.row;
+    _detail.ID=indexPath.row;
     [self.navigationController pushViewController:_detail animated:YES];
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
 }
 
 @end

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OtherViewController.h"
+#import "MainViewController.h"
 @interface MatchDetailViewController : UIViewController
 
 @property (nonatomic,assign) NSUInteger MatchID;
 @property (nonatomic,strong) UIScrollView *scrollView;
 
-@property (nonatomic,strong) OtherViewController *other;
+@property (nonatomic,strong) MainViewController *main;
 
 @end

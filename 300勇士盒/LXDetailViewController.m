@@ -7,10 +7,13 @@
 //
 
 #import "LXDetailViewController.h"
-#import "LXDetailTableViewCell.h"
 #import <AFHTTPRequestOperationManager.h>
 #import "RankDetailModel.h"
 #import "UConstants.h"
+#import "MatchTableViewCell.h"
+#import "MatchDetailViewController.h"
+
+#import "RankDetailTableViewCell.h"
 #define HEADERBGCOLOR          [UIColor colorWithRed:24/255.0f green:40/255.0f blue:58/255.0f alpha:1]
 #define HEADERTEXTCOLOR        [UIColor colorWithRed:107/255.0f green:145/255.0f blue:173/255.0f alpha:1]
 #define CELLBG                 [UIColor colorWithRed:22/255.0f green:29/255.0f blue:38/255.0f alpha:1]
@@ -19,6 +22,9 @@
 {
     NSArray *rankList;
     NSString *valueNamel;
+    UILabel *labelName;
+    NSString *indexName;
+    NSInteger RankType;
 }
 @end
 
@@ -41,26 +47,27 @@
 - (void)getDetail
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/plain"];
-    NSLog(@"%d",_type);
-    [manager GET:[NSString stringWithFormat:@"http://218.244.143.212:2015/getRankData?type=%ld",(long)_type] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        //NSLog(@"%@",responseObject);
-        
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
+    [manager GET:[NSString stringWithFormat:@"%@getRank/?id=%ld",DEBUG_URL,(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])
         {
-            //NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
-           // self.title=[Rank objectForKey:@"Title"];
-            //valueNamel=[Rank objectForKey:@"ValueName"];
-            NSArray *List=[responseObject objectForKey:@"DataList"];
+            
+            NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
+            NSLog(@"%@",Rank);
+            self.title=[Rank objectForKey:@"Title"];
+            valueNamel=[Rank objectForKey:@"ValueName"];
+            indexName=[Rank objectForKey:@"IndexName"];
+            RankType=[[Rank objectForKey:@"Type"] integerValue];
+            
+            NSArray *List=[Rank objectForKey:@"List"];
             
             NSMutableArray *tempArray=[[NSMutableArray alloc] init];
             for (NSDictionary *temp in List) {
                 RankDetailModel *model=[[RankDetailModel alloc] init];
-                model.Index=[[temp objectForKey:@"index"] integerValue];
+                model.Index=[[temp objectForKey:@"Index"] integerValue];
                 model.Name=[temp objectForKey:@"name"];
-                model.Value=[[temp objectForKey:@"value"] integerValue];
+                model.Value=[[temp objectForKey:@"Value"] integerValue];
                 [tempArray addObject:model];
             }
             
@@ -89,8 +96,8 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *Identifier=@"RankDetailCell";
-    LXDetailTableViewCell *cell=[[LXDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-    [cell configCell:rankList[indexPath.row]];
+    RankDetailTableViewCell *cell=[[RankDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+    [cell configLXCell:rankList[indexPath.row] type:self.title];
     return cell;
     
 }
@@ -103,43 +110,49 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(30, 5, 40, 30)];
+    UILabel *NOlabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 40, 30)];
     NOlabel.text=@"名次";
     NOlabel.textColor=HEADERTEXTCOLOR;
     NOlabel.textAlignment=NSTextAlignmentCenter;
     [view addSubview:NOlabel];
     
-    UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(80, 5, 110, 30)];
-    labelName.text=@"召唤师";
+    labelName=[[UILabel alloc] initWithFrame:CGRectMake(80, 5, 110, 30)];
+    labelName.text=indexName;
     labelName.textColor=HEADERTEXTCOLOR;
     labelName.textAlignment=NSTextAlignmentCenter;
     [view addSubview:labelName];
     
     
-    UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(240, 5, 100, 30)];
+    UILabel *value=[[UILabel alloc] initWithFrame:CGRectMake(220, 5, 60, 30)];
     value.text=valueNamel;
     value.textColor=HEADERTEXTCOLOR;
-    if(_type==0)
-    {
-        value.text=@"连胜场数";
-    }
-    if(_type==1)
-    {
-        value.text=@"连负场数";
-    }
     [view addSubview:value];
-    
 
     [view setBackgroundColor:HEADERBGCOLOR];
     return view;
 }
 
 
+
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LXDetailTableViewCell *cell=(LXDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    _other=[[OtherViewController alloc] initWithName:cell.rolename];
-    [self.navigationController pushViewController:_other animated:YES];
+    
+    //如果是英雄则跳转到角色界面
+    if (RankType==1) {
+        //RankDetailTableViewCell *cell=(RankDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        RankDetailModel *model=[rankList objectAtIndex:indexPath.row];
+        _other=[[MainViewController alloc] initWithOtherHero:model.Name];
+        [self.navigationController pushViewController:_other animated:YES];
+    }
+    else if(RankType==2)
+    {
+        RankDetailModel *model=[rankList objectAtIndex:indexPath.row];
+        MatchDetailViewController *match=[[MatchDetailViewController alloc] init];
+        match.MatchID=[model.Name integerValue];
+        [self.navigationController pushViewController:match animated:YES];
+    }
 }
 
 
@@ -149,7 +162,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 @interface MainViewController : UIViewController
 
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -24,14 +24,26 @@
 @property (nonatomic,strong) UILabel *wincount;
 @property (nonatomic,strong) UILabel *losecount;
 
-
+@property (nonatomic,strong) UIView *KDA;
 @property (nonatomic,strong) UILabel *ALLLabelTitle;
 @property (nonatomic,strong) UILabel *ALLcount;
 @property (nonatomic,strong) UILabel *ALLwincount;
 @property (nonatomic,strong) UILabel *ALLlosecount;
+@property (nonatomic,strong) UILabel *name;
 
 @property (nonatomic,strong) UILabel *combat;
 
 @property (nonatomic,strong) SearchViewController *searchView;
+@property (nonatomic,strong) UIActivityIndicatorView *LodingActivityIndicator;
+
+@property (nonatomic,strong) UIView *buttonGroup;
+
+@property (nonatomic,strong) UIView *mask;
+
+
+@property (nonatomic, strong) UIView *recentHero;
+
+
+- (instancetype)initWithOtherHero:(NSString *)name;
 
 @end

@@ -10,6 +10,7 @@
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "HeroModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UConstants.h"
 
 @interface HeroViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,7 +37,9 @@
 {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/plain"];
-    [manager GET:@"http://218.244.143.212:2015/getAllHeros" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    
+    [manager GET:[NSString stringWithFormat:@"%@/getAllHeros",DEBUG_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSMutableArray *tempArray=[[NSMutableArray alloc] init];
         NSString *Result=[responseObject objectForKey:@"Result"];
@@ -109,7 +112,7 @@
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(10+75*i+5, 10, 65, 80)];
         //view.backgroundColor=[UIColor redColor];
         UIImageView *image=[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 55, 55)];
-        NSString *url=[NSString stringWithFormat:@"http://218.244.143.212:2015/static/%@",model.ImgURL];
+        NSString *url=[NSString stringWithFormat:@"%@static/%@",DEBUG_URL,model.ImgURL];
         [image sd_setImageWithURL:[NSURL URLWithString:url]
               placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         UILabel *labelName=[[UILabel alloc] initWithFrame:CGRectMake(5, 60, 55, 15)];

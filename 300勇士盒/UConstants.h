@@ -3,7 +3,7 @@
 //  Medical_Wisdom
 //
 //  Created by Mac on 14-2-28.
-//  Copyright (c) 2014年 NanJingXianLang. All rights reserved.
+//  Copyright (c) 2014年 Mr.Chen. All rights reserved.
 //
 
 
@@ -136,10 +136,13 @@
 #define isPad                      (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 
-#define IMAGE_URL_F @"http:/192.126.119.70/Public/img"
 
-#define APP_URL @"http://api.sushiwasabi.es"
 #define YELLO_APP [UIColor colorWithRed:255/255 green:148.0/255 blue:28.0/255 alpha:1]
+
+
+#define DEBUG_URL @"http://219.153.64.13:8520/"
+#define HERO300_URL(v) [NSString stringWithFormat:@"http://300report.jumpw.com/api/%@",(v)]
+
 
 // UIView - viewWithTag 通过tag值获得子视图
 #define VIEWWITHTAG(_OBJECT,_TAG)   [_OBJECT viewWithTag : _TAG]

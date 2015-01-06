@@ -15,14 +15,14 @@
     self=[self init];
     if (self) {
         
-        _assist=[[dic objectForKey:@"assist"] integerValue];
+        _assist=[[dic objectForKey:@"assistCount"] integerValue];
         _combat=[[dic objectForKey:@"combat"] integerValue];
-        _creeps=[[dic objectForKey:@"creeps"] integerValue];
-        _dead=[[dic objectForKey:@"dead"] integerValue];
-        _destory=[[dic objectForKey:@"destory"] integerValue];
-        _kills=[[dic objectForKey:@"kills"] integerValue];
+        _creeps=[[dic objectForKey:@"killUnitCount"] integerValue];
+        _dead=[[dic objectForKey:@"deathCount"] integerValue];
+        _destory=[[dic objectForKey:@"towerDestroy"] integerValue];
+        _kills=[[dic objectForKey:@"killCount"] integerValue];
         _lastMatchID=[[dic objectForKey:@"lastMatchID"] integerValue];
-        _money=[[dic objectForKey:@"money"] integerValue];
+        _money=[[dic objectForKey:@"totalMoney"] integerValue];
         _name=[dic objectForKey:@"name"];
         _seriesLose=[[dic objectForKey:@"seriesLose"] integerValue];
         _seriesWin=[[dic objectForKey:@"seriesWin"] integerValue];

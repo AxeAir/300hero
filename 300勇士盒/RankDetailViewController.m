@@ -48,7 +48,7 @@
     NSLog(@"%ld",(long)_ID);
     [manager POST:[NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%ld",(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         
         NSString *result=[responseObject objectForKey:@"Result"];
         if([result isEqualToString:@"OK"])
@@ -143,7 +143,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankDetailTableViewCell *cell=(RankDetailTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    _other=[[OtherViewController alloc] initWithName:cell.rolename];
+    _other=[[MainViewController alloc] initWithOtherHero:cell.rolename];
     [self.navigationController pushViewController:_other animated:YES];
 }
 

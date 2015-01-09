@@ -296,7 +296,8 @@
     if([MyPublic isPhoneNumber:_accountTF.text]){
         [AVUser logInWithMobilePhoneNumberInBackground:_accountTF.text password:_passwordTF.text block:^(AVUser *user, NSError *error) {
             if(user!=nil){
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
+//                [self.navigationController popToRootViewControllerAnimated:YES];
             }
             if(error!=nil){
                 UIAlertView *failLogin = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号或密码错误" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
@@ -307,9 +308,9 @@
     }else if([MyPublic validateEmail:_accountTF.text]){
         [AVUser logInWithUsernameInBackground:_accountTF.text password:_passwordTF.text block:^(AVUser *user, NSError *error) {
             if(user!=nil){
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else{
-                UIAlertView *failLogin = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号不存在" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+                UIAlertView *failLogin = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号或密码错误" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
                 [failLogin show];
             }
         }];

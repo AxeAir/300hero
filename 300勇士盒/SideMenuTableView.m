@@ -231,7 +231,7 @@
            _nameLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];
           _nameLabel.text=[currentUser objectForKey:@"NickName"];
           NSString *avatarID=[currentUser objectForKey:@"AvatarID"];
-          _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:avatarID]];
+          _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",avatarID]]];
           
           [_nameLabel setTextAlignment:NSTextAlignmentCenter];
           [_nameLabel setTextColor:[UIColor whiteColor]];

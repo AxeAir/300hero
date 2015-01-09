@@ -319,14 +319,14 @@
 
 -(void)signUpBtnClickAV{
     AVUser *user = [AVUser user];
-    user.password = _passwordTF.text;
-    user.username = [NSString stringWithFormat:@"%@%ld",_accountTF.text,random()];;
-    [user setObject:_nickNameTF.text forKey:@"NickName"];
-    [user setObject:_avatarNum forKey:@"AvatarID"];
     if([MyPublic isPhoneNumber:_accountTF.text]){
+        user.username = [NSString stringWithFormat:@"%@%ld",_accountTF.text,random()];
+        user.password = _passwordTF.text;
         user.mobilePhoneNumber = _accountTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if(succeeded){
+                [user setObject:_nickNameTF.text forKey:@"NickName"];
+                [user setObject:_avatarNum forKey:@"AvatarID"];
                 [self addToUserDic:@"1" SetUser:user];                                   //mobile
             }
             else{
@@ -337,10 +337,15 @@
         }];
     }else if([MyPublic validateEmail:_accountTF.text]){
         user.email = _accountTF.text;
+        user.username = _accountTF.text;
+        user.password = _passwordTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
+                [user setObject:_nickNameTF.text forKey:@"NickName"];
+                [user setObject:_avatarNum forKey:@"AvatarID"];
                 [self addToUserDic:@"2" SetUser:user];
                 [self dismissViewControllerAnimated:YES completion:nil];
+//                [self.navigationController popToRootViewControllerAnimated:YES];
                 //email
             } else {
                 UIAlertView *fail = [[UIAlertView alloc]initWithTitle:@"" message:@"账户名已存在哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles:nil, nil];

@@ -238,7 +238,10 @@
         [self.sideMenuController hideMenuAnimated:YES];
          Login *login = [[Login alloc] init];
         //_registerNav = [[RegisterLoginNavViewController alloc] initWithRootViewController:_registerCV];
-        [self presentViewController:login animated:YES completion:nil];
+//        [self addChildViewController:lo]
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+        
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

@@ -217,6 +217,10 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+//    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     CGRect curFrame = self.view.frame;
     if(textField == self.accountTF){
@@ -258,7 +262,8 @@
 }
 
 -(void)backBtnClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)sendUserDictoServer:(NSDictionary *)userDic{
@@ -290,9 +295,9 @@
     if([signUpType  isEqual: @"1"]){
         ValidMobile *v = [[ValidMobile alloc] init];
         v.userDic = _userDic;
-        [self presentViewController:v animated:YES completion:nil];
+        [self.navigationController pushViewController:v animated:YES];
     }else if([signUpType  isEqual: @"2"]){
-        [self sendUserDictoServer:_userDic];
+        [self sendUserDictoServer:_userDic]; 
     }
 }
 

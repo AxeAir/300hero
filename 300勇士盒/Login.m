@@ -61,6 +61,8 @@
     
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     //初始化引用类
     _myPublic = [[MyPublic alloc]init];
     _loginPublicClass = [[LoginPublicClass alloc]init];
@@ -319,19 +321,14 @@
 }
 
 - (void)signUpBtnClick{
-    SighUP* signUpView = [[SighUP alloc]init];
+    
+    SighUP *signUpView = [[SighUP alloc] init];
+    [self.navigationController pushViewController:signUpView animated:YES];//  SighUP *signUpView=[[SighUP alloc] initWithNibName:@"signUpView" bundle:nil];
     signUpView.delegate = self;
-    [self presentViewController:signUpView animated:YES completion:nil];
+
 }
 
 - (void)skipBtnClick{
-//    [AVAnonymousUtils logInWithBlock:^(AVUser *user, NSError *error) {
-//        if (user) {
-//            
-//        } else {
-//            
-//        }
-//    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

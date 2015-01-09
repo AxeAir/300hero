@@ -297,7 +297,7 @@
     if([MyPublic isPhoneNumber:_accountTF.text]){
         [AVUser logInWithMobilePhoneNumberInBackground:_accountTF.text password:_passwordTF.text block:^(AVUser *user, NSError *error) {
             if(user!=nil){
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }
             if(error!=nil){
                 UIAlertView *failLogin = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号或密码错误" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
@@ -308,7 +308,7 @@
     }else if([MyPublic validateEmail:_accountTF.text]){
         [AVUser logInWithUsernameInBackground:_accountTF.text password:_passwordTF.text block:^(AVUser *user, NSError *error) {
             if(user!=nil){
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }else{
                 NSLog(@"密码或账户名错误");
             }
@@ -372,12 +372,5 @@
     return YES;//隐藏为YES，显示为NO
 }
 
-/*
- *  注册完成跳转
- */
-- (void)signUpComplete {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
 
 @end

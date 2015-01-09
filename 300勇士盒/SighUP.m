@@ -96,7 +96,7 @@
     int space = 8;
     int y = 30;
     _cameraImg = [[UIImageView alloc]initWithFrame:CGRectMake(_halfWidth-54, y, 100, 100)];
-    _cameraImg.image = [UIImage imageNamed:@"1.jpg"];
+    _cameraImg.image = [UIImage imageNamed:@"a1.jpg"];
     _cameraImg.backgroundColor = [UIColor whiteColor];
     _cameraImg.layer.cornerRadius = 4;
     _cameraImg.layer.masksToBounds = YES;
@@ -196,7 +196,7 @@
     if (next == _accountTF) {
         [_passwordTF becomeFirstResponder];
     }else if(next == _passwordTF){
-        [_saveBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [self signUpBtnClickAV];
     }
     return YES;
 }

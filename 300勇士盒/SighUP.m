@@ -305,6 +305,7 @@
     AVUser *user = [AVUser user];
     user.password = _passwordTF.text;
     user.username = _nickNameTF.text;
+//    user.nickname = _nickNameTF.text;
     if([MyPublic isPhoneNumber:_accountTF.text]){
         user.mobilePhoneNumber = _accountTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -321,7 +322,9 @@
         user.email = _accountTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-                [self addToUserDic:@"2" SetUser:user];                                   //email
+                [self addToUserDic:@"2" SetUser:user];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                //email
             } else {
                 UIAlertView *fail = [[UIAlertView alloc]initWithTitle:@"" message:@"账户名已存在哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles:nil, nil];
                 [fail show];

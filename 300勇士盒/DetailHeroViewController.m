@@ -114,7 +114,7 @@
 - (void)setNavgationBar:(NSInteger)index
 {
     if (index==2) {
-        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"我得出装" style:UIBarButtonItemStyleDone target:self action:@selector(newEquip)];
+        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"我的出装" style:UIBarButtonItemStyleDone target:self action:@selector(newEquip)];
         [self.navigationItem setRightBarButtonItem:right];
     }
     else

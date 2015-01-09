@@ -75,15 +75,15 @@
     
     [super viewDidLoad];
     
-    PhotoStackViewController *photo = [[PhotoStackViewController alloc]init];
-    photo.delegate = self;
-    
     if(ISIPHONE){
         UIImage*img =[UIImage imageNamed:@"loginBg"];
         UIImageView* bgview = [[UIImageView alloc]initWithImage:img];
         bgview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:bgview];
     }
+    
+    PhotoStackViewController *photo = [[PhotoStackViewController alloc]init];
+    photo.delegate = self;
     
     _myPublic = [[MyPublic alloc] init];
     _loginPublicClass = [[LoginPublicClass alloc]init];
@@ -304,11 +304,8 @@
 -(void)signUpBtnClickAV{
     AVUser *user = [AVUser user];
     user.password = _passwordTF.text;
-//    user.username = _nickNameTF.text;
-    user.username = _nickNameTF.text;
+    user.username = [NSString stringWithFormat:@"%@%ld",_accountTF.text,random()];;
     [user setObject:_nickNameTF.text forKey:@"NickName"];
-//    user.nickName = _nickNameTF.text;
-//    user.nickname = _nickNameTF.text;
     if([MyPublic isPhoneNumber:_accountTF.text]){
         user.mobilePhoneNumber = _accountTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

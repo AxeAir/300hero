@@ -12,7 +12,7 @@
 #import "UConstants.h"
 #import "SighUP.h"
 
-@interface ValidMobile ()<UITextFieldDelegate>
+@interface ValidMobile ()<UITextFieldDelegate,UITextInput,UITextFieldDelegate>
 
 @property (strong,nonatomic) SighUP *sighUp;
 @property (strong,nonatomic) MyPublic *myPublic;
@@ -34,15 +34,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if(ISIPHONE){
+        UIImage*img =[UIImage imageNamed:@"loginBg"];
+        UIImageView* bgview = [[UIImageView alloc]initWithImage:img];
+        bgview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:bgview];
+    }
+    
     _halfWidth = self.view.frame.size.width/2;
-    int width = 200;
-    int height = 30;
-    int space = 8;
-    int y = 30;
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
     
     _validTF = [[UITextField alloc] init];
     _validTF.placeholder = @" 你の验证码";
-    _validTF.frame = CGRectMake(_halfWidth-width/2, y, 130, height);
+    _validTF.frame = CGRectMake(_halfWidth-width*9/10/2, height/20*2, width*9/10, height/20);
     _validTF.layer.cornerRadius = 3;
     _validTF.backgroundColor = [UIColor whiteColor];
     _validTF.keyboardType = UIKeyboardTypeNumberPad;
@@ -52,43 +57,42 @@
     [self.view addSubview:_validTF];
     
     //SignUpBtn
-    width = 150;
-    height = 30;
-    y += height + space*8;
-    _saveBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-width/2,y, width, height)];
+    
+    _saveBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-100,height/20*4, 200, 30)];
     [_saveBtn setTitle:@"注 册" forState:UIControlStateNormal];
-    [_saveBtn setTitleColor:[UIColor colorWithRed:0 green:1 blue:1 alpha:1] forState:UIControlStateNormal];
+    [_saveBtn setTitleColor:RGBACOLOR(255, 255, 255, 0.5) forState:UIControlStateNormal];
     _saveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [_saveBtn setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
     [_saveBtn addTarget:self action:@selector(signUpBtnClickAV) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveBtn];
     
     //Back
-    width = 150;
-    y += 30+ space*0;
-    _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-width/2,y, width, height)];
-    [_backBtn setTitle:@"我已有账号" forState:UIControlStateNormal];
+
+    _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-100,height/10*9, 200, 30)];
+    [_backBtn setTitle:@"返 回" forState:UIControlStateNormal];
     _backBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
-    [_backBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [_backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_backBtn setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
     [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_backBtn];
 }
-
--(BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    if(theTextField == _validTF){
-        [_saveBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if(_validTF.text.length == 6){
+        [UIView animateWithDuration:0.5 animations:^{
+            [_saveBtn setTitleColor:RGBACOLOR(255, 255, 255, 1) forState:UIControlStateNormal];
+        } completion:^(BOOL finished) {;
+            nil;
+        }];
     }
-    return YES;
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-     if ([string isEqualToString:@"\n"]) {
-         [_validTF resignFirstResponder];
-         return NO;
-     }
-    return YES;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![_validTF isExclusiveTouch]) {
+        [_validTF resignFirstResponder];
+    }
 }
+
+
 
 -(void)sendUserDictoServer:(NSDictionary *)userDic{
     NSString *URLRegister=[NSString stringWithFormat:@"%@register/",DEBUG_URL];

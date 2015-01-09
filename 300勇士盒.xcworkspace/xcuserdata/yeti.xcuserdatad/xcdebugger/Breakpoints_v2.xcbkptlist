@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442508282.2326"
+            timestampString = "442520495.70851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442516902.878503"
+            timestampString = "442520495.70851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442516902.878503"
+            timestampString = "442520495.70851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>

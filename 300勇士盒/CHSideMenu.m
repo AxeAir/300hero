@@ -8,6 +8,7 @@
 
 #import "CHSideMenu.h"
 #import "UConstants.h"
+#import "Login.h"
 
 // constants
 const CGFloat CHSideMenuMinimumRelativePanDistanceToOpen = 0.33;

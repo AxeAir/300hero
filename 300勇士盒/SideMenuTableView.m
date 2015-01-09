@@ -18,6 +18,8 @@
      NSArray *itemsArray;
 }
 @property (nonatomic, strong) UIImageView *headerView;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UIButton *logoutbutton;
 @end
 
 @implementation SideMenuTableView
@@ -56,7 +58,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 200;
+    return 220;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -202,7 +204,7 @@
 {
   if(section==0)
   {
-      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 220)];
       view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
       
       UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
@@ -226,20 +228,33 @@
       AVUser * currentUser = [AVUser currentUser];
       if (currentUser != nil) {
           // 允许用户使用应用
-          UILabel *name= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];
-          name.text=[currentUser username];
+           _nameLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];
+          _nameLabel.text=[currentUser username];
+          [_nameLabel setTextAlignment:NSTextAlignmentCenter];
+          [_nameLabel setTextColor:[UIColor whiteColor]];
+          [self.view addSubview:_nameLabel];
           
-          [name setTextAlignment:NSTextAlignmentCenter];
-          [name setTextColor:[UIColor whiteColor]];
-          [self.view addSubview:name];
+          
+          _logoutbutton=[[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, MaxY(_nameLabel), 100, 20)];
+          [_logoutbutton setTitle:@"退出登录" forState:UIControlStateNormal];
+          [[_logoutbutton titleLabel] setFont:[UIFont systemFontOfSize:14]];
+          [_logoutbutton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+          [self.view addSubview:_logoutbutton];
       } else {
           //缓存用户对象为空时， 可打开用户注册界面…
+          
           
       }
       
       return view;
   }
     return nil;
+}
+
+
+- (void)logout
+{
+    [AVUser logOut];
 }
 
 
@@ -267,6 +282,7 @@
            selector:@selector(handleColorChange:)
                name:@"do"
              object:nil];
+    [self viewDidLoad];
     
 }
 

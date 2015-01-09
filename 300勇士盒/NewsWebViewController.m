@@ -58,13 +58,13 @@
     [tabBar setBackgroundColor:BACKGROUND_COLOR];
     //[tabBar setBackgroundColor:[UIColor whiteColor]];
     
-    UIButton *likeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width/3, 40)];
-    [likeButton setTitle:@"赞" forState:UIControlStateNormal];
-    [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [tabBar addSubview:likeButton];
+//    UIButton *likeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width/3, 40)];
+//    [likeButton setTitle:@"赞" forState:UIControlStateNormal];
+//    [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [tabBar addSubview:likeButton];
     
     
-    UIButton *reviewButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width/3*2, 0, Main_Screen_Width/3, 40)];
+    UIButton *reviewButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 40)];
     [reviewButton setTitle:@"评论" forState:UIControlStateNormal];
     [reviewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [reviewButton addTarget:self action:@selector(review) forControlEvents:UIControlEventTouchUpInside];

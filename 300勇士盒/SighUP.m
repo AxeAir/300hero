@@ -202,55 +202,70 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    CGRect curFrame = self.view.frame;
-    if(textField == self.nickNameTF){
-        curFrame.origin.y -= 10;
-    }
-    if(textField == self.accountTF){
-        curFrame.origin.y -= 70;
-    }
-    if(textField == self.passwordTF){
-        curFrame.origin.y -= 90;
-    }
-    [UIView animateWithDuration:0.3f animations:^{
-        self.view.frame=curFrame;
-    }];
-}
+//    CGRect frame = self.view.frame;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect frame = self.view.frame;
+        if(ISIPHONE5){
+            frame.origin.y -= 10;
+        }
+        if(ISIPHONE4s){
+            frame.origin.y -= 100;
+            self.view.frame = frame;
+        }
 
--(void)viewWillAppear:(BOOL)animated{
-//    [self dismissViewControllerAnimated:NO completion:nil];
+    } completion:^(BOOL finished) {
+        nil;
+    }];
+//    self.view.frame = frame;
 }
+    
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    CGRect curFrame = self.view.frame;
-    if(textField == self.accountTF){
-        if(!([MyPublic isPhoneNumber:_accountTF.text]||[MyPublic validateEmail:_accountTF.text])){
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"手机号 & 邮箱都可以哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-            [alertView show];
-            [_accountTF becomeFirstResponder];
+//    CGRect frame = self.view.frame;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect frame = self.view.frame;
+        if(ISIPHONE5){
+            frame.origin.y += 10;
         }
-        curFrame.origin.y += 70;
-    }
-    if(textField == self.passwordTF){
-        if(self.passwordTF.text.length < 5){
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"密码要大于5位哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-            [alertView show];
-            [_passwordTF becomeFirstResponder];
+        if(ISIPHONE4s){
+            frame.origin.y += 100;
+            self.view.frame = frame;
         }
-        curFrame.origin.y += 90;
-    }
-    if(textField == self.nickNameTF){
-        if(self.nickNameTF.text.length < 1){
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"要有昵称哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-            [alertView show];
-            [_nickNameTF becomeFirstResponder];
-        }
-        curFrame.origin.y += 10;
-    }
-    [UIView animateWithDuration:0.2f animations:^{
-        self.view.frame=curFrame;
+        
+    } completion:^(BOOL finished) {
+        nil;
     }];
+//    self.view.frame = frame;
 }
+
+
+//-(void)textFieldDidEndEditing:(UITextField *)textField{
+//    CGRect curFrame = self.view.frame;
+//    if(textField == self.accountTF){
+//        if(!([MyPublic isPhoneNumber:_accountTF.text]||[MyPublic validateEmail:_accountTF.text])){
+//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"手机号 & 邮箱都可以哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
+//            [alertView show];
+//            [_accountTF becomeFirstResponder];
+//        }
+//    }
+//    if(textField == self.passwordTF){
+//        if(self.passwordTF.text.length < 5){
+//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"密码要大于5位哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
+//            [alertView show];
+//            [_passwordTF becomeFirstResponder];
+//        }
+//    }
+//    if(textField == self.nickNameTF){
+//        if(self.nickNameTF.text.length < 1){
+//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"要有昵称哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
+//            [alertView show];
+//            [_nickNameTF becomeFirstResponder];
+//        }
+//    }
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.view.frame=curFrame;
+//    }];
+//}
 
 #pragma mark - Action
 
@@ -345,24 +360,6 @@
     [_cameraImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"a%ld.jpg",(NSInteger)index+1]]];
     _avatarNum = [NSString stringWithFormat:@"%ld",index+1];
     return index;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(![_cameraImg isExclusiveTouch]){
-        [_cameraImg setAlpha:0.8];
-    }
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(![_cameraImg isExclusiveTouch]){
-        [_cameraImg setAlpha:1.0];
-    }
-}
-
--(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(![_cameraImg isExclusiveTouch]){
-        [_cameraImg setAlpha:1.0];
-    }
 }
 
 -(void)didReceiveMemoryWarning {

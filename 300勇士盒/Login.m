@@ -145,7 +145,7 @@
     }
 
     _accountTF = [[UITextField alloc] init];
-    _accountTF.placeholder = @" 电子邮箱";
+    _accountTF.placeholder = @" 邮箱&手机";
     _accountTF.frame = CGRectMake(_halfWidth-width/2, y, width, height);
     _accountTF.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.3].CGColor;
     _accountTF.layer.cornerRadius =3;

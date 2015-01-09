@@ -56,9 +56,6 @@
     _gf.font=[UIFont systemFontOfSize:12];
     _gf.textColor=RGBCOLOR(153, 153, 153);
     [self addSubview:_gf];
-    
-    
-    
 }
 
 

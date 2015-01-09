@@ -28,7 +28,7 @@
     [self.contentView addSubview:_header];
     
     _name = [[UILabel alloc] initWithFrame:CGRectMake(MaxX(_header)+10, 5, 200, 20)];
-    _name.text = [dic objectForKey:@"userID"];
+    _name.text = [dic objectForKey:@"nick"];
     [_name setFont:[UIFont boldSystemFontOfSize:14]];
     [self.contentView addSubview:_name];
     

@@ -229,7 +229,8 @@
       if (currentUser != nil) {
           // 允许用户使用应用
            _nameLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];
-          _nameLabel.text=[currentUser username];
+          _nameLabel.text=[currentUser objectForKey:@"NickName"];
+          
           [_nameLabel setTextAlignment:NSTextAlignmentCenter];
           [_nameLabel setTextColor:[UIColor whiteColor]];
           [self.view addSubview:_nameLabel];

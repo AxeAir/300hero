@@ -66,7 +66,7 @@ A AVOS Cloud Framework User Object that is a local representation of a user pers
  the password. It is only meant to be set.
  */
 @property (nonatomic, retain) NSString *password;
-
+//@property (nonatomic, retain) NSString *nickName;
 /// The email for the AVUser.
 @property (nonatomic, retain) NSString *email;
 

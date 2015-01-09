@@ -293,7 +293,6 @@
 
 
 -(void)loginBtnClickAV{
-    [AVUser logOut];
     if([MyPublic isPhoneNumber:_accountTF.text]){
         [AVUser logInWithMobilePhoneNumberInBackground:_accountTF.text password:_passwordTF.text block:^(AVUser *user, NSError *error) {
             if(user!=nil){

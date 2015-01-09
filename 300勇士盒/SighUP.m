@@ -360,7 +360,7 @@
 -(NSUInteger) photoSelectedIndex:(NSUInteger)index{
     NSLog(@"%ld",index);
     [_cameraImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"a%ld.jpg",(NSInteger)index+1]]];
-    _avatarNum = [NSString stringWithFormat:@"%ld",index+1];
+    _avatarNum = [NSString stringWithFormat:@"a%ld",index+1];
     return index;
 }
 

@@ -33,6 +33,14 @@
 }
 
 
+- (void)NoReview
+{
+     UILabel *noReview=[[UILabel alloc] initWithFrame:CGRectMake((Main_Screen_Width-300)/2, 100, 300, 100)];
+    noReview.text = @"暂无评论，快来做第一个评论的人把";
+    noReview.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:noReview];
+}
+
 - (void)getData
 {
     NSDictionary *paramters=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",_pageID],@"pageID", nil];
@@ -50,8 +58,9 @@
             [_tableView reloadData];
             
         }
-        else
+        else if([commons count]==0)
         {
+            [self NoReview];
             
         }
         

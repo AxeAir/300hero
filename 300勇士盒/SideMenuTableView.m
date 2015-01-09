@@ -56,7 +56,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 180;
+    return 200;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -202,7 +202,7 @@
 {
   if(section==0)
   {
-      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 180)];
+      UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
       view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
       
       UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
@@ -221,6 +221,21 @@
       [_headerView setUserInteractionEnabled:YES];
       [_headerView addGestureRecognizer:tap];
       [view addSubview:_headerView];
+      
+      
+      AVUser * currentUser = [AVUser currentUser];
+      if (currentUser != nil) {
+          // 允许用户使用应用
+          UILabel *name= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];
+          name.text=[currentUser username];
+          
+          [name setTextAlignment:NSTextAlignmentCenter];
+          [name setTextColor:[UIColor whiteColor]];
+          [self.view addSubview:name];
+      } else {
+          //缓存用户对象为空时， 可打开用户注册界面…
+          
+      }
       
       return view;
   }

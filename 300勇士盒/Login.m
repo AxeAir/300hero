@@ -319,9 +319,12 @@
 }
 
 - (void)signUpBtnClick{
-    SighUP* signUpView = [[SighUP alloc]init];
-    signUpView.delegate = self;
-    [self presentViewController:signUpView animated:YES completion:nil];
+    
+  
+        SighUP* signUpView = [[SighUP alloc]init];
+        signUpView.delegate = self;
+        [self presentViewController:signUpView animated:YES completion:nil];
+
 }
 
 - (void)skipBtnClick{

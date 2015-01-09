@@ -304,7 +304,10 @@
 -(void)signUpBtnClickAV{
     AVUser *user = [AVUser user];
     user.password = _passwordTF.text;
+//    user.username = _nickNameTF.text;
     user.username = _nickNameTF.text;
+    [user setObject:_nickNameTF.text forKey:@"NickName"];
+//    user.nickName = _nickNameTF.text;
 //    user.nickname = _nickNameTF.text;
     if([MyPublic isPhoneNumber:_accountTF.text]){
         user.mobilePhoneNumber = _accountTF.text;

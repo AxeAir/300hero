@@ -127,7 +127,7 @@
     }else{
         UIAlertView *alertView =
         [[UIAlertView alloc]initWithTitle:@"提示"
-                               message:@"验证码不正确"
+                               message:@"验证码位数不对"
                               delegate:self
                      cancelButtonTitle:@"好的"
                      otherButtonTitles:nil, nil];
@@ -136,7 +136,7 @@
 }
 
 -(void)backBtnClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -60,8 +60,8 @@
     
     _saveBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-100,height/20*4, 200, 30)];
     [_saveBtn setTitle:@"注 册" forState:UIControlStateNormal];
-    [_saveBtn setTitleColor:RGBACOLOR(255, 255, 255, 0.5) forState:UIControlStateNormal];
-    _saveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [_saveBtn setTitleColor:RGBACOLOR(255, 255, 255, 0.7) forState:UIControlStateNormal];
+    _saveBtn.titleLabel.font = [UIFont systemFontOfSize:20.0];
     [_saveBtn setBackgroundColor:[UIColor colorWithWhite:1 alpha:0]];
     [_saveBtn addTarget:self action:@selector(signUpBtnClickAV) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveBtn];
@@ -70,7 +70,7 @@
 
     _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-100,height/10*9, 200, 30)];
     [_backBtn setTitle:@"返 回" forState:UIControlStateNormal];
-    _backBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    _backBtn.titleLabel.font = [UIFont systemFontOfSize:18.0];
     [_backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_backBtn setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
     [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];

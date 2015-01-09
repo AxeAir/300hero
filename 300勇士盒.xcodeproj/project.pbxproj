@@ -1773,6 +1773,7 @@
 					};
 					E5A4BE9D19DF118D000BFE8E = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = SZ6E4TG6HK;
 						TestTargetID = E5A4BE8419DF118D000BFE8E;
 					};
 				};
@@ -2324,7 +2325,7 @@
 					/Users/mrche/Downloads/WeChatSDK_1.5,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a36ce718-5f09-4834-be01-d657dbaec14b";
 			};
 			name = Debug;
 		};
@@ -2361,7 +2362,7 @@
 					/Users/mrche/Downloads/WeChatSDK_1.5,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a36ce718-5f09-4834-be01-d657dbaec14b";
 			};
 			name = Release;
 		};

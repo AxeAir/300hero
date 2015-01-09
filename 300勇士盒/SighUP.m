@@ -89,6 +89,7 @@
     _loginPublicClass = [[LoginPublicClass alloc]init];
     
     _halfWidth = self.view.frame.size.width/2;
+    float viewHeight = self.view.frame.size.height;
     
     //Camera
     int width = 250;
@@ -151,9 +152,9 @@
     //Back
     width = 150;
     y += 30+ space*0;
-    _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-width/2,y, width, height)];
+    _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(_halfWidth-width/2,viewHeight*8/10, width, height)];
     [_backBtn setTitle:@"我已有账号" forState:UIControlStateNormal];
-    _backBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    _backBtn.titleLabel.font = [UIFont systemFontOfSize:18.0];
     [_backBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [_backBtn setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
     [_backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -321,6 +322,7 @@
     user.password = _passwordTF.text;
     user.username = [NSString stringWithFormat:@"%@%ld",_accountTF.text,random()];;
     [user setObject:_nickNameTF.text forKey:@"NickName"];
+    [user setObject:_avatarNum forKey:@"AvatarID"];
     if([MyPublic isPhoneNumber:_accountTF.text]){
         user.mobilePhoneNumber = _accountTF.text;
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

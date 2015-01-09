@@ -310,7 +310,8 @@
             if(user!=nil){
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }else{
-                NSLog(@"密码或账户名错误");
+                UIAlertView *failLogin = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号不存在" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+                [failLogin show];
             }
         }];
     }else{

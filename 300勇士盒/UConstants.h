@@ -1,6 +1,5 @@
 //
 //  UConstants.h
-//  Medical_Wisdom
 //
 //  Created by Mac on 14-2-28.
 //  Copyright (c) 2014年 Mr.Chen. All rights reserved.

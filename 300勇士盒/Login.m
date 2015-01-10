@@ -73,24 +73,13 @@
     
     //iPhone6 到 iPhone 5 的大小比例系数
     float sixToFive = 1.17;
-    
-    // Do any additional setup after loading the view.
 
     if(ISIPHONE){
         UIImage*img =[UIImage imageNamed:@"loginBg"];
         UIImageView* bgview = [[UIImageView alloc]initWithImage:img];
         bgview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:bgview];
-//        [self.view setBackgroundColor:[UIColor colorWithPatternImage:img]];
     }
-//    if(ISIPHONE5){
-//        UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"loginBg"]];
-//        self.view.backgroundColor = background;
-//    }
-//    if(ISIPHONE6){
-//        UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"loginBg"]];
-//        self.view.backgroundColor = background;
-//    }
 
     _halfWidth = self.view.frame.size.width/2;
     
@@ -173,7 +162,7 @@
     }
     
     _passwordTF = [[UITextField alloc]initWithFrame:CGRectMake(_halfWidth-width/2, y, width, height)];
-    _passwordTF.placeholder = @" 密码";
+    _passwordTF.placeholder = @" 密码大于三位";
     _passwordTF.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.1].CGColor;
     _passwordTF.layer.cornerRadius = 3;
     _passwordTF.backgroundColor = [UIColor whiteColor];
@@ -185,15 +174,15 @@
     //loginBtn
     
     if(ISIPHONE5){
-        y += height + space/sixToFive;
+        y += height + space/sixToFive*4;
         width = width;
         height = height;
     }
     else if(ISIPHONE6){
-        y += height + space;
+        y += height + space*4;
     }
     else{
-        y += height + space/sixToFive;
+        y += height + space/sixToFive*4;
         width = width;
         height = height - 10;
     }
@@ -291,6 +280,29 @@
 
 #pragma mark-TouchEvent
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    CGRect curFrame = self.view.frame;
+    curFrame.origin.y += 30;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.view.frame=curFrame;
+    }];
+    if(textField == _accountTF){
+        if(!([MyPublic validateEmail:_accountTF.text]||[MyPublic isPhoneNumber:_accountTF.text])){
+            [LoginPublicClass wrongTextFiled:_accountTF];
+        }
+        else{
+            [LoginPublicClass rightTextField:_accountTF];
+        }
+    }
+    if(textField == _passwordTF){
+        if(_passwordTF.text.length<4){
+            [LoginPublicClass wrongTextFiled:_passwordTF];
+        }
+        else{
+            [LoginPublicClass rightTextField:_passwordTF];
+        }
+    }
+}
 
 -(void)loginBtnClickAV{
     if([MyPublic isPhoneNumber:_accountTF.text]){
@@ -322,20 +334,15 @@
 }
 
 - (void)signUpBtnClick{
-    
     SighUP *signUpView = [[SighUP alloc] init];
-    [self.navigationController pushViewController:signUpView animated:YES];//  SighUP *signUpView=[[SighUP alloc] initWithNibName:@"signUpView" bundle:nil];
+    [self.navigationController pushViewController:signUpView animated:YES];
     signUpView.delegate = self;
-
 }
 
 - (void)skipBtnClick{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)wechatBtnClick{
-    
-}
 #pragma mark-TextField Delegate
 
 /*
@@ -346,7 +353,7 @@
     if (next == _accountTF) {
         [_passwordTF  becomeFirstResponder];
     }else if(next == _passwordTF){
-        [_loginBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [self loginBtnClickAV];
     }
     return YES;
 }
@@ -359,19 +366,10 @@
     }];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    CGRect curFrame = self.view.frame;
-    curFrame.origin.y += 30;
-    [UIView animateWithDuration:0.3f animations:^{
-        self.view.frame=curFrame;
-    }];
-}
-
 #pragma mark-Action
 
 - (BOOL)prefersStatusBarHidden{
     return YES;//隐藏为YES，显示为NO
 }
-
 
 @end

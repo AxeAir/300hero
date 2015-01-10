@@ -8,6 +8,7 @@
 
 #import "LoginPublicClass.h"
 #import "MyPublic.h"
+#import "UConstants.h"
 
 @interface LoginPublicClass ()
 
@@ -108,6 +109,22 @@
     [resultDic setObject:flagTF forKey:@"flagTF"];
     
     return resultDic;
+}
+
++(void)wrongTextFiled:(UITextField *)textFiled{
+    [UIView animateWithDuration:0.2 animations:^{
+        [textFiled setBackgroundColor:RGBACOLOR(213, 100, 140, 0.9)];
+    } completion:^(BOOL finished) {
+        nil;
+    }];
+}
+
++(void)rightTextField:(UITextField *)textFiled{
+    [UIView animateWithDuration:0.2 animations:^{
+        [textFiled setBackgroundColor:RGBACOLOR(255, 255, 255, 0.9)];
+    } completion:^(BOOL finished) {
+        nil;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

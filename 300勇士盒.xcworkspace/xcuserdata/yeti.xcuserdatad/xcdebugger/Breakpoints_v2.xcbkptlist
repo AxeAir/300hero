@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442525952.693926"
+            timestampString = "442608274.26774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442528115.361166"
+            timestampString = "442608274.26774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442528115.361166"
+            timestampString = "442608274.26774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442528215.775358"
+            timestampString = "442608274.26774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442528433.216795"
+            timestampString = "442608274.26774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "300&#x52c7;&#x58eb;&#x76d2;/SideMenuTableView.m"
-            timestampString = "442528967.449563"
+            filePath = "300&#x52c7;&#x58eb;&#x76d2;/ValidMobile.m"
+            timestampString = "442607866.723355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "-tableView:viewForHeaderInSection:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-sendUserDictoServer:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "300&#x52c7;&#x58eb;&#x76d2;/SighUP.m"
-            timestampString = "442529200.36533"
+            timestampString = "442608334.718674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "-signUpBtnClickAV"
             landmarkType = "5">
          </BreakpointContent>

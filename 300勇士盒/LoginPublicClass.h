@@ -28,4 +28,8 @@
  */
 - (NSMutableDictionary *)signUpVarificationWithAccountText:(NSString *)account PasswordText:(NSString *)passWord NickName:(NSString *)NickName;
 
++(void)rightTextField:(UITextField *)textFiled;
+
++(void)wrongTextFiled:(UITextField *)textFiled;
+
 @end

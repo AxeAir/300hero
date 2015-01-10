@@ -135,7 +135,7 @@
     //Password
     y += height + space;
     _passwordTF = [[UITextField alloc]initWithFrame:CGRectMake(_halfWidth-width/2, y, width, height)];
-    _passwordTF.placeholder = @" 你の密码";
+    _passwordTF.placeholder = @" 密码大于三位";
     _passwordTF.layer.cornerRadius = 3;
     _passwordTF.backgroundColor = [UIColor whiteColor];
     _passwordTF.returnKeyType = UIReturnKeyGo;
@@ -223,6 +223,27 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
 //    CGRect frame = self.view.frame;
+    if(textField == _nickNameTF){
+        if(_nickNameTF.text.length < 1){
+            [LoginPublicClass wrongTextFiled:_nickNameTF];
+        }else{
+            [LoginPublicClass rightTextField:_nickNameTF];
+        }
+    }
+    if(textField == _accountTF){
+        if(!([MyPublic validateEmail:_accountTF.text]||[MyPublic isPhoneNumber:_accountTF.text])){
+            [LoginPublicClass wrongTextFiled:_accountTF];
+        }else{
+            [LoginPublicClass rightTextField:_accountTF];
+        }
+    }
+    if(textField == _passwordTF){
+        if(_passwordTF.text.length < 3){
+            [LoginPublicClass wrongTextFiled:_passwordTF];
+        }else{
+            [LoginPublicClass rightTextField:_passwordTF];
+        }
+    }
     [UIView animateWithDuration:0.3 animations:^{
         CGRect frame = self.view.frame;
         if(ISIPHONE5){
@@ -232,41 +253,11 @@
             frame.origin.y += 100;
             self.view.frame = frame;
         }
-        
     } completion:^(BOOL finished) {
         nil;
     }];
 //    self.view.frame = frame;
 }
-
-
-//-(void)textFieldDidEndEditing:(UITextField *)textField{
-//    CGRect curFrame = self.view.frame;
-//    if(textField == self.accountTF){
-//        if(!([MyPublic isPhoneNumber:_accountTF.text]||[MyPublic validateEmail:_accountTF.text])){
-//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"手机号 & 邮箱都可以哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-//            [alertView show];
-//            [_accountTF becomeFirstResponder];
-//        }
-//    }
-//    if(textField == self.passwordTF){
-//        if(self.passwordTF.text.length < 5){
-//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"密码要大于5位哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-//            [alertView show];
-//            [_passwordTF becomeFirstResponder];
-//        }
-//    }
-//    if(textField == self.nickNameTF){
-//        if(self.nickNameTF.text.length < 1){
-//            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"要有昵称哦" delegate:self cancelButtonTitle:@"好的 (=￣ω￣=)" otherButtonTitles: nil];
-//            [alertView show];
-//            [_nickNameTF becomeFirstResponder];
-//        }
-//    }
-//    [UIView animateWithDuration:0.2f animations:^{
-//        self.view.frame=curFrame;
-//    }];
-//}
 
 #pragma mark - Action
 

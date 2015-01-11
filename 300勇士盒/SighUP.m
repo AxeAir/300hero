@@ -314,10 +314,10 @@
         user.username = [NSString stringWithFormat:@"%@%ld",_accountTF.text,random()];
         user.password = _passwordTF.text;
         user.mobilePhoneNumber = _accountTF.text;
+        [user setObject:_nickNameTF.text forKey:@"NickName"];
+        [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if(succeeded){
-                [user setObject:_nickNameTF.text forKey:@"NickName"];
-                [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
                 [self addToUserDic:@"1" SetUser:user];                                   //mobile
             }
             else{
@@ -330,10 +330,10 @@
         user.email = _accountTF.text;
         user.username = _accountTF.text;
         user.password = _passwordTF.text;
+        [user setObject:_nickNameTF.text forKey:@"NickName"];
+        [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-                [user setObject:_nickNameTF.text forKey:@"NickName"];
-                [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
                 [self addToUserDic:@"2" SetUser:user];
                 [self dismissViewControllerAnimated:YES completion:nil];
 //                [self.navigationController popToRootViewControllerAnimated:YES];

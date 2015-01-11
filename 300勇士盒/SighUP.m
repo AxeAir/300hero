@@ -317,7 +317,7 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if(succeeded){
                 [user setObject:_nickNameTF.text forKey:@"NickName"];
-                [user setObject:_avatarNum forKey:@"AvatarID"];
+                [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
                 [self addToUserDic:@"1" SetUser:user];                                   //mobile
             }
             else{
@@ -333,7 +333,7 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [user setObject:_nickNameTF.text forKey:@"NickName"];
-                [user setObject:_avatarNum forKey:@"AvatarID"];
+                [user setObject:_avatarNum?_avatarNum:@"a1" forKey:@"AvatarID"];
                 [self addToUserDic:@"2" SetUser:user];
                 [self dismissViewControllerAnimated:YES completion:nil];
 //                [self.navigationController popToRootViewControllerAnimated:YES];

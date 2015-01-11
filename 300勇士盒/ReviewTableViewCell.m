@@ -24,7 +24,8 @@
     _header = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 30, 30)];
     [[_header layer] setCornerRadius:15.0];
     [[_header layer] setMasksToBounds:YES];
-    [_header setImage:[UIImage imageNamed:@"1.jpg"]];
+    
+    [_header setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[dic objectForKey:@"avatarNum"]]]];
     [self.contentView addSubview:_header];
     
     _name = [[UILabel alloc] initWithFrame:CGRectMake(MaxX(_header)+10, 5, 200, 20)];

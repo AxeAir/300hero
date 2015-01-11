@@ -43,8 +43,11 @@
     AVUser * currentUser = [AVUser currentUser];
     if (currentUser == nil) {
         // 允许用户使用应用
-        Login *login =[[Login alloc] init];
-        [self presentViewController:login animated:YES completion:nil];
+        //Login *login =[[Login alloc] init];
+        //[self.navigationController pushViewController:login animated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出了点小事" message:@"请登录后参与评论" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        
         return;
     } else {
         

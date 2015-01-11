@@ -113,7 +113,7 @@
 
 +(void)wrongTextFiled:(UITextField *)textFiled{
     [UIView animateWithDuration:0.2 animations:^{
-        [textFiled setBackgroundColor:RGBACOLOR(213, 100, 140, 0.9)];
+        [textFiled setBackgroundColor:RGBACOLOR(255, 160, 236, 0.9)];
     } completion:^(BOOL finished) {
         nil;
     }];

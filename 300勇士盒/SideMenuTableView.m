@@ -224,8 +224,8 @@
       [_headerView addGestureRecognizer:tap];
       [view addSubview:_headerView];
       
-      
       AVUser * currentUser = [AVUser currentUser];
+      
       if (currentUser != nil) {
           // 允许用户使用应用
            _nameLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(_headerView), self.view.frame.size.width, 30)];

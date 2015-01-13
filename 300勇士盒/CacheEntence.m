@@ -35,11 +35,17 @@
             //想用缓存但是没有，现下载再存起来
             AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
             [manager GET:url parameters:paramters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                CacheDAO *dao=[CacheDAO new];
-                CacheModel *model=[[CacheModel alloc] init];
-                model.remoteURL=url;
-                model.returnJson=(NSDictionary*)responseObject;
-                [dao create:model];
+                
+                NSString *status = [responseObject objectForKey:@"Status"];
+                
+                if ([status isEqualToString:@"OK"]) {
+                    CacheDAO *dao=[CacheDAO new];
+                    CacheModel *model=[[CacheModel alloc] init];
+                    model.remoteURL=url;
+                    model.returnJson=(NSDictionary*)responseObject;
+                    [dao create:model];
+                }
+                
                 NSLog(@"不存在缓存,存入缓存");
                 success(responseObject);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

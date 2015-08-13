@@ -119,23 +119,6 @@
     //添加收件人
     NSArray *toRecipients = [NSArray arrayWithObject: @"info@mrchenhao.com"];
     [mailPicker setToRecipients: toRecipients];
-    //添加抄送
-    //NSArray *ccRecipients = [NSArray arrayWithObjects:nil];
-    //[mailPicker setCcRecipients:ccRecipients];
-    //添加密送
-   // NSArray *bccRecipients = [NSArray arrayWithObjects:@"fourth@example.com", nil];
-    //[mailPicker setBccRecipients:bccRecipients];
-    
-    // 添加一张图片
-    //UIImage *addPic = [UIImage imageNamed: @"Icon@2x.png"];
-    //NSData *imageData = UIImagePNGRepresentation(addPic);            // png
-    //关于mimeType：http://www.iana.org/assignments/media-types/index.html
-    //[mailPicker addAttachmentData: imageData mimeType: @"" fileName: @"Icon.png"];
-    
-    //添加一个pdf附件
-    //NSString *file = [self fullBundlePathFromRelativePath:@"高质量C++编程指南.pdf"];
-    //NSData *pdf = [NSData dataWithContentsOfFile:file];
-    //[mailPicker addAttachmentData: pdf mimeType: @"" fileName: @"高质量C++编程指南.pdf"];
     
     NSString *emailBody = @"您好！<br/>我是";
     [mailPicker setMessageBody:emailBody isHTML:YES];

@@ -46,31 +46,33 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
     NSLog(@"%ld",(long)_ID);
-    [manager POST:[NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%ld",(long)_ID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *url = [NSString stringWithFormat:@"http://300report.jumpw.com/api/getrank?type=%ld",(long)_ID];
+    
+    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         //NSLog(@"%@",responseObject);
         
         NSString *result=[responseObject objectForKey:@"Result"];
-        if([result isEqualToString:@"OK"])
-        {
+        if([result isEqualToString:@"OK"]) {
             NSDictionary *Rank=[responseObject objectForKey:@"Rank"];
             self.title=[Rank objectForKey:@"Title"];
             valueNamel=[Rank objectForKey:@"ValueName"];
-             NSArray *List=[Rank objectForKey:@"List"];
-            
-            NSMutableArray *tempArray=[[NSMutableArray alloc] init];
-            for (NSDictionary *temp in List) {
-            RankDetailModel *model=[[RankDetailModel alloc] init];
-                model.Index=[[temp objectForKey:@"Index"] integerValue];
-                model.Name=[temp objectForKey:@"Name"];
-                model.RankChange=[[temp objectForKey:@"RankChange"] integerValue];
-                model.Url=[temp objectForKey:@"Url"];
-                model.Value=[[temp objectForKey:@"Value"] integerValue];
-                [tempArray addObject:model];
+            NSArray *List=[Rank objectForKey:@"List"];
+            if (![List isEqual:[NSNull null]]) {
+                NSMutableArray *tempArray=[[NSMutableArray alloc] init];
+                for (NSDictionary *temp in List) {
+                    RankDetailModel *model=[[RankDetailModel alloc] init];
+                    model.Index=[[temp objectForKey:@"Index"] integerValue];
+                    model.Name=[temp objectForKey:@"Name"];
+                    model.RankChange=[[temp objectForKey:@"RankChange"] integerValue];
+                    model.Url=[temp objectForKey:@"Url"];
+                    model.Value=[[temp objectForKey:@"Value"] integerValue];
+                    [tempArray addObject:model];
+                }
+                
+                rankList=tempArray;
+                [_table reloadData];
             }
-            
-            rankList=tempArray;
-            [_table reloadData];
         }
         //dataArray=tempArray;
         //[self.tableView reloadData];

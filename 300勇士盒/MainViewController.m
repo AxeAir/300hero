@@ -36,9 +36,6 @@
 
 @property (nonatomic,strong) NSUserDefaults *userdefault;
 @property (nonatomic,strong) AksStraightPieChart * straightPieChart;
-
-
-
 @property (nonatomic, assign) BOOL isOTHER;
 @end
 
@@ -66,7 +63,7 @@
         self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     
     //判断来源，是查看他人页面还是自己的战绩，区别为导航栏的不同
-    if (_isOTHER==NO) {
+    if (_isOTHER == NO) {
         UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
         self.navigationItem.leftBarButtonItem=left;
         right=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon_bulb"] style:UIBarButtonItemStyleDone target:self action:@selector(search)];
@@ -76,13 +73,9 @@
         self.userdefault=[NSUserDefaults standardUserDefaults];
         
         NSString *rolename=[self.userdefault objectForKey:@"DefaultRole"];
-        if(rolename==nil)
-        {
+        if(rolename==nil) {
             [self notHaveRoleName];
-            
-        }
-        else
-        {
+        } else {
             Rolename=rolename;
             [self havaRoleName:rolename];
         }
@@ -253,12 +246,7 @@
     [_scrollView addSubview:ALL];
     [_scrollView addSubview:_KDA];
     
-    
-    _recentHero = [[UIView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 115)];
-     [_recentHero setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
-    [_scrollView addSubview:_recentHero];
-    
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+130, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
     _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _recentMatch.separatorColor = [UIColor blackColor];
     [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
@@ -439,7 +427,6 @@
         }
 
         NSLog(@"%ld",[heros count]);
-        [self createHeroView:heros];
         
         
     } failure:^(NSError *error) {
@@ -448,49 +435,49 @@
     
 }
 
-/**
- *  绘制常用英雄的界面
- *
- *  @param heros 常用英雄数组，最多五个
- */
-- (void)createHeroView:(NSArray *)heros
-{
-    
-    for (UIView *v in _recentHero.subviews  ) {
-        [v removeFromSuperview];
-    }
-    
-    UILabel *HeroTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(_recentHero), 30)];
-    HeroTitle.font=[UIFont systemFontOfSize:14];
-    HeroTitle.text=@"常用英雄";
-    HeroTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
-    
-    UIView *HeroHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(_recentHero), 30)];
-    HeroHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
-    [_recentHero addSubview:HeroHeader];
-    [HeroHeader addSubview:HeroTitle];
-    
-    int width = WIDTH(_recentHero);
-    int singleWidth= (width-5*6)/5;
-    
-    [_recentHero setFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 30+singleWidth+20+10)];
-    [_recentMatch setFrame:CGRectMake(5, MaxY(_recentHero)+5, Main_Screen_Width-10, 1000)];
-    int i=0;
-    for (NSDictionary *hero in heros) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, 5+30, singleWidth, singleWidth)];
-        [view sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,[hero objectForKey:@"img"]]]];
-        [_recentHero addSubview:view];
-        
-        UILabel *heroNum = [[UILabel alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, MaxY(view)+5, singleWidth, 20)];
-        heroNum.text = [NSString stringWithFormat:@"%@场",[hero objectForKey:@"heroNum"]];
-        [heroNum setFont:[UIFont systemFontOfSize:12]];
-        heroNum.textColor= [UIColor whiteColor];
-        [heroNum setTextAlignment:NSTextAlignmentCenter];
-        [_recentHero addSubview:heroNum];
-        i++;
-    }
-    
-}
+///**
+// *  绘制常用英雄的界面
+// *
+// *  @param heros 常用英雄数组，最多五个
+// */
+//- (void)createHeroView:(NSArray *)heros
+//{
+//    
+//    for (UIView *v in _recentHero.subviews  ) {
+//        [v removeFromSuperview];
+//    }
+//    
+//    UILabel *HeroTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(_recentHero), 30)];
+//    HeroTitle.font=[UIFont systemFontOfSize:14];
+//    HeroTitle.text=@"常用英雄";
+//    HeroTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
+//    
+//    UIView *HeroHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(_recentHero), 30)];
+//    HeroHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
+//    [_recentHero addSubview:HeroHeader];
+//    [HeroHeader addSubview:HeroTitle];
+//    
+//    int width = WIDTH(_recentHero);
+//    int singleWidth= (width-5*6)/5;
+//    
+//    [_recentHero setFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 30+singleWidth+20+10)];
+//    [_recentMatch setFrame:CGRectMake(5, MaxY(_recentHero)+5, Main_Screen_Width-10, 1000)];
+//    int i=0;
+//    for (NSDictionary *hero in heros) {
+//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, 5+30, singleWidth, singleWidth)];
+//        [view sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,[hero objectForKey:@"img"]]]];
+//        [_recentHero addSubview:view];
+//        
+//        UILabel *heroNum = [[UILabel alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, MaxY(view)+5, singleWidth, 20)];
+//        heroNum.text = [NSString stringWithFormat:@"%@场",[hero objectForKey:@"heroNum"]];
+//        [heroNum setFont:[UIFont systemFontOfSize:12]];
+//        heroNum.textColor= [UIColor whiteColor];
+//        [heroNum setTextAlignment:NSTextAlignmentCenter];
+//        [_recentHero addSubview:heroNum];
+//        i++;
+//    }
+//    
+//}
 
 
 - (void)notHaveRoleName
@@ -588,7 +575,7 @@
     _buttonGroup.backgroundColor=BACKGROUND_COLOR;
     UIButton *button1=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width/4, 80)];
     [button1 setBackgroundImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
-    [button1 addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+//    [button1 addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     [_buttonGroup addSubview:button1];
     
 
@@ -645,8 +632,6 @@
     
     _buttonGroup.hidden=YES;
     [self.view insertSubview:_buttonGroup atIndex:100];
-    
-    
 }
 
 -(void)clear
@@ -678,43 +663,6 @@
     
     NSLog(@"评价");
 }
-
-
-
--(void)share
-{
-//    [self search];
-//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
-//    
-//    //构造分享内容
-//    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-//                                       defaultContent:@"默认分享内容，没内容时显示"
-//                                                image:[ShareSDK imageWithPath:imagePath]
-//                                                title:@"ShareSDK"
-//                                                  url:@"http://www.sharesdk.cn"
-//                                          description:@"这是一条测试信息"
-//                                            mediaType:SSPublishContentMediaTypeNews];
-//    
-//    [ShareSDK showShareActionSheet:nil
-//                         shareList:nil
-//                           content:publishContent
-//                     statusBarTips:YES
-//                       authOptions:nil
-//                      shareOptions: nil
-//                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//                                if (state == SSResponseStateSuccess)
-//                                {
-//                                    NSLog(@"分享成功");
-//                                }
-//                                else if (state == SSResponseStateFail)
-//                                {
-//                                    NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-//                                }
-//                            }];
-    
-    
-}
-
 
 -(void)save
 {

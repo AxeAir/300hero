@@ -9,7 +9,7 @@
 #import "AbountViewController.h"
 #import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
-#import <AVOSCloud/AVUserFeedbackAgent.h>
+
 @interface AbountViewController ()<MFMailComposeViewControllerDelegate>
 
 @end
@@ -62,7 +62,7 @@
     version.layer.borderWidth=1;
     version.layer.borderColor=[UIColor grayColor].CGColor;
     [version setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [version setTitle:@"当前版本V1.1 检查更新" forState:UIControlStateNormal];
+    [version setTitle:@"当前版本V1.3" forState:UIControlStateNormal];
     
     [self.view addSubview:version];
     
@@ -73,7 +73,7 @@
     feedback.layer.borderColor=[UIColor grayColor].CGColor;
     [feedback setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [feedback setTitle:@"意见反馈" forState:UIControlStateNormal];
-    [feedback addTarget:self action:@selector(AVfeedback) forControlEvents:UIControlEventTouchUpInside];
+    [feedback addTarget:self action:@selector(sendMailInApp) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:feedback];
     
     
@@ -83,11 +83,11 @@
 }
 
 
-- (void)AVfeedback
-{
-    AVUserFeedbackAgent *agent = [AVUserFeedbackAgent sharedInstance];
-    [agent showConversations:self title:@"feedback" contact:@"info@mrchenhao.com"];
-}
+//- (void)AVfeedback
+//{
+//    AVUserFeedbackAgent *agent = [AVUserFeedbackAgent sharedInstance];
+//    [agent showConversations:self title:@"feedback" contact:@"info@mrchenhao.com"];
+//}
 
 - (void)sendMailInApp
 {

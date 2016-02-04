@@ -10,7 +10,7 @@
 #import "sigleMenu.h"
 #import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
-#import <AVUser.h>
+#import <AVOSCloud/AVUser.h>
 #import "Login.h"
 
 @interface SideMenuTableView ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITabBarControllerDelegate>
@@ -30,13 +30,13 @@
     
     sigleMenu *item1 = [[sigleMenu alloc]initWithTitle:@"我的战绩" image:[UIImage imageNamed:@"myzj"]];
     sigleMenu *item2 = [[sigleMenu alloc]initWithTitle:@"排行榜" image:[UIImage imageNamed:@"rank"]];
-    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
-    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
+//    sigleMenu *item3 = [[sigleMenu alloc]initWithTitle:@"大神榜" image:[UIImage imageNamed:@"god"]];
+//    sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"最新资讯" image:[UIImage imageNamed:@"news"]];
     //sigleMenu *item4 = [[sigleMenu alloc]initWithTitle:@"工具" image:[UIImage imageNamed:@"icon2.png"]];
-    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"fire"]];
+//    sigleMenu *item5 = [[sigleMenu alloc]initWithTitle:@"英雄" image:[UIImage imageNamed:@"fire"]];
     sigleMenu *item6 = [[sigleMenu alloc]initWithTitle:@"关于我们" image:[UIImage imageNamed:@"mail"]];
     
-    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item3,item4,item5,item6, nil];
+    NSArray *arr=[[NSArray alloc] initWithObjects:item1,item2,item6, nil];
     itemsArray=arr;
     
     
@@ -112,73 +112,64 @@
 {
     switch (indexPath.row) {
         case 0:
-            if([[self.sideMenuController getContent] isKindOfClass:[MainNavgationController class]])
-            {
+            if([[self.sideMenuController getContent] isKindOfClass:[MainNavgationController class]]) {
                 [self.sideMenuController toggleMenu:YES];
-            }
-            else
-            {
+            } else {
                 _main=[[MainViewController alloc] init];
                 _mainNav=[[MainNavgationController alloc] initWithRootViewController:_main];
                 [self.sideMenuController setContentController:_mainNav animted:YES];
             }
-           
-            
             break;
         case 1:
-            if([[self.sideMenuController getContent] isKindOfClass:[RankNavController class]])
-            {
+            if([[self.sideMenuController getContent] isKindOfClass:[RankNavController class]]) {
                 [self.sideMenuController toggleMenu:YES];
-            }
-            else
-            {
-            
+            } else {
                 _rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
                 _rankNav=[[RankNavController alloc] initWithRootViewController:_rankTable];
                 [self.sideMenuController setContentController:_rankNav animted:YES];
             }
             break;
+//        case 2:
+//            if([[self.sideMenuController getContent] isKindOfClass:[LXNavViewController class]])
+//            {
+//                [self.sideMenuController toggleMenu:YES];
+//            }
+//            else
+//            {
+//                _lxTable=[[LXTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+//                _lxNav=[[LXNavViewController alloc] initWithRootViewController:_lxTable];
+//                [self.sideMenuController setContentController:_lxNav animted:YES];
+//            }
+//            break;
+//            
+//        case 3:
+//            if([[self.sideMenuController getContent] isKindOfClass:[SettingNavViewController class]])
+//            {
+//                [self.sideMenuController toggleMenu:YES];
+//            }
+//            else
+//            {
+//                _news=[[NewsViewController alloc] init];
+//                _newsnav=[[NewsNavViewController alloc] initWithRootViewController:_news];
+//                [self.sideMenuController setContentController:_newsnav animted:YES];
+//            }
+//            break;
+//        case 4:
+//        {
+//            if([[self.sideMenuController getContent] isKindOfClass:[HeroViewController class]])
+//            {
+//                [self.sideMenuController toggleMenu:YES];
+//            }
+//            else
+//            {
+//                _hero=[[HeroCollectionViewController alloc] init];
+//                _heroNav=[[HeroNavViewController alloc] initWithRootViewController:_hero];
+//                [self.sideMenuController setContentController:_heroNav animted:YES];
+//            }
+//            
+//        }
+//            break;
         case 2:
-            if([[self.sideMenuController getContent] isKindOfClass:[LXNavViewController class]])
-            {
-                [self.sideMenuController toggleMenu:YES];
-            }
-            else
-            {
-                _lxTable=[[LXTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                _lxNav=[[LXNavViewController alloc] initWithRootViewController:_lxTable];
-                [self.sideMenuController setContentController:_lxNav animted:YES];
-            }
-            break;
-            
-        case 3:
-            if([[self.sideMenuController getContent] isKindOfClass:[SettingNavViewController class]])
-            {
-                [self.sideMenuController toggleMenu:YES];
-            }
-            else
-            {
-                _news=[[NewsViewController alloc] init];
-                _newsnav=[[NewsNavViewController alloc] initWithRootViewController:_news];
-                [self.sideMenuController setContentController:_newsnav animted:YES];
-            }
-            break;
-        case 4:
-        {
-            if([[self.sideMenuController getContent] isKindOfClass:[HeroViewController class]])
-            {
-                [self.sideMenuController toggleMenu:YES];
-            }
-            else
-            {
-                _hero=[[HeroCollectionViewController alloc] init];
-                _heroNav=[[HeroNavViewController alloc] initWithRootViewController:_hero];
-                [self.sideMenuController setContentController:_heroNav animted:YES];
-            }
-            
-        }
-            break;
-        case 5:
             if([[self.sideMenuController getContent] isKindOfClass:[AboutNavViewController class]])
             {
                 [self.sideMenuController toggleMenu:YES];

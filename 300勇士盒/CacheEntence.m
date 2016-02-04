@@ -11,11 +11,7 @@
 #import <AFHTTPRequestOperationManager.h>
 @implementation CacheEntence
 
-
-
-
-- (NSDictionary *)RequestRemoteURL:(NSString *)url
-{
+- (NSDictionary *)RequestRemoteURL:(NSString *)url {
     return nil;
 }
 

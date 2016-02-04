@@ -348,9 +348,6 @@
 		E5F7FA291A3FF4DB00D80349 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F7FA261A3FF4DB00D80349 /* fire.png */; };
 		E5F7FA2A1A3FF4DB00D80349 /* fire@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F7FA271A3FF4DB00D80349 /* fire@2x.png */; };
 		E5F7FA2B1A3FF4DB00D80349 /* fire@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F7FA281A3FF4DB00D80349 /* fire@3x.png */; };
-		E5F7FA671A40628400D80349 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F7FA651A40628400D80349 /* AVOSCloud.framework */; };
-		E5F7FA681A40628400D80349 /* AVOSCloudSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F7FA661A40628400D80349 /* AVOSCloudSNS.framework */; };
-		E5F7FA691A40644100D80349 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F7FA631A405BCB00D80349 /* AVOSCloud.framework */; };
 		E5F7FA6A1A4064C700D80349 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E56382BE1A1E2058006CB333 /* libicucore.dylib */; };
 		E5FB1B911A57EFE2004C2A51 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FB1B8E1A57EFE2004C2A51 /* add.png */; };
 		E5FB1B921A57EFE2004C2A51 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FB1B8F1A57EFE2004C2A51 /* add@2x.png */; };
@@ -871,9 +868,6 @@
 				E5253AB51A500453008EF487 /* libc++abi.dylib in Frameworks */,
 				E5253AB31A4FED35008EF487 /* MediaPlayer.framework in Frameworks */,
 				E5F7FA6A1A4064C700D80349 /* libicucore.dylib in Frameworks */,
-				E5F7FA691A40644100D80349 /* AVOSCloud.framework in Frameworks */,
-				E5F7FA671A40628400D80349 /* AVOSCloud.framework in Frameworks */,
-				E5F7FA681A40628400D80349 /* AVOSCloudSNS.framework in Frameworks */,
 				5C99797187BFF41E8EE839A3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -925,7 +919,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E51A8A921A57DD130092FA6C /* equip */ = {
+		E51A8A921A57DD130092FA6C /* Equip */ = {
 			isa = PBXGroup;
 			children = (
 				E55877411A59A10D001E0E24 /* 1.jpg */,
@@ -1083,7 +1077,7 @@
 				E55877D91A59A10E001E0E24 /* 162.jpg */,
 				E55877DA1A59A10E001E0E24 /* 163.jpg */,
 			);
-			name = equip;
+			name = Equip;
 			sourceTree = "<group>";
 		};
 		E52B520D19F0ED31005FEE2E /* PercentageChart */ = {
@@ -1158,7 +1152,7 @@
 			name = lx;
 			sourceTree = "<group>";
 		};
-		E52FFE1D1A392D0D00046D5F /* coredata */ = {
+		E52FFE1D1A392D0D00046D5F /* Coredata */ = {
 			isa = PBXGroup;
 			children = (
 				E52FFE211A392D7600046D5F /* 300hero.xcdatamodeld */,
@@ -1171,7 +1165,7 @@
 				E52FFE2A1A398A5200046D5F /* CacheModel.h */,
 				E52FFE2B1A398A5200046D5F /* CacheModel.m */,
 			);
-			name = coredata;
+			name = Coredata;
 			sourceTree = "<group>";
 		};
 		E52FFE301A398D7700046D5F /* Cache */ = {
@@ -1181,6 +1175,15 @@
 				E52FFE321A398DB500046D5F /* CacheEntence.m */,
 			);
 			name = Cache;
+			sourceTree = "<group>";
+		};
+		E54FD69B1C63C28800F0E0D4 /* Venders */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA36B919F0159000CB8165 /* AksStraightPieChart */,
+				E5F7F9FE1A3F4CF300D80349 /* JGProgressHUD */,
+			);
+			name = Venders;
 			sourceTree = "<group>";
 		};
 		E56383621A1E270C006CB333 /* Extend */ = {
@@ -1283,13 +1286,13 @@
 			path = YiXinSDK;
 			sourceTree = "<group>";
 		};
-		E563838E1A1E30F7006CB333 /* api */ = {
+		E563838E1A1E30F7006CB333 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				E563838F1A1E3102006CB333 /* WXApi.h */,
 				E56383901A1E3102006CB333 /* WXApiObject.h */,
 			);
-			name = api;
+			name = API;
 			sourceTree = "<group>";
 		};
 		E5A3921A19F4F906001330B3 /* About */ = {
@@ -1337,15 +1340,14 @@
 		E5A4BE8719DF118D000BFE8E /* 300勇士盒 */ = {
 			isa = PBXGroup;
 			children = (
-				E51A8A921A57DD130092FA6C /* equip */,
+				E54FD69B1C63C28800F0E0D4 /* Venders */,
+				E51A8A921A57DD130092FA6C /* Equip */,
 				E52FFE301A398D7700046D5F /* Cache */,
-				E52FFE1D1A392D0D00046D5F /* coredata */,
-				E563838E1A1E30F7006CB333 /* api */,
+				E52FFE1D1A392D0D00046D5F /* Coredata */,
+				E563838E1A1E30F7006CB333 /* API */,
 				E5F325C31A0A271100E6940D /* IMAGE */,
 				E52B520D19F0ED31005FEE2E /* PercentageChart */,
 				E5BA361919E909D500CB8165 /* Model */,
-				E5BA36B919F0159000CB8165 /* AksStraightPieChart */,
-				E5F7F9FE1A3F4CF300D80349 /* JGProgressHUD */,
 				E5BA369D19EE42EB00CB8165 /* MJRefresh */,
 				E5BA364319EA4A6600CB8165 /* CHHeader */,
 				E5BA34D519DF226300CB8165 /* CHSlider */,
@@ -1730,6 +1732,7 @@
 				E5A4BE8219DF118D000BFE8E /* Frameworks */,
 				E5A4BE8319DF118D000BFE8E /* Resources */,
 				482912FAEBF4B6C549E91A2E /* Copy Pods Resources */,
+				B89D132607640F6FAE613C0E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1769,7 +1772,7 @@
 				TargetAttributes = {
 					E5A4BE8419DF118D000BFE8E = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = F86ABKXNGB;
+						DevelopmentTeam = UH539N9JGV;
 					};
 					E5A4BE9D19DF118D000BFE8E = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -2070,6 +2073,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B89D132607640F6FAE613C0E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F7D01E327CCC7300C8FF8E0D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2298,8 +2316,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Debra Dean (EDRHYG5CZ7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hao Chen (9BWTECC32N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Core",
@@ -2325,7 +2343,7 @@
 					/Users/mrche/Downloads/WeChatSDK_1.5,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ddac0c7d-9c40-4b0f-967b-2118f1b01aff";
 			};
 			name = Debug;
 		};
@@ -2335,8 +2353,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Debra Dean (EDRHYG5CZ7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Core",
@@ -2370,10 +2388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2389,10 +2404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "300勇士盒Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

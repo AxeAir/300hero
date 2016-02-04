@@ -197,7 +197,7 @@ static CGFloat const PhotoRotationOffsetDefault = 4.0f;
     NSInteger min = -(self.rotationOffset);
     NSInteger max = self.rotationOffset;
     
-    NSInteger degrees = (arc4random_uniform(max-min+1)) + min;
+    NSInteger degrees = (arc4random_uniform(max-min + 1)) + min;
     [self rotatePhoto:photo degrees:degrees animated:animated];
     
 }
@@ -238,7 +238,7 @@ static CGFloat const PhotoRotationOffsetDefault = 4.0f;
         
     } else if(gesture.state == UIGestureRecognizerStateEnded || gesture.state == UIGestureRecognizerStateCancelled) {
         
-        if(abs(velocity.x) > 200) {
+        if(fabs(velocity.x) > 200) {
             [self flickAway:topPhoto withVelocity:velocity];
             
         } else {
@@ -263,7 +263,7 @@ static CGFloat const PhotoRotationOffsetDefault = 4.0f;
     if ([self.delegate respondsToSelector:@selector(photoStackView:didSelectPhotoAtIndex:)]) {
         // No need to highlight the photo if delegate does not implement a
         // selection handler (ie. nothing happens when they tap it)
-        [self sendActionsForControlEvents:UIControlStateHighlighted];
+        [self sendActionsForControlEvents:UIControlEventTouchDown];
     }
 }
 

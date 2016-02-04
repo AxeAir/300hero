@@ -86,7 +86,7 @@
     [self addSubview:TowerDestroy];
     
     UILabel *bx=[[UILabel alloc] initWithFrame:CGRectMake(100, 80, 150, 30)];
-    bx.text=[NSString stringWithFormat:@"本场表现分:%d",role.KDA];
+    bx.text=[NSString stringWithFormat:@"本场表现分:%ld",(long)role.KDA];
     bx.font=[UIFont systemFontOfSize:12];
     bx.textColor=RGBCOLOR(136, 187, 225);
     [self addSubview:bx];

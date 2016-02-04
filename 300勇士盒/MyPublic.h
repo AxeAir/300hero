@@ -73,15 +73,6 @@
  **/
 + (NSString *)getNums:(NSString *)str;
 
-
-/** By:Yeti
- *  验证字符串是否为邮箱
- *
- *  @param email    字符串
- *  @return true or false
- **/
-+ (BOOL)validateEmail:(NSString *)email;
-
 /** By:Yeti
  *
  *  @param szError
@@ -113,59 +104,6 @@
  *  @param error     失败返回block
  */
 - (void)GET:(NSString *)URL paramters:(NSDictionary *)paramters success:(void (^)(NSDictionary * responseObject))success failure:(void (^)(NSError *error))failure;
-
-/**
- *  获得天气结果//通过城市名查找天气
- *
- *  @param province 省
- *  @param city     城市
- *  @param district 县区
- *  @param success  成功回调
- *  @param failure  失败回调
- */
-- (void)getWeatherWithProvince:(NSString *)province city:(NSString *)city district:(NSString *)district  success:(void (^)(NSDictionary * responseObject))success failure:(void (^)(NSError *error))failure;
-
-/**
- *  通过经纬度获得天气
- *
- *  @param longitude 经度
- *  @param latitude  维度
- *  @param success   成功回调
- *  @param failure   失败回调
- */
-- (void)getWeatherWithLongitude:(NSNumber *)longitude latitude:(NSNumber *)latitude success:(void (^)(NSDictionary * responseObject))success failure:(void (^)(NSError *error))failure;
-
-
-/**
- *  通过经纬度获得天气
- *
- *  @param longitude 经度
- *  @param latitude  维度
- *  @param success   成功回调
- *  @param failure   失败回调
- */
-- (void)getWeatherWithIPAddress:(NSString *)ip success:(void (^)(NSDictionary * responseObject))success failure:(void (^)(NSError *error))failure;
-
-
-/**
- *  获取用户的内网IP地址
- *
- *  @return 返回字典
- 字典格式：
- "en0/ipv4" = "192.168.1.114";
- "en0/ipv6" = "fe80::1478:b605:ea3b:f490";
- "lo0/ipv4" = "127.0.0.1";
- "lo0/ipv6" = "fe80::1";
- "pdp_ip0/ipv4" = "10.145.124.116";
- */
-+ (NSString *)getIPAddress:(BOOL)preferIPv4;
-
-/**
- *  获得用户的公网IP地址
- *
- *  @param completion <#completion description#>
- */
-+ (void)getWANIPAddressWithCompletion:(void(^)(NSString *IPAddress))completion;
 
 /**
  *  获得用户的UserDefault

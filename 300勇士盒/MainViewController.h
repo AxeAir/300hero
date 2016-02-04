@@ -41,7 +41,7 @@
 @property (nonatomic,strong) UIView *mask;
 
 
-@property (nonatomic, strong) UIView *recentHero;
+//@property (nonatomic, strong) UIView *recentHero;
 
 
 - (instancetype)initWithOtherHero:(NSString *)name;

@@ -7,7 +7,7 @@
 //
 
 #import "ValidMobile.h"
-#import <AVUser.h>
+#import <AVOSCloud/AVUser.h>
 #import "MyPublic.h"
 #import "UConstants.h"
 #import "SighUP.h"
@@ -92,8 +92,6 @@
     }
 }
 
-
-
 -(void)sendUserDictoServer:(NSDictionary *)userDic{
     NSString *URLRegister=[NSString stringWithFormat:@"%@register/",DEBUG_URL];
     _myPublic = [[MyPublic alloc]init];
@@ -109,7 +107,7 @@
     }];
 }
 
--(void)signUpBtnClickAV{
+-(void)signUpBtnClickAV {
     if([_validTF.text length]==6){
         [AVUser verifyMobilePhone:_validTF.text withBlock:^(BOOL succeeded, NSError *error) {
             if(succeeded){

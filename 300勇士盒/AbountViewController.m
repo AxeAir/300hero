@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"关于";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
@@ -27,14 +26,10 @@
     self.navigationItem.rightBarButtonItem=right;
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
-    
-    
     [self steup];
-    
 }
 
--(void)steup
-{
+-(void)steup {
     [self.view setBackgroundColor:BACKGROUND_COLOR];
     
     UIView *about=[[UIView alloc] initWithFrame:CGRectMake(10, 10, Main_Screen_Width-20, 140)];
@@ -56,19 +51,8 @@
     [about addSubview:label];
     [self.view addSubview:about];
     
-    
-    UIButton *version=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [version setFrame:CGRectMake(10, MaxY(about)+10, Main_Screen_Width-20, 50)];
-    version.layer.borderWidth=1;
-    version.layer.borderColor=[UIColor grayColor].CGColor;
-    [version setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [version setTitle:@"当前版本V1.3" forState:UIControlStateNormal];
-    
-    [self.view addSubview:version];
-    
-    
     UIButton *feedback=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [feedback setFrame:CGRectMake(10, MaxY(version)+10, Main_Screen_Width-20, 50)];
+    [feedback setFrame:CGRectMake(10, MaxY(about)+10, Main_Screen_Width-20, 50)];
     feedback.layer.borderWidth=1;
     feedback.layer.borderColor=[UIColor grayColor].CGColor;
     [feedback setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -76,12 +60,7 @@
     [feedback addTarget:self action:@selector(sendMailInApp) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:feedback];
     
-    
-
-
-    
 }
-
 
 //- (void)AVfeedback
 //{
@@ -89,8 +68,7 @@
 //    [agent showConversations:self title:@"feedback" contact:@"info@mrchenhao.com"];
 //}
 
-- (void)sendMailInApp
-{
+- (void)sendMailInApp {
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
     if (!mailClass) {
         //[self alertWithMessage:@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替"];
@@ -103,21 +81,19 @@
     [self displayMailPicker];
 }
 
-- (void)toogleMenu
-{
+- (void)toogleMenu {
     [self.navigationController.sideMenuController toggleMenu:YES];
 }
 
 //调出邮件发送窗口
-- (void)displayMailPicker
-{
+- (void)displayMailPicker {
     MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
     mailPicker.mailComposeDelegate = self;
     
     //设置主题
     [mailPicker setSubject: @"关于300勇士盒"];
     //添加收件人
-    NSArray *toRecipients = [NSArray arrayWithObject: @"info@mrchenhao.com"];
+    NSArray *toRecipients = [NSArray arrayWithObject: @"300hero@mrchenhao.com"];
     [mailPicker setToRecipients: toRecipients];
     
     NSString *emailBody = @"您好！<br/>我是";
@@ -126,8 +102,7 @@
 }
 
 #pragma mark - 实现 MFMailComposeViewControllerDelegate
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     //关闭邮件发送窗口
     
     NSString *msg;
@@ -152,14 +127,9 @@
     //[self alertWithMessage:msg];
 }
 
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

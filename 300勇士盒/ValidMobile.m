@@ -12,7 +12,7 @@
 #import "UConstants.h"
 #import "SighUP.h"
 
-@interface ValidMobile ()<UITextFieldDelegate,UITextInput,UITextFieldDelegate>
+@interface ValidMobile ()<UITextFieldDelegate>
 
 @property (strong,nonatomic) SighUP *sighUp;
 @property (strong,nonatomic) MyPublic *myPublic;
@@ -126,7 +126,7 @@
                 NSLog(@"%@",error);
             }
         }];
-    }else{
+    } else {
         UIAlertView *alertView =
         [[UIAlertView alloc]initWithTitle:@"提示"
                                message:@"验证码位数不对"

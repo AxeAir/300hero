@@ -2318,30 +2318,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hao Chen (9BWTECC32N)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Core",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Connection",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/Pinterest.embeddedframework",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/RenRenSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/UI",
-					/Users/mrche/Desktop,
-					"/Users/mrche/Documents/avo/download.leancloud.cn/demo/ios-sdk-demos/AVOSDemo/Frameworks",
-				);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/TencentWeiboSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/YiXinSDK",
-					/Users/mrche/Downloads/WeChatSDK_1.5,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ddac0c7d-9c40-4b0f-967b-2118f1b01aff";
 			};
@@ -2355,32 +2337,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Core",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Connection",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/Pinterest.embeddedframework",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/RenRenSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/UI",
-					/Users/mrche/Desktop,
-					"/Users/mrche/Documents/avo/download.leancloud.cn/demo/ios-sdk-demos/AVOSDemo/Frameworks",
-				);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/TencentWeiboSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/300勇士盒/ShareSDK/Extend/YiXinSDK",
-					/Users/mrche/Downloads/WeChatSDK_1.5,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "03cd421b-169b-469c-b1a2-484c1477ce76";
 			};
 			name = Release;
 		};

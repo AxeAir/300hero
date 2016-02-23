@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
-@interface AbountViewController : UIViewController
 
+@interface AbountViewController : UIViewController
 
 @end

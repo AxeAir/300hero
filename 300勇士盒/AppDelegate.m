@@ -15,9 +15,9 @@
 #import "NewsViewController.h"
 #import "NewsNavViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import <AVOSCloudSNS.h>
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import <AVOSCloud/AVInstallation.h>
-#import <AVUser+SNS.h>
+#import <AVOSCloudSNS/AVUser+SNS.h>
 #define AVOSCloudAppID  @"tiyml8544dd5u6ieukgdvdncay59ay2xqyx200wjvpmpe7a5"
 #define AVOSCloudAppKey @"q7jph42jjonnvkizxnsan97ovsi72spz2p6ol4nxfej8xyxg"
 @interface AppDelegate ()
@@ -40,46 +40,21 @@
     //统计应用启动情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-//    AVUser * user = [AVUser user];
-//    user.username = @"steve";
-//    user.password =  @"f32@ds*@&dsa";
-//    user.email = @"steve@company.com";
-//    [user setObject:@"213-253-0000" forKey:@"phone"];
-//    
-//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (succeeded) {
-//            NSLog(@"注册成功");
-//            
-//        } else {
-//            
-//        }
-//    }];
-//    
-//    [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
-//        //you code here
-//        
-//        [object saveInBackground];
-//        [AVUser loginWithAuthData:object block:^(AVUser *user, NSError *error) {
-//            //返回AVUser
-//            
-//        }];
-//        
-//    }];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
-    NewsViewController *contentController = [[NewsViewController alloc] init];
+//    NewsViewController *contentController = [[NewsViewController alloc] init];
+//    
+//    NewsNavViewController *navController = [[NewsNavViewController alloc] initWithRootViewController:contentController];
     
-    NewsNavViewController *navController = [[NewsNavViewController alloc] initWithRootViewController:contentController];
-    CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:navController
+    RankTypeTableViewController *rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
+     RankNavController *rankNav=[[RankNavController alloc] initWithRootViewController:rankTable];
+    
+    CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:rankNav
                                                           menuController:menuController];
     self.window.rootViewController = sideMenu;
     
     //ios7
-    
-    
-    
     
     if (FSystenVersion>=8.0) {
         //IOS8
@@ -89,17 +64,12 @@
                                                                                  categories:nil];
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    }
-    else
-    {
+    } else {
         [application registerForRemoteNotificationTypes:
          UIRemoteNotificationTypeBadge |
          UIRemoteNotificationTypeAlert |
          UIRemoteNotificationTypeSound];
     }
-  
-    
-    
     return YES;
 }
 

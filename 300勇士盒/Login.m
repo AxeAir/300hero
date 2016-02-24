@@ -12,8 +12,8 @@
 #import "UConstants.h"
 #import "MyPublic.h"
 #import "LoginPublicClass.h"
-#import <AVUser.h>
-#import <AVAnonymousUtils.h>
+#import <AVOSCloud/AVUser.h>
+#import <AVOSCloud/AVAnonymousUtils.h>
 
 @interface Login () <UIPickerViewDelegate, UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextViewDelegate,UITextFieldDelegate,SighUpDelegate>
 
@@ -339,7 +339,7 @@
     signUpView.delegate = self;
 }
 
-- (void)skipBtnClick{
+- (void)skipBtnClick {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

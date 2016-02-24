@@ -12,12 +12,12 @@
 
 @protocol PhotoStackViewDataSource <NSObject>
 
-    @required
-    - (NSUInteger)numberOfPhotosInPhotoStackView:(PhotoStackView *)photoStack;
-    - (UIImage *)photoStackView:(PhotoStackView *)photoStack photoForIndex:(NSUInteger)index;
+@required
+- (NSUInteger)numberOfPhotosInPhotoStackView:(PhotoStackView *)photoStack;
+- (UIImage *)photoStackView:(PhotoStackView *)photoStack photoForIndex:(NSUInteger)PhotoIndex;
 
-    @optional
-    - (CGSize)photoStackView:(PhotoStackView *)photoStack photoSizeForIndex:(NSUInteger)index;
+@optional
+- (CGSize)photoStackView:(PhotoStackView *)photoStack photoSizeForIndex:(NSUInteger)PhotoIndex;
 
 @end
 

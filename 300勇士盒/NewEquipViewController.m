@@ -10,7 +10,7 @@
 #import "UConstants.h"
 #import "CacheEntence.h"
 #import <JSONKit-NoWarning/JSONKit.h>
-#import <AVUser.h>
+#import <AVOSCloud/AVUser.h>
 #import "Login.h"
 @interface NewEquipViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate>
 

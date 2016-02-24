@@ -13,8 +13,8 @@
 #import "UConstants.h"
 #import "MyPublic.h"
 #import "LoginPublicClass.h"
-#import <AVUser.h>
-#import <AVOSCloudSNS.h>
+#import <AVOSCloud/AVUser.h>
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import "ValidMobile.h"
 #import "PhotoStackView.h"
 #import "PhotoStackViewController.h"

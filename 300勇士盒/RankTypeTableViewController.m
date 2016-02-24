@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"排行榜";
+    self.title = @"排行榜";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
@@ -56,8 +56,7 @@
 }
 
 
--(void)getData
-{
+-(void)getData {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
     [manager POST:@"http://300report.jumpw.com/api/getrank?type=-1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -75,7 +74,6 @@
             [tempArray addObject:model];
         }
         dataArray=tempArray;
-        //NSLog(@"%@",tempArray);
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -90,12 +88,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return [dataArray count];
 }
 
@@ -103,14 +99,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *Identifier=@"RankIdentifier";
     RankTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-    if(cell==nil)
-    {
+    if(cell == nil) {
         cell=[[RankTypeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
     [cell setBackgroundColor:BACKGROUND_COLOR];
     RankTypeModel *model=dataArray[indexPath.row];
     cell.RankID=model.getRankType;
-    // Configure the cell...
     cell.textLabel.text=model.Name;
     cell.textLabel.textColor=RGBCOLOR(135, 186, 225);
     
@@ -118,12 +112,11 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"%ld",(long)cell.RankID);
     RankDetailViewController *rank=[[RankDetailViewController alloc] init];
-    rank.ID=cell.RankID;
+    rank.ID = cell.RankID;
     [self.navigationController pushViewController:rank animated:YES];
 }
 @end

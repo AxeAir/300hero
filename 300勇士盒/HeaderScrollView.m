@@ -143,9 +143,7 @@
     _scrollview.contentOffset = CGPointMake(x, 0);
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    NSLog(@"滚动中");
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     //    计算页码
     //    页码 = (contentoffset.x + scrollView一半宽度)/scrollView宽度
     CGFloat scrollviewW =  scrollView.frame.size.width;
@@ -155,8 +153,7 @@
     _pageControl.currentPage = page;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 //    开启定时器
     [self addTimer];
 }

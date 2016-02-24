@@ -9,8 +9,10 @@
 #import "PhotoStackViewController.h"
 
 @interface PhotoStackViewController ()
-    @property (nonatomic, strong) NSArray *photos;
-    -(void)setup;
+
+@property (nonatomic, strong) NSArray *photos;
+-(void)setup;
+
 @end
 
 @implementation PhotoStackViewController
@@ -64,8 +66,8 @@
     return [self.photos count];
 }
 
--(UIImage *)photoStackView:(PhotoStackView *)photoStack photoForIndex:(NSUInteger)index {
-    return [self.photos objectAtIndex:index];
+-(UIImage *)photoStackView:(PhotoStackView *)photoStack photoForIndex:(NSUInteger)PhotoIndex {
+    return [self.photos objectAtIndex:PhotoIndex];
 }
 
 
@@ -81,13 +83,13 @@
     // User flicked the photo away, revealing the next one in the stack
 }
 
--(void)photoStackView:(PhotoStackView *)photoStackView didRevealPhotoAtIndex:(NSUInteger)index {
-    self.pageControl.currentPage = index;
+-(void)photoStackView:(PhotoStackView *)photoStackView didRevealPhotoAtIndex:(NSUInteger) PhotoIndex {
+    self.pageControl.currentPage = PhotoIndex;
 }
 
--(void)photoStackView:(PhotoStackView *)photoStackView didSelectPhotoAtIndex:(NSUInteger)index {
+-(void)photoStackView:(PhotoStackView *)photoStackView didSelectPhotoAtIndex:(NSUInteger)PhotoIndex {
     if([self.delegate respondsToSelector:@selector(photoSelectedIndex:)]){
-        [self.delegate photoSelectedIndex:index];
+        [self.delegate photoSelectedIndex:PhotoIndex];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -13,9 +13,5 @@
 
 @interface Login : UIViewController
 
-+(void)rightTextField:(UITextField *)textFiled;
-
-+(void)wrongTextFiled:(UITextField *)textFiled;
-
 @end
 

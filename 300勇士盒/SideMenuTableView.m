@@ -201,18 +201,18 @@
       UISearchBar *searchbar=[[UISearchBar alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
       searchbar.delegate=self;
       searchbar.backgroundImage=[UIImage imageNamed:@"background.png"];
-      [view addSubview:searchbar];
+//      [view addSubview:searchbar];
       
       
-      _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"heater"]];
+      _headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1024"]];
       [_headerView setFrame:CGRectMake(60, MaxY(searchbar)+10, 80, 80)];
       [[_headerView layer] setCornerRadius:40.0];
       [[_headerView layer] setMasksToBounds:YES];
       [[_headerView layer] setBorderColor:[UIColor whiteColor].CGColor];
       [[_headerView layer] setBorderWidth:1.0];
-      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeader)];
-      [_headerView setUserInteractionEnabled:YES];
-      [_headerView addGestureRecognizer:tap];
+//      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeader)];
+//      [_headerView setUserInteractionEnabled:YES];
+//      [_headerView addGestureRecognizer:tap];
       [view addSubview:_headerView];
       
       AVUser * currentUser = [AVUser currentUser];

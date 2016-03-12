@@ -57,20 +57,15 @@
     return self;
 }
 
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _count                                    = 10;
+    _count = 10;
     [self steup];
 
 }
 
 
-- (void)getDate:(NSInteger)NewsType endRefresh:(BOOL)endRefresh cache:(BOOL)cache
-{
+- (void)getDate:(NSInteger)NewsType endRefresh:(BOOL)endRefresh cache:(BOOL)cache {
     NSString *url=[NSString stringWithFormat:@"%@/getPageList/?newsType=%ld",DEBUG_URL,(long)NewsType];
     [CacheEntence RequestRemoteURL:url paramters:nil Cache:cache success:^(id responseObject) {
 

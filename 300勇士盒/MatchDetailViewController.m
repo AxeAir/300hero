@@ -59,8 +59,7 @@
     }];
 }
 
--(void)drawTheMatchDetail:(MatchDetailModel*)match
-{
+-(void)drawTheMatchDetail:(MatchDetailModel*)match {
     //clock icon
     UIImageView *clockView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clock"]];
     [clockView setFrame:CGRectMake(10, 10, 20, 20)];
@@ -68,25 +67,26 @@
     
     
     UILabel *time=[[UILabel alloc] initWithFrame:CGRectMake(MaxX(clockView)+10, 10, 200, 20)];
-    time.font=[UIFont systemFontOfSize:16];
-    time.textColor=RGBCOLOR(136, 187, 225);
-    time.text=match.getUseTime;
+    time.font = [UIFont systemFontOfSize:16];
+    time.textColor = RGBCOLOR(136, 187, 225);
+    time.text = match.getUseTime;
     [_scrollView addSubview:time];
     
-    
-    UILabel *wincount=[[UILabel alloc] initWithFrame:CGRectMake(50, MaxY(time), 60, 60)];
+    UILabel *wincount=[[UILabel alloc] initWithFrame:CGRectMake(0, MaxY(time), Main_Screen_Width/2, 60)];
     wincount.text=[NSString stringWithFormat:@"%lu",(unsigned long)match.WinSideKill];
     wincount.font=[UIFont systemFontOfSize:30];
     wincount.textColor=[UIColor greenColor];
+    wincount.textAlignment = NSTextAlignmentCenter;
     [_scrollView addSubview:wincount];
     
-    UILabel *losecount=[[UILabel alloc] initWithFrame:CGRectMake(230, MaxY(time), 60, 60)];
+    UILabel *losecount=[[UILabel alloc] initWithFrame:CGRectMake(Main_Screen_Width/2, MaxY(time), Main_Screen_Width/2, 60)];
     losecount.text=[NSString stringWithFormat:@"%lu",(unsigned long)match.LoseSideKill];
     losecount.font=[UIFont systemFontOfSize:30];
     losecount.textColor=[UIColor redColor];
+    losecount.textAlignment = NSTextAlignmentCenter;
     [_scrollView addSubview:losecount];
     
-    UIImageView *vs=[[UIImageView alloc] initWithFrame:CGRectMake(100, MaxY(time), 100, 60)];
+    UIImageView *vs=[[UIImageView alloc] initWithFrame:CGRectMake((Main_Screen_Width - 100)/2, MaxY(time), 100, 60)];
     vs.image=[UIImage imageNamed:@"vs"];
     [_scrollView addSubview:vs];
     
@@ -96,13 +96,9 @@
     win.text=@"胜利队伍";
     [_scrollView addSubview:win];
     
-    
-    
-    
-    
     int i=0;
     for (RoleModel *model in match.winSide) {
-        MatchDetailView *view=[[MatchDetailView alloc] initWithFrame:CGRectMake(0, 150+130*i, 320, 130)];
+        MatchDetailView *view=[[MatchDetailView alloc] initWithFrame:CGRectMake((Main_Screen_Width -320)/2, 150+130*i, 320, 130)];
         [view setUserInteractionEnabled:YES];
         view.delegate=self;
         [view configView:model];
@@ -117,7 +113,7 @@
     [_scrollView addSubview:lose];
     i=0;
     for (RoleModel *model in match.loseSide) {
-        MatchDetailView *view=[[MatchDetailView alloc] initWithFrame:CGRectMake(0, 1120+130*i, 320, 130)];
+        MatchDetailView *view=[[MatchDetailView alloc] initWithFrame:CGRectMake((Main_Screen_Width -320)/2, 1120+130*i, 320, 130)];
         [view setUserInteractionEnabled:YES];
         view.delegate=self;
         [view configView:model];

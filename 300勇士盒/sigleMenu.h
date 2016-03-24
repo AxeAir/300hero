@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImageView *imageView;
 
--(id)initWithTitle:(NSString *)title image:(UIImage *)image;
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image;
+
 @end

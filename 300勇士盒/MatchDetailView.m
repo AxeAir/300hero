@@ -13,8 +13,7 @@
 #import "UConstants.h"
 @implementation MatchDetailView
 
-- (void)configView:(RoleModel *)role
-{
+- (void)configView:(RoleModel *)role {
     [self setUserInteractionEnabled:YES];
     UIImageView *header=[[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"http://300report.jumpw.com/static/images/%@",role.HeroIconFile]];

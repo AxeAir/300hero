@@ -18,13 +18,7 @@
 
 @property (nonatomic,strong) UITableView *recentMatch;
 
-@property (nonatomic,strong) UILabel *KDALabelTitle;
-@property (nonatomic,strong) UILabel *KDALabel;
-@property (nonatomic,strong) UILabel *KDADetail;
-@property (nonatomic,strong) UILabel *wincount;
-@property (nonatomic,strong) UILabel *losecount;
-
-@property (nonatomic,strong) UIView *KDA;
+@property (nonatomic,strong) UIView  *KDA;
 @property (nonatomic,strong) UILabel *ALLLabelTitle;
 @property (nonatomic,strong) UILabel *ALLcount;
 @property (nonatomic,strong) UILabel *ALLwincount;
@@ -39,9 +33,6 @@
 @property (nonatomic,strong) UIView *buttonGroup;
 
 @property (nonatomic,strong) UIView *mask;
-
-
-//@property (nonatomic, strong) UIView *recentHero;
 
 
 - (instancetype)initWithOtherHero:(NSString *)name;

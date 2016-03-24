@@ -10,19 +10,15 @@
 
 @implementation sigleMenu
 
-
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
-{
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image {
     self = [super init];
-    if(self)
-    {
+    if(self) {
         self.title = title;
         self.image = image;
         self.imageView = [[UIImageView alloc]initWithImage:image];
         self.imageView.frame = CGRectMake(0, 0, 40, 40);
     }
     return self;
-    
 }
 
 

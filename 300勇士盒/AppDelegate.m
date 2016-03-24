@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
 #import "CHSideMenu.h"
 #import "SideMenuTableView.h"
-#import "MainNavgationController.h"
 #import "UConstants.h"
-#import "NewsViewController.h"
-#import "NewsNavViewController.h"
+#import "MainViewController.h"
+#import "MainNavgationController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import <AVOSCloud/AVInstallation.h>
@@ -43,14 +41,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
-//    NewsViewController *contentController = [[NewsViewController alloc] init];
-//    
-//    NewsNavViewController *navController = [[NewsNavViewController alloc] initWithRootViewController:contentController];
-    
-    RankTypeTableViewController *rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
-     RankNavController *rankNav=[[RankNavController alloc] initWithRootViewController:rankTable];
-    
-    CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:rankNav
+    MainViewController * main = [[MainViewController alloc] init];
+    MainNavgationController *manNav = [[MainNavgationController alloc] initWithRootViewController:main];
+    CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:manNav
                                                           menuController:menuController];
     self.window.rootViewController = sideMenu;
     

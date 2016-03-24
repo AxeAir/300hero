@@ -42,8 +42,7 @@
 @implementation MainViewController
 
 
-- (instancetype)initWithOtherHero:(NSString *)name
-{
+- (instancetype)initWithOtherHero:(NSString *)name {
     self = [super init];
     if (self) {
         [self havaRoleName:name];
@@ -68,7 +67,7 @@
         self.navigationItem.leftBarButtonItem=left;
         right=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon_bulb"] style:UIBarButtonItemStyleDone target:self action:@selector(search)];
         
-        UIBarButtonItem *rightButton=right;
+        UIBarButtonItem *rightButton = right;
         self.navigationItem.rightBarButtonItem=rightButton;
         self.userdefault=[NSUserDefaults standardUserDefaults];
         
@@ -83,15 +82,12 @@
  
 }
 
--(void)refresh
-{
+-(void)refresh {
     [self viewDidLoad];
     [_scrollView headerEndRefreshing];
 }
 
-
--(void)loadSteup
-{
+-(void)loadSteup {
     _LodingActivityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     //_LodingActivityIndicator.center = CGPointMake(100.0f, 100.0f);//只能设置中心，不能设置大小
     _LodingActivityIndicator.frame=CGRectMake(0, 0, WIDTH(_KDA), HEIGHT(_KDA));//不建议这样设置，因为UIActivityIndicatorView是不能改变大小只能改变位置，这样设置得到的结果是控件的中心在（100，100）上，而不是和其他控件的frame一样左上角在（100， 100）长为100，宽为100.
@@ -107,8 +103,8 @@
     if(_scrollView==nil){
         _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     }
-    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 1200)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width*180.0/320.0)];
+    [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 1050)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width * 180.0/320.0)];
     [imageView setImage:[UIImage imageNamed:@"indexbg"]];
     [_scrollView addSubview:imageView];
     [self.view addSubview:_scrollView];
@@ -126,8 +122,6 @@
     _name.textColor=NAME_COLOR;
     _name.font=[UIFont boldSystemFontOfSize:26];
     
-    
-    
     UIImageView *combat=[[UIImageView alloc] initWithFrame:CGRectMake(20, MaxY(imageView)-70, 100, 50)];
     combat.image=[UIImage imageNamed:@"combat"];
     
@@ -138,76 +132,10 @@
     _combat.font=[UIFont systemFontOfSize:20];
     _combat.text=@"????";
     [_scrollView addSubview:_combat];
-    
     [_scrollView addSubview:_name];
     
-    
-    ///KDA
-    
-    _KDA=[[UIView alloc] initWithFrame:CGRectMake(5, MaxY(imageView)+5 , (Main_Screen_Width-15)/2, 180)];
-    [_KDA setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
-    
-    UIView *KDAHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0,WIDTH(_KDA) , 30)];
-    KDAHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
-    
-    _KDALabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 40, WIDTH(_KDA), 30)];
-    _KDALabel.textAlignment=NSTextAlignmentCenter;
-    _KDALabel.font=[UIFont systemFontOfSize:30];
-    _KDALabel.text=@"10.0";
-    _KDALabel.textColor=[UIColor colorWithRed:136/255.0 green:187/255.0 blue:225/255.0 alpha:1];
-    [_KDA addSubview:_KDALabel];
-    
-    
-    _KDALabelTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 155, 30)];
-    _KDALabelTitle.font=[UIFont systemFontOfSize:14];
-    _KDALabelTitle.text=@"近100场平均KDA";
-    _KDALabelTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
-    
-    UIImage *wenhao=[UIImage imageNamed:@"wenhao"];
-    UIButton *wen=[[UIButton alloc] initWithFrame:CGRectMake(110, 5, 20, 20)];
-    [wen setBackgroundImage:wenhao forState:UIControlStateNormal];
-    [wen addTarget:self action:@selector(wenhao) forControlEvents:UIControlEventTouchUpInside];
-    
-    _KDALabelTitle.userInteractionEnabled=YES;
-    [_KDALabelTitle addSubview:wen];
-    [KDAHeader addSubview:_KDALabelTitle];
-    
-    
-    _KDADetail=[[UILabel alloc] initWithFrame:CGRectMake(0, 70, 155, 30)];
-    _KDADetail.textAlignment=NSTextAlignmentCenter;
-    _KDADetail.font=[UIFont systemFontOfSize:16];
-    _KDADetail.text=@"10.0/11/11";
-    _KDADetail.textColor=[UIColor colorWithRed:77/255.0 green:128/255.0 blue:121/255.0 alpha:1];
-    [_KDA addSubview:_KDADetail];
-    
-    
-    _wincount=[[UILabel alloc] initWithFrame:CGRectMake(0, 100, 80, 30)];
-    _wincount.textAlignment=NSTextAlignmentRight;
-    _wincount.font=[UIFont systemFontOfSize:16];
-    _wincount.text=@"10.0/";
-    _wincount.textColor=[UIColor colorWithRed:68/255.0 green:192/255.0 blue:16/255.0 alpha:1];
-    [_KDA addSubview:_wincount];
-    
-    _losecount=[[UILabel alloc] initWithFrame:CGRectMake(80, 100, 80, 30)];
-    _losecount.textAlignment=NSTextAlignmentLeft;
-    _losecount.font=[UIFont systemFontOfSize:16];
-    _losecount.text=@"10.0";
-    _losecount.textColor=[UIColor colorWithRed:200/255.0 green:26/255.0 blue:26/255.0 alpha:1];
-    [_KDA addSubview:_losecount];
-    
-    _straightPieChart = [[AksStraightPieChart alloc]initWithFrame:CGRectMake(10, 140, 135, 10)];
-    [_KDA addSubview:_straightPieChart];
-    [_KDA addSubview:KDAHeader];
-    
-    _KDALabel.hidden=YES;
-    _losecount.hidden=YES;
-    _wincount.hidden=YES;
-    _KDADetail.hidden=YES;
-    _KDALabel.hidden=YES;
-    _straightPieChart.hidden=YES;
-    
     //ALL
-    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(MaxX(_KDA)+5, MaxY(imageView)+5, (Main_Screen_Width-15)/2, 180)];
+    UIView *ALL=[[UIView alloc] initWithFrame:CGRectMake(0, MaxY(imageView)+5, Main_Screen_Width, 180)];
     [ALL setBackgroundColor:[UIColor colorWithRed:22/255.0 green:27/255.0 blue:33/255.0 alpha:1]];
     
     UIView *ALLHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(ALL), 30)];
@@ -221,18 +149,18 @@
     
     [ALLHeader addSubview:_ALLLabelTitle];
     
-    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(5, 35, WIDTH(ALL), 20)];
-    _ALLcount.font=[UIFont systemFontOfSize:14];
+    _ALLcount=[[UILabel alloc] initWithFrame:CGRectMake(15, 50, WIDTH(ALL), 20)];
+    _ALLcount.font=[UIFont systemFontOfSize:16];
     _ALLcount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLcount];
     
-    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(5, 55, WIDTH(ALL), 20)];
-    _ALLwincount.font=[UIFont systemFontOfSize:14];
+    _ALLwincount=[[UILabel alloc] initWithFrame:CGRectMake(15, 75, WIDTH(ALL), 20)];
+    _ALLwincount.font=[UIFont systemFontOfSize:16];
     _ALLwincount.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
     [ALL addSubview:_ALLwincount];
     
     [self loadSteup];
-    percent=[[PercentageChart alloc] initWithFrame:CGRectMake(5, 100, 140, 80)];
+    percent=[[PercentageChart alloc] initWithFrame:CGRectMake(Main_Screen_Width/2, 60, Main_Screen_Width/2, 100)];
     
     [percent setMainColor:[UIColor greenColor]];
     [percent setSecondaryColor:[UIColor redColor]];
@@ -241,12 +169,10 @@
     [percent setText:@"胜率"];
     [ALL addSubview:percent];
     
-    
     [percent setPercentage:20.0];
     [_scrollView addSubview:ALL];
-    [_scrollView addSubview:_KDA];
     
-    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
+    _recentMatch=[[UITableView alloc] initWithFrame:CGRectMake(5, MaxY(ALL)+5, Main_Screen_Width-10, 1000) style:UITableViewStylePlain];
     _recentMatch.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _recentMatch.separatorColor = [UIColor blackColor];
     [_recentMatch setBackgroundColor:[UIColor colorWithRed:9/255.0 green:12/255.0 blue:18/255.0 alpha:1]];
@@ -257,31 +183,21 @@
     [_scrollView addSubview:_recentMatch];
     [_recentMatch setScrollEnabled:NO];
     
-    
     [self initButton];
     [self loadTheData:rolename];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [AVAnalytics beginLogPageView:@"main页面"];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [AVAnalytics endLogPageView:@"main页面"];
 }
 
--(void)wenhao
-{
-    
-}
-
--(void)loadTheData:(NSString*)rolename
-{
+-(void)loadTheData:(NSString *) rolename {
     [self getRecentMatch:rolename];
     [self getRole:rolename];
-    
 }
 
 - (void)getRole:(NSString*)rolename
@@ -296,14 +212,12 @@
             NSDictionary *Role=[responseObject objectForKey:@"Role"];
             float win=[[Role objectForKey:@"WinCount"] floatValue];
             float total=[[Role objectForKey:@"MatchCount"] floatValue];
+            NSInteger jumoValue = [[Role objectForKey:@"JumpValue"] integerValue];
+            _combat.text = [NSString stringWithFormat:@"%ld",jumoValue];
             [percent setPercentage:win/total*100];
             _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
             _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
-
-            [self getRoleData:rolename totalcout:(int)total];
-        }
-        else
-        {
+        } else {
             NSLog(@"no");
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -337,155 +251,9 @@
     }];
 }
 
-
-
-//拉取KDA
--(void)getRoleData:(NSString*)rolename totalcout:(NSInteger)totalcount
-{
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", nil];
-    NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name",[NSString stringWithFormat:@"%ld",(long)totalcount],@"matchCount", nil];
-    [manager GET:[NSString stringWithFormat:@"%@getPlayerNewData/",DEBUG_URL] parameters:paremeters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [_LodingActivityIndicator stopAnimating];
-        NSString *statue=[responseObject objectForKey:@"Status"];
-        
-        if([statue isEqualToString:@"OK"])
-        {
-            NSDictionary *result=[responseObject objectForKey:@"Result"];
-            NSLog(@"%@",result);
-            RecentModel *model=[[RecentModel alloc] initWithObject:result];
-            recentModel=model;
-            _KDALabelTitle.text=[NSString stringWithFormat:@"近%lu场平均KDA",(unsigned long)model.statisticCount];
-            
-            _KDADetail.text=[NSString stringWithFormat:@"%.1f/%.1f/%.1f",(float)model.kills/model.statisticCount,(float)model.dead/model.statisticCount,(float)model.assist /model.statisticCount];
-            
-            NSString *kda=[NSString stringWithFormat:@"%.1f",((float)model.kills/model.statisticCount+(float)model.assist/model.statisticCount)/((float)model.dead/model.statisticCount)*3];
-            if([kda isEqualToString:@"inf"])
-            {
-                kda=@"0";
-            }
-            _KDALabel.text=kda;
-            _combat.text=[NSString stringWithFormat:@"%lu",(unsigned long)model.combat];
-            
-            _wincount.text=[NSString stringWithFormat:@"%lu 胜/",(unsigned long)model.winCount];
-            _losecount.text=[NSString stringWithFormat:@"%lu 负",(unsigned long)model.loseCount];
-            [_straightPieChart clearChart];
-            [_straightPieChart addDataToRepresent:(int)model.winCount WithColor:[UIColor greenColor]];
-            [_straightPieChart addDataToRepresent:(int)model.loseCount WithColor:[UIColor colorWithRed:220/255.0 green:25/255.0 blue:1/255.0 alpha:1]];
-            
-            
-            _KDALabel.hidden=NO;
-            _losecount.hidden=NO;
-            _wincount.hidden=NO;
-            _KDADetail.hidden=NO;
-            _KDALabel.hidden=NO;
-            _straightPieChart.hidden=NO;
-            
-            NSLog(@"%@",result);
-            NSDictionary *commonHero=[result objectForKey:@"commonHero"];
-            
-             NSLog(@"%@",commonHero);
-            
-            [self createCommenHero:commonHero];
-            
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-        [_LodingActivityIndicator stopAnimating];
-    }];
-}
-
-
-
-
-- (void)createCommenHero:(NSDictionary *)dic
-{
-    [CacheEntence RequestRemoteURL:@"http://219.153.64.13:8520/getHeroPic/" paramters:nil Cache:NO success:^(id responseObject) {
-        
-        NSDictionary *image=[responseObject objectForKey:@"Result"];
-        
-        //NSMutableDictionary *hero=[[NSMutableDictionary alloc] initWithDictionary:dic];
-        NSMutableArray *heros=[[NSMutableArray alloc] init];
-    
-        
-
-        for (NSDictionary *h in dic) {
-            NSLog(@"%@",[h objectForKey:@"heroName"]);
-            for (NSDictionary *i in image) {
-            
-                if ([[h objectForKey:@"heroName"] isEqualToString:[i objectForKey:@"name"]])
-                {
-                    NSMutableDictionary *he=[[NSMutableDictionary alloc] init];
-                    
-                    [he setObject:[h objectForKey:@"heroName"] forKey:@"heroName"];
-                    [he setObject:[i objectForKey:@"img"] forKey:@"img"];
-                    [he setObject:[h objectForKey:@"heroNum"] forKey:@"heroNum"];
-                    [heros addObject:he];
-                }
-            }
-        }
-
-        NSLog(@"%ld",[heros count]);
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
-}
-
-///**
-// *  绘制常用英雄的界面
-// *
-// *  @param heros 常用英雄数组，最多五个
-// */
-//- (void)createHeroView:(NSArray *)heros
-//{
-//    
-//    for (UIView *v in _recentHero.subviews  ) {
-//        [v removeFromSuperview];
-//    }
-//    
-//    UILabel *HeroTitle=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIDTH(_recentHero), 30)];
-//    HeroTitle.font=[UIFont systemFontOfSize:14];
-//    HeroTitle.text=@"常用英雄";
-//    HeroTitle.textColor=[UIColor colorWithRed:136/255.0 green:166/255.0 blue:166/255.0 alpha:1];
-//    
-//    UIView *HeroHeader=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH(_recentHero), 30)];
-//    HeroHeader.backgroundColor=[UIColor colorWithRed:20/255.0 green:35/255.0 blue:48/255.0 alpha:1];
-//    [_recentHero addSubview:HeroHeader];
-//    [HeroHeader addSubview:HeroTitle];
-//    
-//    int width = WIDTH(_recentHero);
-//    int singleWidth= (width-5*6)/5;
-//    
-//    [_recentHero setFrame:CGRectMake(5, MaxY(_KDA)+5, Main_Screen_Width-10, 30+singleWidth+20+10)];
-//    [_recentMatch setFrame:CGRectMake(5, MaxY(_recentHero)+5, Main_Screen_Width-10, 1000)];
-//    int i=0;
-//    for (NSDictionary *hero in heros) {
-//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, 5+30, singleWidth, singleWidth)];
-//        [view sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/meta/%@",DEBUG_URL,[hero objectForKey:@"img"]]]];
-//        [_recentHero addSubview:view];
-//        
-//        UILabel *heroNum = [[UILabel alloc] initWithFrame:CGRectMake(i*(singleWidth+5)+3, MaxY(view)+5, singleWidth, 20)];
-//        heroNum.text = [NSString stringWithFormat:@"%@场",[hero objectForKey:@"heroNum"]];
-//        [heroNum setFont:[UIFont systemFontOfSize:12]];
-//        heroNum.textColor= [UIColor whiteColor];
-//        [heroNum setTextAlignment:NSTextAlignmentCenter];
-//        [_recentHero addSubview:heroNum];
-//        i++;
-//    }
-//    
-//}
-
-
-- (void)notHaveRoleName
-{
+- (void)notHaveRoleName {
     self.view.backgroundColor=[UIColor whiteColor];
     UIView *bg=[[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    
     
     UILabel *laber=[[UILabel alloc] initWithFrame:CGRectMake(30, 30, Main_Screen_Width-60, 30)];
     laber.text=@"尚未添加默认角色,请添加";
@@ -519,8 +287,7 @@
 
 - (void)addDefault
 {
-    if([_searchName.text length]==0)
-    {
+    if([_searchName.text length]==0) {
         NSLog(@"%@",_searchName.text);
     }
     else{
@@ -756,46 +523,33 @@
 }
 
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
-- (void)toogleMenu
-{
+- (void)toogleMenu {
     [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 #pragma mark - UItableView
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [MatchData count];
-
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0) {
         return 50.0;
     }
     return 50.0;
 }
 
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifer=@"MatchCell";
     MatchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
     if(cell==nil)
@@ -809,8 +563,7 @@
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section==0){
         MatchTableViewCell *cell=(MatchTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
         MatchDetailViewController *match=[[MatchDetailViewController alloc] init];
@@ -819,13 +572,11 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 30;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
   
     UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, Main_Screen_Width, 30)];
     [view setBackgroundColor:BACKGROUND_COLOR];
@@ -833,12 +584,9 @@
     [view setTitle:@"点击加载更多比赛" forState:UIControlStateNormal];
     [[view titleLabel] setFont:[UIFont systemFontOfSize:14]];
     return view;
-
-   
 }
 
-- (void)loadMore
-{
+- (void)loadMore {
     //获取当前表格的场数
     NSUInteger nowCount=[MatchData count];
     
@@ -858,7 +606,7 @@
             [MatchData addObjectsFromArray:dataTemp];
             [_recentMatch reloadData];
             CGSize contentSize = _scrollView.contentSize;
-            contentSize.height=contentSize.height + 50*[dataTemp count];
+            contentSize.height = contentSize.height + 50*[dataTemp count];
             _scrollView.contentSize=contentSize;
             CGRect tableFrame = _recentMatch.frame;
             tableFrame.size.height = [MatchData count]*50+30;

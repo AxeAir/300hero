@@ -86,8 +86,7 @@
 
 #pragma mark UITableViewDelagate
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
@@ -131,7 +130,7 @@
     value.textColor=HEADERTEXTCOLOR;
     [view addSubview:value];
     
-    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(260, 5, 40, 30)];
+    UILabel *change=[[UILabel alloc] initWithFrame:CGRectMake(Main_Screen_Width - 70, 5, 40, 30)];
     change.textAlignment=NSTextAlignmentRight;
     change.textColor=HEADERTEXTCOLOR;
     change.text=@"变动";

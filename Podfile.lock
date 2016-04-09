@@ -23,6 +23,9 @@ PODS:
   - AVOSCloud (3.2.3)
   - AVOSCloudSNS (3.1.2.9):
     - AVOSCloud
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - JSONKit-NoWarning (1.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
@@ -32,6 +35,8 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AVOSCloud
   - AVOSCloudSNS
+  - Crashlytics
+  - Fabric
   - JSONKit-NoWarning
   - SDWebImage (~> 3.7.1)
 
@@ -39,6 +44,8 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AVOSCloud: f760247eb167a43c279b3a250e3ef736f9d7eb68
   AVOSCloudSNS: 4f9f1df8663fc7bfa76b9b38578ac535d275ee8f
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 

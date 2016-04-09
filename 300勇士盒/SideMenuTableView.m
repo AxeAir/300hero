@@ -84,7 +84,7 @@
    
 
     sigleMenu *item = [itemsArray objectAtIndex:indexPath.row];
-    if(cell == nil){
+    if(cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
         cell.backgroundColor = [UIColor whiteColor];
         
@@ -191,10 +191,8 @@
 }
 
 
-- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-  if(section==0)
-  {
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  if(section==0) {
       UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 220)];
       view.backgroundColor=[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1];
       
@@ -246,8 +244,7 @@
 }
 
 
-- (void)logout
-{
+- (void)logout {
     [AVUser logOut];
 }
 
@@ -290,8 +287,7 @@
 }
 
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     _search=[[SearchViewController alloc] init];
     [self presentViewController:_search animated:YES completion:^{
         
@@ -299,14 +295,8 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
-
-
-
-
-
 
 @end

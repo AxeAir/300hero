@@ -16,6 +16,9 @@
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import <AVOSCloud/AVInstallation.h>
 #import <AVOSCloudSNS/AVUser+SNS.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #define AVOSCloudAppID  @"tiyml8544dd5u6ieukgdvdncay59ay2xqyx200wjvpmpe7a5"
 #define AVOSCloudAppKey @"q7jph42jjonnvkizxnsan97ovsi72spz2p6ol4nxfej8xyxg"
 @interface AppDelegate ()
@@ -30,6 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [Fabric with:@[[Crashlytics class]]];
     //设置AVOSCloud
     [AVOSCloud setApplicationId:AVOSCloudAppID
                       clientKey:AVOSCloudAppKey];

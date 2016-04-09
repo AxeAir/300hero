@@ -16,7 +16,7 @@ const CGFloat CHSideMenuDefaultMenuWidth = 200.0;
 const CGFloat CHSideMenuDefaultDamping = 0.5;
 
 // animation times
-const CGFloat CHSideMenuDefaultOpenAnimationTime = 1.2;
+const CGFloat CHSideMenuDefaultOpenAnimationTime = 0.5;
 const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
 
 @interface CHSideMenu ()<UIGestureRecognizerDelegate>
@@ -188,8 +188,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
 }
 
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     // 输出点击的view的类名
     //NSLog(@"%@", NSStringFromClass([touch.view class]));
     //NSLog(@"%@",NSStringFromClass([gestureRecognizer class]));
@@ -215,8 +214,7 @@ const CGFloat CHSideMenuDefaultCloseAnimationTime = 0.4;
 
 
 
-- (void)addMenuControllerView;
-{
+- (void)addMenuControllerView; {
     if (self.menuController.view.superview == nil) {
         CGRect menuFrame, restFrame;
         CGRectDivide(self.view.bounds, &menuFrame, &restFrame, self.menuWidth, CGRectMinXEdge);

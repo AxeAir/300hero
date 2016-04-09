@@ -38,22 +38,14 @@
     //统计应用启动情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [Equip registerSubclass];
-    //ios7
     
-    if (FSystenVersion>=8.0) {
-        //IOS8
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
-                                                | UIUserNotificationTypeBadge
-                                                | UIUserNotificationTypeSound
-                                                                                 categories:nil];
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
-    } else {
-        [application registerForRemoteNotificationTypes:
-         UIRemoteNotificationTypeBadge |
-         UIRemoteNotificationTypeAlert |
-         UIRemoteNotificationTypeSound];
-    }
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
+                                            | UIUserNotificationTypeBadge
+                                            | UIUserNotificationTypeSound
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -65,7 +57,7 @@
     [[UITabBar appearance] setTranslucent:NO];
     
      [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1]} forState:UIControlStateSelected];
-    
+     [UITabBar appearance].tintColor = [UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     return YES;
 }
 

@@ -45,8 +45,6 @@
 		E55878891A5ADAEA001E0E24 /* LoginWechat.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878881A5ADAEA001E0E24 /* LoginWechat.m */; };
 		E55878901A5ADBA6001E0E24 /* PhotoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */; };
 		E55878911A5ADBA6001E0E24 /* PhotoBorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */; };
-		E55878921A5ADBA6001E0E24 /* PhotoStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = E558788D1A5ADBA6001E0E24 /* PhotoStackView.m */; };
-		E55878931A5ADBA6001E0E24 /* PhotoStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E558788F1A5ADBA6001E0E24 /* PhotoStackViewController.m */; };
 		E55878971A5ADC2E001E0E24 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */; };
 		E55878991A5ADCB3001E0E24 /* loginBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E55878981A5ADCB3001E0E24 /* loginBg.png */; };
 		E55D1C8D1CB8EA840049A88C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55D1C8C1CB8EA840049A88C /* Main.storyboard */; };
@@ -58,6 +56,7 @@
 		E55D1CA81CB916CB0049A88C /* EquipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D1CA71CB916CB0049A88C /* EquipModel.m */; };
 		E55D1CAE1CB91D180049A88C /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D1CAD1CB91D180049A88C /* ToolsViewController.m */; };
 		E55D1CB11CB928670049A88C /* EquipDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D1CB01CB928670049A88C /* EquipDetailViewController.m */; };
+		E55D1CB31CB93FB00049A88C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55D1CB21CB93FB00049A88C /* Launch Screen.storyboard */; };
 		E56A658319F145EB00731B42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56A658219F145EB00731B42 /* Default-568h@2x.png */; };
 		E56A658519F1720D00731B42 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56A658419F1720D00731B42 /* Icon-60@3x.png */; };
 		E56A658719F1726D00731B42 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56A658619F1726D00731B42 /* Icon-60@2x.png */; };
@@ -79,7 +78,6 @@
 		E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */; };
 		E5A4BE9619DF118D000BFE8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A4BE9519DF118D000BFE8E /* Images.xcassets */; };
 		E5A4BEA519DF118D000BFE8E /* _00___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4BEA419DF118D000BFE8E /* _00___Tests.m */; };
-		E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA34E019E3C22600CB8165 /* sigleMenu.m */; };
 		E5BA34E919E3C3F400CB8165 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E219E3C3F400CB8165 /* icon1.png */; };
 		E5BA34EA19E3C3F400CB8165 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E319E3C3F400CB8165 /* icon2.png */; };
 		E5BA34EB19E3C3F400CB8165 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5BA34E419E3C3F400CB8165 /* icon3.png */; };
@@ -253,10 +251,6 @@
 		E55878881A5ADAEA001E0E24 /* LoginWechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWechat.m; sourceTree = "<group>"; };
 		E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhotoBorder.png; sourceTree = "<group>"; };
 		E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PhotoBorder@2x.png"; sourceTree = "<group>"; };
-		E558788C1A5ADBA6001E0E24 /* PhotoStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStackView.h; sourceTree = "<group>"; };
-		E558788D1A5ADBA6001E0E24 /* PhotoStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStackView.m; sourceTree = "<group>"; };
-		E558788E1A5ADBA6001E0E24 /* PhotoStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStackViewController.h; sourceTree = "<group>"; };
-		E558788F1A5ADBA6001E0E24 /* PhotoStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStackViewController.m; sourceTree = "<group>"; };
 		E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E55878981A5ADCB3001E0E24 /* loginBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBg.png; sourceTree = "<group>"; };
 		E55D1C8C1CB8EA840049A88C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -276,6 +270,7 @@
 		E55D1CAD1CB91D180049A88C /* ToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsViewController.m; sourceTree = "<group>"; };
 		E55D1CAF1CB928670049A88C /* EquipDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipDetailViewController.h; sourceTree = "<group>"; };
 		E55D1CB01CB928670049A88C /* EquipDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquipDetailViewController.m; sourceTree = "<group>"; };
+		E55D1CB21CB93FB00049A88C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E56382B81A1E2035006CB333 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E56382BA1A1E203E006CB333 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E56382BC1A1E204B006CB333 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -343,8 +338,6 @@
 		E5A4BE9E19DF118D000BFE8E /* 300勇士盒Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "300勇士盒Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A4BEA319DF118D000BFE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5A4BEA419DF118D000BFE8E /* _00___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_00___Tests.m"; sourceTree = "<group>"; };
-		E5BA34DF19E3C22600CB8165 /* sigleMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigleMenu.h; sourceTree = "<group>"; };
-		E5BA34E019E3C22600CB8165 /* sigleMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sigleMenu.m; sourceTree = "<group>"; };
 		E5BA34E219E3C3F400CB8165 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
 		E5BA34E319E3C3F400CB8165 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		E5BA34E419E3C3F400CB8165 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
@@ -661,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				E55D1C8C1CB8EA840049A88C /* Main.storyboard */,
+				E55D1CB21CB93FB00049A88C /* Launch Screen.storyboard */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -853,8 +847,8 @@
 				E563838E1A1E30F7006CB333 /* API */,
 				E5F325C31A0A271100E6940D /* IMAGE */,
 				E5BA361919E909D500CB8165 /* Model */,
+				E52E2C2F19F6AFE000DF03D4 /* images */,
 				E5BA364319EA4A6600CB8165 /* CHHeader */,
-				E5BA34D519DF226300CB8165 /* CHSlider */,
 				E5BA36BD19F01AEF00CB8165 /* UConstants.h */,
 				E5A4BE8C19DF118D000BFE8E /* AppDelegate.h */,
 				E5A4BE8D19DF118D000BFE8E /* AppDelegate.m */,
@@ -892,16 +886,6 @@
 				E5A4BEA319DF118D000BFE8E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E5BA34D519DF226300CB8165 /* CHSlider */ = {
-			isa = PBXGroup;
-			children = (
-				E52E2C2F19F6AFE000DF03D4 /* images */,
-				E5BA34DF19E3C22600CB8165 /* sigleMenu.h */,
-				E5BA34E019E3C22600CB8165 /* sigleMenu.m */,
-			);
-			name = CHSlider;
 			sourceTree = "<group>";
 		};
 		E5BA35FF19E832D700CB8165 /* Main */ = {
@@ -1080,10 +1064,6 @@
 				E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */,
 				E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */,
 				E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */,
-				E558788C1A5ADBA6001E0E24 /* PhotoStackView.h */,
-				E558788D1A5ADBA6001E0E24 /* PhotoStackView.m */,
-				E558788E1A5ADBA6001E0E24 /* PhotoStackViewController.h */,
-				E558788F1A5ADBA6001E0E24 /* PhotoStackViewController.m */,
 				E55878871A5ADAEA001E0E24 /* LoginWechat.h */,
 				E55878881A5ADAEA001E0E24 /* LoginWechat.m */,
 				E55878841A5ADAA7001E0E24 /* LoginPublicClass.h */,
@@ -1271,6 +1251,7 @@
 				E55878971A5ADC2E001E0E24 /* MainStoryboard.storyboard in Resources */,
 				E5F325C71A0A272000E6940D /* clock@2x.png in Resources */,
 				E5BA366119EAB6B000CB8165 /* three.png in Resources */,
+				E55D1CB31CB93FB00049A88C /* Launch Screen.storyboard in Resources */,
 				E52B520B19F0E44F005FEE2E /* wenhao.png in Resources */,
 				E5BA35F519E704AE00CB8165 /* burger@2x.png in Resources */,
 				E5BA366219EAB6B000CB8165 /* three@2x.png in Resources */,
@@ -1421,7 +1402,6 @@
 				E51A8A8E1A5793410092FA6C /* ReviewTableViewController.m in Sources */,
 				E55D1CA51CB913820049A88C /* EquipCell.m in Sources */,
 				E5C9BF4E1A376B8500A9B9D5 /* CollectionViewCell.m in Sources */,
-				E55878931A5ADBA6001E0E24 /* PhotoStackViewController.m in Sources */,
 				E5A3921D19F4F93A001330B3 /* AboutViewController.m in Sources */,
 				E558787F1A5AD9FA001E0E24 /* SighUP.m in Sources */,
 				E5A3922119F4F9CB001330B3 /* SettingViewController.m in Sources */,
@@ -1466,7 +1446,6 @@
 				E52FFE391A3B150D00046D5F /* DetailHeroViewController.m in Sources */,
 				E5F7FA161A3F4CF300D80349 /* JGProgressHUDAnimation.m in Sources */,
 				E59BBC3519FEB1DA006F13E6 /* Combat.m in Sources */,
-				E55878921A5ADBA6001E0E24 /* PhotoStackView.m in Sources */,
 				E5BA366D19EBD31900CB8165 /* MatchDetailViewController.m in Sources */,
 				E5E5637B1A4C0BBD0033AFC8 /* RegisterViewController.m in Sources */,
 				E5F7FA151A3F4CF300D80349 /* JGProgressHUD.m in Sources */,
@@ -1480,7 +1459,6 @@
 				E5BA367319EC028800CB8165 /* RoleModel.m in Sources */,
 				E5F7FA181A3F4CF300D80349 /* JGProgressHUDFadeAnimation.m in Sources */,
 				E5F7FA1A1A3F4CF300D80349 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
-				E5BA34E119E3C22600CB8165 /* sigleMenu.m in Sources */,
 				E55877401A595D2A001E0E24 /* EquipTableViewController.m in Sources */,
 				E5F7F9FD1A3F16CC00D80349 /* DetailSkill.m in Sources */,
 				E5BA36B019EE42EB00CB8165 /* MJRefreshConst.m in Sources */,
@@ -1600,15 +1578,52 @@
 			baseConfigurationReference = F963BBCE8E44CFC4BF79047E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hao Chen (9BWTECC32N)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"AVOSCloudSNS\"",
+					"-l\"AVOSCloudSNSLib\"",
+					"-l\"JSONKit-NoWarning\"",
+					"-l\"SDWebImage\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "xxteam.300hero.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ddac0c7d-9c40-4b0f-967b-2118f1b01aff";
@@ -1620,15 +1635,52 @@
 			baseConfigurationReference = 2561E8561C542E44CC1EEBE1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "300勇士盒/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"AVOSCloudSNS\"",
+					"-l\"AVOSCloudSNSLib\"",
+					"-l\"JSONKit-NoWarning\"",
+					"-l\"SDWebImage\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "xxteam.300hero.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "03cd421b-169b-469c-b1a2-484c1477ce76";

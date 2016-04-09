@@ -17,14 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"设置";
-    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-    self.navigationItem.leftBarButtonItem=left;
-    
     [self setupTable];
 }
 
@@ -33,15 +27,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setupTable
-{
+-(void)setupTable {
     _Settingtable=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 600) style:UITableViewStyleGrouped];
     _Settingtable.delegate=self;
     _Settingtable.dataSource=self;
-    
-    
     [self.view addSubview:_Settingtable];
-    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

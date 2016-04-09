@@ -372,4 +372,7 @@
     return YES;//隐藏为YES，显示为NO
 }
 
+- (void)signUpComplete {
+    
+}
 @end

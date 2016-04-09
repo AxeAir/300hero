@@ -16,10 +16,8 @@
 #import <AVOSCloud/AVUser.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import "ValidMobile.h"
-#import "PhotoStackView.h"
-#import "PhotoStackViewController.h"
 
-@interface SighUP () <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextViewDelegate,UITextFieldDelegate,PhotoStackViewControllerDelegate>
+@interface SighUP () <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 //头像
 @property (strong,nonatomic) NSString *imgPath;
@@ -28,7 +26,6 @@
 @property (strong,nonatomic) UIImagePickerController *pickerImage;
 @property (strong,nonatomic) UIImageView *cameraImg;
 @property (strong,nonatomic) UIActionSheet *camSheet;
-@property (strong,nonatomic) PhotoStackViewController *photoStack;
 
 //ToolBar
 @property (strong,nonatomic) UIToolbar *toolBar;
@@ -81,9 +78,6 @@
         bgview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:bgview];
     }
-    
-    PhotoStackViewController *photo = [[PhotoStackViewController alloc]init];
-    photo.delegate = self;
     
     _myPublic = [[MyPublic alloc] init];
     _loginPublicClass = [[LoginPublicClass alloc]init];
@@ -262,10 +256,7 @@
 #pragma mark - Action
 
 -(void)cameraTouch{
-    UIStoryboard *photo = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    PhotoStackViewController *photoStackVC = [photo instantiateViewControllerWithIdentifier:@"photoStack"];
-    photoStackVC.delegate = self;
-    [self presentViewController:photoStackVC animated:YES completion:nil];
+
 }
 
 -(void)backBtnClick{

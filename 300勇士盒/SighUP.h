@@ -10,7 +10,6 @@
 #import "Login.h"
 #import "UConstants.h"
 #import "MyPublic.h"
-#import "PhotoStackViewController.h"
 
 @protocol SighUpDelegate <NSObject>
 
@@ -18,7 +17,7 @@
 
 @end
 
-@interface SighUP : UIViewController <PhotoStackViewDelegate>
+@interface SighUP : UIViewController
 
 @property (weak, nonatomic) id<SighUpDelegate> delegate;
 

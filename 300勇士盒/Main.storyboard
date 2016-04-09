@@ -277,7 +277,7 @@
         <scene sceneID="Yat-uY-DxC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9wi-ju-4Hf" customClass="BaseNavigationViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="SCE-Ba-vFR"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="tabbar-me" id="SCE-Ba-vFR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oLT-eF-VlQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -296,7 +296,7 @@
         <scene sceneID="UIe-d7-6jf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cyy-c6-bBi" customClass="BaseNavigationViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="排行榜" id="NAA-Yr-ta0"/>
+                    <tabBarItem key="tabBarItem" title="排行榜" image="tabbar-rank" id="NAA-Yr-ta0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrv-Q4-6XA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -315,7 +315,7 @@
         <scene sceneID="hxa-0p-hDx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o36-ma-Apj" customClass="BaseNavigationViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工具箱" id="GpB-nP-ckf"/>
+                    <tabBarItem key="tabBarItem" title="工具箱" image="tabbar-tools" id="GpB-nP-ckf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XRm-39-plX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -331,4 +331,9 @@
             <point key="canvasLocation" x="250" y="1061"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabbar-me" width="36" height="36"/>
+        <image name="tabbar-rank" width="36" height="36"/>
+        <image name="tabbar-tools" width="36" height="36"/>
+    </resources>
 </document>

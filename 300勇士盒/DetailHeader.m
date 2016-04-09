@@ -52,7 +52,7 @@
     
     
     _gf=[[UILabel alloc] initWithFrame:CGRectMake(MaxX(_header)+10, 50, 200, 20)];
-    _gf.text=[NSString stringWithFormat:@"生命%ld 物理%ld 法术%ld 团队%ld 操作%ld",_hero.hp_rec,_hero.psy_rec,_hero.mp_rec,_hero.grp_rec,_hero.ope_rec];
+    _gf.text=[NSString stringWithFormat:@"生命%ld 物理%ld 法术%ld 团队%ld 操作%ld",(long)_hero.hp_rec,_hero.psy_rec,_hero.mp_rec,_hero.grp_rec,_hero.ope_rec];
     _gf.font=[UIFont systemFontOfSize:12];
     _gf.textColor=RGBCOLOR(153, 153, 153);
     [self addSubview:_gf];

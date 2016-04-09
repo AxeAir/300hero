@@ -94,10 +94,11 @@
     [_LodingActivityIndicator setHidesWhenStopped:YES]; //当旋转结束时隐藏
 }
 
-- (void)havaRoleName:(NSString*)rolename
-{
-    if(_scrollView==nil){
-        _scrollView=[[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+- (void)havaRoleName:(NSString*)rolename {
+    if(_scrollView==nil) {
+        CGRect frame = [[UIScreen mainScreen] bounds];
+        frame.size.height -= 44;
+        _scrollView=[[UIScrollView alloc] initWithFrame:frame];
     }
     [_scrollView setContentSize:CGSizeMake(Main_Screen_Width, 1050)];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width , Main_Screen_Width * 180.0/320.0)];
@@ -209,7 +210,7 @@
             float win=[[Role objectForKey:@"WinCount"] floatValue];
             float total=[[Role objectForKey:@"MatchCount"] floatValue];
             NSInteger jumoValue = [[Role objectForKey:@"JumpValue"] integerValue];
-            _combat.text = [NSString stringWithFormat:@"%ld",jumoValue];
+            _combat.text = [NSString stringWithFormat:@"%ld",(long)jumoValue];
             [percent setPercentage:win/total*100];
             _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
             _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
@@ -225,8 +226,7 @@
 
 
 //拉取最近比赛 ,从300服务器
--(void)getRecentMatch:(NSString*)rolename
-{
+-(void)getRecentMatch:(NSString*)rolename {
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain", nil];
     NSDictionary *paremeters=[NSDictionary dictionaryWithObjectsAndKeys:rolename,@"name", nil];
@@ -283,8 +283,7 @@
     }
 }
 
-- (void)addDefault
-{
+- (void)addDefault {
     if([_searchName.text length]==0) {
         NSLog(@"%@",_searchName.text);
     }
@@ -326,9 +325,7 @@
     }
 }
 
--(void)initButton
-{
-    
+-(void)initButton {
     _mask=[[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
     
     [_mask setBackgroundColor:[UIColor blackColor]];
@@ -339,7 +336,6 @@
     [_mask addGestureRecognizer:ges];
     [self.view insertSubview:_mask atIndex:99];
     [_mask setHidden:YES];
-    
     
     _buttonGroup=[[UIView alloc] initWithFrame:CGRectMake(0, -64, Main_Screen_Width, 80)];
     
@@ -405,8 +401,7 @@
     [self.view insertSubview:_buttonGroup atIndex:100];
 }
 
--(void)clear
-{
+-(void)clear {
     [self.userdefault setObject:nil forKey:@"DefaultRole"];
     [self search];
     for(UIView *view in [self.view subviews])
@@ -416,8 +411,7 @@
     [self notHaveRoleName];
 }
 
--(void)pingjia
-{
+-(void)pingjia {
     [self search];
     NSString * appstoreUrlString = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?mt=8&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software&id=924796566";
     
@@ -435,8 +429,7 @@
     NSLog(@"评价");
 }
 
--(void)save
-{
+-(void)save {
     UIGraphicsBeginImageContext(CGSizeMake(Main_Screen_Width, MaxY(_KDA)));     //currentView 当前的view
     [self.scrollView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -585,7 +578,7 @@
     NSUInteger nowCount=[MatchData count];
     
     NSString *url=[NSString stringWithFormat:@"http://300report.jumpw.com/api/getlist"];
-    NSDictionary *parameters= [NSDictionary dictionaryWithObjectsAndKeys:Rolename,@"name",[NSString stringWithFormat:@"%ld",nowCount],@"index", nil];
+    NSDictionary *parameters= [NSDictionary dictionaryWithObjectsAndKeys:Rolename,@"name",[NSString stringWithFormat:@"%ld",(unsigned long)nowCount],@"index", nil];
     [CacheEntence RequestRemoteURL:url paramters:parameters Cache:NO customHeader:@"text/plain" success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         NSString *result=[responseObject objectForKey:@"Result"];
@@ -601,7 +594,7 @@
             [_recentMatch reloadData];
             CGSize contentSize = _scrollView.contentSize;
             contentSize.height = contentSize.height + 50*[dataTemp count];
-            _scrollView.contentSize=contentSize;
+            _scrollView.contentSize = contentSize;
             CGRect tableFrame = _recentMatch.frame;
             tableFrame.size.height = [MatchData count]*50+30;
             _recentMatch.frame=tableFrame;

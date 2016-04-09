@@ -33,17 +33,15 @@
 }
 
 
-- (void)NoReview
-{
+- (void)NoReview {
      UILabel *noReview=[[UILabel alloc] initWithFrame:CGRectMake((Main_Screen_Width-300)/2, 100, 300, 100)];
     noReview.text = @"暂无评论，快来做第一个评论的人把";
     noReview.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:noReview];
 }
 
-- (void)getData
-{
-    NSDictionary *paramters=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",_pageID],@"pageID", nil];
+- (void)getData {
+    NSDictionary *paramters=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)_pageID],@"pageID", nil];
     [CacheEntence RequestRemoteURL:[NSString stringWithFormat:@"%@getComment/",DEBUG_URL] paramters:paramters Cache:NO success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         NSString *status=[responseObject objectForKey:@"Status"];

@@ -14,7 +14,8 @@
 #import "JGProgressHUDIndeterminateIndicatorView.h"
 #import "JGProgressHUDErrorIndicatorView.h"
 #import <AVOSCloud/AVUser.h>
-#import "Login.h"
+
+
 @interface WriteReviewViewController ()<UITextViewDelegate>
 @property (nonatomic, strong) UITextView                *ReviewText;
 @property (nonatomic, strong) UILabel                   *label;

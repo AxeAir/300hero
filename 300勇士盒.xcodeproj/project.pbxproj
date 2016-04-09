@@ -36,17 +36,6 @@
 		E52FFE391A3B150D00046D5F /* DetailHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52FFE381A3B150D00046D5F /* DetailHeroViewController.m */; };
 		E558773D1A59444B001E0E24 /* SingleEquipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E558773C1A59444B001E0E24 /* SingleEquipTableViewCell.m */; };
 		E55877401A595D2A001E0E24 /* EquipTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E558773F1A595D2A001E0E24 /* EquipTableViewController.m */; };
-		E558787D1A5AD9FA001E0E24 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878761A5AD9FA001E0E24 /* Login.m */; };
-		E558787E1A5AD9FA001E0E24 /* MyPublic.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878781A5AD9FA001E0E24 /* MyPublic.m */; };
-		E558787F1A5AD9FA001E0E24 /* SighUP.m in Sources */ = {isa = PBXBuildFile; fileRef = E558787A1A5AD9FA001E0E24 /* SighUP.m */; };
-		E55878801A5AD9FA001E0E24 /* SighUpMore.m in Sources */ = {isa = PBXBuildFile; fileRef = E558787C1A5AD9FA001E0E24 /* SighUpMore.m */; };
-		E55878831A5ADA05001E0E24 /* ValidMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878821A5ADA05001E0E24 /* ValidMobile.m */; };
-		E55878861A5ADAA7001E0E24 /* LoginPublicClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878851A5ADAA7001E0E24 /* LoginPublicClass.m */; };
-		E55878891A5ADAEA001E0E24 /* LoginWechat.m in Sources */ = {isa = PBXBuildFile; fileRef = E55878881A5ADAEA001E0E24 /* LoginWechat.m */; };
-		E55878901A5ADBA6001E0E24 /* PhotoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */; };
-		E55878911A5ADBA6001E0E24 /* PhotoBorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */; };
-		E55878971A5ADC2E001E0E24 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */; };
-		E55878991A5ADCB3001E0E24 /* loginBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E55878981A5ADCB3001E0E24 /* loginBg.png */; };
 		E55D1C8D1CB8EA840049A88C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55D1C8C1CB8EA840049A88C /* Main.storyboard */; };
 		E55D1C911CB8F2300049A88C /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D1C901CB8F2300049A88C /* BaseNavigationViewController.m */; };
 		E55D1C9C1CB90BAF0049A88C /* Equip.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D1C9B1CB90BAF0049A88C /* Equip.m */; };
@@ -146,8 +135,6 @@
 		E5D81A761A335A4C00FD08EB /* news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D81A731A335A4C00FD08EB /* news@2x.png */; };
 		E5D81A771A335A4C00FD08EB /* news@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D81A741A335A4C00FD08EB /* news@3x.png */; };
 		E5D9DD201A0BE5C500760071 /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D9DD1F1A0BE5C500760071 /* 1024.png */; };
-		E5E5637B1A4C0BBD0033AFC8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E5637A1A4C0BBD0033AFC8 /* RegisterViewController.m */; };
-		E5E5637E1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E5637D1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.m */; };
 		E5F325C61A0A272000E6940D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F325C41A0A272000E6940D /* clock.png */; };
 		E5F325C71A0A272000E6940D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F325C51A0A272000E6940D /* clock@2x.png */; };
 		E5F325CC1A0A87F300E6940D /* god@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F325C81A0A87F300E6940D /* god@2x.png */; };
@@ -235,24 +222,6 @@
 		E558773C1A59444B001E0E24 /* SingleEquipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleEquipTableViewCell.m; sourceTree = "<group>"; };
 		E558773E1A595D2A001E0E24 /* EquipTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipTableViewController.h; sourceTree = "<group>"; };
 		E558773F1A595D2A001E0E24 /* EquipTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquipTableViewController.m; sourceTree = "<group>"; };
-		E55878751A5AD9FA001E0E24 /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
-		E55878761A5AD9FA001E0E24 /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
-		E55878771A5AD9FA001E0E24 /* MyPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublic.h; sourceTree = "<group>"; };
-		E55878781A5AD9FA001E0E24 /* MyPublic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublic.m; sourceTree = "<group>"; };
-		E55878791A5AD9FA001E0E24 /* SighUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SighUP.h; sourceTree = "<group>"; };
-		E558787A1A5AD9FA001E0E24 /* SighUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SighUP.m; sourceTree = "<group>"; };
-		E558787B1A5AD9FA001E0E24 /* SighUpMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SighUpMore.h; sourceTree = "<group>"; };
-		E558787C1A5AD9FA001E0E24 /* SighUpMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SighUpMore.m; sourceTree = "<group>"; };
-		E55878811A5ADA05001E0E24 /* ValidMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidMobile.h; sourceTree = "<group>"; };
-		E55878821A5ADA05001E0E24 /* ValidMobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidMobile.m; sourceTree = "<group>"; };
-		E55878841A5ADAA7001E0E24 /* LoginPublicClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPublicClass.h; sourceTree = "<group>"; };
-		E55878851A5ADAA7001E0E24 /* LoginPublicClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPublicClass.m; sourceTree = "<group>"; };
-		E55878871A5ADAEA001E0E24 /* LoginWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWechat.h; sourceTree = "<group>"; };
-		E55878881A5ADAEA001E0E24 /* LoginWechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWechat.m; sourceTree = "<group>"; };
-		E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhotoBorder.png; sourceTree = "<group>"; };
-		E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PhotoBorder@2x.png"; sourceTree = "<group>"; };
-		E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		E55878981A5ADCB3001E0E24 /* loginBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBg.png; sourceTree = "<group>"; };
 		E55D1C8C1CB8EA840049A88C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E55D1C8F1CB8F2300049A88C /* BaseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
 		E55D1C901CB8F2300049A88C /* BaseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
@@ -444,10 +413,6 @@
 		E5D81A731A335A4C00FD08EB /* news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news@2x.png"; sourceTree = "<group>"; };
 		E5D81A741A335A4C00FD08EB /* news@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news@3x.png"; sourceTree = "<group>"; };
 		E5D9DD1F1A0BE5C500760071 /* 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1024.png; sourceTree = "<group>"; };
-		E5E563791A4C0BBD0033AFC8 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		E5E5637A1A4C0BBD0033AFC8 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		E5E5637C1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterLoginNavViewController.h; sourceTree = "<group>"; };
-		E5E5637D1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterLoginNavViewController.m; sourceTree = "<group>"; };
 		E5F325C41A0A272000E6940D /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		E5F325C51A0A272000E6940D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
 		E5F325C81A0A87F300E6940D /* god@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "god@2x.png"; sourceTree = "<group>"; };
@@ -855,7 +820,6 @@
 				E5C9BEEB1A35DB0000A9B9D5 /* News */,
 				E5C9BF451A37657900A9B9D5 /* Hero */,
 				E5A3921E19F4F9B4001330B3 /* Setting */,
-				E5E563781A4C0B920033AFC8 /* RegisterLogin */,
 				E5A4BE9519DF118D000BFE8E /* Images.xcassets */,
 				E5A4BE8819DF118D000BFE8E /* Supporting Files */,
 			);
@@ -1057,35 +1021,6 @@
 			name = Hero;
 			sourceTree = "<group>";
 		};
-		E5E563781A4C0B920033AFC8 /* RegisterLogin */ = {
-			isa = PBXGroup;
-			children = (
-				E55878981A5ADCB3001E0E24 /* loginBg.png */,
-				E55878951A5ADC2E001E0E24 /* MainStoryboard.storyboard */,
-				E558788A1A5ADBA6001E0E24 /* PhotoBorder.png */,
-				E558788B1A5ADBA6001E0E24 /* PhotoBorder@2x.png */,
-				E55878871A5ADAEA001E0E24 /* LoginWechat.h */,
-				E55878881A5ADAEA001E0E24 /* LoginWechat.m */,
-				E55878841A5ADAA7001E0E24 /* LoginPublicClass.h */,
-				E55878851A5ADAA7001E0E24 /* LoginPublicClass.m */,
-				E55878811A5ADA05001E0E24 /* ValidMobile.h */,
-				E55878821A5ADA05001E0E24 /* ValidMobile.m */,
-				E55878751A5AD9FA001E0E24 /* Login.h */,
-				E55878761A5AD9FA001E0E24 /* Login.m */,
-				E55878771A5AD9FA001E0E24 /* MyPublic.h */,
-				E55878781A5AD9FA001E0E24 /* MyPublic.m */,
-				E55878791A5AD9FA001E0E24 /* SighUP.h */,
-				E558787A1A5AD9FA001E0E24 /* SighUP.m */,
-				E558787B1A5AD9FA001E0E24 /* SighUpMore.h */,
-				E558787C1A5AD9FA001E0E24 /* SighUpMore.m */,
-				E5E5637C1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.h */,
-				E5E5637D1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.m */,
-				E5E563791A4C0BBD0033AFC8 /* RegisterViewController.h */,
-				E5E5637A1A4C0BBD0033AFC8 /* RegisterViewController.m */,
-			);
-			name = RegisterLogin;
-			sourceTree = "<group>";
-		};
 		E5F325C31A0A271100E6940D /* IMAGE */ = {
 			isa = PBXGroup;
 			children = (
@@ -1248,7 +1183,6 @@
 				E5D9DD201A0BE5C500760071 /* 1024.png in Resources */,
 				E59BBC2F19FE8674006F13E6 /* menu_icon_bulb_pressed@2x.png in Resources */,
 				E56A658319F145EB00731B42 /* Default-568h@2x.png in Resources */,
-				E55878971A5ADC2E001E0E24 /* MainStoryboard.storyboard in Resources */,
 				E5F325C71A0A272000E6940D /* clock@2x.png in Resources */,
 				E5BA366119EAB6B000CB8165 /* three.png in Resources */,
 				E55D1CB31CB93FB00049A88C /* Launch Screen.storyboard in Resources */,
@@ -1268,7 +1202,6 @@
 				E5BA35F419E704AE00CB8165 /* burger.png in Resources */,
 				E5BA34EE19E3C3F400CB8165 /* icon6.png in Resources */,
 				E5BA365C19EAB5EC00CB8165 /* one@2x.png in Resources */,
-				E55878991A5ADCB3001E0E24 /* loginBg.png in Resources */,
 				E5F325CC1A0A87F300E6940D /* god@2x.png in Resources */,
 				E52E2C4619F74AD400DF03D4 /* LaunchImage-800-Landscape-736h@3x.png in Resources */,
 				E5BA34ED19E3C3F400CB8165 /* icon5.png in Resources */,
@@ -1284,7 +1217,6 @@
 				E56A658F19F1734200731B42 /* Icon-Small.png in Resources */,
 				E55D1C8D1CB8EA840049A88C /* Main.storyboard in Resources */,
 				E5C128E31A13DBE900BBEA5E /* savetophoto.png in Resources */,
-				E55878911A5ADBA6001E0E24 /* PhotoBorder@2x.png in Resources */,
 				E52E2C4A19F74EC200DF03D4 /* lunch.png in Resources */,
 				E5BA360F19E85AA600CB8165 /* background.png in Resources */,
 				E5F325CE1A0A87F300E6940D /* myzj@2x.png in Resources */,
@@ -1294,7 +1226,6 @@
 				E5BA364219E9B08200CB8165 /* logo@2x.png in Resources */,
 				E5F325C61A0A272000E6940D /* clock.png in Resources */,
 				E52E2C4219F748B500DF03D4 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
-				E55878901A5ADBA6001E0E24 /* PhotoBorder.png in Resources */,
 				E5BA34EF19E3C3F400CB8165 /* icon7.png in Resources */,
 				E52B520C19F0E44F005FEE2E /* wenhao@2x.png in Resources */,
 				E5BA361119E8D90E00CB8165 /* background101020.png in Resources */,
@@ -1383,11 +1314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E55878861A5ADAA7001E0E24 /* LoginPublicClass.m in Sources */,
 				E5BA36B219EE42EB00CB8165 /* MJRefreshHeaderView.m in Sources */,
 				E5F7F9F71A3F047A00D80349 /* DetailHero.m in Sources */,
 				E5F7FA1E1A3F4CF300D80349 /* JGProgressHUDSuccessIndicatorView.m in Sources */,
-				E55878831A5ADA05001E0E24 /* ValidMobile.m in Sources */,
 				E55D1C9C1CB90BAF0049A88C /* Equip.m in Sources */,
 				E5BA367019EC01D000CB8165 /* MatchDetailModel.m in Sources */,
 				E5BA36AF19EE42EB00CB8165 /* MJRefreshBaseView.m in Sources */,
@@ -1403,7 +1332,6 @@
 				E55D1CA51CB913820049A88C /* EquipCell.m in Sources */,
 				E5C9BF4E1A376B8500A9B9D5 /* CollectionViewCell.m in Sources */,
 				E5A3921D19F4F93A001330B3 /* AboutViewController.m in Sources */,
-				E558787F1A5AD9FA001E0E24 /* SighUP.m in Sources */,
 				E5A3922119F4F9CB001330B3 /* SettingViewController.m in Sources */,
 				E5BA366A19EBC69700CB8165 /* MatchTableViewCell.m in Sources */,
 				E5C9BF481A37658F00A9B9D5 /* HeroCollectionViewController.m in Sources */,
@@ -1417,26 +1345,22 @@
 				E5BA364619EA4A8A00CB8165 /* CHHeader.m in Sources */,
 				E52FFE2F1A398C7400046D5F /* Cache.m in Sources */,
 				E55D1CA81CB916CB0049A88C /* EquipModel.m in Sources */,
-				E5E5637E1A4C0CCA0033AFC8 /* RegisterLoginNavViewController.m in Sources */,
 				E558773D1A59444B001E0E24 /* SingleEquipTableViewCell.m in Sources */,
 				E5BA36BC19F0159000CB8165 /* AksStraightPieChart.m in Sources */,
 				E5BA369C19EE33C200CB8165 /* Role.m in Sources */,
 				E52FFE161A388B9500046D5F /* NewsModel.m in Sources */,
 				E5C9BF011A35EEC700A9B9D5 /* HeaderScrollView.m in Sources */,
-				E558787E1A5AD9FA001E0E24 /* MyPublic.m in Sources */,
 				E55D1C9F1CB910030049A88C /* EquipCollectionViewController.m in Sources */,
 				E5BA367C19EC782000CB8165 /* MatchDetailView.m in Sources */,
 				E52FFE1C1A38B0A000046D5F /* NewsWebViewController.m in Sources */,
 				E5A4BE8E19DF118D000BFE8E /* AppDelegate.m in Sources */,
 				E55D1CAE1CB91D180049A88C /* ToolsViewController.m in Sources */,
-				E558787D1A5AD9FA001E0E24 /* Login.m in Sources */,
 				E5F7FA1B1A3F4CF300D80349 /* JGProgressHUDIndicatorView.m in Sources */,
 				E5BA363919E9A64800CB8165 /* RankTypeTableViewCell.m in Sources */,
 				E55D1CA21CB911A50049A88C /* EquipLayout.m in Sources */,
 				E5BA363619E9A33400CB8165 /* MainViewController.m in Sources */,
 				E5BA362219E98C8200CB8165 /* HeroModel.m in Sources */,
 				E52FFE191A38AA6D00046D5F /* HeroListModel.m in Sources */,
-				E55878891A5ADAEA001E0E24 /* LoginWechat.m in Sources */,
 				E5A4BE8B19DF118D000BFE8E /* main.m in Sources */,
 				E5BA363C19E9A77A00CB8165 /* RankDetailViewController.m in Sources */,
 				E5BA365119EA938000CB8165 /* RankDetailModel.m in Sources */,
@@ -1447,7 +1371,6 @@
 				E5F7FA161A3F4CF300D80349 /* JGProgressHUDAnimation.m in Sources */,
 				E59BBC3519FEB1DA006F13E6 /* Combat.m in Sources */,
 				E5BA366D19EBD31900CB8165 /* MatchDetailViewController.m in Sources */,
-				E5E5637B1A4C0BBD0033AFC8 /* RegisterViewController.m in Sources */,
 				E5F7FA151A3F4CF300D80349 /* JGProgressHUD.m in Sources */,
 				E5BA36B319EE42EB00CB8165 /* UIScrollView+MJExtension.m in Sources */,
 				E5BA36B419EE42EB00CB8165 /* UIScrollView+MJRefresh.m in Sources */,
@@ -1465,7 +1388,6 @@
 				E52B521219F0ED3E005FEE2E /* PercentageChart.m in Sources */,
 				E5C9BEFB1A35E0D300A9B9D5 /* NewsTableViewCell.m in Sources */,
 				E52B521319F0ED3E005FEE2E /* PercentageChartLayer.m in Sources */,
-				E55878801A5AD9FA001E0E24 /* SighUpMore.m in Sources */,
 				E5A3922419F4F9F3001330B3 /* SettingNavViewController.m in Sources */,
 				E52FFE2C1A398A5200046D5F /* CacheModel.m in Sources */,
 				E5BA365419EA957C00CB8165 /* RankDetailTableViewCell.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AboutNavViewController.h
+//  AbountViewController.h
 //  300勇士盒
 //
 //  Created by ChenHao on 10/20/14.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface AboutNavViewController : UINavigationController
+@interface AboutViewController : UIViewController
 
 @end

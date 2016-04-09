@@ -7,7 +7,8 @@
 //
 
 #import "SettingViewController.h"
-#import "UIViewController+CHSideMenu.h"
+
+
 @interface SettingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -43,20 +44,12 @@
     
 }
 
-- (void)toogleMenu
-{
-    [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
 }
 

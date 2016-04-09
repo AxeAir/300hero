@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSString *composeNeed;
 @property (strong, nonatomic) NSString *canCompose;
 @property (strong, nonatomic) NSString *img;
+@property (strong, nonatomic) NSString *pro;
 
 @end

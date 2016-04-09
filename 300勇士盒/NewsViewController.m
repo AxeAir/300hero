@@ -7,7 +7,6 @@
 //
 
 #import "NewsViewController.h"
-#import "UIViewController+CHSideMenu.h"
 #import "UConstants.h"
 #import "HYSegmentedControl.h"
 #import "NewsTableViewController.h"
@@ -131,20 +130,5 @@
         
     }
 }
-
-
-
-- (void)toogleMenu
-{
-    [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
-
-
-
-
-
-
-
 
 @end

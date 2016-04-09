@@ -1,5 +1,5 @@
 //
-//  ToolCollectionViewController.h
+//  ToolsViewController.h
 //  300勇士盒
 //
 //  Created by ChenHao on 16/4/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToolCollectionViewController : UICollectionViewController
+@interface ToolsViewController : UITableViewController
 
 @end

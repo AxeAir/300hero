@@ -8,7 +8,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
 @interface MainViewController : UIViewController
 
@@ -27,7 +26,6 @@
 
 @property (nonatomic,strong) UILabel *combat;
 
-@property (nonatomic,strong) SearchViewController *searchView;
 @property (nonatomic,strong) UIActivityIndicatorView *LodingActivityIndicator;
 
 @property (nonatomic,strong) UIView *buttonGroup;

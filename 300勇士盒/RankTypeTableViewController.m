@@ -7,7 +7,6 @@
 //
 
 #import "RankTypeTableViewController.h"
-#import "UIViewController+CHSideMenu.h"
 #import "RankTypeModel.h"
 #import "RankTypeTableViewCell.h"
 #import "RankDetailViewController.h"
@@ -25,12 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"排行榜";
-    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
+ 
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [UIColor blackColor];
     self.tableView.separatorInset=UIEdgeInsetsZero;
-    [self.view  setBackgroundColor:BACKGROUND_COLOR];
+    [self.tableView setBackgroundColor:BACKGROUND_COLOR];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {

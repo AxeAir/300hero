@@ -10,6 +10,7 @@
 #import <AVOSCloud.h>
 #import "Equip.h"
 #import "EquipCell.h"
+#import "EquipDetailViewController.h"
 
 @interface EquipCollectionViewController ()
 
@@ -68,6 +69,12 @@ static NSString * const reuseIdentifier = @"EquipCell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    EquipDetailViewController *equipController =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EquipDetailViewcontroller"];
+    equipController.equip = self.equipArray[indexPath.row];
+    [self.navigationController pushViewController:equipController animated:YES];
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

@@ -6,26 +6,20 @@
 //  Copyright (c) 2014 xxTeam. All rights reserved.
 //
 
-#import "AbountViewController.h"
-#import "UIViewController+CHSideMenu.h"
+#import "AboutViewController.h"
 #import "UConstants.h"
 
-@interface AbountViewController ()<MFMailComposeViewControllerDelegate>
+@interface AboutViewController ()<MFMailComposeViewControllerDelegate>
 
 @end
 
-@implementation AbountViewController
+@implementation AboutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"关于";
-    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithTitle:@"联系我们" style:UIBarButtonItemStyleDone target:self action:@selector(sendMailInApp)];
     self.navigationItem.rightBarButtonItem=right;
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-    self.navigationItem.leftBarButtonItem=left;
     [self steup];
 }
 
@@ -62,12 +56,6 @@
     
 }
 
-//- (void)AVfeedback
-//{
-//    AVUserFeedbackAgent *agent = [AVUserFeedbackAgent sharedInstance];
-//    [agent showConversations:self title:@"feedback" contact:@"info@mrchenhao.com"];
-//}
-
 - (void)sendMailInApp {
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
     if (!mailClass) {
@@ -79,10 +67,6 @@
         return;
     }
     [self displayMailPicker];
-}
-
-- (void)toogleMenu {
-    [self.navigationController.sideMenuController toggleMenu:YES];
 }
 
 //调出邮件发送窗口
@@ -125,11 +109,6 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self alertWithMessage:msg];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

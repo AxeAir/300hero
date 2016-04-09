@@ -7,10 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CHSideMenu.h"
-#import "SideMenuTableView.h"
 #import "UConstants.h"
-#import "MainViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import <AVOSCloud/AVInstallation.h>
@@ -61,8 +58,14 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [UINavigationBar appearance].tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    [UINavigationBar appearance].titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
+    [UINavigationBar appearance].tintColor = [UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
+    
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1]];
+    [[UITabBar appearance] setTranslucent:NO];
+    
+     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1]} forState:UIControlStateSelected];
+    
     return YES;
 }
 

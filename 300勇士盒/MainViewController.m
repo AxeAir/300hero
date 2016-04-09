@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "UIViewController+CHSideMenu.h"
 #import "CHHeader.h"
 #import "MatchModel.h"
 #import "MatchDetailViewController.h"

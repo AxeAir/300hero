@@ -7,7 +7,6 @@
 //
 
 #import "HeroCollectionViewController.h"
-#import "UIViewController+CHSideMenu.h"
 #import "CollectionViewCell.h"
 #import "UConstants.h"
 #import "HYSegmentedControl.h"
@@ -208,13 +207,6 @@ static NSString * const reuseIdentifier = @"CollectionViewCell";
     UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
     self.navigationItem.leftBarButtonItem=left;
 }
-
-- (void)toogleMenu
-{
-    [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
-
 
 #pragma mark <UICollectionViewDataSource>
 

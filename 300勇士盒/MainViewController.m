@@ -57,14 +57,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
-    self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
-        self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
+    
+    self.navigationItem.titleView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     
     //判断来源，是查看他人页面还是自己的战绩，区别为导航栏的不同
     if (_isOTHER == NO) {
-        UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-        self.navigationItem.leftBarButtonItem=left;
         right=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon_bulb"] style:UIBarButtonItemStyleDone target:self action:@selector(search)];
         
         UIBarButtonItem *rightButton = right;
@@ -521,16 +518,6 @@
     
     return  YES;
 }
-
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (void)toogleMenu {
-    [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
 
 #pragma mark - UItableView
 

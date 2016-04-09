@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ToolNavgationController.h"
 #import "ToolTableViewController.h"
-#import "RankNavController.h"
 #import "RankTypeTableViewController.h"
 
-#import "MainNavgationController.h"
 #import "MainViewController.h"
 
 #import "SettingNavViewController.h"
@@ -39,7 +37,6 @@
 @property (nonatomic,strong) UITableView *table;
 @property (nonatomic,strong) SearchViewController *search;
 
-@property (nonatomic,strong) MainNavgationController *mainNav;
 @property (nonatomic,strong) MainViewController *main;
 
 @property (nonatomic,strong) ToolNavgationController *toolNav;
@@ -63,7 +60,6 @@
 @property (nonatomic, strong) RegisterLoginNavViewController *registerNav;
 @property (nonatomic, strong) RegisterViewController *registerCV;
 
-@property (nonatomic,strong) RankNavController *rankNav;
 @property (nonatomic,strong) RankTypeTableViewController *rankTable;
 @property (nonatomic,strong) MainViewController *other;
 

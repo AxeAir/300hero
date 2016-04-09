@@ -111,24 +111,6 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case 0:
-            if([[self.sideMenuController getContent] isKindOfClass:[MainNavgationController class]]) {
-                [self.sideMenuController toggleMenu:YES];
-            } else {
-                _main=[[MainViewController alloc] init];
-                _mainNav=[[MainNavgationController alloc] initWithRootViewController:_main];
-                [self.sideMenuController setContentController:_mainNav animted:YES];
-            }
-            break;
-        case 1:
-            if([[self.sideMenuController getContent] isKindOfClass:[RankNavController class]]) {
-                [self.sideMenuController toggleMenu:YES];
-            } else {
-                _rankTable=[[RankTypeTableViewController alloc] initWithStyle:UITableViewStylePlain];
-                _rankNav=[[RankNavController alloc] initWithRootViewController:_rankTable];
-                [self.sideMenuController setContentController:_rankNav animted:YES];
-            }
-            break;
 //        case 2:
 //            if([[self.sideMenuController getContent] isKindOfClass:[LXNavViewController class]])
 //            {
@@ -265,35 +247,6 @@
         [self presentViewController:nav animated:YES completion:nil];
     }
 }
-
--(void)viewWillAppear:(BOOL)animated
-{
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self
-           selector:@selector(handleColorChange:)
-               name:@"do"
-             object:nil];
-    [self viewDidLoad];
-    
-}
-
--(void)handleColorChange:(NSNotification*)sender{
-    
-    NSDictionary *dic=(NSDictionary*)sender.userInfo;
-    
-    _other=[[MainViewController alloc] initWithOtherHero:[dic objectForKey:@"name"]];
-    _mainNav=[[MainNavgationController alloc] initWithRootViewController:_other];
-    [self.sideMenuController setContentController:_mainNav animted:YES];
-}
-
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    _search=[[SearchViewController alloc] init];
-    [self presentViewController:_search animated:YES completion:^{
-        
-    }];
-}
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;

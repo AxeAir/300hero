@@ -14,8 +14,7 @@
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "UConstants.h"
 #import <AVOSCloud/AVOSCloud.h>
-@interface RankTypeTableViewController ()
-{
+@interface RankTypeTableViewController () {
     NSArray *dataArray;
 }
 
@@ -28,26 +27,21 @@
     self.title = @"排行榜";
     self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
-    UIBarButtonItem *left=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"burger"] style:UIBarButtonItemStyleDone target:self action:@selector(toogleMenu)];
-    self.navigationItem.leftBarButtonItem=left;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [UIColor blackColor];
     self.tableView.separatorInset=UIEdgeInsetsZero;
     [self.view  setBackgroundColor:BACKGROUND_COLOR];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void)viewDidAppear:(BOOL)animated {
     [self getData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [AVAnalytics beginLogPageView:@"排名页面"];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [AVAnalytics endLogPageView:@"排名页面"];
 }
 
@@ -80,11 +74,6 @@
     }];
 }
 
-- (void)toogleMenu
-{
-    [self.navigationController.sideMenuController toggleMenu:YES];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -111,12 +100,13 @@
     return cell;
 }
 
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RankTypeTableViewCell *cell=(RankTypeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"%ld",(long)cell.RankID);
     RankDetailViewController *rank=[[RankDetailViewController alloc] init];
     rank.ID = cell.RankID;
+    rank.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:rank animated:YES];
 }
+
 @end

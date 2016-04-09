@@ -11,13 +11,14 @@
 #import "SideMenuTableView.h"
 #import "UConstants.h"
 #import "MainViewController.h"
-#import "MainNavgationController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import <AVOSCloud/AVInstallation.h>
 #import <AVOSCloudSNS/AVUser+SNS.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+
+#import "Equip.h"
 
 #define AVOSCloudAppID  @"tiyml8544dd5u6ieukgdvdncay59ay2xqyx200wjvpmpe7a5"
 #define AVOSCloudAppKey @"q7jph42jjonnvkizxnsan97ovsi72spz2p6ol4nxfej8xyxg"
@@ -26,8 +27,6 @@
 @end
 
 @implementation AppDelegate
-
-
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -41,16 +40,7 @@
     
     //统计应用启动情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
-    SideMenuTableView *menuController = [[SideMenuTableView alloc] init];
-    MainViewController * main = [[MainViewController alloc] init];
-    MainNavgationController *manNav = [[MainNavgationController alloc] initWithRootViewController:main];
-    CHSideMenu *sideMenu = [[CHSideMenu alloc] initWithContentController:manNav
-                                                          menuController:menuController];
-    self.window.rootViewController = sideMenu;
-    
+    [Equip registerSubclass];
     //ios7
     
     if (FSystenVersion>=8.0) {
@@ -67,6 +57,12 @@
          UIRemoteNotificationTypeAlert |
          UIRemoteNotificationTypeSound];
     }
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:10/255.0 green:10/255.0 blue:20/255.0 alpha:1]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [UINavigationBar appearance].tintColor=[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1];
+    [UINavigationBar appearance].titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor colorWithRed:200/255.0 green:120/255.0  blue:10/255.0  alpha:1] forKey:NSForegroundColorAttributeName];
     return YES;
 }
 

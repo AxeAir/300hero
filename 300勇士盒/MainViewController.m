@@ -214,7 +214,9 @@
             _ALLwincount.text=[NSString stringWithFormat:@"胜场数:%ld",(long)[[Role objectForKey:@"WinCount"] integerValue]];
             _ALLcount.text=[NSString stringWithFormat:@"总场数:%ld",(long)[[Role objectForKey:@"MatchCount"] integerValue]];
         } else {
-            NSLog(@"no");
+            
+            
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -304,10 +306,16 @@
                     [view removeFromSuperview];
                 }
                 [self havaRoleName:RoleName];
-            }
-            else
-            {
-                NSLog(@"no");
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"用户不存在" preferredStyle:UIAlertControllerStyleAlert];
+                
+                
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:action];
+                
+                [self presentViewController:alert animated:YES completion:nil];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

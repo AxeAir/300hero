@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -139,6 +140,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITh-6O-eYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1962" y="1061"/>
+        </scene>
+        <!--Heros Collection View Controller-->
+        <scene sceneID="Ycz-QG-cUr">
+            <objects>
+                <collectionViewController storyboardIdentifier="HerosCollectionViewController" hidesBottomBarWhenPushed="YES" id="8Uf-9l-Mae" customClass="HerosCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TSW-NA-6tl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewLayout key="collectionViewLayout" id="Ojs-It-iQd" customClass="HeroLayout"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCell" id="iY0-sT-VMb" customClass="HeroCell">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ecg-iO-7rf">
+                                            <rect key="frame" x="5" y="0.0" width="90" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Ecg-iO-7rf" secondAttribute="height" multiplier="1:1" id="BlM-Kn-hiP"/>
+                                                <constraint firstAttribute="height" constant="54" id="okU-6l-99K"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="okU-6l-99K"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="yuB-K7-CBz">
+                                            <rect key="frame" x="8" y="100" width="84" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ecg-iO-7rf" secondAttribute="trailing" constant="5" id="E8j-wd-JuL"/>
+                                    <constraint firstItem="yuB-K7-CBz" firstAttribute="leading" secondItem="iY0-sT-VMb" secondAttribute="leadingMargin" id="Pqv-3L-m70"/>
+                                    <constraint firstItem="Ecg-iO-7rf" firstAttribute="top" secondItem="iY0-sT-VMb" secondAttribute="top" id="TyF-iC-QEZ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="yuB-K7-CBz" secondAttribute="trailing" id="YU8-pF-SUd"/>
+                                    <constraint firstItem="Ecg-iO-7rf" firstAttribute="leading" secondItem="iY0-sT-VMb" secondAttribute="leading" constant="5" id="aAw-0U-bSt"/>
+                                    <constraint firstItem="yuB-K7-CBz" firstAttribute="top" secondItem="Ecg-iO-7rf" secondAttribute="bottom" constant="10" id="owy-al-ZBx"/>
+                                    <constraint firstItem="yuB-K7-CBz" firstAttribute="top" secondItem="Ecg-iO-7rf" secondAttribute="bottom" constant="10" id="wek-w1-NaG"/>
+                                </constraints>
+                                <size key="customSize" width="100" height="130"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="owy-al-ZBx"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="heroImageView" destination="Ecg-iO-7rf" id="lc1-Zg-a60"/>
+                                    <outlet property="heroLabel" destination="yuB-K7-CBz" id="W8Q-Lr-NoZ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="8Uf-9l-Mae" id="QG0-dP-Vwa"/>
+                            <outlet property="delegate" destination="8Uf-9l-Mae" id="udN-L1-3x5"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PoO-Hi-Ogk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966" y="1801"/>
+        </scene>
+        <!--Hero Detail View Controller-->
+        <scene sceneID="xB4-Al-jiK">
+            <objects>
+                <viewController storyboardIdentifier="HeroDetailViewController" id="9Ni-Sx-IMQ" customClass="HeroDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GVf-TX-vaD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Utw-P3-gCy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fPl-Jp-EFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oIG-VF-wDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2702" y="1845"/>
         </scene>
         <!--Equip Detail View Controller-->
         <scene sceneID="nqD-x1-2U6">

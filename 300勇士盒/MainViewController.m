@@ -12,7 +12,6 @@
 #import "MatchDetailViewController.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "MatchTableViewCell.h"
-#import "MJRefresh.h"
 #import "RecentModel.h"
 #import "AksStraightPieChart.h"
 #import "PercentageChart.h"
@@ -21,6 +20,8 @@
 #import "CacheEntence.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <UIImageView+WebCache.h>
+#import <MJRefresh.h>
+#import <MJRefreshHeader.h>
 
 #define NAME_COLOR                 [UIColor colorWithRed:220/255.0f green:187/255.0f blue:23/255.0f alpha:1]
 @interface MainViewController ()<CHScaleHeaderDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
@@ -79,8 +80,8 @@
 }
 
 -(void)refresh {
+    [_scrollView.mj_header endRefreshing];
     [self viewDidLoad];
-    [_scrollView headerEndRefreshing];
 }
 
 -(void)loadSteup {
@@ -106,7 +107,9 @@
     [_scrollView addSubview:imageView];
     [self.view addSubview:_scrollView];
     __block MainViewController *blockSelf = self;
-    [_scrollView addHeaderWithCallback:^{
+    
+    _scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
         [blockSelf refresh];
     }];
     

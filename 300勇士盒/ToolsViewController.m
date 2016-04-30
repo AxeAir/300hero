@@ -8,6 +8,7 @@
 
 #import "ToolsViewController.h"
 #import "EquipCollectionViewController.h"
+#import "HerosCollectionViewController.h"
 #import "UConstants.h"
 #import "AboutViewController.h"
 
@@ -40,7 +41,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,8 +51,10 @@
         case 0:
             cell.textLabel.text = @"装备大全";
             break;
-            
         case 1:
+            cell.textLabel.text = @"英雄大全";
+            break;
+        case 2:
             cell.textLabel.text = @"关于我们";
             break;
         default:
@@ -71,6 +74,11 @@
         }
             break;
         case 1: {
+            HerosCollectionViewController *heroController =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HerosCollectionViewController"];
+            [self.navigationController pushViewController:heroController animated:YES];
+        }
+            break;
+        case 2: {
             AboutViewController *about = [[AboutViewController alloc] init];
             [self.navigationController pushViewController:about animated:YES];
         }

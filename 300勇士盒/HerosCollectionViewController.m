@@ -1,37 +1,37 @@
 //
-//  EquipCollectionViewController.m
+//  HerosCollectionViewController.m
 //  300勇士盒
 //
-//  Created by ChenHao on 16/4/9.
+//  Created by ChenHao on 16/4/29.
 //  Copyright © 2016年 xxTeam. All rights reserved.
 //
 
-#import "EquipCollectionViewController.h"
+#import "HerosCollectionViewController.h"
 #import <AVOSCloud.h>
-#import "Equip.h"
-#import "EquipCell.h"
-#import "EquipDetailViewController.h"
+#import "Hero.h"
+#import "HeroCell.h"
+#import "HeroDetailViewController.h"
 
-@interface EquipCollectionViewController ()
+@interface HerosCollectionViewController ()
 
-@property (nonatomic, strong) NSArray<Equip *> * equipArray;
 
+@property (nonatomic, strong) NSArray<Hero *> * heroArray;
 @end
 
-@implementation EquipCollectionViewController
+@implementation HerosCollectionViewController
 
-static NSString * const reuseIdentifier = @"EquipCell";
+static NSString * const reuseIdentifier = @"HeroCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"装备大全";
-    AVQuery *query = [Equip query];
+    self.title = @"英雄大全";
+    AVQuery *query = [Hero query];
     query.cachePolicy = kAVCachePolicyCacheElseNetwork;
     query.limit = 200;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            self.equipArray = objects;
+            self.heroArray = objects;
             [self.collectionView reloadData];
         }
     }];
@@ -60,22 +60,23 @@ static NSString * const reuseIdentifier = @"EquipCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.equipArray.count;
+    return _heroArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    [((EquipCell *)cell) filleWithObject:self.equipArray[indexPath.row]];
+    // Configure the cell
+    [((HeroCell *)cell) filleWithObject:self.heroArray[indexPath.row]];
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    EquipDetailViewController *equipController =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EquipDetailViewcontroller"];
-    equipController.equip = self.equipArray[indexPath.row];
-    [self.navigationController pushViewController:equipController animated:YES];
+    HeroDetailViewController *heroController =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HeroDetailViewController"];
+    heroController.hero = self.heroArray[indexPath.row];
+    [self.navigationController pushViewController:heroController animated:YES];
 }
 
 /*

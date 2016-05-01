@@ -13,13 +13,13 @@
 @interface Hero : AVObject <AVSubclassing>
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *keywords;
+@property (strong, nonatomic) NSString *bigimg;
 @property (strong, nonatomic) NSString *price1;
 @property (strong, nonatomic) NSString *price2;
 @property (strong, nonatomic) NSString *info;
-@property (strong, nonatomic) NSString *composeNeed;
-@property (strong, nonatomic) NSString *canCompose;
+@property (strong, nonatomic) NSString *introduce;
+@property (strong, nonatomic) NSString *skills;
 @property (strong, nonatomic) NSString *img;
-@property (strong, nonatomic) NSString *pro;
+@property (strong, nonatomic) NSString *rate;
 
 @end
